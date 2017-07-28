@@ -8,7 +8,7 @@ function cityMap() {
                                   mapProp);
 }
 
-$(document).ready(function(){
+$(function(){
     cityMap();
 });
 
