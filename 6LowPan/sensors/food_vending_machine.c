@@ -5,6 +5,7 @@
 #include "contiki.h"
 #include "contiki-net.h"
 #include "rest-engine.h"
+#include "vending_machine.h"
 
 #define DEBUG 1
 #if DEBUG
@@ -18,38 +19,28 @@
 #endif
 
 static int machine_id = 0;
-static void res_get_handler(void *request, void *response, 
-  uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+static struct product productA, productB;
 
-RESOURCE(resource_example,
-         "title=\"Hello world: ?len=0..\";rt=\"Text\"",
-         res_get_handler,
-         NULL,
-         NULL,
-         NULL);
+/* Function to initialize the vending machine
+ *
+ */
 
-static void
-res_get_handler(void *request, void *response, uint8_t *buffer, 
-  uint16_t preferred_size, int32_t *offset)
-{
-  char const *const message = "Hello World!";
-  int length = 12; 
+void init_vending_machine()
+{ 
+  productA.remaining_qt = MAX_PRODUCT_AVAILABILITY;
+  productA.price = 0.69;
 
-  memcpy(buffer, message, length);
-  REST.set_header_content_type(response, REST.type.TEXT_PLAIN); /* text/plain is the default, hence this option could be omitted. */
-  REST.set_header_etag(response, (uint8_t *)&length, 1);
-  REST.set_response_payload(response, buffer, length);
+  productB.remaining_qt = MAX_PRODUCT_AVAILABILITY;
+  productB.price = 0.99;
 }
-
 
 void id_get_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   /* Populat the buffer with the response payload*/
-  char message[30];
-  int length = 30;
+  char message[50];
+  int length = 50;
 
-  printf("Get\n");
   sprintf(message, "{'id':'%d'}", machine_id);
   length = strlen(message);
   memcpy(buffer, message, length);
@@ -68,7 +59,7 @@ void id_put_handler(void* request, void* response,
   printf("Put\n");
   len = REST.get_post_variable(request, "value", &val);
      
-  if (len > 0){
+  if (len > 0) {
      new_value = atoi(val);
      PRINTF("new value %u\n", new_value);
      machine_id = new_value;
@@ -78,7 +69,63 @@ void id_put_handler(void* request, void* response,
   }
 }
 
-RESOURCE(id, "title=\"Get/Put value=10\";rt=\"Text\"", id_get_handler, id_put_handler, id_put_handler, NULL);
+void productAqty_get_handler(void* request, void* response, 
+  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+  /* Populat the buffer with the response payload*/
+  char message[50];
+  int length = 50;
+
+  sprintf(message, "{'e':['n': 'qty', v:'%d'], 'bu':'Pcs'}", 
+    productA.remaining_qt);
+  length = strlen(message);
+  memcpy(buffer, message, length);
+
+  REST.set_header_content_type(response, REST.type.TEXT_PLAIN); 
+  REST.set_header_etag(response, (uint8_t *) &length, 1);
+  REST.set_response_payload(response, buffer, length);
+}
+
+void productAprice_get_handler(void* request, void* response, 
+  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+  /* Populat the buffer with the response payload*/
+  char message[50];
+  int length = 50;
+
+  sprintf(message, "{'e':['n': 'price', v:'%d'], 'bu':'Euro'}", 
+    productA.price);
+  length = strlen(message);
+  memcpy(buffer, message, length);
+
+  REST.set_header_content_type(response, REST.type.TEXT_PLAIN); 
+  REST.set_header_etag(response, (uint8_t *) &length, 1);
+  REST.set_response_payload(response, buffer, length);
+}
+
+void productAprice_put_handler(void* request, void* response, 
+  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+  int new_value, len;
+  const char *val = NULL;
+  
+  len = REST.get_post_variable(request, "price", &val);
+     
+  if (len > 0) {
+     new_value = atoi(val);
+     productA.price = new_value;
+     REST.set_response_status(response, REST.status.CREATED);
+  } else {
+     REST.set_response_status(response, REST.status.BAD_REQUEST);
+  }
+}
+
+RESOURCE(id, "title=\"Machine id\";rt=\"Text\"", 
+  id_get_handler, NULL, id_put_handler, NULL);
+RESOURCE(ProductAqty, "title=\"ProductAqty\";rt=\"Text\"", 
+  productAqty_get_handler, NULL, NULL, NULL);
+RESOURCE(ProductAprice, "title=\"ProductAprice\";rt=\"Text\"", 
+  productAprice_get_handler, NULL, productAprice_put_handler, NULL);
 
 PROCESS(server, "CoAP Server");
 AUTOSTART_PROCESSES(&server);
@@ -89,10 +136,12 @@ PROCESS_THREAD(server, ev, data)
 
   PROCESS_PAUSE();
 
+  init_vending_machine();
   rest_init_engine();
 
-  rest_activate_resource(&resource_example, "example");
   rest_activate_resource(&id, "machineId");
+  rest_activate_resource(&ProductAqty, "ProductA/qty");
+  rest_activate_resource(&ProductAprice, "ProductA/price");
   while(1) {
     PROCESS_WAIT_EVENT();
   }
