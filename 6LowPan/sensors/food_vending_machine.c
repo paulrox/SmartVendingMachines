@@ -28,10 +28,10 @@ static struct product productA, productB;
 void init_vending_machine()
 { 
   productA.remaining_qt = MAX_PRODUCT_AVAILABILITY;
-  productA.price = 0.69;
+  productA.price = 1;
 
   productB.remaining_qt = MAX_PRODUCT_AVAILABILITY;
-  productB.price = 0.99;
+  productB.price = 2;
 }
 
 void id_get_handler(void* request, void* response, 
@@ -120,12 +120,67 @@ void productAprice_put_handler(void* request, void* response,
   }
 }
 
+void productBqty_get_handler(void* request, void* response, 
+  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+  /* Populat the buffer with the response payload*/
+  char message[50];
+  int length = 50;
+
+  sprintf(message, "{'e':['n': 'qty', v:'%d'], 'bu':'Pcs'}", 
+    productB.remaining_qt);
+  length = strlen(message);
+  memcpy(buffer, message, length);
+
+  REST.set_header_content_type(response, REST.type.TEXT_PLAIN); 
+  REST.set_header_etag(response, (uint8_t *) &length, 1);
+  REST.set_response_payload(response, buffer, length);
+}
+
+void productBprice_get_handler(void* request, void* response, 
+  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+  /* Populat the buffer with the response payload*/
+  char message[50];
+  int length = 50;
+
+  sprintf(message, "{'e':['n': 'price', v:'%d'], 'bu':'Euro'}", 
+    productB.price);
+  length = strlen(message);
+  memcpy(buffer, message, length);
+
+  REST.set_header_content_type(response, REST.type.TEXT_PLAIN); 
+  REST.set_header_etag(response, (uint8_t *) &length, 1);
+  REST.set_response_payload(response, buffer, length);
+}
+
+void productBprice_put_handler(void* request, void* response, 
+  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+  int new_value, len;
+  const char *val = NULL;
+  
+  len = REST.get_post_variable(request, "price", &val);
+     
+  if (len > 0) {
+     new_value = atoi(val);
+     productB.price = new_value;
+     REST.set_response_status(response, REST.status.CREATED);
+  } else {
+     REST.set_response_status(response, REST.status.BAD_REQUEST);
+  }
+}
+
 RESOURCE(id, "title=\"Machine id\";rt=\"Text\"", 
   id_get_handler, NULL, id_put_handler, NULL);
 RESOURCE(ProductAqty, "title=\"ProductAqty\";rt=\"Text\"", 
   productAqty_get_handler, NULL, NULL, NULL);
 RESOURCE(ProductAprice, "title=\"ProductAprice\";rt=\"Text\"", 
   productAprice_get_handler, NULL, productAprice_put_handler, NULL);
+RESOURCE(ProductBqty, "title=\"ProductBqty\";rt=\"Text\"", 
+  productBqty_get_handler, NULL, NULL, NULL);
+RESOURCE(ProductBprice, "title=\"ProductAprice\";rt=\"Text\"", 
+  productBprice_get_handler, NULL, productBprice_put_handler, NULL);
 
 PROCESS(server, "CoAP Server");
 AUTOSTART_PROCESSES(&server);
@@ -142,6 +197,8 @@ PROCESS_THREAD(server, ev, data)
   rest_activate_resource(&id, "machineId");
   rest_activate_resource(&ProductAqty, "ProductA/qty");
   rest_activate_resource(&ProductAprice, "ProductA/price");
+  rest_activate_resource(&ProductBqty, "ProductB/qty");
+  rest_activate_resource(&ProductBprice, "ProductB/price");
   while(1) {
     PROCESS_WAIT_EVENT();
   }
