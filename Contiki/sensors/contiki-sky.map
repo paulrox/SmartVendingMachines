@@ -2605,9 +2605,9 @@ LOAD /usr/local/msp430/bin/../lib/gcc/msp430/4.7.0/mmpy-16/libcrt0.a
  .stab          0x0002aa8c      0x1f8 contiki-sky.a(mac.o)
                                 0x4ec (size before relaxing)
 
-.stabstr        0x00000000    0x202c1
+.stabstr        0x00000000    0x2030c
  *(.stabstr)
- .stabstr       0x00000000    0x202c1 food_vending_machine.co
+ .stabstr       0x00000000    0x2030c food_vending_machine.co
 
 .stab.excl
  *(.stab.excl)
