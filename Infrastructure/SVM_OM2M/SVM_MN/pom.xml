@@ -6,8 +6,8 @@
 		<artifactId>SVM_OM2M</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>MN_AE</artifactId>
-	<name>Middle Node Application Entity</name>
+	<artifactId>SVM_MN</artifactId>
+	<name>SVM Middle Node ADN</name>
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -36,7 +36,7 @@
 					<configuration>
 						<archive>
 							<manifest>
-								<mainClass>${project.groupId}.Main</mainClass>
+								<mainClass>${project.groupId}.ADN</mainClass>
 							</manifest>
 						</archive>
 						<descriptorRefs>

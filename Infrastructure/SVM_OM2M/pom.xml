@@ -9,7 +9,8 @@
 
 	<modules>
 		<module>SVM_Core</module>
-		<module>MN_AE</module>
+		<module>SVM_IN</module>
+		<module>SVM_MN</module>
 	</modules>
 
 	<dependencies>

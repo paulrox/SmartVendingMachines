@@ -1,5 +1,12 @@
 package it.svm.iot;
 
+/**
+ * Class representing a Container on the CSE
+ * @author Paolo Sassi
+ * @author Matteo Rotundo
+ *
+ */
+
 import java.util.List;
 
 public class Container {

@@ -10,13 +10,41 @@ import org.eclipse.californium.core.coap.Option;
 import org.eclipse.californium.core.coap.Request;
 import org.json.JSONObject;
 
-import it.svm.iot.AE;
-import it.svm.iot.Container;
-
-public class Main {
+/**
+ * API for handling the interactions between an AE and a CSE 
+ * (Mca reference point) implemented as singleton.
+ * @author Paolo Sassi
+ * @author Matteo Rotundo
+ *
+ */
+public final class Mca {
+	private static Mca instance = null;
 	
-	private static AE createAE(String cse, String rn){
-		AE ae = new AE();
+	/**
+	 * Private constructor for the singleton pattern.
+	 */
+	private Mca() {}
+	
+	/**
+	 * Get the only Mca instance.
+	 * @return The Mca instance
+	 */
+	public static Mca getInstance() {
+		if(instance == null) {
+			instance = new Mca();
+		}
+		return instance;
+	}
+	
+	/**
+	 * Creates a new AE on the specified CSE. The function is private in
+	 * order to allow just one.
+	 * @param cse URI of the CSE
+	 * @param rn Name of the AE to be created
+	 * @return AE object containing the information of the created AE
+	 */
+	public AE createAE(String cse, String rn){
+		AE ae = AE.getInstance();
 		URI uri = null;
 		try {
 			uri = new URI(cse);
@@ -31,7 +59,7 @@ public class Main {
 		req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
 		req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
 		JSONObject obj = new JSONObject();
-		obj.put("api","SVM-ID");
+		obj.put("api",rn.concat("-ID"));
 		obj.put("rr","true");
 		obj.put("rn", rn);
 		JSONObject root = new JSONObject();
@@ -50,11 +78,18 @@ public class Main {
 		ae.setPi((String) container.get("pi"));
 		ae.setCt((String) container.get("ct"));
 		ae.setLt((String) container.get("lt"));
-		
+
 		return ae;
 	}
-	
-	private static Container createContainer(String cse, String rn){
+
+	/**
+	 * Creates a new Container on the specified CSE.
+	 * @param cse URI of the CSE
+	 * @param rn Name of the Container to be created
+	 * @return Container object containing the information of the 
+	 * 		   created Container
+	 */
+	public Container createContainer(String cse, String rn){
 		Container container = new Container();
 
 		URI uri = null;
@@ -78,7 +113,7 @@ public class Main {
 		System.out.println(body);
 		req.setPayload(body);
 		CoapResponse responseBody = client.advanced(req);
-		
+
 		String response = new String(responseBody.getPayload());
 		System.out.println(response);
 		JSONObject resp = new JSONObject(response);
@@ -92,10 +127,16 @@ public class Main {
 		container.setSt((Integer) cont.get("st"));
 		container.setOl((String) cont.get("ol"));
 		container.setLa((String) cont.get("la"));
-		
+
 		return container;
 	}
-	private static void createContentInstance(String cse){
+	
+	/**
+	 * Creates a new contentInstance.
+	 * @param cse URI of the CSE
+	 * @param val Value of the contentInstance
+	 */
+	public void createContentInstance(String cse, String val){
 		URI uri = null;
 		try {
 			uri = new URI(cse);
@@ -111,24 +152,15 @@ public class Main {
 		req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
 		JSONObject content = new JSONObject();
 		content.put("cnf","message");
-		content.put("con","12");
+		content.put("con",val);
 		JSONObject root = new JSONObject();
 		root.put("m2m:cin", content);
 		String body = root.toString();
 		System.out.println(body);
 		req.setPayload(body);
 		CoapResponse responseBody = client.advanced(req);
-		
+
 		String response = new String(responseBody.getPayload());
 		System.out.println(response);
-			
 	}
-
-	public static void main(String[] args) {
-		AE ae = Main.createAE("coap://127.0.0.1:5683/~/svm-mn-cse", "SVM_App");
-		Container container = Main.createContainer("coap://127.0.0.1:5683/~/svm-mn-cse/svm-mn-name/SVM_App", "DATA");
-		Main.createContentInstance("coap://127.0.0.1:5683/~/svm-mn-cse/svm-mn-name/SVM_App/DATA");
-
-	}
-
 }

@@ -6,8 +6,8 @@
 		<artifactId>SVM_OM2M</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>IN_AE</artifactId>
-	<name>SVM Business Logic</name>
+	<artifactId>SVM_IN</artifactId>
+	<name>SVM Infrastructure Node ADN</name>
 	<packaging>jar</packaging>
 	
 	<dependencies>
@@ -26,7 +26,7 @@
 					<configuration>
 						<archive>
 							<manifest>
-								<mainClass>${project.groupId}.Main</mainClass>
+								<mainClass>${project.groupId}.ADN</mainClass>
 							</manifest>
 						</archive>
 						<descriptorRefs>

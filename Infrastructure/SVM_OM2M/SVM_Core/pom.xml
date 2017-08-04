@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>SVM_Core</artifactId>
-	<name>SVM core classes</name>
+	<name>SVM Core Classes</name>
 	<packaging>jar</packaging>
 
 </project>
