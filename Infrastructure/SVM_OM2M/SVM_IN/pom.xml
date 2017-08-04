@@ -26,7 +26,7 @@
 					<configuration>
 						<archive>
 							<manifest>
-								<mainClass>${project.groupId}.ADN</mainClass>
+								<mainClass>${project.groupId}.in.ADN</mainClass>
 							</manifest>
 						</archive>
 						<descriptorRefs>

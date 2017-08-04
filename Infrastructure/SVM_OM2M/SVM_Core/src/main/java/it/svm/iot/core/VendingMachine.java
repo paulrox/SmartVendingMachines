@@ -1,4 +1,4 @@
-package it.svm.iot;
+package it.svm.iot.core;
 
 import java.util.ArrayList;
 import org.json.*;

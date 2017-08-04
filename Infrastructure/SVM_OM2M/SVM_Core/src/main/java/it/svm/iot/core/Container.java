@@ -1,4 +1,4 @@
-package it.svm.iot;
+package it.svm.iot.core;
 
 /**
  * Class representing a Container on the CSE

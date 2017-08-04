@@ -36,7 +36,7 @@
 					<configuration>
 						<archive>
 							<manifest>
-								<mainClass>${project.groupId}.ADN</mainClass>
+								<mainClass>${project.groupId}.mn.ADN</mainClass>
 							</manifest>
 						</archive>
 						<descriptorRefs>

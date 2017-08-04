@@ -1,4 +1,4 @@
-package it.svm.iot;
+package it.svm.iot.core;
 
 import java.net.URI;
 import java.net.URISyntaxException;

@@ -1,4 +1,4 @@
-package it.svm.iot;
+package it.svm.iot.core;
 
 /**
  * Class containing all the constants used in the application
@@ -8,6 +8,9 @@ package it.svm.iot;
  */
 
 public class Constants {
+	
+	/* Core Constants */
+	
 	/**
 	 * Maximum quantity for a specific product.
 	 */
@@ -52,5 +55,15 @@ public class Constants {
 	 * Maximum longitude.
 	 */
 	public static final float MAX_LNG = (float) 180.0;
-
+	
+	/* Middle Node Constants */
+	
+	/**
+	 * Middle Node CSE URI
+	 */
+	public static final String MN_CSE_URI = "coap://127.0.0.1:5683/~/svm-mn-cse";
+	/**
+	 * Border Router global IPv6 address
+	 */
+	public static final String BR_ADDR = "aaaa::212:7401:1:101";
 }
