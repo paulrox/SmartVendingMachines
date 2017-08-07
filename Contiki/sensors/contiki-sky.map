@@ -158,7 +158,7 @@ uip_ds6_prefix_list
 process_maxevents   0x1               contiki-sky.a(process.o)
 frag_sender         0x8               contiki-sky.a(sicslowpan.o)
 uip_lladdr          0x8               contiki-sky.a(uip6.o)
-uip_aligned_buf     0xf0              contiki-sky.a(uip6.o)
+uip_aligned_buf     0x100             contiki-sky.a(uip6.o)
 uip_flags           0x1               contiki-sky.a(uip6.o)
 uip_ds6_timer_periodic
                     0xc               contiki-sky.a(uip-ds6.o)
@@ -2287,7 +2287,7 @@ LOAD /usr/local/msp430/bin/../lib/gcc/msp430/4.7.0/mmpy-16/libcrt0.a
                 0x0000f5d6                __data_load_start = LOADADDR (.data)
                 0x00000158                __data_size = SIZEOF (.data)
 
-.bss            0x00001258     0x1af8 load address 0x0000f72e
+.bss            0x00001258     0x1b18 load address 0x0000f72e
                 0x00001258                __bss_start = .
  *(.bss .bss.*)
  .bss           0x00001258        0x6 food_vending_machine.co
@@ -2312,103 +2312,103 @@ LOAD /usr/local/msp430/bin/../lib/gcc/msp430/4.7.0/mmpy-16/libcrt0.a
                 0x00001796                process_current
                 0x00001798                process_list
  .bss           0x000017d8        0x2 contiki-sky.a(rtimer.o)
- .bss           0x000017da      0x124 contiki-sky.a(sicslowpan.o)
- .bss           0x000018fe        0x8 contiki-sky.a(uip6.o)
-                0x000018fe                uip_ext_opt_offset
-                0x000018ff                uip_ext_len
-                0x00001900                uip_ext_bitmap
- .bss           0x00001906       0x18 contiki-sky.a(uip-ds6.o)
- .bss           0x0000191e      0x2f8 contiki-sky.a(uip-ds6-nbr.o)
- .bss           0x00001c16      0x362 contiki-sky.a(uip-ds6-route.o)
- .bss           0x00001f78       0x14 contiki-sky.a(uip-icmp6.o)
- .bss           0x00001f8c        0xe contiki-sky.a(tcpip.o)
- .bss           0x00001f9a        0x2 contiki-sky.a(rpl.o)
- .bss           0x00001f9c       0xf0 contiki-sky.a(rpl-dag.o)
- .bss           0x0000208c       0x18 contiki-sky.a(rpl-timers.o)
- .bss           0x000020a4        0x2 contiki-sky.a(framer-802154.o)
- .bss           0x000020a6      0x118 contiki-sky.a(nbr-table.o)
- .bss           0x000021be       0xb8 contiki-sky.a(packetbuf.o)
- .bss           0x00002276      0x5a0 contiki-sky.a(queuebuf.o)
- .bss           0x00002816        0x6 contiki-sky.a(er-coap.o)
-                0x00002816                erbium_status_code
+ .bss           0x000017da      0x134 contiki-sky.a(sicslowpan.o)
+ .bss           0x0000190e        0x8 contiki-sky.a(uip6.o)
+                0x0000190e                uip_ext_opt_offset
+                0x0000190f                uip_ext_len
+                0x00001910                uip_ext_bitmap
+ .bss           0x00001916       0x18 contiki-sky.a(uip-ds6.o)
+ .bss           0x0000192e      0x2f8 contiki-sky.a(uip-ds6-nbr.o)
+ .bss           0x00001c26      0x362 contiki-sky.a(uip-ds6-route.o)
+ .bss           0x00001f88       0x14 contiki-sky.a(uip-icmp6.o)
+ .bss           0x00001f9c        0xe contiki-sky.a(tcpip.o)
+ .bss           0x00001faa        0x2 contiki-sky.a(rpl.o)
+ .bss           0x00001fac       0xf0 contiki-sky.a(rpl-dag.o)
+ .bss           0x0000209c       0x18 contiki-sky.a(rpl-timers.o)
+ .bss           0x000020b4        0x2 contiki-sky.a(framer-802154.o)
+ .bss           0x000020b6      0x118 contiki-sky.a(nbr-table.o)
+ .bss           0x000021ce       0xb8 contiki-sky.a(packetbuf.o)
+ .bss           0x00002286      0x5a0 contiki-sky.a(queuebuf.o)
+ .bss           0x00002826        0x6 contiki-sky.a(er-coap.o)
+                0x00002826                erbium_status_code
  .bss.destination_
-                0x0000281c        0x2 /usr/local/msp430/bin/../lib/gcc/msp430/4.7.0/../../../../msp430/lib/mmpy-16/libc.a(sprintf.o)
+                0x0000282c        0x2 /usr/local/msp430/bin/../lib/gcc/msp430/4.7.0/../../../../msp430/lib/mmpy-16/libc.a(sprintf.o)
  .bss.available_
-                0x0000281e        0x2 /usr/local/msp430/bin/../lib/gcc/msp430/4.7.0/../../../../msp430/lib/mmpy-16/libc.a(sprintf.o)
+                0x0000282e        0x2 /usr/local/msp430/bin/../lib/gcc/msp430/4.7.0/../../../../msp430/lib/mmpy-16/libc.a(sprintf.o)
  *(.near.bss .near.bss.*)
  *(COMMON)
- COMMON         0x00002820        0x2 contiki-sky.a(contiki-sky-pla)
-                0x00002820                sensors_flags
- COMMON         0x00002822        0x8 contiki-sky.a(ds2411.o)
-                0x00002822                ds2411_id
- COMMON         0x0000282a        0x1 contiki-sky.a(sensors.o)
-                0x0000282a                sensors_event
- *fill*         0x0000282b        0x1 00
- COMMON         0x0000282c       0x10 contiki-sky.a(cc2420.o)
-                0x0000282c                cc2420_last_rssi
-                0x0000282e                cc2420_sfd_start_time
-                0x00002830                cc2420_time_of_departure
-                0x00002832                cc2420_time_of_arrival
-                0x00002834                cc2420_last_correlation
-                0x00002836                cc2420_authority_level_of_sender
-                0x00002838                cc2420_sfd_counter
-                0x0000283a                cc2420_sfd_end_time
- COMMON         0x0000283c        0x2 contiki-sky.a(msp430.o)
-                0x0000283c                msp430_dco_required
- COMMON         0x0000283e       0x56 contiki-sky.a(energest.o)
-                0x0000283e                energest_total_time
-                0x0000286e                energest_total_count
-                0x00002870                energest_current_mode
-                0x0000287c                energest_current_time
- COMMON         0x00002894        0x1 contiki-sky.a(process.o)
-                0x00002894                process_maxevents
- *fill*         0x00002895        0x1 00
- COMMON         0x00002896        0x8 contiki-sky.a(sicslowpan.o)
-                0x00002896                frag_sender
- COMMON         0x0000289e      0x240 contiki-sky.a(uip6.o)
-                0x0000289e                uip_len
-                0x000028a0                uip_sappdata
-                0x000028a2                uip_lladdr
-                0x000028aa                uip_aligned_buf
-                0x0000299a                uip_flags
-                0x0000299c                uip_next_hdr
-                0x0000299e                uip_udp_conn
-                0x000029a0                uip_appdata
-                0x000029a2                uip_conn
-                0x000029a4                uip_slen
-                0x000029a6                uip_udp_conns
- COMMON         0x00002ade      0x15c contiki-sky.a(uip-ds6.o)
-                0x00002ade                uip_ds6_timer_ra
-                0x00002ae6                uip_ds6_if
-                0x00002bd2                uip_ds6_netif_addr_list_offset
-                0x00002bd3                uip_ds6_addr_size
-                0x00002bd4                uip_ds6_prefix_list
-                0x00002c2e                uip_ds6_timer_periodic
- COMMON         0x00002c3a        0x1 contiki-sky.a(tcpip.o)
-                0x00002c3a                tcpip_event
- *fill*         0x00002c3b        0x1 00
- COMMON         0x00002c3c       0xde contiki-sky.a(rpl-dag.o)
-                0x00002c3c                default_instance
-                0x00002c3e                instance_table
- COMMON         0x00002d1a        0x8 contiki-sky.a(linkaddr.o)
-                0x00002d1a                linkaddr_node_addr
- COMMON         0x00002d22       0x2e contiki-sky.a(packetbuf.o)
-                0x00002d22                packetbuf_addrs
-                0x00002d32                packetbuf_attrs
-                0x00002d50                . = ALIGN (0x2)
-                0x00002d50                __bss_end = .
-                0x00001af8                __bss_size = SIZEOF (.bss)
+ COMMON         0x00002830        0x2 contiki-sky.a(contiki-sky-pla)
+                0x00002830                sensors_flags
+ COMMON         0x00002832        0x8 contiki-sky.a(ds2411.o)
+                0x00002832                ds2411_id
+ COMMON         0x0000283a        0x1 contiki-sky.a(sensors.o)
+                0x0000283a                sensors_event
+ *fill*         0x0000283b        0x1 00
+ COMMON         0x0000283c       0x10 contiki-sky.a(cc2420.o)
+                0x0000283c                cc2420_last_rssi
+                0x0000283e                cc2420_sfd_start_time
+                0x00002840                cc2420_time_of_departure
+                0x00002842                cc2420_time_of_arrival
+                0x00002844                cc2420_last_correlation
+                0x00002846                cc2420_authority_level_of_sender
+                0x00002848                cc2420_sfd_counter
+                0x0000284a                cc2420_sfd_end_time
+ COMMON         0x0000284c        0x2 contiki-sky.a(msp430.o)
+                0x0000284c                msp430_dco_required
+ COMMON         0x0000284e       0x56 contiki-sky.a(energest.o)
+                0x0000284e                energest_total_time
+                0x0000287e                energest_total_count
+                0x00002880                energest_current_mode
+                0x0000288c                energest_current_time
+ COMMON         0x000028a4        0x1 contiki-sky.a(process.o)
+                0x000028a4                process_maxevents
+ *fill*         0x000028a5        0x1 00
+ COMMON         0x000028a6        0x8 contiki-sky.a(sicslowpan.o)
+                0x000028a6                frag_sender
+ COMMON         0x000028ae      0x250 contiki-sky.a(uip6.o)
+                0x000028ae                uip_len
+                0x000028b0                uip_sappdata
+                0x000028b2                uip_lladdr
+                0x000028ba                uip_aligned_buf
+                0x000029ba                uip_flags
+                0x000029bc                uip_next_hdr
+                0x000029be                uip_udp_conn
+                0x000029c0                uip_appdata
+                0x000029c2                uip_conn
+                0x000029c4                uip_slen
+                0x000029c6                uip_udp_conns
+ COMMON         0x00002afe      0x15c contiki-sky.a(uip-ds6.o)
+                0x00002afe                uip_ds6_timer_ra
+                0x00002b06                uip_ds6_if
+                0x00002bf2                uip_ds6_netif_addr_list_offset
+                0x00002bf3                uip_ds6_addr_size
+                0x00002bf4                uip_ds6_prefix_list
+                0x00002c4e                uip_ds6_timer_periodic
+ COMMON         0x00002c5a        0x1 contiki-sky.a(tcpip.o)
+                0x00002c5a                tcpip_event
+ *fill*         0x00002c5b        0x1 00
+ COMMON         0x00002c5c       0xde contiki-sky.a(rpl-dag.o)
+                0x00002c5c                default_instance
+                0x00002c5e                instance_table
+ COMMON         0x00002d3a        0x8 contiki-sky.a(linkaddr.o)
+                0x00002d3a                linkaddr_node_addr
+ COMMON         0x00002d42       0x2e contiki-sky.a(packetbuf.o)
+                0x00002d42                packetbuf_addrs
+                0x00002d52                packetbuf_attrs
+                0x00002d70                . = ALIGN (0x2)
+                0x00002d70                __bss_end = .
+                0x00001b18                __bss_size = SIZEOF (.bss)
 
-.noinit         0x00002d50        0x2 load address 0x0000f72e
-                0x00002d50                . = ALIGN (0x2)
-                0x00002d50                __noinit_start = .
+.noinit         0x00002d70        0x2 load address 0x0000f72e
+                0x00002d70                . = ALIGN (0x2)
+                0x00002d70                __noinit_start = .
  *(.noinit .noinit.*)
- .noinit.crt0   0x00002d50        0x2 /usr/local/msp430/bin/../lib/gcc/msp430/4.7.0/mmpy-16/libcrt0.a(__watchdog_support.o)
-                0x00002d50                __wdt_clear_value
-                0x00002d52                . = ALIGN (0x2)
-                0x00002d52                __noinit_end = .
-                0x00002d52                . = ALIGN (0x2)
-                0x00002d52                _end = .
+ .noinit.crt0   0x00002d70        0x2 /usr/local/msp430/bin/../lib/gcc/msp430/4.7.0/mmpy-16/libcrt0.a(__watchdog_support.o)
+                0x00002d70                __wdt_clear_value
+                0x00002d72                . = ALIGN (0x2)
+                0x00002d72                __noinit_end = .
+                0x00002d72                . = ALIGN (0x2)
+                0x00002d72                _end = .
 
 .infomem        0x00001000        0x0
                 0x00001000                . = ALIGN (0x2)
