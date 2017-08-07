@@ -1030,3 +1030,2279 @@ ResponsePrimitive [responseStatusCode=2000,
  from=/svm-in-cse,
  contentType=application/xml;charset=ISO-8859-1,
 ]
+[2017-08-07 11:41:40,134 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Starting Data Mapper
+[2017-08-07 11:41:40,194 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering XML Mapper Service..
+[2017-08-07 11:41:56,700 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+XML Mapper service registered.
+[2017-08-07 11:41:56,701 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering JSON Mapper Service..
+[2017-08-07 11:41:59,603 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+JSON Mapper service registered.
+[2017-08-07 11:42:01,435 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Register CoAP RestClientService..
+[2017-08-07 11:42:01,466 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Starting CoAP server
+[2017-08-07 11:42:02,397 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CseService opened
+[2017-08-07 11:42:02,431 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register HTTP RestClientService..
+[2017-08-07 11:42:02,519 INFO] - org.eclipse.om2m.binding.http.Activator 
+HTTP RestClientService is registered.
+[2017-08-07 11:42:02,571 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Starting Persistence JPA plugin...
+[2017-08-07 11:42:02,581 INFO] - org.eclipse.om2m.binding.http.Activator 
+HttpService discovered
+[2017-08-07 11:42:02,712 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register / context
+[2017-08-07 11:42:02,825 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Initializing Database...
+[2017-08-07 11:42:02,833 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Creating new EntityManagerFactory...
+[2017-08-07 11:42:03,910 INFO] - org.eclipse.om2m.core.Activator 
+Starting CSE...
+[2017-08-07 11:42:03,913 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/xml
+[2017-08-07 11:42:03,926 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/json
+[2017-08-07 11:42:03,953 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: coap
+[2017-08-07 11:42:03,966 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: http
+[2017-08-07 11:42:04,046 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+HttpService discovered
+[2017-08-07 11:42:04,048 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+Register /webpage http context
+[2017-08-07 11:42:24,975 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+DataBase initialized.
+[2017-08-07 11:42:25,364 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Registering Database (JPA-EL) Service
+[2017-08-07 11:42:25,371 INFO] - org.eclipse.om2m.core.Activator 
+DataBase persistence service discovered
+[2017-08-07 11:42:25,385 INFO] - org.eclipse.om2m.core.thread.CoreExecutor 
+Creating thread pool with corePoolSize=5 & maximumSize=50
+[2017-08-07 11:42:25,504 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Initializating the cseBase
+[2017-08-07 11:42:25,868 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create AccessControlPolicy resource
+[2017-08-07 11:42:26,269 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create CSEBase resource
+[2017-08-07 11:42:26,390 INFO] - org.eclipse.om2m.core.Activator 
+Registering CseService...
+[2017-08-07 11:42:26,487 INFO] - org.eclipse.om2m.binding.http.Activator 
+CseService discovered
+[2017-08-07 11:42:26,487 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CSE Service discovered
+[2017-08-07 11:42:26,488 INFO] - org.eclipse.om2m.core.Activator 
+CSE Started
+[2017-08-07 11:43:13,241 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:43:13,251 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-07 11:43:13,264 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[2])]
+[2017-08-07 11:43:13,266 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-07 11:43:13,280 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-07 11:43:13,281 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 11:43:13,281 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-07 11:43:15,589 INFO] - org.eclipse.om2m.core.router.Router 
+OM2M exception caught in Router: RemoteCse with cseId /svm-mn-cse has not been found
+[2017-08-07 11:43:15,592 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=4004,
+ content=RemoteCse with cseId /svm-mn-cse has not been found,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=text/plain,
+]
+[2017-08-07 11:43:15,614 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-4.04   MID= 2979, Token=[f48370bb84cd7be6], OptionSet=[Content-Format=0, (Unknown option [265]:[15, -92])], "RemoteCse with cseId".. 22 bytes
+[2017-08-07 11:43:25,738 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:43:25,748 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-in-cse,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ ]
+[2017-08-07 11:43:25,776 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Content type headers: application/xml;ty=16
+[2017-08-07 11:43:25,776 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: application/xml
+[2017-08-07 11:43:25,777 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: ty=16
+[2017-08-07 11:43:25,778 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: 
+[2017-08-07 11:43:25,779 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse,
+ from=admin:admin,
+ requestIdentifier=001,
+ resourceType=16,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={}]
+[2017-08-07 11:43:25,780 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse
+[2017-08-07 11:43:25,785 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [RemoteCSEController]
+[2017-08-07 11:43:26,192 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ requestIdentifier=001,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <ty>16</ty>
+   <ri>/svm-in-cse/csr-194226641</ri>
+   <pi>/svm-in-cse</pi>
+   <ct>20170807T114325</ct>
+   <lt>20170807T114325</lt>
+   <acpi>/svm-in-cse/acp-872096751</acpi>
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/csr-194226641,
+ contentType=application/xml,
+]
+[2017-08-07 11:51:52,932 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Starting Data Mapper
+[2017-08-07 11:51:52,966 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering XML Mapper Service..
+[2017-08-07 11:52:08,243 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+XML Mapper service registered.
+[2017-08-07 11:52:08,243 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering JSON Mapper Service..
+[2017-08-07 11:52:10,883 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+JSON Mapper service registered.
+[2017-08-07 11:52:12,054 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Register CoAP RestClientService..
+[2017-08-07 11:52:12,079 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Starting CoAP server
+[2017-08-07 11:52:12,425 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CseService opened
+[2017-08-07 11:52:12,456 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register HTTP RestClientService..
+[2017-08-07 11:52:12,552 INFO] - org.eclipse.om2m.binding.http.Activator 
+HTTP RestClientService is registered.
+[2017-08-07 11:52:12,636 INFO] - org.eclipse.om2m.binding.http.Activator 
+HttpService discovered
+[2017-08-07 11:52:12,646 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Starting Persistence JPA plugin...
+[2017-08-07 11:52:12,646 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register / context
+[2017-08-07 11:52:13,062 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Initializing Database...
+[2017-08-07 11:52:13,071 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Creating new EntityManagerFactory...
+[2017-08-07 11:52:14,201 INFO] - org.eclipse.om2m.core.Activator 
+Starting CSE...
+[2017-08-07 11:52:14,202 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/xml
+[2017-08-07 11:52:14,217 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/json
+[2017-08-07 11:52:14,282 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: coap
+[2017-08-07 11:52:14,291 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: http
+[2017-08-07 11:52:14,357 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+HttpService discovered
+[2017-08-07 11:52:14,364 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+Register /webpage http context
+[2017-08-07 11:52:25,423 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+DataBase initialized.
+[2017-08-07 11:52:25,743 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Registering Database (JPA-EL) Service
+[2017-08-07 11:52:25,744 INFO] - org.eclipse.om2m.core.Activator 
+DataBase persistence service discovered
+[2017-08-07 11:52:25,761 INFO] - org.eclipse.om2m.core.thread.CoreExecutor 
+Creating thread pool with corePoolSize=5 & maximumSize=50
+[2017-08-07 11:52:25,801 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Initializating the cseBase
+[2017-08-07 11:52:25,878 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create AccessControlPolicy resource
+[2017-08-07 11:52:26,129 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create CSEBase resource
+[2017-08-07 11:52:26,244 INFO] - org.eclipse.om2m.core.Activator 
+Registering CseService...
+[2017-08-07 11:52:26,365 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CSE Service discovered
+[2017-08-07 11:52:26,366 INFO] - org.eclipse.om2m.binding.http.Activator 
+CseService discovered
+[2017-08-07 11:52:26,366 INFO] - org.eclipse.om2m.core.Activator 
+CSE Started
+[2017-08-07 11:52:36,789 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:52:36,830 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-in-cse,
+ resultContent=5,
+ ]
+[2017-08-07 11:52:36,848 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 11:52:36,854 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-in-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:52:36,860 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse
+[2017-08-07 11:52:36,871 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [CSEBaseController]
+[2017-08-07 11:52:37,118 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cb xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-in-name">
+   <ty>5</ty>
+   <ri>/svm-in-cse</ri>
+   <ct>20170807T115226</ct>
+   <lt>20170807T115226</lt>
+   <acpi>/svm-in-cse/acp-593305244</acpi>
+   <cst>1</cst>
+   <csi>svm-in-cse</csi>
+   <srt>1 2 3 4 5 9 14 15 16 17 23</srt>
+   <poa>http://127.0.0.1:8080/</poa>
+   <ch rn="acp_admin" ty="1">/svm-in-cse/acp-593305244</ch>
+</m2m:cb>
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml,
+]
+[2017-08-07 11:53:35,438 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:53:35,454 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-in-cse,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ ]
+[2017-08-07 11:53:35,459 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Content type headers: application/xml;ty=16
+[2017-08-07 11:53:35,460 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: application/xml
+[2017-08-07 11:53:35,472 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: ty=16
+[2017-08-07 11:53:35,475 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: 
+[2017-08-07 11:53:35,475 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse,
+ from=admin:admin,
+ requestIdentifier=001,
+ resourceType=16,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={}]
+[2017-08-07 11:53:35,478 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse
+[2017-08-07 11:53:35,486 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [RemoteCSEController]
+[2017-08-07 11:53:35,683 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ requestIdentifier=001,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <ty>16</ty>
+   <ri>/svm-in-cse/csr-587821130</ri>
+   <pi>/svm-in-cse</pi>
+   <ct>20170807T115335</ct>
+   <lt>20170807T115335</lt>
+   <acpi>/svm-in-cse/acp-593305244</acpi>
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/csr-587821130,
+ contentType=application/xml,
+]
+[2017-08-07 11:53:48,112 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:53:48,115 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-in-cse,
+ resultContent=5,
+ ]
+[2017-08-07 11:53:48,119 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 11:53:48,123 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-in-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:53:48,123 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse
+[2017-08-07 11:53:48,124 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [CSEBaseController]
+[2017-08-07 11:53:48,156 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cb xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-in-name">
+   <ty>5</ty>
+   <ri>/svm-in-cse</ri>
+   <ct>20170807T115226</ct>
+   <lt>20170807T115226</lt>
+   <acpi>/svm-in-cse/acp-593305244</acpi>
+   <cst>1</cst>
+   <csi>svm-in-cse</csi>
+   <srt>1 2 3 4 5 9 14 15 16 17 23</srt>
+   <poa>http://127.0.0.1:8080/</poa>
+   <ch rn="acp_admin" ty="1">/svm-in-cse/acp-593305244</ch>
+   <ch rn="svm-mn-cse" ty="16">/svm-in-cse/csr-587821130</ch>
+</m2m:cb>
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml,
+]
+[2017-08-07 11:53:56,161 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:53:56,172 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-07 11:53:56,176 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[2])]
+[2017-08-07 11:53:56,178 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-07 11:53:56,182 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-07 11:53:56,186 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 11:53:56,186 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-07 11:53:57,276 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 11:53:57,277 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 11:53:57,284 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 11:53:58,164 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: POST http://127.0.0.1:8282/~/svm-mn-cse HTTP/1.1
+[2017-08-07 11:53:58,167 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json;ty=2
+
+[2017-08-07 11:53:59,395 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:ae" : {
+      "rn" : "SVM_Monitor",
+      "ty" : 2,
+      "ri" : "/svm-mn-cse/CAE241151041",
+      "pi" : "/svm-mn-cse",
+      "ct" : "20170807T115359",
+      "lt" : "20170807T115359",
+      "acpi" : [ "/svm-mn-cse/acp-208731741" ],
+      "et" : "20180807T115359",
+      "api" : "SVM_Monitor-ID",
+      "aei" : "CAE241151041",
+      "rr" : true
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/CAE241151041,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 11:53:59,410 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:ae" : {
+      "rn" : "SVM_Monitor",
+      "ty" : 2,
+      "ri" : "/svm-mn-cse/CAE241151041",
+      "pi" : "/svm-mn-cse",
+      "ct" : "20170807T115359",
+      "lt" : "20170807T115359",
+      "acpi" : [ "/svm-mn-cse/acp-208731741" ],
+      "et" : "20180807T115359",
+      "api" : "SVM_Monitor-ID",
+      "aei" : "CAE241151041",
+      "rr" : true
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/CAE241151041,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 11:53:59,421 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=44828, Token=[7163c0035bcdad00], OptionSet=[(Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 109, 110, 45, 99, 115, 101, 47, 67, 65, 69, 50, 52, 49, 49, 53, 49, 48, 52, 49])], "{".. 3 bytes
+[2017-08-07 11:53:59,500 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:53:59,501 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse/svm-mn-name/SVM_Monitor
+[2017-08-07 11:53:59,503 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse, svm-mn-name, SVM_Monitor], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-07 11:53:59,503 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-07 11:53:59,504 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-07 11:53:59,504 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-mn-cse/svm-mn-name/SVM_Monitor,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"DATA"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 11:53:59,504 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse/svm-mn-name/SVM_Monitor
+[2017-08-07 11:53:59,513 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 11:53:59,516 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"DATA"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 11:53:59,516 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"DATA"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 11:53:59,605 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: POST http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor HTTP/1.1
+[2017-08-07 11:53:59,622 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json;ty=3
+
+[2017-08-07 11:53:59,741 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "DATA",
+      "ty" : 3,
+      "ri" : "/svm-mn-cse/cnt-877186610",
+      "pi" : "/svm-mn-cse/CAE241151041",
+      "ct" : "20170807T115359",
+      "lt" : "20170807T115359",
+      "acpi" : [ "/svm-mn-cse/acp-208731741" ],
+      "et" : "20180807T115359",
+      "st" : 0,
+      "mni" : 1000,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA/ol",
+      "la" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA/la"
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/cnt-877186610,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 11:53:59,750 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "DATA",
+      "ty" : 3,
+      "ri" : "/svm-mn-cse/cnt-877186610",
+      "pi" : "/svm-mn-cse/CAE241151041",
+      "ct" : "20170807T115359",
+      "lt" : "20170807T115359",
+      "acpi" : [ "/svm-mn-cse/acp-208731741" ],
+      "et" : "20180807T115359",
+      "st" : 0,
+      "mni" : 1000,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA/ol",
+      "la" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA/la"
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/cnt-877186610,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 11:53:59,752 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=44829, Token=[54076212d0bd0cd6], OptionSet=[(Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 109, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 56, 55, 55, 49, 56, 54, 54, 49, 48])], "{".. 3 bytes
+[2017-08-07 11:53:59,766 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:53:59,773 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA
+[2017-08-07 11:53:59,774 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse, svm-mn-name, SVM_Monitor, DATA], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[4])]
+[2017-08-07 11:53:59,774 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-07 11:53:59,774 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-07 11:53:59,774 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA,
+ from=admin:admin,
+ resourceType=4,
+ content={"m2m:cin":{"con":"ciao","cnf":"message"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 11:53:59,775 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse/svm-mn-name/SVM_Monitor/DATA
+[2017-08-07 11:53:59,776 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 11:53:59,776 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA,
+ from=admin:admin,
+ resourceType=4,
+ content={"m2m:cin":{"con":"ciao","cnf":"message"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 11:53:59,777 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA,
+ from=admin:admin,
+ resourceType=4,
+ content={"m2m:cin":{"con":"ciao","cnf":"message"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 11:53:59,790 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: POST http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA HTTP/1.1
+[2017-08-07 11:53:59,810 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json;ty=4
+
+[2017-08-07 11:53:59,954 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cin" : {
+      "rn" : "cin_90510033",
+      "ty" : 4,
+      "ri" : "/svm-mn-cse/cin-90510033",
+      "pi" : "/svm-mn-cse/cnt-877186610",
+      "ct" : "20170807T115359",
+      "lt" : "20170807T115359",
+      "st" : 0,
+      "cnf" : "message",
+      "cs" : 4,
+      "con" : "ciao"
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/cin-90510033,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 11:53:59,955 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cin" : {
+      "rn" : "cin_90510033",
+      "ty" : 4,
+      "ri" : "/svm-mn-cse/cin-90510033",
+      "pi" : "/svm-mn-cse/cnt-877186610",
+      "ct" : "20170807T115359",
+      "lt" : "20170807T115359",
+      "st" : 0,
+      "cnf" : "message",
+      "cs" : 4,
+      "con" : "ciao"
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/cin-90510033,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 11:53:59,957 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=44830, Token=[013e5c178b91f22e], OptionSet=[(Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 109, 110, 45, 99, 115, 101, 47, 99, 105, 110, 45, 57, 48, 53, 49, 48, 48, 51, 51])], "{".. 3 bytes
+[2017-08-07 11:54:37,792 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:54:37,802 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-in-cse/csr-587821130,
+ resultContent=5,
+ ]
+[2017-08-07 11:54:37,820 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 11:54:37,820 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-in-cse/csr-587821130,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:37,821 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/csr-587821130
+[2017-08-07 11:54:37,823 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [RemoteCSEController]
+[2017-08-07 11:54:37,826 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <ty>16</ty>
+   <ri>/svm-in-cse/csr-587821130</ri>
+   <pi>/svm-in-cse</pi>
+   <ct>20170807T115335</ct>
+   <lt>20170807T115335</lt>
+   <acpi>/svm-in-cse/acp-593305244</acpi>
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml,
+]
+[2017-08-07 11:54:39,195 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:54:39,196 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-mn-cse,
+ resultContent=5,
+ ]
+[2017-08-07 11:54:39,196 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 11:54:39,196 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:39,197 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-07 11:54:39,204 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 11:54:39,210 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:39,214 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:39,283 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?rcn=5
+[2017-08-07 11:54:39,294 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?rcn=5 HTTP/1.1
+[2017-08-07 11:54:39,298 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/xml
+X-M2M-Origin: admin:admin
+Content-Type: application/xml
+
+[2017-08-07 11:54:39,441 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cb xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-name">
+   <ty>5</ty>
+   <ri>/svm-mn-cse</ri>
+   <ct>20170807T115333</ct>
+   <lt>20170807T115333</lt>
+   <acpi>/svm-mn-cse/acp-588274356</acpi>
+   <cst>1</cst>
+   <csi>svm-mn-cse</csi>
+   <srt>1 2 3 4 5 9 14 15 16 17 23</srt>
+   <poa>http://127.0.0.1:8282/</poa>
+   <ch rn="acp_admin" ty="1">/svm-mn-cse/acp-588274356</ch>
+   <ch rn="acpae-241151041" ty="1">/svm-mn-cse/acp-208731741</ch>
+   <ch rn="SVM_Monitor" ty="2">/svm-mn-cse/CAE241151041</ch>
+   <ch rn="svm-in-name" ty="16">/svm-mn-cse/csr-463301590</ch>
+</m2m:cb>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 11:54:39,445 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cb xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-name">
+   <ty>5</ty>
+   <ri>/svm-mn-cse</ri>
+   <ct>20170807T115333</ct>
+   <lt>20170807T115333</lt>
+   <acpi>/svm-mn-cse/acp-588274356</acpi>
+   <cst>1</cst>
+   <csi>svm-mn-cse</csi>
+   <srt>1 2 3 4 5 9 14 15 16 17 23</srt>
+   <poa>http://127.0.0.1:8282/</poa>
+   <ch rn="acp_admin" ty="1">/svm-mn-cse/acp-588274356</ch>
+   <ch rn="acpae-241151041" ty="1">/svm-mn-cse/acp-208731741</ch>
+   <ch rn="SVM_Monitor" ty="2">/svm-mn-cse/CAE241151041</ch>
+   <ch rn="svm-in-name" ty="16">/svm-mn-cse/csr-463301590</ch>
+</m2m:cb>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 11:54:44,361 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:54:44,362 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-mn-cse/CAE241151041,
+ resultContent=5,
+ ]
+[2017-08-07 11:54:44,362 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 11:54:44,362 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse/CAE241151041,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:44,363 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse/CAE241151041
+[2017-08-07 11:54:44,370 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 11:54:44,370 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/CAE241151041,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:44,371 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/CAE241151041,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:44,390 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?rcn=5
+[2017-08-07 11:54:44,392 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse/CAE241151041?rcn=5 HTTP/1.1
+[2017-08-07 11:54:44,394 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/xml
+X-M2M-Origin: admin:admin
+Content-Type: application/xml
+
+[2017-08-07 11:54:44,464 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:ae xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="SVM_Monitor">
+   <ty>2</ty>
+   <ri>/svm-mn-cse/CAE241151041</ri>
+   <pi>/svm-mn-cse</pi>
+   <ct>20170807T115359</ct>
+   <lt>20170807T115359</lt>
+   <acpi>/svm-mn-cse/acp-208731741</acpi>
+   <et>20180807T115359</et>
+   <api>SVM_Monitor-ID</api>
+   <aei>CAE241151041</aei>
+   <ch rn="DATA" ty="3">/svm-mn-cse/cnt-877186610</ch>
+   <rr>true</rr>
+</m2m:ae>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 11:54:44,464 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:ae xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="SVM_Monitor">
+   <ty>2</ty>
+   <ri>/svm-mn-cse/CAE241151041</ri>
+   <pi>/svm-mn-cse</pi>
+   <ct>20170807T115359</ct>
+   <lt>20170807T115359</lt>
+   <acpi>/svm-mn-cse/acp-208731741</acpi>
+   <et>20180807T115359</et>
+   <api>SVM_Monitor-ID</api>
+   <aei>CAE241151041</aei>
+   <ch rn="DATA" ty="3">/svm-mn-cse/cnt-877186610</ch>
+   <rr>true</rr>
+</m2m:ae>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 11:54:50,060 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:54:50,062 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-mn-cse/cnt-877186610,
+ resultContent=5,
+ ]
+[2017-08-07 11:54:50,062 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 11:54:50,062 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse/cnt-877186610,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:50,062 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse/cnt-877186610
+[2017-08-07 11:54:50,076 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 11:54:50,081 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/cnt-877186610,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:50,082 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/cnt-877186610,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:50,126 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?rcn=5
+[2017-08-07 11:54:50,127 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse/cnt-877186610?rcn=5 HTTP/1.1
+[2017-08-07 11:54:50,127 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/xml
+X-M2M-Origin: admin:admin
+Content-Type: application/xml
+
+[2017-08-07 11:54:50,196 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cnt xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="DATA">
+   <ty>3</ty>
+   <ri>/svm-mn-cse/cnt-877186610</ri>
+   <pi>/svm-mn-cse/CAE241151041</pi>
+   <ct>20170807T115359</ct>
+   <lt>20170807T115359</lt>
+   <acpi>/svm-mn-cse/acp-208731741</acpi>
+   <et>20180807T115359</et>
+   <st>1</st>
+   <mni>1000</mni>
+   <mbs>10000</mbs>
+   <mia>0</mia>
+   <cni>1</cni>
+   <cbs>4</cbs>
+   <ch rn="cin_90510033" ty="4">/svm-mn-cse/cin-90510033</ch>
+   <ol>/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA/ol</ol>
+   <la>/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA/la</la>
+</m2m:cnt>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 11:54:50,196 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cnt xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="DATA">
+   <ty>3</ty>
+   <ri>/svm-mn-cse/cnt-877186610</ri>
+   <pi>/svm-mn-cse/CAE241151041</pi>
+   <ct>20170807T115359</ct>
+   <lt>20170807T115359</lt>
+   <acpi>/svm-mn-cse/acp-208731741</acpi>
+   <et>20180807T115359</et>
+   <st>1</st>
+   <mni>1000</mni>
+   <mbs>10000</mbs>
+   <mia>0</mia>
+   <cni>1</cni>
+   <cbs>4</cbs>
+   <ch rn="cin_90510033" ty="4">/svm-mn-cse/cin-90510033</ch>
+   <ol>/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA/ol</ol>
+   <la>/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA/la</la>
+</m2m:cnt>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 11:54:51,472 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 11:54:51,475 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-mn-cse/cin-90510033,
+ resultContent=5,
+ ]
+[2017-08-07 11:54:51,476 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 11:54:51,476 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse/cin-90510033,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:51,479 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse/cin-90510033
+[2017-08-07 11:54:51,480 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 11:54:51,489 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/cin-90510033,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:51,489 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/cin-90510033,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 11:54:51,517 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?rcn=5
+[2017-08-07 11:54:51,519 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse/cin-90510033?rcn=5 HTTP/1.1
+[2017-08-07 11:54:51,519 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/xml
+X-M2M-Origin: admin:admin
+Content-Type: application/xml
+
+[2017-08-07 11:54:51,569 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cin xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="cin_90510033">
+   <ty>4</ty>
+   <ri>/svm-mn-cse/cin-90510033</ri>
+   <pi>/svm-mn-cse/cnt-877186610</pi>
+   <ct>20170807T115359</ct>
+   <lt>20170807T115359</lt>
+   <st>0</st>
+   <cnf>message</cnf>
+   <cs>4</cs>
+   <con>ciao</con>
+</m2m:cin>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 11:54:51,569 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cin xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="cin_90510033">
+   <ty>4</ty>
+   <ri>/svm-mn-cse/cin-90510033</ri>
+   <pi>/svm-mn-cse/cnt-877186610</pi>
+   <ct>20170807T115359</ct>
+   <lt>20170807T115359</lt>
+   <st>0</st>
+   <cnf>message</cnf>
+   <cs>4</cs>
+   <con>ciao</con>
+</m2m:cin>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 12:03:48,299 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Starting Data Mapper
+[2017-08-07 12:03:48,362 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering XML Mapper Service..
+[2017-08-07 12:04:03,707 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+XML Mapper service registered.
+[2017-08-07 12:04:03,708 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering JSON Mapper Service..
+[2017-08-07 12:04:05,767 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+JSON Mapper service registered.
+[2017-08-07 12:04:06,987 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Register CoAP RestClientService..
+[2017-08-07 12:04:07,010 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Starting CoAP server
+[2017-08-07 12:04:07,339 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CseService opened
+[2017-08-07 12:04:07,365 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register HTTP RestClientService..
+[2017-08-07 12:04:07,626 INFO] - org.eclipse.om2m.binding.http.Activator 
+HTTP RestClientService is registered.
+[2017-08-07 12:04:07,689 INFO] - org.eclipse.om2m.binding.http.Activator 
+HttpService discovered
+[2017-08-07 12:04:07,693 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Starting Persistence JPA plugin...
+[2017-08-07 12:04:07,727 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register / context
+[2017-08-07 12:04:07,768 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Initializing Database...
+[2017-08-07 12:04:07,776 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Creating new EntityManagerFactory...
+[2017-08-07 12:04:08,523 INFO] - org.eclipse.om2m.core.Activator 
+Starting CSE...
+[2017-08-07 12:04:08,534 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/xml
+[2017-08-07 12:04:08,543 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/json
+[2017-08-07 12:04:08,577 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: coap
+[2017-08-07 12:04:08,597 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: http
+[2017-08-07 12:04:08,702 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+HttpService discovered
+[2017-08-07 12:04:08,706 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+Register /webpage http context
+[2017-08-07 12:04:19,995 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+DataBase initialized.
+[2017-08-07 12:04:20,148 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Registering Database (JPA-EL) Service
+[2017-08-07 12:04:20,158 INFO] - org.eclipse.om2m.core.Activator 
+DataBase persistence service discovered
+[2017-08-07 12:04:20,167 INFO] - org.eclipse.om2m.core.thread.CoreExecutor 
+Creating thread pool with corePoolSize=5 & maximumSize=50
+[2017-08-07 12:04:20,204 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Initializating the cseBase
+[2017-08-07 12:04:20,271 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create AccessControlPolicy resource
+[2017-08-07 12:04:20,515 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create CSEBase resource
+[2017-08-07 12:04:20,614 INFO] - org.eclipse.om2m.core.Activator 
+Registering CseService...
+[2017-08-07 12:04:20,692 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CSE Service discovered
+[2017-08-07 12:04:20,693 INFO] - org.eclipse.om2m.binding.http.Activator 
+CseService discovered
+[2017-08-07 12:04:20,699 INFO] - org.eclipse.om2m.core.Activator 
+CSE Started
+[2017-08-07 12:05:30,694 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 12:05:30,730 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-in-cse,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ ]
+[2017-08-07 12:05:30,737 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Content type headers: application/xml;ty=16
+[2017-08-07 12:05:30,741 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: application/xml
+[2017-08-07 12:05:30,742 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: ty=16
+[2017-08-07 12:05:30,742 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: 
+[2017-08-07 12:05:30,743 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse,
+ from=admin:admin,
+ requestIdentifier=001,
+ resourceType=16,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={}]
+[2017-08-07 12:05:30,745 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse
+[2017-08-07 12:05:30,752 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [RemoteCSEController]
+[2017-08-07 12:05:31,081 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ requestIdentifier=001,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <ty>16</ty>
+   <ri>/svm-in-cse/csr-69795342</ri>
+   <pi>/svm-in-cse</pi>
+   <ct>20170807T120530</ct>
+   <lt>20170807T120530</lt>
+   <acpi>/svm-in-cse/acp-216948448</acpi>
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/csr-69795342,
+ contentType=application/xml,
+]
+[2017-08-07 12:05:40,775 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-07 12:05:40,783 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-07 12:05:40,793 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[2])]
+[2017-08-07 12:05:40,815 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-07 12:05:40,815 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-07 12:05:40,816 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 12:05:40,817 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-07 12:05:42,086 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 12:05:42,087 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 12:05:42,089 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 12:05:42,996 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: POST http://127.0.0.1:8282/~/svm-mn-cse HTTP/1.1
+[2017-08-07 12:05:42,998 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json;ty=2
+
+[2017-08-07 12:05:44,367 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:ae" : {
+      "rn" : "SVM_Monitor",
+      "ty" : 2,
+      "ri" : "/svm-mn-cse/CAE807087612",
+      "pi" : "/svm-mn-cse",
+      "ct" : "20170807T120543",
+      "lt" : "20170807T120543",
+      "acpi" : [ "/svm-mn-cse/acp-690259408" ],
+      "et" : "20180807T120543",
+      "api" : "SVM_Monitor-ID",
+      "aei" : "CAE807087612",
+      "rr" : true
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/CAE807087612,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 12:05:44,377 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:ae" : {
+      "rn" : "SVM_Monitor",
+      "ty" : 2,
+      "ri" : "/svm-mn-cse/CAE807087612",
+      "pi" : "/svm-mn-cse",
+      "ct" : "20170807T120543",
+      "lt" : "20170807T120543",
+      "acpi" : [ "/svm-mn-cse/acp-690259408" ],
+      "et" : "20180807T120543",
+      "api" : "SVM_Monitor-ID",
+      "aei" : "CAE807087612",
+      "rr" : true
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/CAE807087612,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 12:05:44,387 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=64275, Token=[320d853a5b93fe05], OptionSet=[(Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 109, 110, 45, 99, 115, 101, 47, 67, 65, 69, 56, 48, 55, 48, 56, 55, 54, 49, 50])], "{".. 3 bytes
+[2017-08-07 12:09:00,835 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-07 12:09:00,858 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-07 12:09:00,859 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[2])]
+[2017-08-07 12:09:00,860 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-07 12:09:00,860 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-07 12:09:00,861 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 12:09:00,871 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-07 12:09:00,880 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 12:09:00,886 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 12:09:00,887 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 12:09:00,901 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: POST http://127.0.0.1:8282/~/svm-mn-cse HTTP/1.1
+[2017-08-07 12:09:00,912 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json;ty=2
+
+[2017-08-07 12:09:01,063 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=4105,
+ content=Name already present in the parent collection.
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=text/plain;charset=ISO-8859-1,
+]
+[2017-08-07 12:09:01,066 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=4105,
+ content=Name already present in the parent collection.
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=text/plain;charset=ISO-8859-1,
+]
+[2017-08-07 12:09:01,068 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-4.03   MID=35674, Token=[5a9b02d5d1a0be8e], OptionSet=[(Unknown option [265]:[16, 9])], "Name already present".. 22 bytes
+[2017-08-07 12:11:30,597 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Starting Data Mapper
+[2017-08-07 12:11:30,635 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering XML Mapper Service..
+[2017-08-07 12:11:52,562 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+XML Mapper service registered.
+[2017-08-07 12:11:52,565 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering JSON Mapper Service..
+[2017-08-07 12:11:55,718 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+JSON Mapper service registered.
+[2017-08-07 12:11:57,013 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Register CoAP RestClientService..
+[2017-08-07 12:11:57,042 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Starting CoAP server
+[2017-08-07 12:11:57,508 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CseService opened
+[2017-08-07 12:11:57,535 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register HTTP RestClientService..
+[2017-08-07 12:11:57,635 INFO] - org.eclipse.om2m.binding.http.Activator 
+HTTP RestClientService is registered.
+[2017-08-07 12:11:57,681 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Starting Persistence JPA plugin...
+[2017-08-07 12:11:57,703 INFO] - org.eclipse.om2m.binding.http.Activator 
+HttpService discovered
+[2017-08-07 12:11:57,745 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register / context
+[2017-08-07 12:11:57,808 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Initializing Database...
+[2017-08-07 12:11:57,829 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Creating new EntityManagerFactory...
+[2017-08-07 12:11:59,730 INFO] - org.eclipse.om2m.core.Activator 
+Starting CSE...
+[2017-08-07 12:11:59,735 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/xml
+[2017-08-07 12:11:59,773 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/json
+[2017-08-07 12:11:59,833 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: coap
+[2017-08-07 12:11:59,847 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: http
+[2017-08-07 12:11:59,954 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+HttpService discovered
+[2017-08-07 12:11:59,973 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+Register /webpage http context
+[2017-08-07 12:12:20,744 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+DataBase initialized.
+[2017-08-07 12:12:21,158 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Registering Database (JPA-EL) Service
+[2017-08-07 12:12:21,167 INFO] - org.eclipse.om2m.core.Activator 
+DataBase persistence service discovered
+[2017-08-07 12:12:21,194 INFO] - org.eclipse.om2m.core.thread.CoreExecutor 
+Creating thread pool with corePoolSize=5 & maximumSize=50
+[2017-08-07 12:12:21,248 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Initializating the cseBase
+[2017-08-07 12:12:21,407 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create AccessControlPolicy resource
+[2017-08-07 12:12:21,885 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create CSEBase resource
+[2017-08-07 12:12:22,008 INFO] - org.eclipse.om2m.core.Activator 
+Registering CseService...
+[2017-08-07 12:12:22,123 INFO] - org.eclipse.om2m.binding.http.Activator 
+CseService discovered
+[2017-08-07 12:12:22,124 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CSE Service discovered
+[2017-08-07 12:12:22,124 INFO] - org.eclipse.om2m.core.Activator 
+CSE Started
+[2017-08-07 12:19:20,823 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 12:19:20,861 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-in-cse,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ ]
+[2017-08-07 12:19:20,870 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Content type headers: application/xml;ty=16
+[2017-08-07 12:19:20,875 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: application/xml
+[2017-08-07 12:19:20,875 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: ty=16
+[2017-08-07 12:19:20,875 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: 
+[2017-08-07 12:19:20,876 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse,
+ from=admin:admin,
+ requestIdentifier=001,
+ resourceType=16,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={}]
+[2017-08-07 12:19:20,877 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse
+[2017-08-07 12:19:20,884 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [RemoteCSEController]
+[2017-08-07 12:19:21,218 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ requestIdentifier=001,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <ty>16</ty>
+   <ri>/svm-in-cse/csr-528063396</ri>
+   <pi>/svm-in-cse</pi>
+   <ct>20170807T121920</ct>
+   <lt>20170807T121920</lt>
+   <acpi>/svm-in-cse/acp-582735642</acpi>
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/csr-528063396,
+ contentType=application/xml,
+]
+[2017-08-07 17:10:51,626 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-07 17:10:51,634 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse/svm-mn-name
+[2017-08-07 17:10:51,636 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse, svm-mn-name], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[2])]
+[2017-08-07 17:10:51,639 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-07 17:10:51,641 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-07 17:10:51,644 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-mn-cse/svm-mn-name,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 17:10:51,645 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse/svm-mn-name
+[2017-08-07 17:10:53,454 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 17:10:53,456 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 17:10:53,459 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 17:10:54,462 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: POST http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name HTTP/1.1
+[2017-08-07 17:10:54,465 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json;ty=2
+
+[2017-08-07 17:10:55,944 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:ae" : {
+      "rn" : "SVM_Monitor",
+      "ty" : 2,
+      "ri" : "/svm-mn-cse/CAE515692994",
+      "pi" : "/svm-mn-cse",
+      "ct" : "20170807T171055",
+      "lt" : "20170807T171055",
+      "acpi" : [ "/svm-mn-cse/acp-518419588" ],
+      "et" : "20180807T171055",
+      "api" : "SVM_Monitor-ID",
+      "aei" : "CAE515692994",
+      "rr" : true
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/CAE515692994,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 17:10:55,970 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:ae" : {
+      "rn" : "SVM_Monitor",
+      "ty" : 2,
+      "ri" : "/svm-mn-cse/CAE515692994",
+      "pi" : "/svm-mn-cse",
+      "ct" : "20170807T171055",
+      "lt" : "20170807T171055",
+      "acpi" : [ "/svm-mn-cse/acp-518419588" ],
+      "et" : "20180807T171055",
+      "api" : "SVM_Monitor-ID",
+      "aei" : "CAE515692994",
+      "rr" : true
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/CAE515692994,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 17:10:55,995 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=35177, Token=[788749aeb24bc41c], OptionSet=[(Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 109, 110, 45, 99, 115, 101, 47, 67, 65, 69, 53, 49, 53, 54, 57, 50, 57, 57, 52])], "{".. 3 bytes
+[2017-08-07 17:10:57,671 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-07 17:10:57,672 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse/svm-mn-name/SVM_Monitor
+[2017-08-07 17:10:57,674 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse, svm-mn-name, SVM_Monitor], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-07 17:10:57,680 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-07 17:10:57,682 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-07 17:10:57,683 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-mn-cse/svm-mn-name/SVM_Monitor,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"SVM_F3"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 17:10:57,685 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse/svm-mn-name/SVM_Monitor
+[2017-08-07 17:10:57,692 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 17:10:57,701 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"SVM_F3"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 17:10:57,709 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"SVM_F3"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 17:10:57,728 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: POST http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor HTTP/1.1
+[2017-08-07 17:10:57,734 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json;ty=3
+
+[2017-08-07 17:10:57,822 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "SVM_F3",
+      "ty" : 3,
+      "ri" : "/svm-mn-cse/cnt-221071523",
+      "pi" : "/svm-mn-cse/CAE515692994",
+      "ct" : "20170807T171057",
+      "lt" : "20170807T171057",
+      "acpi" : [ "/svm-mn-cse/acp-518419588" ],
+      "et" : "20180807T171057",
+      "st" : 0,
+      "mni" : 1000,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ol",
+      "la" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/la"
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/cnt-221071523,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 17:10:57,829 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "SVM_F3",
+      "ty" : 3,
+      "ri" : "/svm-mn-cse/cnt-221071523",
+      "pi" : "/svm-mn-cse/CAE515692994",
+      "ct" : "20170807T171057",
+      "lt" : "20170807T171057",
+      "acpi" : [ "/svm-mn-cse/acp-518419588" ],
+      "et" : "20180807T171057",
+      "st" : 0,
+      "mni" : 1000,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ol",
+      "la" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/la"
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/cnt-221071523,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 17:10:57,832 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=35178, Token=[8810849cf042c65e], OptionSet=[(Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 109, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 50, 50, 49, 48, 55, 49, 53, 50, 51])], "{".. 3 bytes
+[2017-08-07 17:10:59,099 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-07 17:10:59,099 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse/svm-mn-name/SVM_Monitor
+[2017-08-07 17:10:59,100 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse, svm-mn-name, SVM_Monitor], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-07 17:10:59,100 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-07 17:10:59,103 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-07 17:10:59,103 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-mn-cse/svm-mn-name/SVM_Monitor,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"SVM_F2"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 17:10:59,104 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse/svm-mn-name/SVM_Monitor
+[2017-08-07 17:10:59,121 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 17:10:59,122 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"SVM_F2"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 17:10:59,131 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=1,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"SVM_F2"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-07 17:10:59,152 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: POST http://127.0.0.1:8282/~/svm-mn-cse/svm-mn-name/SVM_Monitor HTTP/1.1
+[2017-08-07 17:10:59,153 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json;ty=3
+
+[2017-08-07 17:10:59,256 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "SVM_F2",
+      "ty" : 3,
+      "ri" : "/svm-mn-cse/cnt-284760756",
+      "pi" : "/svm-mn-cse/CAE515692994",
+      "ct" : "20170807T171059",
+      "lt" : "20170807T171059",
+      "acpi" : [ "/svm-mn-cse/acp-518419588" ],
+      "et" : "20180807T171059",
+      "st" : 0,
+      "mni" : 1000,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ol",
+      "la" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/la"
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/cnt-284760756,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 17:10:59,256 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "SVM_F2",
+      "ty" : 3,
+      "ri" : "/svm-mn-cse/cnt-284760756",
+      "pi" : "/svm-mn-cse/CAE515692994",
+      "ct" : "20170807T171059",
+      "lt" : "20170807T171059",
+      "acpi" : [ "/svm-mn-cse/acp-518419588" ],
+      "et" : "20180807T171059",
+      "st" : 0,
+      "mni" : 1000,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ol",
+      "la" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/la"
+   }
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-mn-cse/cnt-284760756,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-07 17:10:59,259 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=35179, Token=[519b67e087c8ea93], OptionSet=[(Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 109, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 50, 56, 52, 55, 54, 48, 55, 53, 54])], "{".. 3 bytes
+[2017-08-07 17:11:21,355 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 17:11:21,386 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-in-cse,
+ resultContent=5,
+ ]
+[2017-08-07 17:11:21,386 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 17:11:21,387 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-in-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:11:21,388 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse
+[2017-08-07 17:11:21,409 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [CSEBaseController]
+[2017-08-07 17:11:21,451 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cb xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-in-name">
+   <ty>5</ty>
+   <ri>/svm-in-cse</ri>
+   <ct>20170807T121221</ct>
+   <lt>20170807T121221</lt>
+   <acpi>/svm-in-cse/acp-582735642</acpi>
+   <cst>1</cst>
+   <csi>svm-in-cse</csi>
+   <srt>1 2 3 4 5 9 14 15 16 17 23</srt>
+   <poa>http://127.0.0.1:8080/</poa>
+   <ch rn="acp_admin" ty="1">/svm-in-cse/acp-582735642</ch>
+   <ch rn="svm-mn-cse" ty="16">/svm-in-cse/csr-528063396</ch>
+</m2m:cb>
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml,
+]
+[2017-08-07 17:11:26,475 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 17:11:26,475 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-in-cse/csr-528063396,
+ resultContent=5,
+ ]
+[2017-08-07 17:11:26,476 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 17:11:26,476 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-in-cse/csr-528063396,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:11:26,477 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/csr-528063396
+[2017-08-07 17:11:26,477 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [RemoteCSEController]
+[2017-08-07 17:11:26,485 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <ty>16</ty>
+   <ri>/svm-in-cse/csr-528063396</ri>
+   <pi>/svm-in-cse</pi>
+   <ct>20170807T121920</ct>
+   <lt>20170807T121920</lt>
+   <acpi>/svm-in-cse/acp-582735642</acpi>
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml,
+]
+[2017-08-07 17:11:31,526 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 17:11:31,534 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-mn-cse,
+ resultContent=5,
+ ]
+[2017-08-07 17:11:31,548 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 17:11:31,553 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:11:31,553 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-07 17:11:31,556 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 17:11:31,571 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:11:31,574 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:11:31,620 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?rcn=5
+[2017-08-07 17:11:31,642 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?rcn=5 HTTP/1.1
+[2017-08-07 17:11:31,643 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/xml
+X-M2M-Origin: admin:admin
+Content-Type: application/xml
+
+[2017-08-07 17:11:31,805 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cb xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-name">
+   <ty>5</ty>
+   <ri>/svm-mn-cse</ri>
+   <ct>20170807T121918</ct>
+   <lt>20170807T121918</lt>
+   <acpi>/svm-mn-cse/acp-718693782</acpi>
+   <cst>1</cst>
+   <csi>svm-mn-cse</csi>
+   <srt>1 2 3 4 5 9 14 15 16 17 23</srt>
+   <poa>http://127.0.0.1:8282/</poa>
+   <ch rn="acp_admin" ty="1">/svm-mn-cse/acp-718693782</ch>
+   <ch rn="acpae-515692994" ty="1">/svm-mn-cse/acp-518419588</ch>
+   <ch rn="SVM_Monitor" ty="2">/svm-mn-cse/CAE515692994</ch>
+   <ch rn="svm-in-name" ty="16">/svm-mn-cse/csr-535143370</ch>
+</m2m:cb>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 17:11:31,806 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cb xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-name">
+   <ty>5</ty>
+   <ri>/svm-mn-cse</ri>
+   <ct>20170807T121918</ct>
+   <lt>20170807T121918</lt>
+   <acpi>/svm-mn-cse/acp-718693782</acpi>
+   <cst>1</cst>
+   <csi>svm-mn-cse</csi>
+   <srt>1 2 3 4 5 9 14 15 16 17 23</srt>
+   <poa>http://127.0.0.1:8282/</poa>
+   <ch rn="acp_admin" ty="1">/svm-mn-cse/acp-718693782</ch>
+   <ch rn="acpae-515692994" ty="1">/svm-mn-cse/acp-518419588</ch>
+   <ch rn="SVM_Monitor" ty="2">/svm-mn-cse/CAE515692994</ch>
+   <ch rn="svm-in-name" ty="16">/svm-mn-cse/csr-535143370</ch>
+</m2m:cb>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 17:11:33,699 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 17:11:33,704 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-mn-cse/CAE515692994,
+ resultContent=5,
+ ]
+[2017-08-07 17:11:33,706 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 17:11:33,706 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse/CAE515692994,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:11:33,709 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse/CAE515692994
+[2017-08-07 17:11:33,710 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 17:11:33,715 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/CAE515692994,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:11:33,721 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/CAE515692994,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:11:33,769 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?rcn=5
+[2017-08-07 17:11:33,770 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse/CAE515692994?rcn=5 HTTP/1.1
+[2017-08-07 17:11:33,770 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/xml
+X-M2M-Origin: admin:admin
+Content-Type: application/xml
+
+[2017-08-07 17:11:33,806 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:ae xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="SVM_Monitor">
+   <ty>2</ty>
+   <ri>/svm-mn-cse/CAE515692994</ri>
+   <pi>/svm-mn-cse</pi>
+   <ct>20170807T171055</ct>
+   <lt>20170807T171055</lt>
+   <acpi>/svm-mn-cse/acp-518419588</acpi>
+   <et>20180807T171055</et>
+   <api>SVM_Monitor-ID</api>
+   <aei>CAE515692994</aei>
+   <ch rn="SVM_F3" ty="3">/svm-mn-cse/cnt-221071523</ch>
+   <ch rn="SVM_F2" ty="3">/svm-mn-cse/cnt-284760756</ch>
+   <rr>true</rr>
+</m2m:ae>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 17:11:33,806 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:ae xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="SVM_Monitor">
+   <ty>2</ty>
+   <ri>/svm-mn-cse/CAE515692994</ri>
+   <pi>/svm-mn-cse</pi>
+   <ct>20170807T171055</ct>
+   <lt>20170807T171055</lt>
+   <acpi>/svm-mn-cse/acp-518419588</acpi>
+   <et>20180807T171055</et>
+   <api>SVM_Monitor-ID</api>
+   <aei>CAE515692994</aei>
+   <ch rn="SVM_F3" ty="3">/svm-mn-cse/cnt-221071523</ch>
+   <ch rn="SVM_F2" ty="3">/svm-mn-cse/cnt-284760756</ch>
+   <rr>true</rr>
+</m2m:ae>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 17:11:39,150 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 17:11:39,150 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-mn-cse/cnt-284760756,
+ resultContent=5,
+ ]
+[2017-08-07 17:11:39,152 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 17:11:39,153 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse/cnt-284760756,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:11:39,153 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse/cnt-284760756
+[2017-08-07 17:11:39,155 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 17:11:39,158 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/cnt-284760756,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:11:39,158 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse/cnt-284760756,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:11:39,210 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?rcn=5
+[2017-08-07 17:11:39,214 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse/cnt-284760756?rcn=5 HTTP/1.1
+[2017-08-07 17:11:39,215 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/xml
+X-M2M-Origin: admin:admin
+Content-Type: application/xml
+
+[2017-08-07 17:11:39,245 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cnt xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="SVM_F2">
+   <ty>3</ty>
+   <ri>/svm-mn-cse/cnt-284760756</ri>
+   <pi>/svm-mn-cse/CAE515692994</pi>
+   <ct>20170807T171059</ct>
+   <lt>20170807T171059</lt>
+   <acpi>/svm-mn-cse/acp-518419588</acpi>
+   <et>20180807T171059</et>
+   <st>0</st>
+   <mni>1000</mni>
+   <mbs>10000</mbs>
+   <mia>0</mia>
+   <cni>0</cni>
+   <cbs>0</cbs>
+   <ol>/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ol</ol>
+   <la>/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/la</la>
+</m2m:cnt>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 17:11:39,246 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cnt xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="SVM_F2">
+   <ty>3</ty>
+   <ri>/svm-mn-cse/cnt-284760756</ri>
+   <pi>/svm-mn-cse/CAE515692994</pi>
+   <ct>20170807T171059</ct>
+   <lt>20170807T171059</lt>
+   <acpi>/svm-mn-cse/acp-518419588</acpi>
+   <et>20180807T171059</et>
+   <st>0</st>
+   <mni>1000</mni>
+   <mbs>10000</mbs>
+   <mia>0</mia>
+   <cni>0</cni>
+   <cbs>0</cbs>
+   <ol>/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ol</ol>
+   <la>/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/la</la>
+</m2m:cnt>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 17:12:54,104 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-07 17:12:54,126 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-mn-cse,
+ resultContent=5,
+ ]
+[2017-08-07 17:12:54,148 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: application/xml
+[2017-08-07 17:12:54,149 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:12:54,149 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-07 17:12:54,153 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-07 17:12:54,157 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:12:54,157 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ resultContent=5,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={rcn=[5]}]
+[2017-08-07 17:12:54,174 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?rcn=5
+[2017-08-07 17:12:54,175 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?rcn=5 HTTP/1.1
+[2017-08-07 17:12:54,175 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/xml
+X-M2M-Origin: admin:admin
+Content-Type: application/xml
+
+[2017-08-07 17:12:54,246 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cb xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-name">
+   <ty>5</ty>
+   <ri>/svm-mn-cse</ri>
+   <ct>20170807T121918</ct>
+   <lt>20170807T121918</lt>
+   <acpi>/svm-mn-cse/acp-718693782</acpi>
+   <cst>1</cst>
+   <csi>svm-mn-cse</csi>
+   <srt>1 2 3 4 5 9 14 15 16 17 23</srt>
+   <poa>http://127.0.0.1:8282/</poa>
+   <ch rn="acp_admin" ty="1">/svm-mn-cse/acp-718693782</ch>
+   <ch rn="acpae-515692994" ty="1">/svm-mn-cse/acp-518419588</ch>
+   <ch rn="SVM_Monitor" ty="2">/svm-mn-cse/CAE515692994</ch>
+   <ch rn="svm-in-name" ty="16">/svm-mn-cse/csr-535143370</ch>
+</m2m:cb>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]
+[2017-08-07 17:12:54,247 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:cb xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-name">
+   <ty>5</ty>
+   <ri>/svm-mn-cse</ri>
+   <ct>20170807T121918</ct>
+   <lt>20170807T121918</lt>
+   <acpi>/svm-mn-cse/acp-718693782</acpi>
+   <cst>1</cst>
+   <csi>svm-mn-cse</csi>
+   <srt>1 2 3 4 5 9 14 15 16 17 23</srt>
+   <poa>http://127.0.0.1:8282/</poa>
+   <ch rn="acp_admin" ty="1">/svm-mn-cse/acp-718693782</ch>
+   <ch rn="acpae-515692994" ty="1">/svm-mn-cse/acp-518419588</ch>
+   <ch rn="SVM_Monitor" ty="2">/svm-mn-cse/CAE515692994</ch>
+   <ch rn="svm-in-name" ty="16">/svm-mn-cse/csr-535143370</ch>
+</m2m:cb>
+
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/xml;charset=ISO-8859-1,
+]

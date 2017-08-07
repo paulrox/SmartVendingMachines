@@ -61,9 +61,10 @@ public class Constants {
 	/**
 	 * Middle Node CSE URI
 	 */
-	public static final String MN_CSE_URI = "coap://127.0.0.1:5683/~/svm-mn-cse";
+	public static final String MN_CSE_URI = "coap://127.0.0.1:5683/~/"
+			+ "svm-mn-cse/svm-mn-name";
 	/**
 	 * Border Router global IPv6 address
 	 */
-	public static final String BR_ADDR = "aaaa::212:7401:1:101";
+	public static final String BR_ADDR = "aaaa::c30c:0:0:1";
 }

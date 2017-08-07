@@ -7,6 +7,9 @@
 #include "rest-engine.h"
 #include "vending_machine.h"
 
+/* Necessary to get node_id */
+#include "node-id.h"
+
 #define DEBUG 1
 #if DEBUG
 #define PRINTF(...) printf(__VA_ARGS__)
@@ -18,7 +21,7 @@
 #define PRINTLLADDR(addr)
 #endif
 
-static int machine_id = 0;
+static int machine_id;
 static struct product productA, productB;
 
 /* Function to initialize the vending machine
@@ -26,7 +29,10 @@ static struct product productA, productB;
  */
 
 void init_vending_machine()
-{ 
+{
+  
+  machine_id = node_id;
+  
   productA.remaining_qt = MAX_PRODUCT_AVAILABILITY;
   productA.price = 1;
 
@@ -41,11 +47,11 @@ void id_get_handler(void* request, void* response,
   char message[50];
   int length = 50;
 
-  sprintf(message, "{'id':'%d'}", machine_id);
+  sprintf(message, "{'id':'%d','type':'F'}", machine_id);
   length = strlen(message);
   memcpy(buffer, message, length);
 
-  REST.set_header_content_type(response, REST.type.TEXT_PLAIN); 
+  REST.set_header_content_type(response, REST.type.APPLICATION_JSON); 
   REST.set_header_etag(response, (uint8_t *) &length, 1);
   REST.set_response_payload(response, buffer, length);
 }
@@ -76,12 +82,12 @@ void productAqty_get_handler(void* request, void* response,
   char message[50];
   int length = 50;
 
-  sprintf(message, "{'e':['n': 'qty', v:'%d'], 'bu':'Pcs'}", 
+  sprintf(message, "{'e':[{'n':'qty','v':'%d'}],'bu':'Pcs'}", 
     productA.remaining_qt);
   length = strlen(message);
   memcpy(buffer, message, length);
 
-  REST.set_header_content_type(response, REST.type.TEXT_PLAIN); 
+  REST.set_header_content_type(response, REST.type.APPLICATION_JSON); 
   REST.set_header_etag(response, (uint8_t *) &length, 1);
   REST.set_response_payload(response, buffer, length);
 }
@@ -93,12 +99,12 @@ void productAprice_get_handler(void* request, void* response,
   char message[50];
   int length = 50;
 
-  sprintf(message, "{'e':['n': 'price', v:'%d'], 'bu':'Euro'}", 
+  sprintf(message, "{'e':[{'n':'price','v':'%d'}],'bu':'Euro'}", 
     productA.price);
   length = strlen(message);
   memcpy(buffer, message, length);
 
-  REST.set_header_content_type(response, REST.type.TEXT_PLAIN); 
+  REST.set_header_content_type(response, REST.type.APPLICATION_JSON); 
   REST.set_header_etag(response, (uint8_t *) &length, 1);
   REST.set_response_payload(response, buffer, length);
 }
@@ -127,12 +133,12 @@ void productBqty_get_handler(void* request, void* response,
   char message[50];
   int length = 50;
 
-  sprintf(message, "{'e':['n': 'qty', v:'%d'], 'bu':'Pcs'}", 
+  sprintf(message, "{'e':[{'n':'qty','v':'%d'}],'bu':'Pcs'}", 
     productB.remaining_qt);
   length = strlen(message);
   memcpy(buffer, message, length);
 
-  REST.set_header_content_type(response, REST.type.TEXT_PLAIN); 
+  REST.set_header_content_type(response, REST.type.APPLICATION_JSON); 
   REST.set_header_etag(response, (uint8_t *) &length, 1);
   REST.set_response_payload(response, buffer, length);
 }
@@ -144,12 +150,12 @@ void productBprice_get_handler(void* request, void* response,
   char message[50];
   int length = 50;
 
-  sprintf(message, "{'e':['n': 'price', v:'%d'], 'bu':'Euro'}", 
+  sprintf(message, "{'e':[{'n':'price','v':'%d'}],'bu':'Euro'}", 
     productB.price);
   length = strlen(message);
   memcpy(buffer, message, length);
 
-  REST.set_header_content_type(response, REST.type.TEXT_PLAIN); 
+  REST.set_header_content_type(response, REST.type.APPLICATION_JSON); 
   REST.set_header_etag(response, (uint8_t *) &length, 1);
   REST.set_response_payload(response, buffer, length);
 }
@@ -171,7 +177,7 @@ void productBprice_put_handler(void* request, void* response,
   }
 }
 
-RESOURCE(id, "title=\"Machine id\";rt=\"Text\"", 
+RESOURCE(id, "title=\"id\";rt=\"Text\"", 
   id_get_handler, NULL, id_put_handler, NULL);
 RESOURCE(ProductAqty, "title=\"ProductAqty\";rt=\"Text\"", 
   productAqty_get_handler, NULL, NULL, NULL);
@@ -194,7 +200,7 @@ PROCESS_THREAD(server, ev, data)
   init_vending_machine();
   rest_init_engine();
 
-  rest_activate_resource(&id, "machineId");
+  rest_activate_resource(&id, "id");
   rest_activate_resource(&ProductAqty, "ProductA/qty");
   rest_activate_resource(&ProductAprice, "ProductA/price");
   rest_activate_resource(&ProductBqty, "ProductB/qty");
