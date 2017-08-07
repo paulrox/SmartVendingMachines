@@ -90,3 +90,5 @@ summary
 *.faillog
 obj_z1
 obj_sky
+symbols.c
+symbols.h
