@@ -1,3 +1,6 @@
+#OS X
+*.DS_Store
+
 # Compiled class file
 *.class
 
@@ -72,3 +75,18 @@ Californium.properties
 *.ilk
 *.map
 *.exp
+
+# Contiki
+*.a
+*.bin
+*.map
+*.log
+*.z1
+*.sky
+summary
+*.summary
+*.runerr
+*.runlog
+*.faillog
+obj_z1
+obj_sky
