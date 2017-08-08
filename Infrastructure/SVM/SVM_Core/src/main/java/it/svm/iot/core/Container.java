@@ -1,18 +1,18 @@
 package it.svm.iot.core;
 
+import java.util.List;
+
 /**
  * Class representing a Container on the CSE
  * @author Paolo Sassi
  * @author Matteo Rotundo
  *
  */
-
-import java.util.List;
-
 public class Container {
 	private String rn;
 	private int ty;
 	private String ri;
+	
 	public String getRn() {
 		return rn;
 	}

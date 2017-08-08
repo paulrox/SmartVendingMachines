@@ -3,9 +3,8 @@ package it.svm.iot.mn;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Set;
-
+import java.util.Scanner;
 import org.eclipse.californium.core.CoapClient;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.WebLink;
@@ -26,10 +25,12 @@ public class ADN {
 	 * Mca reference point for the MN.
 	 */
 	private static Mca MN_Mca = Mca.getInstance();
+	
 	/**
 	 * Application Entity of the MN.
 	 */
 	private static AE MN_AE;
+	
 	/**
 	 * List containing the registered containers.
 	 */
@@ -40,6 +41,17 @@ public class ADN {
 	 * List of mote addresses.
 	 */
 	private static ArrayList<String> mote_addr = new ArrayList<String>();
+	
+	/**
+	 * List of resource monitors.
+	 */
+	private static ArrayList<ResourceMonitor> monitors = new ArrayList<ResourceMonitor>();
+	
+	/**
+	 * Semaphore used to synchronize the resource monitoring threads with
+	 *  the ADN.
+	 */
+	private static SimpleSem om2m_sem = new SimpleSem();
 	
 	/**
 	 * Private constructor for the ADN class.
@@ -57,7 +69,6 @@ public class ADN {
 		CoapResponse response;
 		JSONObject obj;
 		JSONArray json_addr;
-		Iterator<Object> it; 
 		
 		/* Build the CoAP URI */
 		try {
@@ -73,9 +84,8 @@ public class ADN {
 			System.out.println("Successfully received mote addresses from BR:");
 			obj = new JSONObject(response.getResponseText());			
 			json_addr = obj.getJSONArray("addr");
-			it = json_addr.iterator();
-			while (it.hasNext())
-				mote_addr.add(it.next().toString());
+			for (Object addr : json_addr)
+				mote_addr.add(addr.toString());
 			System.out.println(mote_addr);
 		} else {
 			System.out.println("No response received from BR.");
@@ -84,26 +94,46 @@ public class ADN {
 	}
 	
 	/**
-	 * Registers to the MN the resources available on a single mote.
-	 * @param res 
+	 * Registers to the MN the resources available on a single VM.
+	 * @param vm_addr IPv6 address of the VM
+	 * @param resources List of resources available on the VM
+	 * @param vm_cont Container of the parent VM
 	 */
-	private static void registerMote(WebLink res) {
+	private static void registerResources(String vm_addr, Set<WebLink> resources,
+			String vm_cont) {
+		String uri_s, uri_c;
 		
+		for(WebLink res : resources) {
+			uri_s = res.getURI();
+			if (!uri_s.equalsIgnoreCase("/.well-known/core") && 
+					!uri_s.equalsIgnoreCase("/id")) {
+				/* Create the resource container */
+				uri_c = uri_s.replace("/", "");
+				containers.add(MN_Mca.createContainer(vm_cont, uri_c));
+				
+				if(!uri_s.toLowerCase().contains("price")) {
+					/* We don't want to observe the products prices */
+					monitors.add(new ResourceMonitor("coap://[" + vm_addr +
+							"]:5683/" + uri_s, vm_cont + "/" + uri_c,
+							om2m_sem));
+					
+				}
+			}
+		}
 	}
 	
 	/**
 	 * Uses the addresses of all the reachable motes to get the list of all
-	 * the available resources and registers them on the MN.
+	 * the available resources and registers the containers for each VM.
 	 */
-	private static void registerResources() {
+	private static void registerVendingMachines() {
 		URI uri = null;
 		CoapClient mote_client;
 		CoapResponse response;
 		JSONObject obj;
 		Set<WebLink> resources;
-		String uri_s;
+		String uri_s, type;
 		int id;
-		String type;
 		
 		for(String addr : mote_addr) {
 			/* Build the CoAP URI */
@@ -118,7 +148,6 @@ public class ADN {
 			resources = mote_client.discover();
 			if (resources != null) {
 				for (WebLink res : resources) {
-					//registerMote(res);
 					uri_s = res.getURI();
 					if (!uri_s.equalsIgnoreCase("/.well-known/core"))
 						if (uri_s.equalsIgnoreCase("/id")) {
@@ -133,11 +162,11 @@ public class ADN {
 							mote_client = new CoapClient(uri);
 							response = mote_client.get();
 							if (response != null) {
-								System.out.println("Successfully received mote"
-										+ " addresses from BR:");
 								obj = new JSONObject(response.getResponseText());			
 								id = obj.getInt("id");
 								type = obj.getString("type");
+								System.out.printf("Received response from"
+										+ " VM: %s%d\n", type, id);
 								
 								/* Add the container for the vending machine */
 								System.out.println(Constants.MN_CSE_URI + "/" + 
@@ -145,6 +174,10 @@ public class ADN {
 								containers.add(MN_Mca.createContainer(
 										Constants.MN_CSE_URI + "/" + 
 										MN_AE.getRn(), "SVM_" + type + id));
+								registerResources(addr, resources, 
+										Constants.MN_CSE_URI + "/" + 
+										MN_AE.getRn() + "/" + containers.get(
+										containers.size()-1).getRn());
 							} else {
 								System.out.println("No response received"
 										+ " from " + "coap://[" + addr + "]"
@@ -157,7 +190,14 @@ public class ADN {
 		}
 	}
 	
+	/**
+	 * Main method for the ADN on the MN side
+	 * @param args Arguments for the ADN
+	 */
 	public static void main(String[] args) {
+		Scanner keyboard = new Scanner(System.in);
+		Boolean exit = false;
+		String input;
 		System.out.printf("********** Middle Node ADN **********\n");
 		MN_AE = MN_Mca.createAE(Constants.MN_CSE_URI, "SVM_Monitor");
 		System.out.printf("AE registered on MN-CSE\n");
@@ -166,8 +206,25 @@ public class ADN {
 		
 		getMoteAddresses(Constants.BR_ADDR);
 		
-		registerResources();
+		registerVendingMachines();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
+		for (ResourceMonitor mon : monitors) {
+			mon.start();
+		}
+		//om2m_sem.semSignal();
 		
+		System.out.println("Enter 'q' to quit");
+		while(!exit) {
+			/* Busy wait */
+			input = keyboard.nextLine();
+			if (input != null && input.equals("q"))
+				exit = true;
+		}
+		keyboard.close();
 		System.out.println("OK");
 	}
 
