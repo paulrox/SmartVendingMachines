@@ -9,6 +9,7 @@ import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Option;
 import org.eclipse.californium.core.coap.Request;
 import org.json.JSONObject;
+import static it.svm.iot.core.Constants.DEBUG;
 
 /**
  * API for handling the interactions between an AE and a CSE 
@@ -31,6 +32,7 @@ public final class Mca {
 	 */
 	public static Mca getInstance() {
 		if(instance == null) {
+			System.out.println("nuova instanza!");
 			instance = new Mca();
 		}
 		return instance;
@@ -65,11 +67,13 @@ public final class Mca {
 		JSONObject root = new JSONObject();
 		root.put("m2m:ae", obj);
 		String body = root.toString();
-		System.out.println(body);
+		if (DEBUG) 
+			System.out.println(body);
 		req.setPayload(body);
 		CoapResponse responseBody = client.advanced(req);
 		String response = new String(responseBody.getPayload());
-		System.out.println(response);
+		if (DEBUG)
+			System.out.println(response);
 		JSONObject resp = new JSONObject(response);
 		JSONObject container = (JSONObject) resp.get("m2m:ae");
 		ae.setRn((String) container.get("rn"));
@@ -110,12 +114,14 @@ public final class Mca {
 		JSONObject root = new JSONObject();
 		root.put("m2m:cnt", obj);
 		String body = root.toString();
-		System.out.println(body);
+		if (DEBUG)
+			System.out.println(body);
 		req.setPayload(body);
 		CoapResponse responseBody = client.advanced(req);
 
 		String response = new String(responseBody.getPayload());
-		System.out.println(response);
+		if (DEBUG)
+			System.out.println(response);
 		JSONObject resp = new JSONObject(response);
 		JSONObject cont = (JSONObject) resp.get("m2m:cnt");
 		container.setRn((String) cont.get("rn"));
@@ -156,11 +162,14 @@ public final class Mca {
 		JSONObject root = new JSONObject();
 		root.put("m2m:cin", content);
 		String body = root.toString();
-		System.out.println(body);
+		if (DEBUG)
+			System.out.println(body);
 		req.setPayload(body);
+		System.out.println("Fin qui ok!");
 		CoapResponse responseBody = client.advanced(req);
-
+		
 		String response = new String(responseBody.getPayload());
-		System.out.println(response);
+		if (DEBUG)
+			System.out.println(response);
 	}
 }

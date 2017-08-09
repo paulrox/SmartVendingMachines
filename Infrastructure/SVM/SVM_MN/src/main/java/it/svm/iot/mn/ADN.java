@@ -48,12 +48,6 @@ public class ADN {
 	private static ArrayList<ResourceMonitor> monitors = new ArrayList<ResourceMonitor>();
 	
 	/**
-	 * Semaphore used to synchronize the resource monitoring threads with
-	 *  the ADN.
-	 */
-	private static SimpleSem om2m_sem = new SimpleSem();
-	
-	/**
 	 * Private constructor for the ADN class.
 	 */
 	private ADN() {}
@@ -103,7 +97,7 @@ public class ADN {
 			String vm_cont) {
 		String uri_s, uri_c;
 		
-		for(WebLink res : resources) {
+		for (WebLink res : resources) {
 			uri_s = res.getURI();
 			if (!uri_s.equalsIgnoreCase("/.well-known/core") && 
 					!uri_s.equalsIgnoreCase("/id")) {
@@ -114,8 +108,7 @@ public class ADN {
 				if(!uri_s.toLowerCase().contains("price")) {
 					/* We don't want to observe the products prices */
 					monitors.add(new ResourceMonitor("coap://[" + vm_addr +
-							"]:5683/" + uri_s, vm_cont + "/" + uri_c,
-							om2m_sem));
+							"]:5683/" + uri_s, vm_cont + "/" + uri_c));
 					
 				}
 			}
@@ -135,7 +128,7 @@ public class ADN {
 		String uri_s, type;
 		int id;
 		
-		for(String addr : mote_addr) {
+		for (String addr : mote_addr) {
 			/* Build the CoAP URI */
 			try {
 				uri = new URI("coap://[" + addr + "]:5683");
@@ -188,6 +181,16 @@ public class ADN {
 			}
 			
 		}
+		/* Register the shutdown hook in order to cancel the 
+		 * resource observations
+		 */
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+		    public void run() { 
+		    		for (ResourceMonitor mon : monitors) {
+		    			mon.getRelation().proactiveCancel();
+		    		}
+		    	}
+		});
 	}
 	
 	/**
@@ -201,8 +204,6 @@ public class ADN {
 		System.out.printf("********** Middle Node ADN **********\n");
 		MN_AE = MN_Mca.createAE(Constants.MN_CSE_URI, "SVM_Monitor");
 		System.out.printf("AE registered on MN-CSE\n");
-		//Container container = MN_Mca.createContainer("coap://127.0.0.1:5683/~/svm-mn-cse/svm-mn-name/SVM_Monitor", "DATA");
-		//MN_Mca.createContentInstance("coap://127.0.0.1:5683/~/svm-mn-cse/svm-mn-name/SVM_Monitor/DATA", "ciao");
 		
 		getMoteAddresses(Constants.BR_ADDR);
 		
@@ -215,7 +216,6 @@ public class ADN {
 		for (ResourceMonitor mon : monitors) {
 			mon.start();
 		}
-		//om2m_sem.semSignal();
 		
 		System.out.println("Enter 'q' to quit");
 		while(!exit) {

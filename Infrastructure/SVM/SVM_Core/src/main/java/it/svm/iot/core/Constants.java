@@ -12,6 +12,11 @@ public class Constants {
 	/* Core Constants */
 	
 	/**
+	 * Enables the debugging code.
+	 */
+	public static final Boolean DEBUG = true;
+	
+	/**
 	 * Maximum quantity for a specific product.
 	 */
 	public static final int MAX_PROD_QTY = 10;
