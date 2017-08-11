@@ -32,7 +32,6 @@ public final class Mca {
 	 */
 	public static Mca getInstance() {
 		if(instance == null) {
-			System.out.println("nuova instanza!");
 			instance = new Mca();
 		}
 		return instance;
@@ -157,7 +156,7 @@ public final class Mca {
 		req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
 		req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
 		JSONObject content = new JSONObject();
-		content.put("cnf","message");
+		content.put("cnf","SenML data");
 		content.put("con",val);
 		JSONObject root = new JSONObject();
 		root.put("m2m:cin", content);
@@ -165,9 +164,57 @@ public final class Mca {
 		if (DEBUG)
 			System.out.println(body);
 		req.setPayload(body);
-		System.out.println("Fin qui ok!");
 		CoapResponse responseBody = client.advanced(req);
 		
+		String response = new String(responseBody.getPayload());
+		if (DEBUG)
+			System.out.println(response);
+	}
+	
+	/**
+	 * Discover resources on a remote CSE.
+	 * @param mn_cse URI of the remote CSE
+	 * @return String containing the list of the discovered resources
+	 */
+	public String discoverResources(String mn_cse, String query){
+		/* Append the query string */
+		String cse = mn_cse + query;
+		CoapClient client = new CoapClient(cse);
+		Request req = Request.newGet();
+		req.getOptions().addOption(new Option(256, "admin:admin"));
+		req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
+		req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
+		CoapResponse responseBody = client.advanced(req);
+		String response = new String(responseBody.getPayload());
+		JSONObject content = new JSONObject(response);
+		String path = content.getString("m2m:uril");
+		if (DEBUG)
+			System.out.printf("Discovered resources: %s\n", path);
+		return path;
+	}
+	
+	/**
+	 * Creates a subscription for retrieving updated content instances from a
+	 * container.
+	 * @param cse URI of the container
+	 * @param notificationUrl URI of the CoAP server
+	 */
+	public void createSubscription(String cse, String notificationUrl){
+		CoapClient client = new CoapClient(cse);
+		Request req = Request.newPost();
+		req.getOptions().addOption(new Option(267, 23));
+		req.getOptions().addOption(new Option(256, "admin:admin"));
+		req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
+		req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
+		JSONObject content = new JSONObject();
+		content.put("rn", "Monitor");
+		content.put("nu", notificationUrl);
+		content.put("nct", 2);
+		JSONObject root = new JSONObject();
+		root.put("m2m:sub", content);
+		String body = root.toString();
+		req.setPayload(body);
+		CoapResponse responseBody = client.advanced(req);
 		String response = new String(responseBody.getPayload());
 		if (DEBUG)
 			System.out.println(response);

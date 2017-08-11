@@ -24,6 +24,7 @@ public class ResourceMonitor extends Thread {
 	private SimpleSem cin_ready;
 	private Mca MN_Mca;
 	private String container;
+	private Boolean exit;
 	
 	/**
 	 * Constructor for the ResourceMonitor class.
@@ -32,6 +33,7 @@ public class ResourceMonitor extends Thread {
 	 */
 	public ResourceMonitor(String mote_uri, String container) {
 		this.container = container;
+		exit = false;
 		uri = null;
 		cin_ready = new SimpleSem(false);
 		MN_Mca  = Mca.getInstance();
@@ -52,6 +54,12 @@ public class ResourceMonitor extends Thread {
 		return rel;
 	}
 	
+	public void stopMonitor() {
+		/* Cancel the resource observation */
+		rel.proactiveCancel();
+		exit = true;
+	}
+	
 	/**
 	 * Thread body for the ResourceMonitor
 	 */
@@ -60,7 +68,7 @@ public class ResourceMonitor extends Thread {
 		client = new CoapClient(uri);
 		rel = client.observe(obs);
 		
-		while(true) {
+		while(!exit) {
 			/* Wait for a new content to publish on the MN-CSE */
 			cin_ready.semWait();
 			content = obs.getContent();

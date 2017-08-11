@@ -9,7 +9,17 @@ package it.svm.iot.core;
 
 public class Constants {
 	
-	/* Core Constants */
+	/************************ Core Constants **********************************/
+	
+	/**
+	 * Loopback address.
+	 * 127.0.0.1 is used when the OM2M CSEs are on the same machine of
+	 * the ADN.
+	 * 10.0.2.2 is used when the OM2M CSEs are on the host OS (assuming
+	 * to run the cooja simulation on the Instant Contiki VM.
+	 */
+	//public static final String LOOPBACK = "127.0.0.1";
+	public static final String LOOPBACK = "10.0.2.2";
 	
 	/**
 	 * Enables the debugging code.
@@ -61,15 +71,26 @@ public class Constants {
 	 */
 	public static final float MAX_LNG = (float) 180.0;
 	
-	/* Middle Node Constants */
+	/************************ Middle Node Constants **************************/
 	
 	/**
 	 * Middle Node CSE URI
 	 */
-	public static final String MN_CSE_URI = "coap://127.0.0.1:5683/~/"
+	public static final String MN_CSE_URI = "coap://" + LOOPBACK + ":5683/~/"
 			+ "svm-mn-cse/svm-mn-name";
+	
+	/**
+	 * Middle Node CSE URI without the cse name.
+	 */
+	public static final String MN_CSE_SHORT_URI = "coap://" + LOOPBACK + ":5683/~/"
+			+ "svm-mn-cse";
 	/**
 	 * Border Router global IPv6 address
 	 */
 	public static final String BR_ADDR = "aaaa::c30c:0:0:1";
+	
+	/******************** Infrastructure Node Constants **********************/
+	
+	public static final String IN_CSE_URI = "coap://" + LOOPBACK + ":5683/~/"
+			+ "svm-in-cse/svm-in-name";
 }

@@ -14,7 +14,7 @@ import org.json.JSONObject;
 import it.svm.iot.core.*;
 
 /**
- * ADN for the SVM Middle Node
+ * ADN for the SVM Middle Node.
  * @author Paolo Sassi
  * @author Matteo Rotundo
  *
@@ -96,6 +96,9 @@ public class ADN {
 	private static void registerResources(String vm_addr, Set<WebLink> resources,
 			String vm_cont) {
 		String uri_s, uri_c;
+		CoapClient client;
+		CoapResponse resp;
+		URI uri = null;
 		
 		for (WebLink res : resources) {
 			uri_s = res.getURI();
@@ -106,10 +109,29 @@ public class ADN {
 				containers.add(MN_Mca.createContainer(vm_cont, uri_c));
 				
 				if(!uri_s.toLowerCase().contains("price")) {
-					/* We don't want to observe the products prices */
+					/* Resources we want to observe */
 					monitors.add(new ResourceMonitor("coap://[" + vm_addr +
 							"]:5683/" + uri_s, vm_cont + "/" + uri_c));
 					
+				} else {
+					/* Resources which are not observed, send a simple GET*/
+					try {
+						uri = new URI("coap://["+vm_addr+"]:5683/" + uri_s);
+					} catch (URISyntaxException e) {
+						System.err.println("Invalid URI: " + e.getMessage());
+						System.exit(-1);
+					}
+					client = new CoapClient(uri);
+					resp = client.get();
+					if (resp != null) {
+						/* Add a content instance for the resource value */
+						MN_Mca.createContentInstance(vm_cont + "/" + uri_c,
+								resp.getResponseText());
+					} else {
+						System.out.println("No response received"
+								+ " from " + "coap://[" + vm_addr + "]"
+								+ ":5683/" + uri_s);
+					}
 				}
 			}
 		}
@@ -174,20 +196,19 @@ public class ADN {
 							} else {
 								System.out.println("No response received"
 										+ " from " + "coap://[" + addr + "]"
-										+ ":5683 + uri_s");
+										+ ":5683/" + uri_s);
 							}
 						}
 				}
 			}
 			
 		}
-		/* Register the shutdown hook in order to cancel the 
-		 * resource observations
+		/* Register the shutdown hook in order to stop the monitoring threads.
 		 */
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 		    public void run() { 
 		    		for (ResourceMonitor mon : monitors) {
-		    			mon.getRelation().proactiveCancel();
+		    			mon.stopMonitor();
 		    		}
 		    	}
 		});
@@ -208,11 +229,12 @@ public class ADN {
 		getMoteAddresses(Constants.BR_ADDR);
 		
 		registerVendingMachines();
-		try {
+		/* try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
-		}
+		}*/
+		/* Start the resource monitors */
 		for (ResourceMonitor mon : monitors) {
 			mon.start();
 		}
@@ -225,7 +247,6 @@ public class ADN {
 				exit = true;
 		}
 		keyboard.close();
-		System.out.println("OK");
 	}
 
 }
