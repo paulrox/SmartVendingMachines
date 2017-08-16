@@ -29,10 +29,16 @@
 #define PRINTLLADDR(addr)
 #endif
 
-int machine_id;
+static struct coordinate locations[] = { 
+  {7210, 3898},
+  {7229, 3965}
+};
+
+int machine_id, machine_status;
+int node_lat, node_long;
 struct product productA, productB;
 
-extern resource_t id, productAqty, productBqty, productAprice, productBprice;
+extern resource_t id, productAqty, productBqty, productAprice, productBprice, status_m, loc;
 
 /**
  * @brief Function to initialize the vending machine
@@ -41,7 +47,11 @@ extern resource_t id, productAqty, productBqty, productAprice, productBprice;
 void init_vending_machine()
 { 
   machine_id = node_id;
-  
+  machine_status = 1;
+
+  node_lat = locations[node_id - 2].latitude;
+  node_long = locations[node_id - 2].longitude;
+
   productA.remaining_qty = MAX_PRODUCT_AVAILABILITY;
   productA.price = 1;
 
@@ -62,6 +72,8 @@ PROCESS_THREAD(server, ev, data)
   rest_init_engine();
 
   rest_activate_resource(&id, "id");
+  rest_activate_resource(&loc, "loc");
+  rest_activate_resource(&status_m, "status");
   rest_activate_resource(&productAqty, "ProductA/qty");
   rest_activate_resource(&productAprice, "ProductA/price");
   rest_activate_resource(&productBqty, "ProductB/qty");
