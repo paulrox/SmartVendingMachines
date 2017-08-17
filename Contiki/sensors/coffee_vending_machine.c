@@ -35,8 +35,8 @@ static struct coordinate locations[] = {
 };
 
 float u_k = 0;
-int machine_id, machine_status;
 int machine_type;
+int machine_id, machine_status;
 int node_lat, node_long;
 struct product productA, productB;
 
@@ -52,9 +52,9 @@ void init_vending_machine()
 { 
   machine_id = node_id;
   machine_status = 1;
-  machine_type = 0;
+  machine_type = 1;
   
-  u_k = 18; // Default temperature
+  u_k = 70; // Default temperature
   node_lat = locations[node_id - 2].latitude;
   node_long = locations[node_id - 2].longitude;
 
@@ -65,7 +65,7 @@ void init_vending_machine()
   productB.price = 2;
 }
 
-PROCESS(server, "food_vending_machine");
+PROCESS(server, "coffe_vending_machine");
 AUTOSTART_PROCESSES(&server);
 
 PROCESS_THREAD(server, ev, data)

@@ -24,6 +24,7 @@
 #endif
 
 extern int machine_id;
+extern int machine_type;
 
 static void id_get_handler(void *request, void *response, uint8_t *buffer,
                            uint16_t preferred_size, int32_t *offset);
@@ -40,7 +41,11 @@ static void id_get_handler(void* request, void* response,
   char message[50];
   int length = 50;
 
-  sprintf(message, "{'id':'%d','type':'F'}", machine_id);
+  if (machine_type == 1)
+    sprintf(message, "{'id':'%d','type':'C'}", machine_id);
+  else
+    sprintf(message, "{'id':'%d','type':'F'}", machine_id);
+  
   length = strlen(message);
   memcpy(buffer, message, length);
 
