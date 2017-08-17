@@ -41,7 +41,7 @@ struct product productA, productB;
 
 extern resource_t id, productAqty, productBqty, 
   productAprice, productBprice, 
-  status_m, loc, sens, des;
+  status_m, loc, sens, des, fault, intr;
 
 /**
  * @brief Function to initialize the vending machine
@@ -79,6 +79,8 @@ PROCESS_THREAD(server, ev, data)
   rest_activate_resource(&status_m, "status");
   rest_activate_resource(&sens, "temp/sens");
   rest_activate_resource(&des, "temp/des");
+  rest_activate_resource(&fault, "alarm/fault");
+  rest_activate_resource(&intr, "alarm/intr");
   rest_activate_resource(&productAqty, "ProductA/qty");
   rest_activate_resource(&productAprice, "ProductA/price");
   rest_activate_resource(&productBqty, "ProductB/qty");

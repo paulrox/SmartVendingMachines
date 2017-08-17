@@ -1,6 +1,6 @@
 /**
  * \file
- *      Status Resource
+ *      Fault Resource
  * \author
  *      Paolo Sassi
  * \author
@@ -11,8 +11,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "rest-engine.h"
-#include "node-id.h"
-#include "vending_machine.h"
 
 #define DEBUG 1
 #if DEBUG
@@ -25,25 +23,24 @@
 #define PRINTLLADDR(addr)
 #endif
 
-extern int node_lat;
-extern int node_long;
+int fault_machine = 0;
 
-static void loc_get_handler(void *request, void *response, uint8_t *buffer,
+static void fault_get_handler(void *request, void *response, uint8_t *buffer,
                            uint16_t preferred_size, int32_t *offset);
+static void fault_put_handler(void* request, void* response,
+                    uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
 
-RESOURCE(loc, "title=\"loc\";rt=\"Text\"", loc_get_handler, NULL, NULL,
+RESOURCE(fault, "title=\"fault\";rt=\"Text\"", fault_get_handler, NULL, fault_put_handler,
          NULL);
 
-static void loc_get_handler(void* request, void* response, 
+static void fault_get_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
-  /* Populat the buffer with the response payload*/
-  char message[80];
-  int length;
+  /* Populat the buffer with the response payload */
+  char message[50];
+  int length = 50;
 
-  sprintf(message, "{'lat':'%u.%u','long':'%u.%u'}", 
-    PISA_LATITUDE, node_lat, 
-    PISA_LONGITUDE, node_long);
+  sprintf(message, "{'fault':'%d'}", fault_machine);
   length = strlen(message);
   memcpy(buffer, message, length);
 
@@ -52,4 +49,20 @@ static void loc_get_handler(void* request, void* response,
   REST.set_response_payload(response, buffer, length);
 }
 
-
+static void fault_put_handler(void* request, void* response, 
+  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+  int new_value, len;
+  const char *val = NULL;
+  
+  len = REST.get_post_variable(request, "value", &val);
+     
+  if (len > 0) {
+     new_value = atoi(val);
+     PRINTF("new value %u\n", new_value);
+     fault_machine = new_value;
+     REST.set_response_status(response, REST.status.CREATED);
+  } else {
+     REST.set_response_status(response, REST.status.BAD_REQUEST);
+  }
+}
