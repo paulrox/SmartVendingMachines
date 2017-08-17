@@ -34,11 +34,14 @@ static struct coordinate locations[] = {
   {7229, 3965}
 };
 
+float u_k = 0;
 int machine_id, machine_status;
 int node_lat, node_long;
 struct product productA, productB;
 
-extern resource_t id, productAqty, productBqty, productAprice, productBprice, status_m, loc;
+extern resource_t id, productAqty, productBqty, 
+  productAprice, productBprice, 
+  status_m, loc, sens, des;
 
 /**
  * @brief Function to initialize the vending machine
@@ -74,6 +77,8 @@ PROCESS_THREAD(server, ev, data)
   rest_activate_resource(&id, "id");
   rest_activate_resource(&loc, "loc");
   rest_activate_resource(&status_m, "status");
+  rest_activate_resource(&sens, "temp/sens");
+  rest_activate_resource(&des, "temp/des");
   rest_activate_resource(&productAqty, "ProductA/qty");
   rest_activate_resource(&productAprice, "ProductA/price");
   rest_activate_resource(&productBqty, "ProductB/qty");

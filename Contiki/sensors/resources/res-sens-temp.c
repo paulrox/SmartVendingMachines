@@ -1,6 +1,6 @@
 /**
  * \file
- *      Id Resource
+ *      Sensed Temperature Resource
  * \author
  *      Paolo Sassi
  * \author
@@ -22,25 +22,33 @@
 #define PRINT6ADDR(addr)
 #define PRINTLLADDR(addr)
 #endif
+#define TIME_SAMPLING 0.01*CLOCK_SECOND
+#define STARTING_TEMPERATURE 0
 
-extern int machine_id;
+extern float u_k;
+float e_k = 0;
+float e_k_1 = 0;
+float e_k_2 = 0;
+float temp_k = 0; 
+float temp_k_1 = 0; 
+float temp_k_2 = 0; 
 
-static void id_get_handler(void *request, void *response, uint8_t *buffer,
+static void sens_periodic_handler();
+static void sens_get_handler(void *request, void *response, uint8_t *buffer,
                            uint16_t preferred_size, int32_t *offset);
-static void id_put_handler(void* request, void* response,
-                    uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
 
-RESOURCE(id, "title=\"id\";rt=\"Text\"", id_get_handler, NULL, id_put_handler,
-         NULL);
 
-static void id_get_handler(void* request, void* response, 
+PERIODIC_RESOURCE(sens, "title=\"sensTemp\";rt=\"Text\"", sens_get_handler, 
+  NULL, NULL, NULL, TIME_SAMPLING, sens_periodic_handler);
+
+static void sens_get_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   /* Populat the buffer with the response payload */
   char message[50];
   int length = 50;
 
-  sprintf(message, "{'id':'%d','type':'F'}", machine_id);
+  sprintf(message, "{'temp':'%d'}", (int)temp_k);
   length = strlen(message);
   memcpy(buffer, message, length);
 
@@ -49,21 +57,23 @@ static void id_get_handler(void* request, void* response,
   REST.set_response_payload(response, buffer, length);
 }
 
-static void id_put_handler(void* request, void* response, 
-  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+/*
+ * Implemented the following controlled systems
+ *   
+ * 0.0011488 z^2
+ * -------------
+ * (z-1) (z-0.9)
+ *
+ */
+
+static void sens_periodic_handler()
 {
-  int new_value, len;
-  const char *val = NULL;
+  e_k = u_k - temp_k;
   
-  printf("Put\n");
-  len = REST.get_post_variable(request, "value", &val);
-     
-  if (len > 0) {
-     new_value = atoi(val);
-     PRINTF("new value %u\n", new_value);
-     machine_id = new_value;
-     REST.set_response_status(response, REST.status.CREATED);
-  } else {
-     REST.set_response_status(response, REST.status.BAD_REQUEST);
-  }
+  temp_k = 1.9*temp_k_1 - 0.9*temp_k_2 + 0.0011488*e_k;
+  e_k_2 = e_k_1;
+  e_k_1 = e_k;
+  temp_k_2 = temp_k_1;
+  temp_k_1 = temp_k;
 }
+

@@ -1,6 +1,6 @@
 /**
  * \file
- *      Id Resource
+ *      Desired Temperature Resource
  * \author
  *      Paolo Sassi
  * \author
@@ -23,45 +23,28 @@
 #define PRINTLLADDR(addr)
 #endif
 
-extern int machine_id;
 
-static void id_get_handler(void *request, void *response, uint8_t *buffer,
+extern float u_k;
+
+static void des_put_handler(void *request, void *response, uint8_t *buffer,
                            uint16_t preferred_size, int32_t *offset);
-static void id_put_handler(void* request, void* response,
-                    uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
 
-RESOURCE(id, "title=\"id\";rt=\"Text\"", id_get_handler, NULL, id_put_handler,
+RESOURCE(des, "title=\"id\";rt=\"Text\"", NULL, NULL, des_put_handler,
          NULL);
 
-static void id_get_handler(void* request, void* response, 
-  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
-{
-  /* Populat the buffer with the response payload */
-  char message[50];
-  int length = 50;
-
-  sprintf(message, "{'id':'%d','type':'F'}", machine_id);
-  length = strlen(message);
-  memcpy(buffer, message, length);
-
-  REST.set_header_content_type(response, REST.type.APPLICATION_JSON); 
-  REST.set_header_etag(response, (uint8_t *) &length, 1);
-  REST.set_response_payload(response, buffer, length);
-}
-
-static void id_put_handler(void* request, void* response, 
+static void des_put_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   int new_value, len;
   const char *val = NULL;
-  
+
   printf("Put\n");
   len = REST.get_post_variable(request, "value", &val);
      
   if (len > 0) {
      new_value = atoi(val);
      PRINTF("new value %u\n", new_value);
-     machine_id = new_value;
+     u_k = (float)new_value;
      REST.set_response_status(response, REST.status.CREATED);
   } else {
      REST.set_response_status(response, REST.status.BAD_REQUEST);
