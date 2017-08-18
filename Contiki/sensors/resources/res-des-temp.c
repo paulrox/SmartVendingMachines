@@ -28,8 +28,10 @@ extern float u_k;
 
 static void des_put_handler(void *request, void *response, uint8_t *buffer,
                            uint16_t preferred_size, int32_t *offset);
+static void des_get_handler(void *request, void *response, uint8_t *buffer,
+                           uint16_t preferred_size, int32_t *offset);
 
-RESOURCE(des, "title=\"id\";rt=\"Text\"", NULL, NULL, des_put_handler,
+RESOURCE(des, "title=\"id\";rt=\"Text\"", des_get_handler, NULL, des_put_handler,
          NULL);
 
 static void des_put_handler(void* request, void* response, 
@@ -38,7 +40,6 @@ static void des_put_handler(void* request, void* response,
   int new_value, len;
   const char *val = NULL;
 
-  printf("Put\n");
   len = REST.get_post_variable(request, "value", &val);
      
   if (len > 0) {
@@ -49,4 +50,22 @@ static void des_put_handler(void* request, void* response,
   } else {
      REST.set_response_status(response, REST.status.BAD_REQUEST);
   }
+}
+
+static void des_get_handler(void* request, void* response, 
+  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+  /* Populat the buffer with the response payload */
+  char message[50];
+  int length = 50;
+
+
+  sprintf(message, "{'desired temperature':'%d'}", (int)u_k);
+  
+  length = strlen(message);
+  memcpy(buffer, message, length);
+
+  REST.set_header_content_type(response, REST.type.APPLICATION_JSON); 
+  REST.set_header_etag(response, (uint8_t *) &length, 1);
+  REST.set_response_payload(response, buffer, length);
 }

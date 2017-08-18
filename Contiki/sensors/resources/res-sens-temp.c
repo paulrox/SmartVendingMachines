@@ -46,9 +46,12 @@ static void sens_get_handler(void* request, void* response,
 {
   /* Populat the buffer with the response payload */
   char message[50];
-  int length = 50;
+  int length;
+  float tmp;
 
-  sprintf(message, "{'temp':'%d'}", (int)temp_k);
+  tmp = (float)((float)temp_k - (int)temp_k);
+  tmp = tmp * 100;
+  sprintf(message, "{'temp':'%d.%d'}", (int)temp_k, (int)tmp);
   length = strlen(message);
   memcpy(buffer, message, length);
 
@@ -74,6 +77,6 @@ static void sens_periodic_handler()
   e_k_2 = e_k_1;
   e_k_1 = e_k;
   temp_k_2 = temp_k_1;
-  temp_k_1 = temp_k;
+  temp_k_1 = temp_k; 
 }
 
