@@ -29,9 +29,12 @@ static void productBprice_get_handler(void* request, void* response,
   /* Populat the buffer with the response payload */
   char message[50];
   int length = 50;
+  float tmp;
 
-  sprintf(message, "{'e':[{'n':'price','v':'%d'}],'bu':'Euro'}", 
-    productB.price);
+  tmp = (float)((float)productB.price - (int)productB.price);
+  tmp = tmp * 100;
+  sprintf(message, "{'price':'%d.%d'}", 
+    (int)productB.price, (int) tmp);
   length = strlen(message);
   memcpy(buffer, message, length);
 

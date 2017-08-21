@@ -59,10 +59,10 @@ void init_vending_machine()
   node_long = locations[node_id - 2].longitude;
 
   productA.remaining_qty = MAX_PRODUCT_AVAILABILITY;
-  productA.price = 1;
+  productA.price = 1.59;
 
   productB.remaining_qty = MAX_PRODUCT_AVAILABILITY;
-  productB.price = 2;
+  productB.price = 2.49;
 }
 
 PROCESS(server, "coffe_vending_machine");

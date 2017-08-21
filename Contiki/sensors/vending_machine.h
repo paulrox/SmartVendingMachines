@@ -4,7 +4,7 @@
 
 struct product {
 	uint8_t remaining_qty;
-	uint8_t price;
+	float price;
 };
 
 struct coordinate {
