@@ -25,6 +25,7 @@ public class ResourceMonitor extends Thread {
 	private Mca MN_Mca;
 	private String container;
 	private Boolean exit;
+	private String old_content;
 	
 	/**
 	 * Constructor for the ResourceMonitor class.
@@ -44,6 +45,7 @@ public class ResourceMonitor extends Thread {
 			System.exit(-1);
 		}
 		obs = new ResourceObserver(cin_ready);
+		old_content = new String("first_time");
 	}
 	
 	/**
@@ -72,7 +74,10 @@ public class ResourceMonitor extends Thread {
 			/* Wait for a new content to publish on the MN-CSE */
 			cin_ready.semWait();
 			content = obs.getContent();
-			MN_Mca.createContentInstance(container, content);
+			if (!content.equals(old_content)) {
+				old_content = new String(content);
+				MN_Mca.createContentInstance(container, content);
+			}
 		}
 	}
 }
