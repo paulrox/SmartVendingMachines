@@ -72,30 +72,6 @@
 /* Number of chars for the address separators ("," and "'") */
 #define SEP_LENGTH  9 + 20
 
-#define MAX_CHUNKS MAX_ADDR * MAX_ADDR_LENGTH + SEP_LENGTH
-
-#define ADD_CHAR_IF_POSSIBLE(char) \
-  if(strpos >= *offset && bufpos < preferred_size) { \
-    buffer[bufpos++] = char; \
-  } \
-  ++strpos
-
-#define ADD_STRING_IF_POSSIBLE(string, op) \
-  tmplen = strlen(string); \
-  if(strpos + tmplen > *offset) { \
-    bufpos += snprintf((char *)buffer + bufpos, \
-                       preferred_size - bufpos + 1, \
-                       "%s", \
-                       string \
-                       + (*offset - (int32_t)strpos > 0 ? \
-                          *offset - (int32_t)strpos : 0)); \
-    if(bufpos op preferred_size) { \
-      PRINTF("res: BREAK at %s (%p)\n", string, resource); \
-      break; \
-    } \
-  } \
-  strpos += tmplen
-
 static uip_ipaddr_t prefix;
 static uint8_t prefix_set;
 static uip_ds6_route_t *r;
