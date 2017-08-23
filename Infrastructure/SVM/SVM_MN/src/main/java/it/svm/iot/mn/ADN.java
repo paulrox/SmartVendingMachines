@@ -48,6 +48,11 @@ public class ADN {
 	private static ArrayList<ResourceMonitor> monitors = new ArrayList<ResourceMonitor>();
 	
 	/**
+	 * List of resource polling threads.
+	 */
+	private static ArrayList<PollingThread> polling_threads = new ArrayList<PollingThread>();
+	
+	/**
 	 * Private constructor for the ADN class.
 	 */
 	private ADN() {}
@@ -108,14 +113,16 @@ public class ADN {
 				uri_c = uri_s.replace("/", "");
 				containers.add(MN_Mca.createContainer(vm_cont, uri_c));
 				
-				if (!uri_s.toLowerCase().contains("price")) {
+				if (uri_s.toLowerCase().contains("alarm")) {
 					/* Resources we want to observe */
 					monitors.add(new ResourceMonitor("coap://[" + vm_addr +
 							"]:5683/" + uri_s, vm_cont + "/" + uri_c));
 					
 				} else {
+					polling_threads.add(new PollingThread(MN_Mca, uri_s, uri_c, 
+							vm_cont, vm_addr));
 					/* Resources which are not observed, send a simple GET*/
-					try {
+		/*			try {
 						uri = new URI("coap://["+vm_addr+"]:5683/" + uri_s);
 					} catch (URISyntaxException e) {
 						System.err.println("Invalid URI: " + e.getMessage());
@@ -123,15 +130,15 @@ public class ADN {
 					}
 					client = new CoapClient(uri);
 					resp = client.get();
-					if (resp != null) {
+					if (resp != null) {*/
 						/* Add a content instance for the resource value */
-						MN_Mca.createContentInstance(vm_cont + "/" + uri_c,
+			/*			MN_Mca.createContentInstance(vm_cont + "/" + uri_c,
 								resp.getResponseText());
 					} else {
 						System.out.println("No response received"
 								+ " from " + "coap://[" + vm_addr + "]"
 								+ ":5683/" + uri_s);
-					}
+					}*/
 				}
 			}
 		}
@@ -237,6 +244,9 @@ public class ADN {
 		/* Start the resource monitors */
 		for (ResourceMonitor mon : monitors) {
 			mon.start();
+		}
+		for (PollingThread pt : polling_threads) {
+			pt.start();
 		}
 		
 		System.out.println("Enter 'q' to quit");
