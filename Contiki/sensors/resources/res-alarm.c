@@ -1,6 +1,6 @@
 /**
  * \file
- *      Fault Resource
+ *      Alarm Resource
  * \author
  *      Paolo Sassi
  * \author
@@ -23,24 +23,31 @@
 #define PRINTLLADDR(addr)
 #endif
 
-int fault_machine = 0;
+/* Different types of alarm:
+ * alarm = 'N'; No Alarm
+ * alarm = 'I'; Intrusion
+ * alarm = 'F'; Fault
+ * alarm = 'I'; Intrusion
+ */
+char alarm_type;
 
-static void fault_get_handler(void *request, void *response, uint8_t *buffer,
+static void alarm_get_handler(void *request, void *response, uint8_t *buffer,
                            uint16_t preferred_size, int32_t *offset);
-static void fault_put_handler(void* request, void* response,
+static void alarm_put_handler(void* request, void* response,
                     uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+static void alarm_event_handler();
 
-RESOURCE(fault, "title=\"fault\";rt=\"Text\"", fault_get_handler, NULL, fault_put_handler,
-         NULL);
+EVENT_RESOURCE(alarm, "title=\"fault\";rt=\"Text\"", alarm_get_handler, NULL, alarm_put_handler,
+         NULL, alarm_event_handler);
 
-static void fault_get_handler(void* request, void* response, 
+static void alarm_get_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   /* Populat the buffer with the response payload */
   char message[50];
-  int length = 50;
+  int length;
 
-  sprintf(message, "{'fault':'%d'}", fault_machine);
+  sprintf(message, "{'alarm':'%c'}", alarm_type);
   length = strlen(message);
   memcpy(buffer, message, length);
 
@@ -49,7 +56,7 @@ static void fault_get_handler(void* request, void* response,
   REST.set_response_payload(response, buffer, length);
 }
 
-static void fault_put_handler(void* request, void* response, 
+static void alarm_put_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   int new_value, len;
@@ -59,10 +66,16 @@ static void fault_put_handler(void* request, void* response,
      
   if (len > 0) {
      new_value = atoi(val);
-     PRINTF("new value %u\n", new_value);
-     fault_machine = new_value;
+     PRINTF("new value %c\n", new_value);
+     alarm_type = new_value;
+     alarm_event_handler();
      REST.set_response_status(response, REST.status.CREATED);
   } else {
      REST.set_response_status(response, REST.status.BAD_REQUEST);
   }
+}
+
+static void alarm_event_handler()
+{
+  REST.notify_subscribers(&alarm);
 }

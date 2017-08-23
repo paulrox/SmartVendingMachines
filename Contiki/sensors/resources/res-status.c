@@ -23,24 +23,28 @@
 #define PRINTLLADDR(addr)
 #endif
 
-extern int machine_status;
+extern int machine_status, machine_type;
 
 static void status_get_handler(void *request, void *response, uint8_t *buffer,
                            uint16_t preferred_size, int32_t *offset);
 static void status_put_handler(void* request, void* response,
                     uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+static void status_event_handler();
 
-RESOURCE(status_m, "title=\"status\";rt=\"Text\"", status_get_handler, NULL, status_put_handler,
-         NULL);
+EVENT_RESOURCE(status_m, "title=\"status\";rt=\"Text\"", status_get_handler, NULL, status_put_handler,
+         NULL, status_event_handler);
 
 static void status_get_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   /* Populat the buffer with the response payload */
   char message[50];
-  int length = 50;
+  int length;
 
-  sprintf(message, "{'status':'%d','type':'F'}", machine_status);
+  if (machine_type == 1)
+    sprintf(message, "{'status':'%d','type':'C'}", machine_status);
+  else
+    sprintf(message, "{'status':'%d','type':'F'}", machine_status);
   length = strlen(message);
   memcpy(buffer, message, length);
 
@@ -62,8 +66,14 @@ static void status_put_handler(void* request, void* response,
      new_value = atoi(val);
      PRINTF("new value %u\n", new_value);
      machine_status = new_value;
+     status_event_handler();
      REST.set_response_status(response, REST.status.CREATED);
   } else {
      REST.set_response_status(response, REST.status.BAD_REQUEST);
   }
+}
+
+static void status_event_handler()
+{
+  REST.notify_subscribers(&status_m);
 }

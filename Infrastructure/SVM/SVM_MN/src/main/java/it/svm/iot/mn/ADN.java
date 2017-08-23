@@ -108,7 +108,7 @@ public class ADN {
 				uri_c = uri_s.replace("/", "");
 				containers.add(MN_Mca.createContainer(vm_cont, uri_c));
 				
-				if(!uri_s.toLowerCase().contains("price")) {
+				if (!uri_s.toLowerCase().contains("price")) {
 					/* Resources we want to observe */
 					monitors.add(new ResourceMonitor("coap://[" + vm_addr +
 							"]:5683/" + uri_s, vm_cont + "/" + uri_c));

@@ -37,6 +37,7 @@ static struct coordinate locations[] = {
   {720324, 383708}
 };
 
+extern char alarm_type;
 float u_k = 0;
 int machine_type;
 int machine_id, machine_status;
@@ -45,7 +46,7 @@ struct product productA, productB;
 
 extern resource_t id, productAqty, productBqty, 
   productAprice, productBprice, 
-  status_m, loc, sens, des, fault, intr;
+  status_m, loc, sens, des, alarm;
 
 /**
  * @brief Function to initialize the vending machine
@@ -60,6 +61,7 @@ void init_vending_machine()
   u_k = 70; // Default temperature
   node_lat = locations[node_id - 2].latitude;
   node_long = locations[node_id - 2].longitude;
+  alarm_type ='N';
 
   productA.remaining_qty = MAX_PRODUCT_AVAILABILITY;
   productA.price = 1.59;
@@ -85,8 +87,7 @@ PROCESS_THREAD(server, ev, data)
   rest_activate_resource(&status_m, "status");
   rest_activate_resource(&sens, "temp/sens");
   rest_activate_resource(&des, "temp/des");
-  rest_activate_resource(&fault, "alarm/fault");
-  rest_activate_resource(&intr, "alarm/intr");
+  rest_activate_resource(&alarm, "alarm");
   rest_activate_resource(&productAqty, "ProductA/qty");
   rest_activate_resource(&productAprice, "ProductA/price");
   rest_activate_resource(&productBqty, "ProductB/qty");

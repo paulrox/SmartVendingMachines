@@ -43,9 +43,10 @@ int machine_type;
 int node_lat, node_long;
 struct product productA, productB;
 
+extern char alarm_type;
 extern resource_t id, productAqty, productBqty, 
   productAprice, productBprice, 
-  status_m, loc, sens, des, fault, intr;
+  status_m, loc, sens, des, alarm;
 
 /**
  * @brief Function to initialize the vending machine
@@ -61,11 +62,12 @@ void init_vending_machine()
   node_lat = locations[node_id - 2].latitude;
   node_long = locations[node_id - 2].longitude;
 
+  alarm_type = 'N';
   productA.remaining_qty = MAX_PRODUCT_AVAILABILITY;
-  productA.price = 1;
+  productA.price = 1.5;
 
   productB.remaining_qty = MAX_PRODUCT_AVAILABILITY;
-  productB.price = 2;
+  productB.price = 2.1;
 }
 
 PROCESS(server, "food_vending_machine");
@@ -85,8 +87,7 @@ PROCESS_THREAD(server, ev, data)
   rest_activate_resource(&status_m, "status");
   rest_activate_resource(&sens, "temp/sens");
   rest_activate_resource(&des, "temp/des");
-  rest_activate_resource(&fault, "alarm/fault");
-  rest_activate_resource(&intr, "alarm/intr");
+  rest_activate_resource(&alarm, "alarm");
   rest_activate_resource(&productAqty, "ProductA/qty");
   rest_activate_resource(&productAprice, "ProductA/price");
   rest_activate_resource(&productBqty, "ProductB/qty");
