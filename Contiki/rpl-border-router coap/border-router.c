@@ -52,8 +52,19 @@
 #include <string.h>
 #include <ctype.h>
 
-#define DEBUG DEBUG_NONE
+#define DEBUG 1
 #include "net/ip/uip-debug.h"
+
+#if DEBUG
+#include <stdio.h>
+#define PRINTF(...) printf(__VA_ARGS__)
+#define PRINT6ADDR(addr) PRINTF("[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]", ((uint8_t *)addr)[0], ((uint8_t *)addr)[1], ((uint8_t *)addr)[2], ((uint8_t *)addr)[3], ((uint8_t *)addr)[4], ((uint8_t *)addr)[5], ((uint8_t *)addr)[6], ((uint8_t *)addr)[7], ((uint8_t *)addr)[8], ((uint8_t *)addr)[9], ((uint8_t *)addr)[10], ((uint8_t *)addr)[11], ((uint8_t *)addr)[12], ((uint8_t *)addr)[13], ((uint8_t *)addr)[14], ((uint8_t *)addr)[15])
+#define PRINTLLADDR(lladdr) PRINTF("[%02x:%02x:%02x:%02x:%02x:%02x]", (lladdr)->addr[0], (lladdr)->addr[1], (lladdr)->addr[2], (lladdr)->addr[3], (lladdr)->addr[4], (lladdr)->addr[5])
+#else
+#define PRINTF(...)
+#define PRINT6ADDR(addr)
+#define PRINTLLADDR(addr)
+#endif
 
 #define MAX_ADDR 10
 /* Maximum length of the address plus the ":" separators */
@@ -61,26 +72,44 @@
 /* Number of chars for the address separators ("," and "'") */
 #define SEP_LENGTH  9 + 20
 
+#define MAX_CHUNKS MAX_ADDR * MAX_ADDR_LENGTH + SEP_LENGTH
+
+#define ADD_CHAR_IF_POSSIBLE(char) \
+  if(strpos >= *offset && bufpos < preferred_size) { \
+    buffer[bufpos++] = char; \
+  } \
+  ++strpos
+
+#define ADD_STRING_IF_POSSIBLE(string, op) \
+  tmplen = strlen(string); \
+  if(strpos + tmplen > *offset) { \
+    bufpos += snprintf((char *)buffer + bufpos, \
+                       preferred_size - bufpos + 1, \
+                       "%s", \
+                       string \
+                       + (*offset - (int32_t)strpos > 0 ? \
+                          *offset - (int32_t)strpos : 0)); \
+    if(bufpos op preferred_size) { \
+      PRINTF("res: BREAK at %s (%p)\n", string, resource); \
+      break; \
+    } \
+  } \
+  strpos += tmplen
+
 static uip_ipaddr_t prefix;
 static uint8_t prefix_set;
 static uip_ds6_route_t *r;
+static int32_t last_byte = 0;
+static char message[MAX_ADDR*MAX_ADDR_LENGTH + SEP_LENGTH + 13];
+static char addr_buff[MAX_ADDR_LENGTH];
 
-void addr_get_handler(void* request, void* response, 
-  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
-{
-  /* We have to consider also the rest of the JSON message */
-  char message[MAX_ADDR*MAX_ADDR_LENGTH + SEP_LENGTH + 13];
-  char addr_buff[MAX_ADDR_LENGTH];
+void build_addr_message() {
   char num;
-  int length, i, j, f;
+  int32_t i, j, f;
   uint16_t a;
-  
-  REST.set_header_content_type(response, REST.type.APPLICATION_JSON);
-  
-  /* Populat the buffer with the response payload*/
   strcpy(addr_buff,"");
   sprintf(message, "{'addr':['");
-  for(r = uip_ds6_route_head(), i = 0; r != NULL && i < MAX_ADDR;
+ for(r = uip_ds6_route_head(), i = 0; r != NULL && i < MAX_ADDR;
       r = uip_ds6_route_next(r), i++) {
     if (i != 0) strcat(message, "','");
     for(j = 0, f = 0; j < sizeof(uip_ipaddr_t); j += 2) {
@@ -88,31 +117,53 @@ void addr_get_handler(void* request, void* response,
       if(a == 0 && f >= 0) {
         if(f++ == 0) strcat(addr_buff, "::");
       } else {
-        if(f > 0) {
-          f = -1;
-        } else if(j > 0) {
-          strcat(addr_buff, ":");
-        }
-        sprintf(&num, "%x", a);
-        strcat(addr_buff, &num);
+         if(f > 0) {
+           f = -1;
+         } else if(j > 0) {
+           strcat(addr_buff, ":");
+         }
+         sprintf(&num, "%x", a);
+         strcat(addr_buff, &num);
       }
     }
-  // msg_offset -= 1;
     strcat(message,addr_buff);
     strcpy(addr_buff,"");
   }
   strcat(message, "']}");
-  length = strlen(message);
-  memcpy(buffer, message, length);
+}
+
+void addr_get_handler(void* request, void* response, 
+  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+  int32_t bufpos = 0; /* position within buffer (bytes written) */
+  int32_t length;     /* length of the addresses message */     
   
-  REST.set_header_etag(response, (uint8_t *) &length, 1);
-  REST.set_response_payload(response, buffer, length);
+  /* If the last message has been completely sent, build the new message */
+  if (last_byte == 0) build_addr_message();
+  
+  length = strlen(message);
+  bufpos = snprintf((char *)buffer, preferred_size + 1, message + last_byte);
+  /* snprintf() does not adjust return value if truncated by size. */
+  if (bufpos > preferred_size) bufpos = preferred_size;
+  last_byte += bufpos;
+  
+  REST.set_header_content_type(response, REST.type.APPLICATION_JSON);
+  REST.set_response_payload(response, buffer, bufpos);
+  
+  /* If the message is too long it has to be sent using
+   * CoAP's blockwise transfer. */
+  *offset += bufpos;
+  if (last_byte >= length) {
+    last_byte = 0;
+    strcpy(message,"");
+    *offset = -1;
+  }
 }
 
 PROCESS(border_router_process, "Border router process");
 PROCESS(coap_server_process, "CoAP server");
 
-RESOURCE(addr, "title=\"addr\";rt=\"Text\"", 
+RESOURCE(addr, "title=\"addr\";rt=\"Data\"", 
   addr_get_handler, NULL, NULL, NULL);
 
 
