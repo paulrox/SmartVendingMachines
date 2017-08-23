@@ -19,6 +19,7 @@ static void productBqty_get_handler(void* request, void* response,
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
 static void productBqty_put_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+static void productBqty_event_handler();
 
 RESOURCE(productBqty, "title=\"ProductBqty\";rt=\"Text\"", 
   productBqty_get_handler, NULL, productBqty_put_handler, NULL);
@@ -28,7 +29,7 @@ static void productBqty_get_handler(void* request, void* response,
 {
   /* Populat the buffer with the response payload */
   char message[50];
-  int length = 50;
+  int length;
 
   sprintf(message, "{'e':[{'n':'qty','v':'%d'}],'bu':'Pcs'}", 
     productB.remaining_qty);
@@ -46,7 +47,7 @@ static void productBqty_put_handler(void* request, void* response,
   int new_value, len;
   const char *val = NULL;
   
-  len = REST.get_post_variable(request, "qty", &val);
+  len = REST.get_post_variable(request, "value", &val);
      
   if (len > 0) {
      new_value = atoi(val);
@@ -56,3 +57,4 @@ static void productBqty_put_handler(void* request, void* response,
      REST.set_response_status(response, REST.status.BAD_REQUEST);
   }
 }
+

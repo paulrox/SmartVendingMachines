@@ -49,7 +49,7 @@ static void productBprice_put_handler(void* request, void* response,
   int new_value, len;
   const char *val = NULL;
   
-  len = REST.get_post_variable(request, "price", &val);
+  len = REST.get_post_variable(request, "value", &val);
      
   if (len > 0) {
      new_value = atoi(val);
