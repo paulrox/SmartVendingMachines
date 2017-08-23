@@ -34,29 +34,31 @@ public class ADN {
 	 * @param mn_cse URI of the MN
 	 */
 	private static void discover(String mn_cse) {
-		String vm_cont_raw, res_cont_raw, parent_cont;
+		String vm_cont_raw, res_cont_raw;
+		String parent_cont = "";
 		String[] vm_cont, res_cont, tmp;
+		int i = 0, vm_pos = 0;
+	
 		/* Discover the VM containers on the MN */
 		vm_cont_raw = IN_Mca.discoverResources(mn_cse, "?fu=1&rty=3&st=0");
 		vm_cont = vm_cont_raw.split(" ");
+		
 		for (String vm : vm_cont) {
-			/* Create the container for the VM */
+			
 			tmp = vm.split("/");
-			parent_cont = Constants.IN_CSE_URI + "/" + 
-					IN_AE.getRn() + "/" + tmp[tmp.length - 1];
-			containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + "/" + 
-					IN_AE.getRn(), tmp[tmp.length - 1]));
-			/* For each VM, get its resource containers */
-			res_cont_raw = IN_Mca.discoverResources(mn_cse, "?fu=1&rty=3&st=1");
-			res_cont = res_cont_raw.split(" ");
-			for (String res: res_cont) {
+			if (i == vm_pos) {
+				/* Create the container for the VM */
+				parent_cont = Constants.IN_CSE_URI + "/" + 
+						IN_AE.getRn() + "/" + tmp[tmp.length - 1];
+				containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + "/" + 
+						IN_AE.getRn(), tmp[tmp.length - 1]));
+				vm_pos += (Constants.NUM_RESOURCES + 1);
+			} else {
 				/* Create the container for the resource */
-				tmp = res.split("/");
-				/* GUARDARE QUI */
 				containers.add(IN_Mca.createContainer(parent_cont,
 						tmp[tmp.length - 1]));
 			}
-			
+			i++;
 		}
 		
 	}

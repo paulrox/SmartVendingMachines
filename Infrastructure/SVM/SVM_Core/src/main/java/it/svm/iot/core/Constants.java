@@ -26,6 +26,10 @@ public class Constants {
 	 */
 	public static final Boolean DEBUG = true;
 	
+	/** Num resources vending machine
+	 * */
+	public static final int NUM_RESOURCES = 9;
+	
 	/**
 	 * Maximum quantity for a specific product.
 	 */
@@ -76,7 +80,7 @@ public class Constants {
 	/**
 	 * Middle Node CSE URI
 	 */
-	public static final String MN_CSE_URI = "coap://" + LOOPBACK + ":5683/~/"
+	public static final String MN_CSE_URI = "coap://" + LOOPBACK + ":5684/~/"
 			+ "svm-mn-cse/svm-mn-name";
 	
 	/**
