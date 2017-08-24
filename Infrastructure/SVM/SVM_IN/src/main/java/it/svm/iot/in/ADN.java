@@ -149,7 +149,7 @@ public class ADN {
 		System.out.printf("AE SVM_Monitor registered on IN-CSE\n");
 		
 		/* CoAP server for handling notifications from the subscriptions */
-		thread = new CoAPMonitorThread("monitor");
+		thread = new CoAPMonitorThread("monitor", IN_Mca);
 		thread.start();
 		
 		/* Discovering MN containers */

@@ -30,9 +30,10 @@ public class CoAPMonitor extends CoapServer
     }
   }
   
-  public CoAPMonitor(String name) throws SocketException
+  public CoAPMonitor(String name, Mca mca) throws SocketException
   {
 	rn = name;
+	IN_Mca = mca;
     add(new Resource[] { new Monitor() });
   }
   
@@ -46,19 +47,41 @@ public class CoAPMonitor extends CoapServer
     }
      
     public void handlePOST(CoapExchange exchange)
-    {
+    {	
+    	int i = 0;
+    	
     	exchange.respond(ResponseCode.CREATED);
     	byte[] content = exchange.getRequestPayload();
         String contentStr = new String(content);
-        System.out.println(contentStr);
         
+        try {
         JSONObject root = new JSONObject(contentStr);
-		JSONObject m2msgn = (JSONObject) root.get("m2m:sgn");
-		JSONObject nev = (JSONObject) m2msgn.get("nev");
-		JSONObject rep = (JSONObject) nev.get("rep");
+		JSONObject m2msgn = root.getJSONObject("m2m:sgn");
+		JSONObject nev = m2msgn.getJSONObject("nev");
+		JSONObject rep = nev.getJSONObject("rep");
+		String reply = rep.getString("con");
 		
-		String uri = m2msgn.getString("sur");
-	
+		String uri_res = m2msgn.getString("sur");
+		String []tmp = uri_res.split("/");
+		uri_res = "";
+		/* Retrieving the URI path for the resource */
+		for (String sub_string: tmp) {
+			if (i != (tmp.length - 1) && i > 2) {
+				uri_res += "/";
+				uri_res += sub_string;
+			}
+			i++;
+		}
+		IN_Mca.createContentInstance(Constants.IN_CSE_URI + uri_res,
+				reply);
+		
+		System.out.println("Created new content instance:\n"
+				+ "res: " + uri_res);
+		System.out.println("con: " + reply);
+        }
+        catch (Exception e) {
+			// Doing nothing. The first notification message is ignored.
+        }
     }
   }
 }
