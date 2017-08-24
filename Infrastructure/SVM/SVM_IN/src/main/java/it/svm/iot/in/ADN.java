@@ -20,10 +20,11 @@ public class ADN {
 	private static Mca IN_Mca = Mca.getInstance();
 	
 	/**
-	 * Application Entity of the MN.
+	 * Application Entities
 	 */
 	
-	private static AE IN_AE;
+	private static AE IN_AE_Monitor;
+	private static AE IN_AE_Controller;
 	
 	/**
 	 * List containing the registered containers.
@@ -53,9 +54,9 @@ public class ADN {
 			if (i == vm_pos) {
 				/* Create the container for the VM */
 				parent_cont = Constants.IN_CSE_URI + "/" + 
-						IN_AE.getRn() + "/" + tmp[tmp.length - 1];
+						IN_AE_Monitor.getRn() + "/" + tmp[tmp.length - 1];
 				containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + 
-						"/" + IN_AE.getRn(), tmp[tmp.length - 1]));
+						"/" + IN_AE_Monitor.getRn(), tmp[tmp.length - 1]));
 				vm_pos += (Constants.NUM_RESOURCES + 1);
 			} else {
 				/* Create the container for the resource */
@@ -93,10 +94,37 @@ public class ADN {
 					cont_uri , notification_url, tmp[tmp.length - 1] + "_monitor");
 			}
 		}
-
 	}
 	
+	/**
+	 * It inits the AE Controller with all the useful containers
+	 * @param containers_mn Containers on the MN
+	 */
+	
+	private static void init_controller(String[] containers_mn) {
+		String []tmp;
+		String parent_cont = "";
+		int i = 0, vm_pos = 0;
+		
+		for (String cont : containers_mn) {
 
+			tmp = cont.split("/");
+			if (i == vm_pos) {
+				/* Create the container for the VM */
+				parent_cont = Constants.IN_CSE_URI + "/" + 
+						IN_AE_Controller.getRn() + "/" + tmp[tmp.length - 1];
+				containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + 
+						"/" + IN_AE_Controller.getRn(), tmp[tmp.length - 1]));
+				vm_pos += (Constants.NUM_RESOURCES + 1);
+			} else {
+				/* Create the container for the resource */
+				containers.add(IN_Mca.createContainer(parent_cont,
+						tmp[tmp.length - 1]));
+			}
+			i++;
+		}
+		
+	}
 	/**
 	 * Private constructor for the ADN class.
 	 */
@@ -114,8 +142,9 @@ public class ADN {
 		CoAPMonitorThread thread;
 		
 		System.out.printf("********** Infrastructure Node ADN **********\n");
-		IN_AE = IN_Mca.createAE(Constants.IN_CSE_URI, "SVM_Monitor");
-		System.out.printf("AE registered on IN-CSE\n");
+		
+		IN_AE_Monitor = IN_Mca.createAE(Constants.IN_CSE_URI, "SVM_Monitor");
+		System.out.printf("AE SVM_Monitor registered on IN-CSE\n");
 		
 		/* CoAP server for handling notifications from the subscriptions */
 		thread = new CoAPMonitorThread("monitor");
@@ -126,6 +155,11 @@ public class ADN {
 		
 		/* Subscribe for the resources to be sensed */
 		subscribe(containers_mn, "coap://127.0.0.1:5685/monitor");
+		
+		/* Creating Controller AE */
+		IN_AE_Controller = IN_Mca.createAE(Constants.IN_CSE_URI, "SVM_Controller");
+		System.out.printf("AE SVM_Controller registered on IN-CSE\n");
+		init_controller(containers_mn);
 		
 		System.out.println("Enter 'q' to quit");
 		while(!exit) {

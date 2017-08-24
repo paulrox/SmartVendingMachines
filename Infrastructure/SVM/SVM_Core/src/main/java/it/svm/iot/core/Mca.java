@@ -220,18 +220,5 @@ public final class Mca {
 			System.out.println(response);
 	}
 
-	public String discoverContainer(String cse) {
-
-		CoapClient client = new CoapClient(cse);
-		Request req = Request.newGet();
-		req.getOptions().addOption(new Option(256, "admin:admin"));
-		req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
-		req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
-		CoapResponse responseBody = client.advanced(req);
-		String response = new String(responseBody.getPayload());
-		JSONObject content = new JSONObject(response);
-		String path = content.getString("m2m:uril");
-		return path;
-
-	}
+	
 }
