@@ -29,6 +29,8 @@
 #define PRINTLLADDR(addr)
 #endif
 
+static struct ctimer ct;
+
 static struct coordinate locations[] = { 
   {7210, 3898},
   {7229, 3965},
@@ -39,6 +41,7 @@ static struct coordinate locations[] = {
 
 extern char alarm_type;
 float u_k = 0;
+unsigned int qty_tick = 0, alarm_tick = 0, status_tick = 0;
 int machine_type;
 int machine_id, machine_status;
 int node_lat, node_long;
@@ -70,6 +73,31 @@ void init_vending_machine()
   productB.price = 2.49;
 }
 
+static void ctimer_callback(void *ptr)
+{
+  qty_tick++;
+  alarm_tick++;
+  status_tick++;
+
+  if (qty_tick == QTY_DELAY) {
+    qty_tick = 0;
+    if (productA.remaining_qty > 0)
+      productA.remaining_qty--;
+    if (productB.remaining_qty > 0)
+      productB.remaining_qty--;
+  }
+
+  if (alarm_tick == ALARM_DELAY) {
+    alarm_tick = 0;
+    alarm_type = 'F';
+  }
+
+  if (status_tick == STATUS_DELAY) 
+    machine_status = 0;
+
+  ctimer_restart(&ct);
+}
+
 PROCESS(server, "coffe_vending_machine");
 AUTOSTART_PROCESSES(&server);
 
@@ -92,6 +120,8 @@ PROCESS_THREAD(server, ev, data)
   rest_activate_resource(&productAprice, "ProductA/price");
   rest_activate_resource(&productBqty, "ProductB/qty");
   rest_activate_resource(&productBprice, "ProductB/price");
+
+  ctimer_set(&ct, CLOCK_SECOND, ctimer_callback, NULL);
   while(1) {
     PROCESS_WAIT_EVENT();
   }
