@@ -199,7 +199,7 @@ public final class Mca {
 	 * @param cse URI of the container
 	 * @param notificationUrl URI of the CoAP server
 	 */
-	public void createSubscription(String cse, String notificationUrl){
+	public void createSubscription(String cse, String notificationUrl, String resource_name){
 		CoapClient client = new CoapClient(cse);
 		Request req = Request.newPost();
 		req.getOptions().addOption(new Option(267, 23));
@@ -207,7 +207,7 @@ public final class Mca {
 		req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
 		req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
 		JSONObject content = new JSONObject();
-		content.put("rn", "Monitor");
+		content.put("rn", resource_name);
 		content.put("nu", notificationUrl);
 		content.put("nct", 2);
 		JSONObject root = new JSONObject();
@@ -218,5 +218,20 @@ public final class Mca {
 		String response = new String(responseBody.getPayload());
 		if (DEBUG)
 			System.out.println(response);
+	}
+
+	public String discoverContainer(String cse) {
+
+		CoapClient client = new CoapClient(cse);
+		Request req = Request.newGet();
+		req.getOptions().addOption(new Option(256, "admin:admin"));
+		req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
+		req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
+		CoapResponse responseBody = client.advanced(req);
+		String response = new String(responseBody.getPayload());
+		JSONObject content = new JSONObject(response);
+		String path = content.getString("m2m:uril");
+		return path;
+
 	}
 }

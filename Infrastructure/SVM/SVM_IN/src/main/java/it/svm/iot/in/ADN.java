@@ -16,16 +16,19 @@ public class ADN {
 	/**
 	 * Mca reference point for the IN.
 	 */
+	
 	private static Mca IN_Mca = Mca.getInstance();
 	
 	/**
 	 * Application Entity of the MN.
 	 */
+	
 	private static AE IN_AE;
 	
 	/**
 	 * List containing the registered containers.
 	 */
+	
 	private static ArrayList<Container> containers = 
 			new ArrayList<Container>();
 	
@@ -33,25 +36,26 @@ public class ADN {
 	 * Discover all the useful resources on the MN.
 	 * @param mn_cse URI of the MN
 	 */
-	private static void discover(String mn_cse) {
-		String vm_cont_raw, res_cont_raw;
+	
+	private static String[] discover(String mn_cse) {
+		String containers_mn_raw;
 		String parent_cont = "";
-		String[] vm_cont, res_cont, tmp;
+		String[] containers_mn, tmp;
 		int i = 0, vm_pos = 0;
 	
-		/* Discover the VM containers on the MN */
-		vm_cont_raw = IN_Mca.discoverResources(mn_cse, "?fu=1&rty=3&st=0");
-		vm_cont = vm_cont_raw.split(" ");
+		/* Discover the containers on the MN */
+		containers_mn_raw = IN_Mca.discoverResources(mn_cse, "?fu=1&rty=3");
+		containers_mn = containers_mn_raw.split(" ");
 		
-		for (String vm : vm_cont) {
+		for (String cont : containers_mn) {
 			
-			tmp = vm.split("/");
+			tmp = cont.split("/");
 			if (i == vm_pos) {
 				/* Create the container for the VM */
 				parent_cont = Constants.IN_CSE_URI + "/" + 
 						IN_AE.getRn() + "/" + tmp[tmp.length - 1];
-				containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + "/" + 
-						IN_AE.getRn(), tmp[tmp.length - 1]));
+				containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + 
+						"/" + IN_AE.getRn(), tmp[tmp.length - 1]));
 				vm_pos += (Constants.NUM_RESOURCES + 1);
 			} else {
 				/* Create the container for the resource */
@@ -61,8 +65,38 @@ public class ADN {
 			i++;
 		}
 		
+		return containers_mn;
 	}
 	
+	/**
+	 * 
+	 * @param mn_cse Middle Node CSE Uri to be subscribed.
+	 * @param containers_mn Array of containers in the MN cse 
+	 * 					 	for the subscription.
+	 * @param notification_url CoAP Server Url for the notification.
+	 */
+	
+	private static void subscribe(String[] containers_mn, 
+			String notification_url) {
+		String []tmp;
+		for (String cont_uri : containers_mn) {
+		
+			if (cont_uri.toLowerCase().contains("sens") ||
+					cont_uri.toLowerCase().contains("qty") ||
+					cont_uri.toLowerCase().contains("alarm") ||
+					cont_uri.toLowerCase().contains("status")) {
+				System.out.println("coap://127.0.0.1:5684/~"  + 
+					cont_uri);
+				tmp = cont_uri.split("/");
+				
+				IN_Mca.createSubscription("coap://127.0.0.1:5684/~"  + 
+					cont_uri , notification_url, tmp[tmp.length - 1] + "_monitor");
+			}
+		}
+
+	}
+	
+
 	/**
 	 * Private constructor for the ADN class.
 	 */
@@ -76,11 +110,22 @@ public class ADN {
 		Scanner keyboard = new Scanner(System.in);
 		Boolean exit = false;
 		String input;
+		String[] containers_mn;
+		CoAPMonitorThread thread;
+		
 		System.out.printf("********** Infrastructure Node ADN **********\n");
 		IN_AE = IN_Mca.createAE(Constants.IN_CSE_URI, "SVM_Monitor");
 		System.out.printf("AE registered on IN-CSE\n");
 		
-		discover(Constants.MN_CSE_SHORT_URI);
+		/* CoAP server for handling notifications from the subscriptions */
+		thread = new CoAPMonitorThread("monitor");
+		thread.start();
+		
+		/* Discovering MN containers */
+		containers_mn = discover(Constants.MN_CSE_SHORT_URI);
+		
+		/* Subscribe for the resources to be sensed */
+		subscribe(containers_mn, "coap://127.0.0.1:5685/monitor");
 		
 		System.out.println("Enter 'q' to quit");
 		while(!exit) {
