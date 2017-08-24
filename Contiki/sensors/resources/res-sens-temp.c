@@ -62,18 +62,36 @@ static void sens_get_handler(void* request, void* response,
 
 /*
  * Implemented the following controlled systems
- *   
+ * Fast version(settling time 5s)
+ * temp_k = 1.9*temp_k_1 - 0.9*temp_k_2 + 0.0011488*e_k;  
  * 0.0011488 z^2
  * -------------
  * (z-1) (z-0.9)
  *
+ * Slow version(settling time 30s)
+ * temp_k = 1.9899*temp_k_1 - 0.9899*temp_k_2 + 0.000014941*e_k;
+ *   1.4941e-05 (z^2 + 9.315e-14)
+ * ----------------------------
+ *   (z-0.9918) (z-0.9982)
  */
 
 static void sens_periodic_handler()
 {
+  
+
   e_k = u_k - temp_k;
   
-  temp_k = 1.9*temp_k_1 - 0.9*temp_k_2 + 0.0011488*e_k;
+  temp_k = 1.9899*temp_k_1 - 0.9899*temp_k_2 + 0.000014941*e_k;
+  //temp_k = 1.9*temp_k_1 - 0.9*temp_k_2 + 0.0011488*e_k; 
+  
+  /* To output
+  float tmp;
+  tmp = (float)((float)temp_k - (int)temp_k);
+  tmp = tmp * 100;
+  
+  if (temp_k != temp_k_1)
+    printf("Sensed temperature: %d.%d\n", (int)temp_k, (int)tmp);*/
+
   e_k_2 = e_k_1;
   e_k_1 = e_k;
   temp_k_2 = temp_k_1;
