@@ -2,6 +2,7 @@ package it.svm.iot.in;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import it.svm.iot.core.*;
 
 
@@ -143,6 +144,7 @@ public class ADN {
 		
 		System.out.printf("********** Infrastructure Node ADN **********\n");
 		
+		/* Creating Sensor AE */
 		IN_AE_Monitor = IN_Mca.createAE(Constants.IN_CSE_URI, "SVM_Monitor");
 		System.out.printf("AE SVM_Monitor registered on IN-CSE\n");
 		

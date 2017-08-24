@@ -11,10 +11,12 @@ import org.eclipse.californium.core.network.CoapEndpoint;
 import org.eclipse.californium.core.network.EndpointManager;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.eclipse.californium.core.server.resources.Resource;
+import org.json.JSONObject;
 
 public class CoAPMonitor extends CoapServer
 {
   private static final int COAP_PORT = 5685;
+  private static Mca IN_Mca;
   public String rn;
   
   void addEndpoints()
@@ -49,6 +51,14 @@ public class CoAPMonitor extends CoapServer
     	byte[] content = exchange.getRequestPayload();
         String contentStr = new String(content);
         System.out.println(contentStr);
+        
+        JSONObject root = new JSONObject(contentStr);
+		JSONObject m2msgn = (JSONObject) root.get("m2m:sgn");
+		JSONObject nev = (JSONObject) m2msgn.get("nev");
+		JSONObject rep = (JSONObject) nev.get("rep");
+		
+		String uri = m2msgn.getString("sur");
+	
     }
   }
 }
