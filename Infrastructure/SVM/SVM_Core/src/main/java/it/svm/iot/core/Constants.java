@@ -78,10 +78,25 @@ public class Constants {
 	/************************ Middle Node Constants **************************/
 	
 	/**
-	 * Middle Node CSE URI
+	 * Middle Node CSE CoAP URI.
 	 */
-	public static final String MN_CSE_URI = "coap://" + LOOPBACK + ":5684/~/"
-			+ "svm-mn-cse/svm-mn-name";
+	public static final String MN_CSE_COAP = "coap://" + LOOPBACK + ":5684/~/";
+	
+	/**
+	 * Middle Node CSE ID.
+	 */
+	public static final String MN_CSE_ID = "svm-mn-cse";
+	
+	/**
+	 * Middle Node CSE Name.
+	 */
+	public static final String MN_CSE_NAME = "svm-mn-name";
+	
+	/**
+	 * Middle Node CSE complete URI.
+	 */
+	public static final String MN_CSE_URI = MN_CSE_COAP + MN_CSE_ID + "/" +
+			MN_CSE_NAME;
 	
 	/**
 	 * Middle Node CSE URI without the cse name.
@@ -95,6 +110,13 @@ public class Constants {
 	
 	/******************** Infrastructure Node Constants **********************/
 	
-	public static final String IN_CSE_URI = "coap://" + LOOPBACK + ":5683/~/"
-			+ "svm-in-cse/svm-in-name";
+	
+	public static final String IN_CSE_COAP = "coap://" + LOOPBACK + ":5683/~/";
+	
+	public static final String IN_CSE_ID = "svm-in-cse";
+	
+	public static final String IN_CSE_NAME = "svm-in-name";
+	
+	public static final String IN_CSE_URI = IN_CSE_COAP + IN_CSE_ID + "/" +
+			IN_CSE_NAME;
 }

@@ -223,14 +223,56 @@ public class ADN {
 		});
 	}
 	
+	private static String[] discover(String in_cse) {
+		String ae_in_raw, containers_in_raw, uri;
+		String parent_cont = "";
+		String[] containers_in, ae_in, tmp;
+		Boolean ae_found = false;
+		int i = 0, vm_pos = 0;
+		
+		/* Search the "SVM_Controller" AE on the IN */
+		ae_in_raw = MN_Mca.discoverResources(in_cse, "?fu=1&rty=2");
+		ae_in = ae_in_raw.split(" ");
+		for (String ae : ae_in) {
+			if (ae.contains("SVM_Controller")) ae_found = true;
+		}
+		if (!ae_found) return null;
+
+		uri = in_cse + "/SVM_Controller";
+		/* Discover the containers on the SVM_Controller */
+		containers_in_raw = MN_Mca.discoverResources(uri, "?fu=1&rty=3");
+		containers_in = containers_in_raw.split(" ");
+		
+		/*for (String cont : containers_mn) {
+			
+			tmp = cont.split("/");
+			if (i == vm_pos) {
+				 Create the container for the VM 
+				parent_cont = Constants.IN_CSE_URI + "/" + 
+						IN_AE_Monitor.getRn() + "/" + tmp[tmp.length - 1];
+				containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + 
+						"/" + IN_AE_Monitor.getRn(), tmp[tmp.length - 1]));
+				vm_pos += (Constants.NUM_RESOURCES + 1);
+			} else {
+				 Create the container for the resource 
+				containers.add(IN_Mca.createContainer(parent_cont,
+						tmp[tmp.length - 1]));
+			}
+			i++;
+		}*/
+		
+		return containers_in;
+	}
+	
 	/**
 	 * Main method for the ADN on the MN side
 	 * @param args Arguments for the ADN
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		Scanner keyboard = new Scanner(System.in);
 		Boolean exit = false;
 		String input;
+		String[] tmp;
 		System.out.printf("********** Middle Node ADN **********\n");
 		MN_AE = MN_Mca.createAE(Constants.MN_CSE_URI, "SVM_Monitor");
 		System.out.printf("AE registered on MN-CSE\n");
@@ -253,6 +295,18 @@ public class ADN {
 		
 		System.out.println("Enter 'q' to quit");
 		while(!exit) {
+			/* Perform discovery on IN */
+			tmp = discover(Constants.MN_CSE_COAP + Constants.IN_CSE_ID);
+			if (tmp != null) {
+				for (String cont : tmp) {
+					System.out.println(cont);
+				}
+			}
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			/* Busy wait */
 			input = keyboard.nextLine();
 			if (input != null && input.equals("q"))

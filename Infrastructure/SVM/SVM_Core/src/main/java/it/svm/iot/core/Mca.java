@@ -70,6 +70,11 @@ public final class Mca {
 			System.out.println(body);
 		req.setPayload(body);
 		CoapResponse responseBody = client.advanced(req);
+		if (responseBody == null) {
+			System.err.printf("MCA: Error in createAE(), no "
+					+ "response from %s\n", cse);
+			System.exit(-1);
+		}
 		String response = new String(responseBody.getPayload());
 		if (DEBUG)
 			System.out.println(response);
@@ -117,7 +122,11 @@ public final class Mca {
 			System.out.println(body);
 		req.setPayload(body);
 		CoapResponse responseBody = client.advanced(req);
-
+		if (responseBody == null) {
+			System.err.printf("MCA: Error in createContainer(), no "
+					+ "response from %s\n", cse);
+			System.exit(-1);
+		}
 		String response = new String(responseBody.getPayload());
 		if (DEBUG)
 			System.out.println(response);
@@ -165,7 +174,11 @@ public final class Mca {
 			System.out.println(body);
 		req.setPayload(body);
 		CoapResponse responseBody = client.advanced(req);
-		
+		if (responseBody == null) {
+			System.err.printf("MCA: Error in createContentInstance(), no "
+					+ "response from %s\n", cse);
+			System.exit(-1);
+		}
 		String response = new String(responseBody.getPayload());
 		if (DEBUG)
 			System.out.println(response);
@@ -176,15 +189,20 @@ public final class Mca {
 	 * @param mn_cse URI of the remote CSE
 	 * @return String containing the list of the discovered resources
 	 */
-	public String discoverResources(String mn_cse, String query){
+	public String discoverResources(String cse, String query){
 		/* Append the query string */
-		String cse = mn_cse + query;
-		CoapClient client = new CoapClient(cse);
+		String uri = cse + query;
+		CoapClient client = new CoapClient(uri);
 		Request req = Request.newGet();
 		req.getOptions().addOption(new Option(256, "admin:admin"));
 		req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
 		req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
 		CoapResponse responseBody = client.advanced(req);
+		if (responseBody == null) {
+			System.err.printf("MCA: Error in discoverResources(), no "
+					+ "response from %s\n", uri);
+			System.exit(-1);
+		}
 		String response = new String(responseBody.getPayload());
 		JSONObject content = new JSONObject(response);
 		String path = content.getString("m2m:uril");
@@ -215,6 +233,11 @@ public final class Mca {
 		String body = root.toString();
 		req.setPayload(body);
 		CoapResponse responseBody = client.advanced(req);
+		if (responseBody == null) {
+			System.err.printf("MCA: Error in createSubscription(), no "
+					+ "response from %s\n", cse);
+			System.exit(-1);
+		}
 		String response = new String(responseBody.getPayload());
 		if (DEBUG)
 			System.out.println(response);

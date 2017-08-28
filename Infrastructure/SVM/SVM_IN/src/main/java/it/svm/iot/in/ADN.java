@@ -151,7 +151,7 @@ public class ADN {
 		thread.start();
 		
 		/* Discovering MN containers */
-		containers_mn = discover(Constants.MN_CSE_SHORT_URI);
+		containers_mn = discover(Constants.IN_CSE_COAP + Constants.MN_CSE_ID);
 		
 		/* Subscribe for the resources to be sensed */
 		subscribe(containers_mn, "coap://127.0.0.1:5685/monitor");
