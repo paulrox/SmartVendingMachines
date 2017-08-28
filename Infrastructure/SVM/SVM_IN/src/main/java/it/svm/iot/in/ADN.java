@@ -1,7 +1,6 @@
 package it.svm.iot.in;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import it.svm.iot.core.*;
 
 
@@ -36,6 +35,7 @@ public class ADN {
 	/**
 	 * Discover all the useful resources on the MN.
 	 * @param mn_cse URI of the MN
+	 * @return List of the discovered resources
 	 */
 	
 	private static String[] discover(String mn_cse) {
@@ -135,9 +135,6 @@ public class ADN {
 	 * @param args Arguments for the ADN
 	 */
 	public static void main(String[] args) {
-		Scanner keyboard = new Scanner(System.in);
-		Boolean exit = false;
-		String input;
 		String[] containers_mn;
 		CoAPMonitorThread thread;
 		
@@ -160,14 +157,8 @@ public class ADN {
 		IN_AE_Controller = IN_Mca.createAE(Constants.IN_CSE_URI, "SVM_Controller");
 		System.out.printf("AE SVM_Controller registered on IN-CSE\n");
 		init_controller(containers_mn);
-		
-		System.out.println("Enter 'q' to quit");
-		while(!exit) {
-			/* Busy wait */
-			input = keyboard.nextLine();
-			if (input != null && input.equals("q"))
-				exit = true;
+
+		while(true) {
 		}
-		keyboard.close();
 	}
 }

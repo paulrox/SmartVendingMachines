@@ -24,7 +24,7 @@ public class Constants {
 	/**
 	 * Enables the debugging code.
 	 */
-	public static final Boolean DEBUG = true;
+	public static final Boolean DEBUG = false;
 	
 	/** Num resources vending machine
 	 * */
