@@ -39,7 +39,7 @@ public class ADN {
 	 */
 	
 	private static String[] discover(String mn_cse) {
-		String containers_mn_raw;
+		String containers_mn_raw, id;
 		String parent_cont = "";
 		String[] containers_mn, tmp;
 		int i = 0, vm_pos = 0;
@@ -53,6 +53,8 @@ public class ADN {
 			tmp = cont.split("/");
 			if (i == vm_pos) {
 				/* Create the container for the VM */
+				id = tmp[tmp.length - 1].substring(4, 6);
+				System.out.printf("Discovered VM: %s\n", id);
 				parent_cont = Constants.IN_CSE_URI + "/" + 
 						IN_AE_Monitor.getRn() + "/" + tmp[tmp.length - 1];
 				containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + 
@@ -71,7 +73,6 @@ public class ADN {
 	
 	/**
 	 * 
-	 * @param mn_cse Middle Node CSE Uri to be subscribed.
 	 * @param containers_mn Array of containers in the MN cse 
 	 * 					 	for the subscription.
 	 * @param notification_url CoAP Server Url for the notification.
@@ -80,18 +81,17 @@ public class ADN {
 	private static void subscribe(String[] containers_mn, 
 			String notification_url) {
 		String []tmp;
-		for (String cont_uri : containers_mn) {
-		
+		for (String cont_uri : containers_mn) {	
 			if (cont_uri.toLowerCase().contains("sens") ||
 					cont_uri.toLowerCase().contains("qty") ||
 					cont_uri.toLowerCase().contains("alarm") ||
 					cont_uri.toLowerCase().contains("status")) {
-				System.out.println("coap://127.0.0.1:5684/~"  + 
-					cont_uri);
 				tmp = cont_uri.split("/");
-				
-				IN_Mca.createSubscription("coap://127.0.0.1:5684/~"  + 
-					cont_uri , notification_url, tmp[tmp.length - 1] + "_monitor");
+				IN_Mca.createSubscription(Constants.MN_CSE_COAP  + 
+					cont_uri , notification_url, tmp[tmp.length - 1] + 
+						"_monitor");
+				System.out.println("Subscribed to: " + Constants.MN_CSE_COAP +
+					cont_uri);
 			}
 		}
 	}
@@ -148,9 +148,11 @@ public class ADN {
 		thread.start();
 		
 		/* Discovering MN containers */
-		containers_mn = discover(Constants.IN_CSE_COAP + Constants.MN_CSE_ID);
+		containers_mn = discover(Constants.IN_CSE_COAP + "/" + 
+				Constants.MN_CSE_ID);
 		
 		/* Subscribe for the resources to be sensed */
+		System.out.println("Subscribing to the discovered resources...");
 		subscribe(containers_mn, "coap://127.0.0.1:5685/monitor");
 		
 		/* Creating Controller AE */

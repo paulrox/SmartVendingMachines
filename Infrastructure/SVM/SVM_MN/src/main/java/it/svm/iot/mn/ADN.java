@@ -293,8 +293,8 @@ public class ADN {
 		
 		while(true) {
 			/* Perform discovery on IN */
-			System.out.println("Trying to discover CONTROLLER on IN");
-			tmp = discover(Constants.MN_CSE_COAP + Constants.IN_CSE_ID);
+			/*System.out.println("Trying to discover CONTROLLER on IN");
+			tmp = discover(Constants.MN_CSE_COAP + "/" + Constants.IN_CSE_ID);
 			if (tmp != null) {
 				for (String cont : tmp) {
 					System.out.println(cont);
@@ -304,7 +304,7 @@ public class ADN {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
+			}*/
 		}
 	}
 

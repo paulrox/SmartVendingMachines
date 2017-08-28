@@ -47790,3 +47790,2466 @@ ResponsePrimitive [responseStatusCode=2000,
 ]
 [2017-08-28 12:16:15,449 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
 Response to sent: ACK-2.05   MID=61853, Token=[0b28e1882f3f2dd7], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:32:59,490 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Starting Data Mapper
+[2017-08-28 19:32:59,530 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering XML Mapper Service..
+[2017-08-28 19:33:20,796 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+XML Mapper service registered.
+[2017-08-28 19:33:20,803 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering JSON Mapper Service..
+[2017-08-28 19:33:25,544 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+JSON Mapper service registered.
+[2017-08-28 19:33:26,545 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Register CoAP RestClientService..
+[2017-08-28 19:33:26,604 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Starting CoAP server
+[2017-08-28 19:33:27,734 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CseService opened
+[2017-08-28 19:33:27,767 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register HTTP RestClientService..
+[2017-08-28 19:33:27,947 INFO] - org.eclipse.om2m.binding.http.Activator 
+HTTP RestClientService is registered.
+[2017-08-28 19:33:27,977 INFO] - org.eclipse.om2m.binding.http.Activator 
+HttpService discovered
+[2017-08-28 19:33:27,992 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Starting Persistence JPA plugin...
+[2017-08-28 19:33:28,023 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register / context
+[2017-08-28 19:33:28,107 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Initializing Database...
+[2017-08-28 19:33:28,109 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Creating new EntityManagerFactory...
+[2017-08-28 19:33:29,933 INFO] - org.eclipse.om2m.core.Activator 
+Starting CSE...
+[2017-08-28 19:33:30,042 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/xml
+[2017-08-28 19:33:30,043 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/json
+[2017-08-28 19:33:30,134 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: coap
+[2017-08-28 19:33:30,151 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: http
+[2017-08-28 19:33:30,222 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+HttpService discovered
+[2017-08-28 19:33:30,223 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+Register /webpage http context
+[2017-08-28 19:33:51,662 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+DataBase initialized.
+[2017-08-28 19:33:52,089 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Registering Database (JPA-EL) Service
+[2017-08-28 19:33:52,092 INFO] - org.eclipse.om2m.core.Activator 
+DataBase persistence service discovered
+[2017-08-28 19:33:52,124 INFO] - org.eclipse.om2m.core.thread.CoreExecutor 
+Creating thread pool with corePoolSize=5 & maximumSize=50
+[2017-08-28 19:33:52,157 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Initializating the cseBase
+[2017-08-28 19:33:52,301 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create AccessControlPolicy resource
+[2017-08-28 19:33:52,797 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create CSEBase resource
+[2017-08-28 19:33:52,979 INFO] - org.eclipse.om2m.core.Activator 
+Registering CseService...
+[2017-08-28 19:33:53,077 INFO] - org.eclipse.om2m.binding.http.Activator 
+CseService discovered
+[2017-08-28 19:33:53,087 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CSE Service discovered
+[2017-08-28 19:33:53,090 INFO] - org.eclipse.om2m.core.Activator 
+CSE Started
+[2017-08-28 19:33:58,770 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:33:58,789 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-in-cse,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ ]
+[2017-08-28 19:33:58,793 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Content type headers: application/xml;ty=16
+[2017-08-28 19:33:58,795 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: application/xml
+[2017-08-28 19:33:58,796 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: ty=16
+[2017-08-28 19:33:58,797 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: 
+[2017-08-28 19:33:58,799 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse,
+ from=admin:admin,
+ requestIdentifier=001,
+ resourceType=16,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={}]
+[2017-08-28 19:33:58,804 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse
+[2017-08-28 19:33:58,810 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [RemoteCSEController]
+[2017-08-28 19:33:59,239 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ requestIdentifier=001,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <ty>16</ty>
+   <ri>/svm-in-cse/csr-519989875</ri>
+   <pi>/svm-in-cse</pi>
+   <ct>20170828T193358</ct>
+   <lt>20170828T193358</lt>
+   <acpi>/svm-in-cse/acp-402889561</acpi>
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/csr-519989875,
+ contentType=application/xml,
+]
+[2017-08-28 19:37:03,496 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:03,506 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name
+[2017-08-28 19:37:03,512 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[2])]
+[2017-08-28 19:37:03,516 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 19:37:03,527 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:03,531 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:03,534 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name
+[2017-08-28 19:37:03,537 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [AEController]
+[2017-08-28 19:37:04,243 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:ae" : {
+      "rn" : "SVM_Monitor",
+      "ty" : 2,
+      "ri" : "/svm-in-cse/CAE492544125",
+      "pi" : "/svm-in-cse",
+      "ct" : "20170828T193703",
+      "lt" : "20170828T193703",
+      "acpi" : [ "/svm-in-cse/acp-210767788" ],
+      "et" : "20180828T193703",
+      "api" : "SVM_Monitor-ID",
+      "aei" : "CAE492544125",
+      "rr" : true
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/CAE492544125,
+ contentType=application/json,
+]
+[2017-08-28 19:37:04,246 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=27256, Token=[b08f690e275003e8], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 67, 65, 69, 52, 57, 50, 53, 52, 52, 49, 50, 53])], "{".. 3 bytes
+[2017-08-28 19:37:04,356 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:04,357 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:04,359 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:04,359 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:04,361 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:04,363 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@aa0077,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:04,364 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:06,896 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:06,914 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@aa0077,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:06,914 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@aa0077,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:07,878 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:07,926 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:07,945 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:12,023 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:12,043 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:12,054 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27257, Token=[67c113b64bdb6f97], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:13,878 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:13,879 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:13,881 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:13,887 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:13,888 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:13,889 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@14d2c8b,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:13,892 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:13,894 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:13,911 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@14d2c8b,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:13,921 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@14d2c8b,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:13,958 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:13,973 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:13,981 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:14,053 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:14,054 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:14,055 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27262, Token=[b1ac3bd2091a92d6], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:15,637 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:15,639 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:15,640 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:15,642 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:15,643 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:15,647 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@1aa6a4c,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:15,648 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:15,653 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:15,654 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@1aa6a4c,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:15,655 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@1aa6a4c,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:15,681 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:15,683 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:15,686 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:15,846 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:15,846 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:15,848 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27267, Token=[94c233d3cb1d341c], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:17,452 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:17,452 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:17,453 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:17,453 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:17,453 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:17,454 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@1133b7d,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:17,457 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:17,461 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:17,468 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@1133b7d,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:17,476 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@1133b7d,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:17,503 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:17,504 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:17,505 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:17,608 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:17,609 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:17,612 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27272, Token=[1ad113d98662b0b7], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:19,202 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:19,202 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:19,203 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:19,203 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:19,203 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:19,204 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@1f9fc02,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:19,205 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:19,207 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:19,207 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@1f9fc02,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:19,212 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@1f9fc02,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:19,292 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:19,299 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:19,300 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:19,387 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:19,400 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:19,401 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27277, Token=[07917e554d724a54], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:20,970 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:20,971 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:20,971 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:20,971 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:20,972 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:20,972 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@921f7c,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:20,974 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:20,976 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:20,977 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@921f7c,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:20,993 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@921f7c,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:21,010 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:21,012 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:21,016 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:21,111 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:21,112 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:21,114 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27282, Token=[db041b4cc74bb196], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:22,652 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:22,653 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:22,653 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:22,654 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:22,654 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:22,654 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@2699bd,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:22,654 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:22,657 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:22,661 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@2699bd,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:22,669 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@2699bd,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:22,703 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:22,719 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:22,720 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:22,812 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:22,812 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:22,814 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27287, Token=[aa452cae3d86ba43], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:24,349 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:24,351 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:24,352 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:24,352 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:24,352 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:24,353 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@4f1438,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:24,353 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:24,354 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:24,357 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@4f1438,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:24,381 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@4f1438,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:24,389 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:24,391 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:24,391 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:24,547 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:24,548 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:24,548 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27292, Token=[3c28b996ffeb974e], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:26,084 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:26,085 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:26,085 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:26,086 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:26,086 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:26,087 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@19c5bd1,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:26,088 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:26,104 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:26,117 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@19c5bd1,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:26,117 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@19c5bd1,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:26,192 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:26,193 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:26,203 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:26,303 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:26,303 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:26,304 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27297, Token=[349d0d830a4033ae], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:27,834 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:27,835 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:27,835 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:27,836 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:27,838 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:27,839 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@74223e,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:27,843 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:27,845 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:27,845 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@74223e,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:27,848 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@74223e,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:27,908 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:27,910 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:27,910 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:27,989 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:27,991 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:27,992 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27302, Token=[4259007efbceb23f], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:29,527 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:29,527 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:29,528 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:29,528 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:29,529 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:29,529 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@5a5edb,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:29,530 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:29,555 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:29,559 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@5a5edb,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:29,560 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@5a5edb,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:29,601 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:29,610 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:29,616 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:29,715 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:29,715 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:29,716 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27307, Token=[17cc0ea0e085c038], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:31,225 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:31,226 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:31,226 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:31,226 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:31,227 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:31,227 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@9b5471,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:31,229 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:31,236 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:31,249 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@9b5471,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:31,251 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@9b5471,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:31,277 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:31,282 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:31,283 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:31,376 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:31,377 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:31,377 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27312, Token=[bf287a75c019bc48], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 19:37:32,921 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 19:37:32,922 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 19:37:32,922 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 19:37:32,923 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 19:37:32,925 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 19:37:32,925 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@fc2c23,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:32,926 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 19:37:32,930 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 19:37:32,946 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@fc2c23,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:32,946 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@fc2c23,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 19:37:32,992 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 19:37:33,005 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 19:37:33,007 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 19:37:33,124 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:33,125 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C5/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_C6/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F2/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F3/tempsens /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 19:37:33,126 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=27317, Token=[866dd5b4cf8f7a53], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 20:50:12,993 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Starting Data Mapper
+[2017-08-28 20:50:13,016 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering XML Mapper Service..
+[2017-08-28 20:50:28,799 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+XML Mapper service registered.
+[2017-08-28 20:50:28,800 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+Registering JSON Mapper Service..
+[2017-08-28 20:50:32,149 INFO] - org.eclipse.om2m.datamapping.jaxb.Activator 
+JSON Mapper service registered.
+[2017-08-28 20:50:32,967 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Register CoAP RestClientService..
+[2017-08-28 20:50:32,999 INFO] - org.eclipse.om2m.binding.coap.Activator 
+Starting CoAP server
+[2017-08-28 20:50:33,525 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CseService opened
+[2017-08-28 20:50:33,540 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register HTTP RestClientService..
+[2017-08-28 20:50:33,628 INFO] - org.eclipse.om2m.binding.http.Activator 
+HTTP RestClientService is registered.
+[2017-08-28 20:50:34,180 INFO] - org.eclipse.om2m.binding.http.Activator 
+HttpService discovered
+[2017-08-28 20:50:34,187 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Starting Persistence JPA plugin...
+[2017-08-28 20:50:34,247 INFO] - org.eclipse.om2m.binding.http.Activator 
+Register / context
+[2017-08-28 20:50:34,314 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Initializing Database...
+[2017-08-28 20:50:34,355 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+Creating new EntityManagerFactory...
+[2017-08-28 20:50:36,164 INFO] - org.eclipse.om2m.core.Activator 
+Starting CSE...
+[2017-08-28 20:50:36,188 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/xml
+[2017-08-28 20:50:36,201 INFO] - org.eclipse.om2m.core.Activator 
+Added Data Mapper Service: application/json
+[2017-08-28 20:50:36,270 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: coap
+[2017-08-28 20:50:36,276 INFO] - org.eclipse.om2m.core.Activator 
+Rest client service discovered. Protocol: http
+[2017-08-28 20:50:36,336 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+HttpService discovered
+[2017-08-28 20:50:36,337 INFO] - org.eclipse.om2m.webapp.resourcesbrowser.xml.Activator 
+Register /webpage http context
+[2017-08-28 20:50:53,354 INFO] - org.eclipse.om2m.persistence.eclipselink.internal.DBServiceJPAImpl 
+DataBase initialized.
+[2017-08-28 20:50:53,651 INFO] - org.eclipse.om2m.persistence.eclipselink.Activator 
+Registering Database (JPA-EL) Service
+[2017-08-28 20:50:53,665 INFO] - org.eclipse.om2m.core.Activator 
+DataBase persistence service discovered
+[2017-08-28 20:50:53,694 INFO] - org.eclipse.om2m.core.thread.CoreExecutor 
+Creating thread pool with corePoolSize=5 & maximumSize=50
+[2017-08-28 20:50:53,752 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Initializating the cseBase
+[2017-08-28 20:50:53,874 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create AccessControlPolicy resource
+[2017-08-28 20:50:54,419 INFO] - org.eclipse.om2m.core.CSEInitializer 
+Create CSEBase resource
+[2017-08-28 20:50:54,596 INFO] - org.eclipse.om2m.core.Activator 
+Registering CseService...
+[2017-08-28 20:50:54,686 INFO] - org.eclipse.om2m.binding.coap.Activator 
+CSE Service discovered
+[2017-08-28 20:50:54,697 INFO] - org.eclipse.om2m.binding.http.Activator 
+CseService discovered
+[2017-08-28 20:50:54,716 INFO] - org.eclipse.om2m.core.Activator 
+CSE Started
+[2017-08-28 20:51:02,264 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:51:02,285 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Built RequestPrimitive: RequestPrimitive [to=/svm-in-cse,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ ]
+[2017-08-28 20:51:02,290 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Content type headers: application/xml;ty=16
+[2017-08-28 20:51:02,304 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: application/xml
+[2017-08-28 20:51:02,316 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Header value: ty=16
+[2017-08-28 20:51:02,328 INFO] - org.eclipse.om2m.binding.http.RestHttpServlet 
+Accept header: 
+[2017-08-28 20:51:02,335 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse,
+ from=admin:admin,
+ requestIdentifier=001,
+ resourceType=16,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ returnContentType=application/xml,
+ requestContentType=application/xml,
+ queryStrings={}]
+[2017-08-28 20:51:02,335 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse
+[2017-08-28 20:51:02,347 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [RemoteCSEController]
+[2017-08-28 20:51:02,831 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ requestIdentifier=001,
+ content=<?xml version="1.0" encoding="UTF-8"?>
+<m2m:csr xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="svm-mn-cse">
+   <ty>16</ty>
+   <ri>/svm-in-cse/csr-794869818</ri>
+   <pi>/svm-in-cse</pi>
+   <ct>20170828T205102</ct>
+   <lt>20170828T205102</lt>
+   <acpi>/svm-in-cse/acp-678591724</acpi>
+   <poa>http://127.0.0.1:8282/</poa>
+   <cb>//om2m.org/svm-mn-cse</cb>
+   <csi>/svm-mn-cse</csi>
+   <rr>true</rr>
+</m2m:csr>
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/csr-794869818,
+ contentType=application/xml,
+]
+[2017-08-28 20:52:45,085 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:45,094 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name
+[2017-08-28 20:52:45,098 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[2])]
+[2017-08-28 20:52:45,105 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:45,107 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:45,113 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Monitor-ID","rn":"SVM_Monitor"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:45,116 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name
+[2017-08-28 20:52:45,125 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [AEController]
+[2017-08-28 20:52:45,600 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:ae" : {
+      "rn" : "SVM_Monitor",
+      "ty" : 2,
+      "ri" : "/svm-in-cse/CAE34639659",
+      "pi" : "/svm-in-cse",
+      "ct" : "20170828T205245",
+      "lt" : "20170828T205245",
+      "acpi" : [ "/svm-in-cse/acp-753842707" ],
+      "et" : "20180828T205245",
+      "api" : "SVM_Monitor-ID",
+      "aei" : "CAE34639659",
+      "rr" : true
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/CAE34639659,
+ contentType=application/json,
+]
+[2017-08-28 20:52:45,611 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50327, Token=[40f056dd8dd9caab], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 67, 65, 69, 51, 52, 54, 51, 57, 54, 53, 57])], "{".. 3 bytes
+[2017-08-28 20:52:45,668 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:45,670 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-mn-cse
+[2017-08-28 20:52:45,670 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-mn-cse], Content-Format=50, URI-Query=[fu=1, rty=3], Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110])]
+[2017-08-28 20:52:45,671 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: [fu=1, rty=3]
+[2017-08-28 20:52:45,672 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:45,672 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=2,
+ to=/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@5d923,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:45,696 INFO] - org.eclipse.om2m.core.router.Router 
+Request targeting another CSE, forwarding to Redirector: /svm-mn-cse
+[2017-08-28 20:52:47,771 INFO] - org.eclipse.om2m.core.redirector.Redirector 
+RemoteCSE found: /svm-mn-cse
+[2017-08-28 20:52:47,779 INFO] - org.eclipse.om2m.core.comm.RestClient 
+the requestIndication RC: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@5d923,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:47,781 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Sending request: RequestPrimitive [operation=2,
+ to=http://127.0.0.1:8282/~/svm-mn-cse,
+ from=admin:admin,
+ content=,
+ filterCriteria=org.eclipse.om2m.commons.resource.FilterCriteria@5d923,
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:48,812 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Query string generated: ?ty=3&fu=1
+[2017-08-28 20:52:48,867 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Request to be send: GET http://127.0.0.1:8282/~/svm-mn-cse?ty=3&fu=1 HTTP/1.1
+[2017-08-28 20:52:48,872 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Headers:
+Accept: application/json
+X-M2M-Origin: admin:admin
+Content-Type: application/json
+
+[2017-08-28 20:52:51,615 INFO] - org.eclipse.om2m.binding.http.RestHttpClient 
+Http Client response: ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 20:52:51,619 INFO] - org.eclipse.om2m.core.comm.RestClient 
+ResponsePrimitive [responseStatusCode=2000,
+ content={
+   "m2m:uril" : "/svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4 /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductAqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBprice /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/ProductBqty /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/alarm /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/loc /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/status /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempdes /svm-mn-cse/svm-mn-name/SVM_Monitor/SVM_F4/tempsens"
+}
+,
+ to=admin:admin,
+ from=/svm-in-cse,
+ contentType=application/json;charset=ISO-8859-1,
+]
+[2017-08-28 20:52:51,621 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.05   MID=50328, Token=[84eb205fde625be3], OptionSet=[(Unknown option [265]:[7, -48])], "{".. 3 bytes
+[2017-08-28 20:52:52,511 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:52,526 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Monitor
+[2017-08-28 20:52:52,534 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Monitor], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:52,535 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:52,535 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:52,545 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Monitor,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"SVM_F4"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:52,546 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Monitor
+[2017-08-28 20:52:52,547 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:52,600 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "SVM_F4",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-280918473",
+      "pi" : "/svm-in-cse/CAE34639659",
+      "ct" : "20170828T205252",
+      "lt" : "20170828T205252",
+      "acpi" : [ "/svm-in-cse/acp-753842707" ],
+      "et" : "20180828T205252",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-280918473,
+ contentType=application/json,
+]
+[2017-08-28 20:52:52,628 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50329, Token=[4f576748d414ec48], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 50, 56, 48, 57, 49, 56, 52, 55, 51])], "{".. 3 bytes
+[2017-08-28 20:52:52,644 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:52,645 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:52,646 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Monitor, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:52,646 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:52,646 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:52,647 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"ProductAprice"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:52,647 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:52,649 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:52,704 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "ProductAprice",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-821505571",
+      "pi" : "/svm-in-cse/cnt-280918473",
+      "ct" : "20170828T205252",
+      "lt" : "20170828T205252",
+      "acpi" : [ "/svm-in-cse/acp-753842707" ],
+      "et" : "20180828T205252",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/ProductAprice/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/ProductAprice/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-821505571,
+ contentType=application/json,
+]
+[2017-08-28 20:52:52,713 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50330, Token=[492b780ecccd4f98], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 56, 50, 49, 53, 48, 53, 53, 55, 49])], "{".. 3 bytes
+[2017-08-28 20:52:52,731 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:52,736 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:52,737 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Monitor, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:52,739 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:52,741 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:52,742 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"ProductAqty"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:52,745 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:52,746 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:52,782 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "ProductAqty",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-554446023",
+      "pi" : "/svm-in-cse/cnt-280918473",
+      "ct" : "20170828T205252",
+      "lt" : "20170828T205252",
+      "acpi" : [ "/svm-in-cse/acp-753842707" ],
+      "et" : "20180828T205252",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/ProductAqty/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/ProductAqty/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-554446023,
+ contentType=application/json,
+]
+[2017-08-28 20:52:52,796 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50331, Token=[7ccb239fa4150e9c], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 53, 53, 52, 52, 52, 54, 48, 50, 51])], "{".. 3 bytes
+[2017-08-28 20:52:52,813 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:52,813 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:52,814 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Monitor, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:52,814 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:52,814 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:52,821 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"ProductBprice"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:52,823 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:52,823 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:52,862 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "ProductBprice",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-878439342",
+      "pi" : "/svm-in-cse/cnt-280918473",
+      "ct" : "20170828T205252",
+      "lt" : "20170828T205252",
+      "acpi" : [ "/svm-in-cse/acp-753842707" ],
+      "et" : "20180828T205252",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/ProductBprice/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/ProductBprice/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-878439342,
+ contentType=application/json,
+]
+[2017-08-28 20:52:52,881 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50332, Token=[31213a719c733081], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 56, 55, 56, 52, 51, 57, 51, 52, 50])], "{".. 3 bytes
+[2017-08-28 20:52:52,886 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:52,891 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:52,892 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Monitor, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:52,892 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:52,893 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:52,894 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"ProductBqty"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:52,896 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:52,898 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:52,931 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "ProductBqty",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-310382182",
+      "pi" : "/svm-in-cse/cnt-280918473",
+      "ct" : "20170828T205252",
+      "lt" : "20170828T205252",
+      "acpi" : [ "/svm-in-cse/acp-753842707" ],
+      "et" : "20180828T205252",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/ProductBqty/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/ProductBqty/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-310382182,
+ contentType=application/json,
+]
+[2017-08-28 20:52:52,966 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50333, Token=[54b6f7bc5dc2cfbf], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 51, 49, 48, 51, 56, 50, 49, 56, 50])], "{".. 3 bytes
+[2017-08-28 20:52:52,970 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:52,979 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:52,980 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Monitor, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:52,981 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:52,981 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:52,981 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"alarm"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:52,982 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:52,982 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:53,021 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "alarm",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-681737288",
+      "pi" : "/svm-in-cse/cnt-280918473",
+      "ct" : "20170828T205252",
+      "lt" : "20170828T205252",
+      "acpi" : [ "/svm-in-cse/acp-753842707" ],
+      "et" : "20180828T205252",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/alarm/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/alarm/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-681737288,
+ contentType=application/json,
+]
+[2017-08-28 20:52:53,029 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50334, Token=[917f4073c8fe7d2f], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 54, 56, 49, 55, 51, 55, 50, 56, 56])], "{".. 3 bytes
+[2017-08-28 20:52:53,035 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:53,044 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:53,045 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Monitor, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:53,047 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:53,048 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:53,048 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"loc"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:53,049 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:53,049 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:53,086 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "loc",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-522417563",
+      "pi" : "/svm-in-cse/cnt-280918473",
+      "ct" : "20170828T205253",
+      "lt" : "20170828T205253",
+      "acpi" : [ "/svm-in-cse/acp-753842707" ],
+      "et" : "20180828T205253",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/loc/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/loc/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-522417563,
+ contentType=application/json,
+]
+[2017-08-28 20:52:53,102 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50335, Token=[2f1438abbe8c182d], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 53, 50, 50, 52, 49, 55, 53, 54, 51])], "{".. 3 bytes
+[2017-08-28 20:52:53,107 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:53,111 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:53,112 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Monitor, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:53,113 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:53,116 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:53,127 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"status"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:53,133 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:53,134 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:53,185 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "status",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-241395625",
+      "pi" : "/svm-in-cse/cnt-280918473",
+      "ct" : "20170828T205253",
+      "lt" : "20170828T205253",
+      "acpi" : [ "/svm-in-cse/acp-753842707" ],
+      "et" : "20180828T205253",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/status/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/status/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-241395625,
+ contentType=application/json,
+]
+[2017-08-28 20:52:53,194 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50336, Token=[faaa7dcf67cffcf6], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 50, 52, 49, 51, 57, 53, 54, 50, 53])], "{".. 3 bytes
+[2017-08-28 20:52:53,198 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:53,208 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:53,208 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Monitor, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:53,209 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:53,209 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:53,209 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"tempdes"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:53,210 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:53,210 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:53,232 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "tempdes",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-580800591",
+      "pi" : "/svm-in-cse/cnt-280918473",
+      "ct" : "20170828T205253",
+      "lt" : "20170828T205253",
+      "acpi" : [ "/svm-in-cse/acp-753842707" ],
+      "et" : "20180828T205253",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/tempdes/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/tempdes/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-580800591,
+ contentType=application/json,
+]
+[2017-08-28 20:52:53,256 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50337, Token=[5606d606e2cd7be6], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 53, 56, 48, 56, 48, 48, 53, 57, 49])], "{".. 3 bytes
+[2017-08-28 20:52:53,260 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:53,263 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:53,267 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Monitor, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:53,268 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:53,270 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:53,270 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"tempsens"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:53,272 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4
+[2017-08-28 20:52:53,273 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:53,310 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "tempsens",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-531460214",
+      "pi" : "/svm-in-cse/cnt-280918473",
+      "ct" : "20170828T205253",
+      "lt" : "20170828T205253",
+      "acpi" : [ "/svm-in-cse/acp-753842707" ],
+      "et" : "20180828T205253",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/tempsens/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Monitor/SVM_F4/tempsens/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-531460214,
+ contentType=application/json,
+]
+[2017-08-28 20:52:53,326 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50338, Token=[3ff6f34307739936], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 53, 51, 49, 52, 54, 48, 50, 49, 52])], "{".. 3 bytes
+[2017-08-28 20:52:54,392 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:54,392 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name
+[2017-08-28 20:52:54,393 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[2])]
+[2017-08-28 20:52:54,393 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:54,393 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:54,402 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name,
+ from=admin:admin,
+ resourceType=2,
+ content={"m2m:ae":{"rr":"true","api":"SVM_Controller-ID","rn":"SVM_Controller"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:54,409 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name
+[2017-08-28 20:52:54,410 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [AEController]
+[2017-08-28 20:52:54,599 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:ae" : {
+      "rn" : "SVM_Controller",
+      "ty" : 2,
+      "ri" : "/svm-in-cse/CAE448622032",
+      "pi" : "/svm-in-cse",
+      "ct" : "20170828T205254",
+      "lt" : "20170828T205254",
+      "acpi" : [ "/svm-in-cse/acp-833791717" ],
+      "et" : "20180828T205254",
+      "api" : "SVM_Controller-ID",
+      "aei" : "CAE448622032",
+      "rr" : true
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/CAE448622032,
+ contentType=application/json,
+]
+[2017-08-28 20:52:54,607 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50339, Token=[334f8eea99d52728], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 67, 65, 69, 52, 52, 56, 54, 50, 50, 48, 51, 50])], "{".. 3 bytes
+[2017-08-28 20:52:54,610 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:54,610 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Controller
+[2017-08-28 20:52:54,614 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Controller], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:54,618 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:54,618 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:54,635 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Controller,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"SVM_F4"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:54,641 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Controller
+[2017-08-28 20:52:54,643 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:54,683 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "SVM_F4",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-558045965",
+      "pi" : "/svm-in-cse/CAE448622032",
+      "ct" : "20170828T205254",
+      "lt" : "20170828T205254",
+      "acpi" : [ "/svm-in-cse/acp-833791717" ],
+      "et" : "20180828T205254",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-558045965,
+ contentType=application/json,
+]
+[2017-08-28 20:52:54,694 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50340, Token=[fc8d951487ba5f5f], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 53, 53, 56, 48, 52, 53, 57, 54, 53])], "{".. 3 bytes
+[2017-08-28 20:52:54,709 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:54,722 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:54,723 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Controller, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:54,723 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:54,724 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:54,724 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"ProductAprice"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:54,727 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:54,736 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:54,859 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "ProductAprice",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-558107399",
+      "pi" : "/svm-in-cse/cnt-558045965",
+      "ct" : "20170828T205254",
+      "lt" : "20170828T205254",
+      "acpi" : [ "/svm-in-cse/acp-833791717" ],
+      "et" : "20180828T205254",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/ProductAprice/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/ProductAprice/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-558107399,
+ contentType=application/json,
+]
+[2017-08-28 20:52:54,883 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50341, Token=[d0225964436a1ab8], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 53, 53, 56, 49, 48, 55, 51, 57, 57])], "{".. 3 bytes
+[2017-08-28 20:52:54,897 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:54,897 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:54,898 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Controller, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:54,898 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:54,899 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:54,899 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"ProductAqty"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:54,900 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:54,901 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:54,952 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "ProductAqty",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-114740800",
+      "pi" : "/svm-in-cse/cnt-558045965",
+      "ct" : "20170828T205254",
+      "lt" : "20170828T205254",
+      "acpi" : [ "/svm-in-cse/acp-833791717" ],
+      "et" : "20180828T205254",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/ProductAqty/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/ProductAqty/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-114740800,
+ contentType=application/json,
+]
+[2017-08-28 20:52:54,958 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50342, Token=[8c54792b863e692f], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 49, 49, 52, 55, 52, 48, 56, 48, 48])], "{".. 3 bytes
+[2017-08-28 20:52:55,574 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:55,574 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,575 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Controller, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:55,576 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:55,577 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:55,578 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"ProductBprice"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:55,579 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,583 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:55,624 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "ProductBprice",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-119155971",
+      "pi" : "/svm-in-cse/cnt-558045965",
+      "ct" : "20170828T205255",
+      "lt" : "20170828T205255",
+      "acpi" : [ "/svm-in-cse/acp-833791717" ],
+      "et" : "20180828T205255",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/ProductBprice/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/ProductBprice/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-119155971,
+ contentType=application/json,
+]
+[2017-08-28 20:52:55,655 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50343, Token=[acc012fb1b2d2274], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 49, 49, 57, 49, 53, 53, 57, 55, 49])], "{".. 3 bytes
+[2017-08-28 20:52:55,662 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:55,677 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,692 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Controller, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:55,698 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:55,700 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:55,700 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"ProductBqty"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:55,701 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,702 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:55,730 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "ProductBqty",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-311538311",
+      "pi" : "/svm-in-cse/cnt-558045965",
+      "ct" : "20170828T205255",
+      "lt" : "20170828T205255",
+      "acpi" : [ "/svm-in-cse/acp-833791717" ],
+      "et" : "20180828T205255",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/ProductBqty/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/ProductBqty/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-311538311,
+ contentType=application/json,
+]
+[2017-08-28 20:52:55,733 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50344, Token=[1e1160d2f06789a0], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 51, 49, 49, 53, 51, 56, 51, 49, 49])], "{".. 3 bytes
+[2017-08-28 20:52:55,739 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:55,740 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,742 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Controller, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:55,744 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:55,745 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:55,749 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"alarm"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:55,750 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,750 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:55,793 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "alarm",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-729654944",
+      "pi" : "/svm-in-cse/cnt-558045965",
+      "ct" : "20170828T205255",
+      "lt" : "20170828T205255",
+      "acpi" : [ "/svm-in-cse/acp-833791717" ],
+      "et" : "20180828T205255",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/alarm/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/alarm/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-729654944,
+ contentType=application/json,
+]
+[2017-08-28 20:52:55,808 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50345, Token=[e3fef139fe978258], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 55, 50, 57, 54, 53, 52, 57, 52, 52])], "{".. 3 bytes
+[2017-08-28 20:52:55,824 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:55,825 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,834 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Controller, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:55,835 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:55,835 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:55,836 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"loc"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:55,836 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,837 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:55,861 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "loc",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-452921262",
+      "pi" : "/svm-in-cse/cnt-558045965",
+      "ct" : "20170828T205255",
+      "lt" : "20170828T205255",
+      "acpi" : [ "/svm-in-cse/acp-833791717" ],
+      "et" : "20180828T205255",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/loc/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/loc/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-452921262,
+ contentType=application/json,
+]
+[2017-08-28 20:52:55,863 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50346, Token=[bbe51f384d5cb069], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 52, 53, 50, 57, 50, 49, 50, 54, 50])], "{".. 3 bytes
+[2017-08-28 20:52:55,870 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:55,878 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,879 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Controller, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:55,882 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:55,888 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:55,889 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"status"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:55,889 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,890 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:55,930 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "status",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-375814706",
+      "pi" : "/svm-in-cse/cnt-558045965",
+      "ct" : "20170828T205255",
+      "lt" : "20170828T205255",
+      "acpi" : [ "/svm-in-cse/acp-833791717" ],
+      "et" : "20180828T205255",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/status/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/status/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-375814706,
+ contentType=application/json,
+]
+[2017-08-28 20:52:55,941 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50347, Token=[1832f057b07bf561], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 51, 55, 53, 56, 49, 52, 55, 48, 54])], "{".. 3 bytes
+[2017-08-28 20:52:55,952 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:55,953 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,955 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Controller, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:55,962 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:55,963 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:55,964 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"tempdes"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:55,964 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:55,965 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:55,989 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "tempdes",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-743669038",
+      "pi" : "/svm-in-cse/cnt-558045965",
+      "ct" : "20170828T205255",
+      "lt" : "20170828T205255",
+      "acpi" : [ "/svm-in-cse/acp-833791717" ],
+      "et" : "20180828T205255",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/tempdes/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/tempdes/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-743669038,
+ contentType=application/json,
+]
+[2017-08-28 20:52:55,997 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50348, Token=[858ac8af001e7b08], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 55, 52, 51, 54, 54, 57, 48, 51, 56])], "{".. 3 bytes
+[2017-08-28 20:52:56,003 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+----------------------------------------------------------------------------------------------
+[2017-08-28 20:52:56,004 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Coap incoming URI: /~/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:56,005 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+OptionSet=[URI-Path=[~, svm-in-cse, svm-in-name, SVM_Controller, SVM_F4], Content-Format=50, Accept=50, (Unknown option [256]:[97, 100, 109, 105, 110, 58, 97, 100, 109, 105, 110]), (Unknown option [267]:[3])]
+[2017-08-28 20:52:56,006 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+URIQueries: []
+[2017-08-28 20:52:56,012 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Execute requestPrimitive on the router
+[2017-08-28 20:52:56,013 INFO] - org.eclipse.om2m.core.router.Router 
+Received request in Router: RequestPrimitive [operation=1,
+ to=/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4,
+ from=admin:admin,
+ resourceType=3,
+ content={"m2m:cnt":{"rn":"tempsens"}},
+ returnContentType=application/json,
+ requestContentType=application/json,
+ ]
+[2017-08-28 20:52:56,013 INFO] - org.eclipse.om2m.core.router.Router 
+Request handling in the current CSE: /svm-in-cse/svm-in-name/SVM_Controller/SVM_F4
+[2017-08-28 20:52:56,015 INFO] - org.eclipse.om2m.core.router.Router 
+ResourceController to be used [ContainerController]
+[2017-08-28 20:52:56,072 INFO] - org.eclipse.om2m.core.router.Router 
+Response in Router= ResponsePrimitive [responseStatusCode=2001,
+ content={
+   "m2m:cnt" : {
+      "rn" : "tempsens",
+      "ty" : 3,
+      "ri" : "/svm-in-cse/cnt-358932585",
+      "pi" : "/svm-in-cse/cnt-558045965",
+      "ct" : "20170828T205256",
+      "lt" : "20170828T205256",
+      "acpi" : [ "/svm-in-cse/acp-833791717" ],
+      "et" : "20180828T205256",
+      "st" : 0,
+      "mni" : 10,
+      "mbs" : 10000,
+      "mia" : 0,
+      "cni" : 0,
+      "cbs" : 0,
+      "ol" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/tempsens/ol",
+      "la" : "/svm-in-cse/svm-in-name/SVM_Controller/SVM_F4/tempsens/la"
+   }
+},
+ to=admin:admin,
+ from=/svm-in-cse,
+ location=/svm-in-cse/cnt-358932585,
+ contentType=application/json,
+]
+[2017-08-28 20:52:56,079 INFO] - org.eclipse.om2m.binding.coap.CoapMessageDeliverer 
+Response to sent: ACK-2.01   MID=50349, Token=[e9033edd152fd22a], OptionSet=[Content-Format=50, (Unknown option [265]:[7, -47]), (Location-Path:[47, 115, 118, 109, 45, 105, 110, 45, 99, 115, 101, 47, 99, 110, 116, 45, 51, 53, 56, 57, 51, 50, 53, 56, 53])], "{".. 3 bytes
