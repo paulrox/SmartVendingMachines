@@ -29,15 +29,18 @@
 #define PRINTLLADDR(addr)
 #endif
 
+static struct ctimer ct;
+
 static struct coordinate locations[] = { 
   {7210, 3898},
   {7229, 3965},
-  {720600, 383184},
-  {720561, 383145},
-  {720324, 383708}
+  {7206, 3832},
+  {7205, 3831},
+  {7203, 3837}
 };
 
 float u_k = 0;
+unsigned int qty_tick = 0, alarm_tick = 0, status_tick = 0;
 int machine_id, machine_status;
 int machine_type;
 int node_lat, node_long;
@@ -52,6 +55,7 @@ extern resource_t id, productAqty, productBqty,
  * @brief Function to initialize the vending machine
  *
  */
+
 void init_vending_machine()
 { 
   machine_id = node_id;
@@ -68,6 +72,31 @@ void init_vending_machine()
 
   productB.remaining_qty = MAX_PRODUCT_AVAILABILITY;
   productB.price = 2.1;
+}
+
+static void ctimer_callback(void *ptr)
+{
+  qty_tick++;
+  alarm_tick++;
+  status_tick++;
+/*
+  if (qty_tick == QTY_DELAY) {
+    qty_tick = 0;
+    if (productA.remaining_qty > 0)
+      productA.remaining_qty--;
+    if (productB.remaining_qty > 0)
+      productB.remaining_qty--;
+  }
+
+  if (alarm_tick == ALARM_DELAY) {
+    alarm_tick = 0;
+    alarm_type = 'I';
+  }
+
+  if (status_tick == STATUS_DELAY) 
+    machine_status = 0;
+*/
+  ctimer_restart(&ct);
 }
 
 PROCESS(server, "food_vending_machine");
@@ -92,6 +121,8 @@ PROCESS_THREAD(server, ev, data)
   rest_activate_resource(&productAprice, "ProductA/price");
   rest_activate_resource(&productBqty, "ProductB/qty");
   rest_activate_resource(&productBprice, "ProductB/price");
+
+  ctimer_set(&ct, CLOCK_SECOND, ctimer_callback, NULL);
   while(1) {
     PROCESS_WAIT_EVENT();
   }

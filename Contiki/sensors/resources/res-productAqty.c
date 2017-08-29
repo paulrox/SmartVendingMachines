@@ -30,8 +30,7 @@ static void productAqty_get_handler(void* request, void* response,
   char message[50];
   int length;
 
-  sprintf(message, "{'e':[{'n':'qty','v':'%d'}],'bu':'Pcs'}", 
-    productA.remaining_qty);
+  sprintf(message, "{'qty':'%d'}", productA.remaining_qty);
   length = strlen(message);
   memcpy(buffer, message, length);
 
