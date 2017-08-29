@@ -78,7 +78,7 @@ static void ctimer_callback(void *ptr)
   qty_tick++;
   alarm_tick++;
   status_tick++;
-
+/*
   if (qty_tick == QTY_DELAY) {
     qty_tick = 0;
     if (productA.remaining_qty > 0)
@@ -93,7 +93,7 @@ static void ctimer_callback(void *ptr)
   }
 
   if (status_tick == STATUS_DELAY) 
-    machine_status = 0;
+    machine_status = 0;*/
 
   ctimer_restart(&ct);
 }

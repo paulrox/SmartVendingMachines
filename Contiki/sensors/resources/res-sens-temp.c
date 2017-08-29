@@ -81,8 +81,8 @@ static void sens_periodic_handler()
 
   e_k = u_k - temp_k;
   
-  temp_k = 1.9899*temp_k_1 - 0.9899*temp_k_2 + 0.000014941*e_k;
-  //temp_k = 1.9*temp_k_1 - 0.9*temp_k_2 + 0.0011488*e_k; 
+  //temp_k = 1.9899*temp_k_1 - 0.9899*temp_k_2 + 0.000014941*e_k;
+  temp_k = 1.9*temp_k_1 - 0.9*temp_k_2 + 0.0011488*e_k; 
   
   /* To output
   float tmp;
