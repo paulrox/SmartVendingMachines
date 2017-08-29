@@ -3,16 +3,13 @@ package it.svm.iot.core;
 import java.util.List;
 
 /**
- * Class representing an AE on the CSE. This class is implemented as a
- * singleton in order to forbid the instantiation of just one AE instance
- * per node.
+ * Class representing an AE on the CSE.
  * @author Paolo Sassi
  * @author Matteo Rotundo
  *
  */
 
 public final class AE {
-	private static AE instance = null;
 	private String rn;
 	private int ty;
 	private String ri;
@@ -25,15 +22,7 @@ public final class AE {
 	private String api;
 	private String aei;
 	private boolean rr;
-	private AE() {
-		// Exists only to defeat instantiation.
-	}
-	public static AE getInstance() {
-		if(instance == null) {
-			instance = new AE();
-		}
-		return instance;
-	}
+
 	public int getTy() {
 		return ty;
 	}

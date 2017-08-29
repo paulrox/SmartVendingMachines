@@ -46,7 +46,8 @@ public final class Mca {
 	 * @return AE object containing the information of the created AE
 	 */
 	public AE createAE(String cse, String rn){
-		AE ae = AE.getInstance();
+		JSONObject resp = null;
+		AE ae = new AE();
 		URI uri = null;
 		try {
 			uri = new URI(cse);
@@ -67,8 +68,7 @@ public final class Mca {
 		JSONObject root = new JSONObject();
 		root.put("m2m:ae", obj);
 		String body = root.toString();
-		if (DEBUG) 
-			System.out.println(body);
+		if (DEBUG) System.out.println(body);
 		req.setPayload(body);
 		CoapResponse responseBody = client.advanced(req);
 		if (responseBody == null) {
@@ -77,9 +77,18 @@ public final class Mca {
 			System.exit(-1);
 		}
 		String response = new String(responseBody.getPayload());
-		if (DEBUG)
-			System.out.println(response);
-		JSONObject resp = new JSONObject(response);
+		if (DEBUG) System.out.println(response);
+		try {
+			resp = new JSONObject(response);
+		} catch (JSONException e) {
+			/* If the response doesn't contain a JSON object it is
+			 * probably an error message from the CSE.
+			 */
+			System.err.printf("MCA: Error in createAE(), message from"
+					+ " CSE: %s\n", response);
+			e.printStackTrace();
+			System.exit(-1);
+		}
 		JSONObject container = (JSONObject) resp.get("m2m:ae");
 		ae.setRn((String) container.get("rn"));
 		ae.setTy((Integer) container.get("ty"));
@@ -95,12 +104,13 @@ public final class Mca {
 	 * Creates a new Container on the specified CSE.
 	 * @param cse URI of the CSE
 	 * @param rn Name of the Container to be created
+	 * @param lbl label of the container
 	 * @return Container object containing the information of the 
 	 * 		   created Container
 	 */
-	public Container createContainer(String cse, String rn){
+	public Container createContainer(String cse, String rn, String lbl){
 		Container container = new Container();
-
+		JSONObject obj , root, resp = null;
 		URI uri = null;
 		try {
 			uri = new URI(cse);
@@ -114,13 +124,13 @@ public final class Mca {
 		req.getOptions().addOption(new Option(256, "admin:admin"));
 		req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
 		req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
-		JSONObject obj = new JSONObject();
+		obj = new JSONObject();
 		obj.put("rn", rn);
-		JSONObject root = new JSONObject();
+		obj.put("lbl", lbl);
+		root = new JSONObject();
 		root.put("m2m:cnt", obj);
 		String body = root.toString();
-		if (DEBUG)
-			System.out.println(body);
+		if (DEBUG) System.out.println(body);
 		req.setPayload(body);
 		CoapResponse responseBody = client.advanced(req);
 		if (responseBody == null) {
@@ -128,10 +138,25 @@ public final class Mca {
 					+ "response from %s\n", cse);
 			System.exit(-1);
 		}
-		String response = new String(responseBody.getPayload());
-		if (DEBUG)
-			System.out.println(response);
-		JSONObject resp = new JSONObject(response);
+		String response = new String(responseBody.getPayload()); 
+		if (DEBUG) System.out.println(response);
+		try {
+			resp = new JSONObject(response);
+		} catch (JSONException e) {
+			/* If the response doesn't contain a JSON object it is
+			 * probably an error message from the CSE.
+			 */
+			if (response.contains("Name already present")) {
+				/* The container already exists on the CSE, so we skip
+				 * the creation
+				 */
+				return null;
+			}
+			System.err.printf("MCA: Error in createContainer(), message from"
+					+ " CSE: %s\n", response);
+			e.printStackTrace();
+			System.exit(-1);
+		}
 		JSONObject cont = (JSONObject) resp.get("m2m:cnt");
 		container.setRn((String) cont.get("rn"));
 		container.setTy((Integer) cont.get("ty"));
@@ -144,6 +169,17 @@ public final class Mca {
 		container.setLa((String) cont.get("la"));
 
 		return container;
+	}
+	
+	/**
+	 * Overload createContainer method without the label parameter.
+	 * @param cse URI of the CSE
+	 * @param rn Name of the Container to be created
+	 * @return Container object containing the information of the 
+	 * 		   created Container
+	 */
+	public Container createContainer(String cse, String rn) {
+		return createContainer(cse, rn, "");
 	}
 	
 	/**

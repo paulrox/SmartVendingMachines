@@ -103,6 +103,8 @@ public class Constants {
 	 */
 	public static final String BR_ADDR = "aaaa::c30c:0:0:1";
 	
+	public static final int MN_SUB_RES = 8; 
+	
 	/******************** Infrastructure Node Constants **********************/
 	
 	
