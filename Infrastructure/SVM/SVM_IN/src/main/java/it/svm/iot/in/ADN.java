@@ -1,6 +1,18 @@
 package it.svm.iot.in;
 
+import static it.svm.iot.core.Constants.DEBUG;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+
+import org.eclipse.californium.core.CoapClient;
+import org.eclipse.californium.core.CoapResponse;
+import org.eclipse.californium.core.coap.MediaTypeRegistry;
+import org.eclipse.californium.core.coap.Option;
+import org.eclipse.californium.core.coap.Request;
+import org.json.JSONObject;
+
 import it.svm.iot.core.*;
 
 
@@ -45,7 +57,7 @@ public class ADN {
 		String containers_mn_raw = null; 
 		String parent_cont = "";
 		String[] containers_mn, tmp;
-	
+		
 		/* Discover the containers on the MN */
 		System.out.println("Discover VMs on MN...");
 		containers_mn_raw = IN_Mca.discoverResources(mn_cse,
@@ -91,6 +103,7 @@ public class ADN {
 				}
 				/* Subscribe for the useful resources */
 				subscribe(cont, "coap://127.0.0.1:5685/monitor");
+				
 			}
 		}
 	}
@@ -117,6 +130,53 @@ public class ADN {
 		}
 	}
 	
+	private static void init_vm(String mn_cse) {
+		String containers_mn_raw = null;
+		String parent_cont = "";
+		String[] containers_mn, tmp;
+		URI uri = null;
+		CoapClient client;
+		
+		for (String id : vm_id) {
+			containers_mn_raw = IN_Mca.discoverResources(mn_cse, 
+					"?fu=1&rty=3&lbl=Monitor_" + id);
+			
+			containers_mn = containers_mn_raw.split(" ");
+
+			for (String cont : containers_mn) {	
+				/* Create the container for the monitored resources */
+				tmp = cont.split("/");
+				parent_cont = Constants.MN_CSE_URI + "/" + 
+						IN_AE_Monitor.getRn() + "/" + id;
+			
+				try {
+					uri = new URI(parent_cont + "/" +
+							tmp[tmp.length - 1] + "/" + "la");
+				} catch (URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				client = new CoapClient(uri);
+				Request req = Request.newGet();
+				req.getOptions().addOption(new Option(267, 2));
+				req.getOptions().addOption(new Option(256, "admin:admin"));
+				req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
+				req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
+				
+				CoapResponse responseBody = client.advanced(req);
+				String response = new String(responseBody.getPayload());
+				JSONObject root = new JSONObject(response);
+				JSONObject m2mcin = root.getJSONObject("m2m:cin");
+				response = m2mcin.getString("con");
+				System.out.println(response);
+				parent_cont = Constants.IN_CSE_URI + "/" + 
+						IN_AE_Monitor.getRn() + "/" + id;
+				IN_Mca.createContentInstance(parent_cont + "/" +
+						tmp[tmp.length - 1], response);
+				
+			}
+		}
+	}
 	/**
 	 * Private constructor for the ADN class.
 	 */
@@ -147,7 +207,8 @@ public class ADN {
 		/* Discovering MN containers */
 		discover(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
 		
-
+		init_vm(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
+		
 		while(true) {
 		}
 	}
