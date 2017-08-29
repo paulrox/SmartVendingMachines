@@ -44,6 +44,12 @@ public class ADN {
 			new ArrayList<Container>();
 	
 	/**
+	 * List containing the vending machines
+	 */
+	private static ArrayList<VendingMachine> vms =
+			new ArrayList<VendingMachine>();
+	
+	/**
 	 * List of the IDs of the discovered VMs.
 	 */
 	private static ArrayList<String> vm_id = new ArrayList<String>();
@@ -130,7 +136,7 @@ public class ADN {
 		}
 	}
 	
-	private static void init_vm(String mn_cse) {
+	private static void init_monitor_container(String mn_cse) {
 		String containers_mn_raw = null;
 		String parent_cont = "";
 		String[] containers_mn, tmp;
@@ -138,13 +144,14 @@ public class ADN {
 		CoapClient client;
 		
 		for (String id : vm_id) {
+			vms.add(new VendingMachine());
+			vms.get(vms.size() - 1).setId(Integer.parseInt(id.substring(5, id.length())));
+			
 			containers_mn_raw = IN_Mca.discoverResources(mn_cse, 
 					"?fu=1&rty=3&lbl=Monitor_" + id);
-			
 			containers_mn = containers_mn_raw.split(" ");
 
 			for (String cont : containers_mn) {	
-				/* Create the container for the monitored resources */
 				tmp = cont.split("/");
 				parent_cont = Constants.MN_CSE_URI + "/" + 
 						IN_AE_Monitor.getRn() + "/" + id;
@@ -162,18 +169,57 @@ public class ADN {
 				req.getOptions().addOption(new Option(256, "admin:admin"));
 				req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
 				req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
-				
+				/* GET request for the last content instance */
 				CoapResponse responseBody = client.advanced(req);
 				String response = new String(responseBody.getPayload());
 				JSONObject root = new JSONObject(response);
 				JSONObject m2mcin = root.getJSONObject("m2m:cin");
 				response = m2mcin.getString("con");
-				System.out.println(response);
 				parent_cont = Constants.IN_CSE_URI + "/" + 
 						IN_AE_Monitor.getRn() + "/" + id;
 				IN_Mca.createContentInstance(parent_cont + "/" +
 						tmp[tmp.length - 1], response);
-				
+				set_vm_res(vms.get(vms.size() - 1), response, tmp[tmp.length - 1]);	
+			}
+		}
+
+	}
+	
+	private static void set_vm_res(VendingMachine vm, String content, String res) {
+
+		int index;
+		JSONObject root = new JSONObject(content);
+		
+		if (res.equals("alarm")) {
+			vm.setAlarm(root.getString("alarm"));
+		} else if (res.equals("status")) {
+			vm.setStatusOn(root.getInt("status"));
+			vm.setType(root.getString("type"));
+		} else if (res.equals("loc")) {
+			vm.setPosition(root);
+		} else if (res.equals("tempdes")) {
+			vm.setTempAct((float)root.getDouble("desired temperature"));
+		} else if (res.equals("tempsens")) {
+			vm.setTemp((float)root.getDouble("temp"));
+		} else if (res.equals("ProductAqty")) {
+			index = vm.getProductIndex("ProductA");
+			if (index >= 0) {
+				vm.products.get(index).setQty((root.getInt("qty")));
+			}
+		} else if (res.equals("ProductBqty")) {
+			index = vm.getProductIndex("ProductB");
+			if (index >= 0) {
+				vm.products.get(index).setQty((root.getInt("qty")));
+			}
+		} else if (res.equals("ProductAprice")) {
+			index = vm.getProductIndex("ProductA");
+			if (index >= 0) {
+				vm.products.get(index).setPrice((float)(root.getDouble("price")));
+			}
+		} else if (res.equals("ProductBprice")) {
+			index = vm.getProductIndex("ProductB");
+			if (index > 0) {
+				vm.products.get(index).setPrice((float)(root.getDouble("price")));
 			}
 		}
 	}
@@ -207,8 +253,11 @@ public class ADN {
 		/* Discovering MN containers */
 		discover(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
 		
-		init_vm(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
+		init_monitor_container(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
 		
+		for (int i = 0; i < vms.size(); i++) {
+			vms.get(i).print();
+		}
 		while(true) {
 		}
 	}

@@ -15,13 +15,9 @@ public class Product {
 	/**
 	 * Constructor for class Product.
 	 * @param n Name of the product
-	 * @param q Initial quantity of the product
-	 * @param p Initial price of the product
 	 */
-	public Product(String n, int q, float p) {
+	public Product(String n) {
 		name = n;
-		qty = q;
-		price = p;
 	}
 	
 	/* Getter methods */
