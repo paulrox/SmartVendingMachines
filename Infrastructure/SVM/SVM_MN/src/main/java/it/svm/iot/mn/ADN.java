@@ -228,43 +228,27 @@ public class ADN {
 	 * @return List of the discovered resources
 	 */
 	private static String[] discover(String in_cse) {
-		String ae_in_raw, containers_in_raw, uri;
-		String parent_cont = "";
-		String[] containers_in, ae_in, tmp;
+		String ae_in_raw, containers_in_raw;
+		String[] containers_in, ae_in;
 		Boolean ae_found = false;
-		int i = 0, vm_pos = 0;
 		
 		/* Search the "SVM_Controller" AE on the IN */
 		ae_in_raw = MN_Mca.discoverResources(in_cse, "?fu=1&rty=2");
 		if (ae_in_raw == null) return null;
 		ae_in = ae_in_raw.split(" ");
 		for (String ae : ae_in) {
-			if (ae.contains("SVM_Controller")) ae_found = true;
+			if (ae.contains("SVM_Controller")) {
+				System.out.println("SVM_Controller Found");
+				ae_found = true;
+			}
 		}
 		if (!ae_found) return null;
 
 		/* Discover the containers on the SVM_Controller */
 		containers_in_raw = MN_Mca.discoverResources(in_cse, "?fu=1&rty=3");
 		if (containers_in_raw == null) return null;
+		System.out.println(containers_in_raw);
 		containers_in = containers_in_raw.split(" ");
-		
-		/*for (String cont : containers_mn) {
-			
-			tmp = cont.split("/");
-			if (i == vm_pos) {
-				 Create the container for the VM 
-				parent_cont = Constants.IN_CSE_URI + "/" + 
-						IN_AE_Monitor.getRn() + "/" + tmp[tmp.length - 1];
-				containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + 
-						"/" + IN_AE_Monitor.getRn(), tmp[tmp.length - 1]));
-				vm_pos += (Constants.NUM_RESOURCES + 1);
-			} else {
-				 Create the container for the resource 
-				containers.add(IN_Mca.createContainer(parent_cont,
-						tmp[tmp.length - 1]));
-			}
-			i++;
-		}*/
 		
 		return containers_in;
 	}
@@ -293,7 +277,7 @@ public class ADN {
 		
 		while(true) {
 			/* Perform discovery on IN */
-			/*System.out.println("Trying to discover CONTROLLER on IN");
+			System.out.println("Trying to discover CONTROLLER on IN");
 			tmp = discover(Constants.MN_CSE_COAP + "/" + Constants.IN_CSE_ID);
 			if (tmp != null) {
 				for (String cont : tmp) {
@@ -304,7 +288,7 @@ public class ADN {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}*/
+			}
 		}
 	}
 

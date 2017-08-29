@@ -18,8 +18,8 @@ public class Constants {
 	 * 10.0.2.2 is used when the OM2M CSEs are on the host OS (assuming
 	 * to run the cooja simulation on the Instant Contiki VM.
 	 */
-	//public static final String LOOPBACK = "127.0.0.1";
-	public static final String LOOPBACK = "10.0.2.2";
+	public static final String LOOPBACK = "127.0.0.1";
+	//public static final String LOOPBACK = "10.0.2.2";
 	
 	/**
 	 * Enables the debugging code.

@@ -203,12 +203,11 @@ public final class Mca {
 		if (responseBody == null) {
 			System.err.printf("MCA: Error in discoverResources(), no "
 					+ "response from %s\n", uri);
-			//System.exit(-1);
-			return null;
+			System.exit(-1);
 		}
 		String response = new String(responseBody.getPayload());
-		JSONObject content = new JSONObject(response);
 		try {
+			JSONObject content = new JSONObject(response);
 			path = content.getString("m2m:uril");
 		} catch (JSONException e) { 
 			/* The remote CSE doesn't contain any resource which satisfies

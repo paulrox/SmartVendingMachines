@@ -39,13 +39,17 @@ public class ADN {
 	 */
 	
 	private static String[] discover(String mn_cse) {
-		String containers_mn_raw, id;
+		String containers_mn_raw = null; 
+		String id;
 		String parent_cont = "";
 		String[] containers_mn, tmp;
 		int i = 0, vm_pos = 0;
 	
 		/* Discover the containers on the MN */
-		containers_mn_raw = IN_Mca.discoverResources(mn_cse, "?fu=1&rty=3");
+		while (containers_mn_raw == null) {
+			System.out.println("Discover containers on MN");
+			containers_mn_raw = IN_Mca.discoverResources(mn_cse, "?fu=1&rty=3");
+		}
 		containers_mn = containers_mn_raw.split(" ");
 		
 		for (String cont : containers_mn) {
