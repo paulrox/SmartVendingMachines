@@ -1,7 +1,5 @@
 package it.svm.iot.in;
 
-import static it.svm.iot.core.Constants.DEBUG;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -12,6 +10,9 @@ import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Option;
 import org.eclipse.californium.core.coap.Request;
 import org.json.JSONObject;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.websocket.server.WebSocketHandler;
+import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
 
 import it.svm.iot.core.*;
 
@@ -135,7 +136,11 @@ public class ADN {
 					container_mn);
 		}
 	}
-	
+	/**
+	 *  It initializes the SVM_Monitor with the content instances in the MN
+	 *  It creates also a VM class for each vending machine
+	 * @param mn_cse URI MN Cse
+	 */
 	private static void init_monitor_container(String mn_cse) {
 		String containers_mn_raw = null;
 		String parent_cont = "";
@@ -182,8 +187,14 @@ public class ADN {
 				set_vm_res(vms.get(vms.size() - 1), response, tmp[tmp.length - 1]);	
 			}
 		}
-
 	}
+	
+	/**
+	 * Updates the resource res of the vending machine vm with the value in content
+	 * @param vm Vending machine
+	 * @param content Content of the instance
+	 * @param res resource
+	 */
 	
 	private static void set_vm_res(VendingMachine vm, String content, String res) {
 
@@ -231,8 +242,9 @@ public class ADN {
 	/**
 	 * Main method for the ADN on the IN side
 	 * @param args Arguments for the ADN
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		CoAPMonitorThread thread;
 		
 		System.out.printf("********** Infrastructure Node ADN **********\n");
@@ -258,6 +270,18 @@ public class ADN {
 		for (int i = 0; i < vms.size(); i++) {
 			vms.get(i).print();
 		}
+		
+		Server server = new Server(8000);
+        WebSocketHandler wsHandler = new WebSocketHandler() {
+            @Override
+            public void configure(WebSocketServletFactory factory) {
+                factory.register(MyWebSocketHandler.class);
+            }
+        };
+        server.setHandler(wsHandler);
+        server.start();
+        server.join();
+    	
 		while(true) {
 		}
 	}
