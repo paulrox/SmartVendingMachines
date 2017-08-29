@@ -1,8 +1,6 @@
 package it.svm.iot.in;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import it.svm.iot.core.*;
 
 
@@ -37,16 +35,21 @@ public class ADN {
 	/**
 	 * Discover all the useful resources on the MN.
 	 * @param mn_cse URI of the MN
+	 * @return List of the discovered resources
 	 */
 	
 	private static String[] discover(String mn_cse) {
-		String containers_mn_raw;
+		String containers_mn_raw = null; 
+		String id;
 		String parent_cont = "";
 		String[] containers_mn, tmp;
 		int i = 0, vm_pos = 0;
 	
 		/* Discover the containers on the MN */
-		containers_mn_raw = IN_Mca.discoverResources(mn_cse, "?fu=1&rty=3");
+		while (containers_mn_raw == null) {
+			System.out.println("Discover containers on MN");
+			containers_mn_raw = IN_Mca.discoverResources(mn_cse, "?fu=1&rty=3");
+		}
 		containers_mn = containers_mn_raw.split(" ");
 		
 		for (String cont : containers_mn) {
@@ -54,6 +57,8 @@ public class ADN {
 			tmp = cont.split("/");
 			if (i == vm_pos) {
 				/* Create the container for the VM */
+				id = tmp[tmp.length - 1].substring(4, 6);
+				System.out.printf("Discovered VM: %s\n", id);
 				parent_cont = Constants.IN_CSE_URI + "/" + 
 						IN_AE_Monitor.getRn() + "/" + tmp[tmp.length - 1];
 				containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + 
@@ -72,7 +77,6 @@ public class ADN {
 	
 	/**
 	 * 
-	 * @param mn_cse Middle Node CSE Uri to be subscribed.
 	 * @param containers_mn Array of containers in the MN cse 
 	 * 					 	for the subscription.
 	 * @param notification_url CoAP Server Url for the notification.
@@ -81,18 +85,17 @@ public class ADN {
 	private static void subscribe(String[] containers_mn, 
 			String notification_url) {
 		String []tmp;
-		for (String cont_uri : containers_mn) {
-		
+		for (String cont_uri : containers_mn) {	
 			if (cont_uri.toLowerCase().contains("sens") ||
 					cont_uri.toLowerCase().contains("qty") ||
 					cont_uri.toLowerCase().contains("alarm") ||
 					cont_uri.toLowerCase().contains("status")) {
-				System.out.println("coap://127.0.0.1:5684/~"  + 
-					cont_uri);
 				tmp = cont_uri.split("/");
-				
-				IN_Mca.createSubscription("coap://127.0.0.1:5684/~"  + 
-					cont_uri , notification_url, tmp[tmp.length - 1] + "_monitor");
+				IN_Mca.createSubscription(Constants.MN_CSE_COAP  + 
+					cont_uri , notification_url, tmp[tmp.length - 1] + 
+						"_monitor");
+				System.out.println("Subscribed to: " + Constants.MN_CSE_COAP +
+					cont_uri);
 			}
 		}
 	}
@@ -136,9 +139,6 @@ public class ADN {
 	 * @param args Arguments for the ADN
 	 */
 	public static void main(String[] args) {
-		Scanner keyboard = new Scanner(System.in);
-		Boolean exit = false;
-		String input;
 		String[] containers_mn;
 		CoAPMonitorThread thread;
 		
@@ -153,23 +153,19 @@ public class ADN {
 		thread.start();
 		
 		/* Discovering MN containers */
-		containers_mn = discover(Constants.IN_CSE_COAP + Constants.MN_CSE_ID);
+		containers_mn = discover(Constants.IN_CSE_COAP + "/" + 
+				Constants.MN_CSE_ID);
 		
 		/* Subscribe for the resources to be sensed */
+		System.out.println("Subscribing to the discovered resources...");
 		subscribe(containers_mn, "coap://127.0.0.1:5685/monitor");
 		
 		/* Creating Controller AE */
 		IN_AE_Controller = IN_Mca.createAE(Constants.IN_CSE_URI, "SVM_Controller");
 		System.out.printf("AE SVM_Controller registered on IN-CSE\n");
 		init_controller(containers_mn);
-		
-		System.out.println("Enter 'q' to quit");
-		while(!exit) {
-			/* Busy wait */
-			input = keyboard.nextLine();
-			if (input != null && input.equals("q"))
-				exit = true;
+
+		while(true) {
 		}
-		keyboard.close();
 	}
 }

@@ -24,7 +24,7 @@ public class Constants {
 	/**
 	 * Enables the debugging code.
 	 */
-	public static final Boolean DEBUG = true;
+	public static final Boolean DEBUG = false;
 	
 	/** Num resources vending machine
 	 * */
@@ -80,7 +80,7 @@ public class Constants {
 	/**
 	 * Middle Node CSE CoAP URI.
 	 */
-	public static final String MN_CSE_COAP = "coap://" + LOOPBACK + ":5684/~/";
+	public static final String MN_CSE_COAP = "coap://" + LOOPBACK + ":5684/~";
 	
 	/**
 	 * Middle Node CSE ID.
@@ -95,14 +95,9 @@ public class Constants {
 	/**
 	 * Middle Node CSE complete URI.
 	 */
-	public static final String MN_CSE_URI = MN_CSE_COAP + MN_CSE_ID + "/" +
-			MN_CSE_NAME;
+	public static final String MN_CSE_URI = MN_CSE_COAP + "/" + MN_CSE_ID +
+			"/" + MN_CSE_NAME;
 	
-	/**
-	 * Middle Node CSE URI without the cse name.
-	 */
-	public static final String MN_CSE_SHORT_URI = "coap://" + LOOPBACK + ":5683/~/"
-			+ "svm-mn-cse";
 	/**
 	 * Border Router global IPv6 address
 	 */
@@ -111,12 +106,12 @@ public class Constants {
 	/******************** Infrastructure Node Constants **********************/
 	
 	
-	public static final String IN_CSE_COAP = "coap://" + LOOPBACK + ":5683/~/";
+	public static final String IN_CSE_COAP = "coap://" + LOOPBACK + ":5683/~";
 	
 	public static final String IN_CSE_ID = "svm-in-cse";
 	
 	public static final String IN_CSE_NAME = "svm-in-name";
 	
-	public static final String IN_CSE_URI = IN_CSE_COAP + IN_CSE_ID + "/" +
-			IN_CSE_NAME;
+	public static final String IN_CSE_URI = IN_CSE_COAP + "/" + IN_CSE_ID + 
+			"/" + IN_CSE_NAME;
 }

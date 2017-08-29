@@ -8,6 +8,7 @@ import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Option;
 import org.eclipse.californium.core.coap.Request;
+import org.json.JSONException;
 import org.json.JSONObject;
 import static it.svm.iot.core.Constants.DEBUG;
 
@@ -191,6 +192,7 @@ public final class Mca {
 	 */
 	public String discoverResources(String cse, String query){
 		/* Append the query string */
+		String path = null;
 		String uri = cse + query;
 		CoapClient client = new CoapClient(uri);
 		Request req = Request.newGet();
@@ -204,8 +206,17 @@ public final class Mca {
 			System.exit(-1);
 		}
 		String response = new String(responseBody.getPayload());
-		JSONObject content = new JSONObject(response);
-		String path = content.getString("m2m:uril");
+		try {
+			JSONObject content = new JSONObject(response);
+			path = content.getString("m2m:uril");
+		} catch (JSONException e) { 
+			/* The remote CSE doesn't contain any resource which satisfies
+			 * the query.
+			 */
+			if (DEBUG)
+				System.out.println("No resources on remote CSE");
+			return null;
+		}
 		if (DEBUG)
 			System.out.printf("Discovered resources: %s\n", path);
 		return path;

@@ -4,7 +4,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Set;
-import java.util.Scanner;
 import org.eclipse.californium.core.CoapClient;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.WebLink;
@@ -189,12 +188,10 @@ public class ADN {
 								obj = new JSONObject(response.getResponseText());			
 								id = obj.getInt("id");
 								type = obj.getString("type");
-								System.out.printf("Received response from"
+								System.out.printf("Found"
 										+ " VM: %s%d\n", type, id);
 								
 								/* Add the container for the vending machine */
-								System.out.println(Constants.MN_CSE_URI + "/" + 
-										MN_AE.getRn());
 								containers.add(MN_Mca.createContainer(
 										Constants.MN_CSE_URI + "/" + 
 										MN_AE.getRn(), "SVM_" + type + id));
@@ -202,6 +199,8 @@ public class ADN {
 										Constants.MN_CSE_URI + "/" + 
 										MN_AE.getRn() + "/" + containers.get(
 										containers.size()-1).getRn());
+								System.out.printf("Registered resources for"
+										+ " VM: %s%d\n", type, id);
 							} else {
 								System.out.println("No response received"
 										+ " from " + "coap://[" + addr + "]"
@@ -223,43 +222,33 @@ public class ADN {
 		});
 	}
 	
+	/**
+	 * Discover all the useful resources on the IN.
+	 * @param in_cse URI of the IN
+	 * @return List of the discovered resources
+	 */
 	private static String[] discover(String in_cse) {
-		String ae_in_raw, containers_in_raw, uri;
-		String parent_cont = "";
-		String[] containers_in, ae_in, tmp;
+		String ae_in_raw, containers_in_raw;
+		String[] containers_in, ae_in;
 		Boolean ae_found = false;
-		int i = 0, vm_pos = 0;
 		
 		/* Search the "SVM_Controller" AE on the IN */
 		ae_in_raw = MN_Mca.discoverResources(in_cse, "?fu=1&rty=2");
+		if (ae_in_raw == null) return null;
 		ae_in = ae_in_raw.split(" ");
 		for (String ae : ae_in) {
-			if (ae.contains("SVM_Controller")) ae_found = true;
+			if (ae.contains("SVM_Controller")) {
+				System.out.println("SVM_Controller Found");
+				ae_found = true;
+			}
 		}
 		if (!ae_found) return null;
 
-		uri = in_cse + "/SVM_Controller";
 		/* Discover the containers on the SVM_Controller */
-		containers_in_raw = MN_Mca.discoverResources(uri, "?fu=1&rty=3");
+		containers_in_raw = MN_Mca.discoverResources(in_cse, "?fu=1&rty=3");
+		if (containers_in_raw == null) return null;
+		System.out.println(containers_in_raw);
 		containers_in = containers_in_raw.split(" ");
-		
-		/*for (String cont : containers_mn) {
-			
-			tmp = cont.split("/");
-			if (i == vm_pos) {
-				 Create the container for the VM 
-				parent_cont = Constants.IN_CSE_URI + "/" + 
-						IN_AE_Monitor.getRn() + "/" + tmp[tmp.length - 1];
-				containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + 
-						"/" + IN_AE_Monitor.getRn(), tmp[tmp.length - 1]));
-				vm_pos += (Constants.NUM_RESOURCES + 1);
-			} else {
-				 Create the container for the resource 
-				containers.add(IN_Mca.createContainer(parent_cont,
-						tmp[tmp.length - 1]));
-			}
-			i++;
-		}*/
 		
 		return containers_in;
 	}
@@ -269,22 +258,15 @@ public class ADN {
 	 * @param args Arguments for the ADN
 	 */
 	public static void main(String[] args) throws InterruptedException {
-		Scanner keyboard = new Scanner(System.in);
-		Boolean exit = false;
-		String input;
 		String[] tmp;
 		System.out.printf("********** Middle Node ADN **********\n");
 		MN_AE = MN_Mca.createAE(Constants.MN_CSE_URI, "SVM_Monitor");
 		System.out.printf("AE registered on MN-CSE\n");
 		
 		getMoteAddresses(Constants.BR_ADDR);
-		
+		System.out.println("Registering the VM...");
 		registerVendingMachines();
-		/* try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}*/
+
 		/* Start the resource monitors */
 		for (ResourceMonitor mon : monitors) {
 			mon.start();
@@ -293,26 +275,21 @@ public class ADN {
 			pt.start();
 		}
 		
-		System.out.println("Enter 'q' to quit");
-		while(!exit) {
+		while(true) {
 			/* Perform discovery on IN */
-			tmp = discover(Constants.MN_CSE_COAP + Constants.IN_CSE_ID);
+			System.out.println("Trying to discover CONTROLLER on IN");
+			tmp = discover(Constants.MN_CSE_COAP + "/" + Constants.IN_CSE_ID);
 			if (tmp != null) {
 				for (String cont : tmp) {
 					System.out.println(cont);
 				}
 			}
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			/* Busy wait */
-			input = keyboard.nextLine();
-			if (input != null && input.equals("q"))
-				exit = true;
 		}
-		keyboard.close();
 	}
 
 }
