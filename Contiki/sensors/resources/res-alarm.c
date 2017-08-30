@@ -27,7 +27,6 @@
  * alarm = 'N'; No Alarm
  * alarm = 'I'; Intrusion
  * alarm = 'F'; Fault
- * alarm = 'I'; Intrusion
  */
 char alarm_type;
 

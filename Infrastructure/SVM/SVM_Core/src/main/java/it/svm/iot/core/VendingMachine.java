@@ -11,50 +11,32 @@ import org.json.*;
  */
 
 public class VendingMachine {
-	private int id;
-	private String type;
-	private float temp;
-	private float temp_des;
-	private float lat;
-	private float lng;
-	private Boolean intr_alarm;
-	private Boolean fault_alarm;
-	private Boolean statusOn;	/* true if the machine is on */
-	private ArrayList<Product> products;
+	public int id;
+	public String type;
+	public float temp;
+	public float temp_des;
+	public float lat;
+	public float lng;
+	public String alarm;
+	public int statusOn;	/* true if the machine is on */
+	public ArrayList<Product> products;
 	
 	/**
 	 * Constructor for class VendingMachine
-	 * @param i Id of the vending machine
-	 * @param t Type of the vending machine ("Food" or "Coffee") 
+	 *  
 	 */
-	public VendingMachine(int id, String type) {
-		if (id <= 0) {
-			System.err.printf("Invalid vending machine id: %d.\n", id);
-			System.exit(1);
-		}
-		if (type != "F" && type != "C") {
-			System.err.printf("Invalid vending machine type: %s.\n", type);
-			System.exit(1);
-		}
-		this.id = id;
-		this.type = type;
-		
-		/* Use default values for the other parameters */
-		if (type == "F") {
-			/* Food machine */
-			this.temp = (float) 15.0;
-			this.temp_des = (float) 15.0;
-		} else {
-			/* Coffee machine */
-			this.temp = (float) 60.0;
-			this.temp_des = (float) 60.0;
-		}
-		this.lat = (float) 0.0;
-		this.lng = (float) 0.0;
-		this.intr_alarm = false;
-		this.fault_alarm = false;
-		this.statusOn = true;
+	public VendingMachine() {		
+		this.id = 0;
+		this.type = "";
+		this.temp = 0;
+		this.temp_des = 0;
+		this.lat = 0;
+		this.lng = 0;
+		this.alarm = "N";
+		this.statusOn = 0;
 		this.products = new ArrayList<Product>();
+		this.products.add(new Product("ProductA"));
+		this.products.add(new Product("ProductB"));
 	}
 	
 	/* Getter methods */
@@ -104,26 +86,22 @@ public class VendingMachine {
 	}
 	
 	/**
-	 * Get the intrusion alarm status.
-	 * @return Intrusion alarm. True if active, False otherwise
+	 * Get the alarm status.
+	 * @return	the type of the alarm:
+	 * 		 	alarm = 'N'; No Alarm
+	 *			alarm = 'I'; Intrusion
+	 * 			alarm = 'F'; Fault
 	 */
-	public Boolean getIntrAlarm() {
-		return intr_alarm;
+	public String getAlarm() {
+		return alarm;
 	}
 	
-	/**
-	 * Get the fault alarm status.
-	 * @return Fault alarm. True if active, False otherwise
-	 */
-	public Boolean getFaultAlarm() {
-		return fault_alarm;
-	}
 	
 	/**
 	 * Get the machine status.
-	 * @return Machine status. True if the machine is on, False otherwise 
+	 * @return Machine status. 1 if the machine is on, 0  otherwise 
 	 */
-	public Boolean isStatusOn() {
+	public int isStatusOn() {
 		return statusOn;
 	}
 	
@@ -134,7 +112,22 @@ public class VendingMachine {
 	public ArrayList<Product> getProducts() {
 		return products;
 	}
-	
+	/**
+	 * It looks for a product in the vm
+	 * @param name product name
+	 * @return the index or -1 if missing
+	 */
+	public int getProductIndex(String name) {
+		
+		int cnt = 0, index = -1;
+		
+		for (Product prod: products) {
+			if (prod.getName().equals(name))
+				index = cnt;
+			cnt++;
+		}
+		return index;
+	}
 	/* Setter methods */
 	
 	/**
@@ -142,20 +135,7 @@ public class VendingMachine {
 	 * @param temp Temperature value in °C
 	 */
 	public void setTemp(float temp) {
-		if (type == "Food") {
-			if (temp >= Constants.MIN_FOOD_TEMP &&
-			temp <= Constants.MAX_FOOD_TEMP) {
-				this.temp = temp;
-				return;
-			}
-		} else if (temp >= Constants.MIN_COFFEE_TEMP &&
-				temp <= Constants.MAX_COFFEE_TEMP) {
-			this.temp = temp;
-			return;
-		}
-		
-		System.err.printf("VM %i: Invalid actual temperature (%f).\n", id, temp);
-		System.exit(1);
+		this.temp = temp;
 	}
 	
 	/**
@@ -163,20 +143,7 @@ public class VendingMachine {
 	 * @param temp_des Desired temperature in °C
 	 */
 	public void setTempAct(float temp_des) {
-		if (type == "Food") {
-			if (temp_des >= Constants.MIN_FOOD_TEMP &&
-					temp_des <= Constants.MAX_FOOD_TEMP) {
-				this.temp_des = temp_des;
-				return;
-			}
-		} else if (temp_des >= Constants.MIN_COFFEE_TEMP &&
-				temp_des <= Constants.MAX_COFFEE_TEMP) {
-			this.temp_des = temp_des;
-			return;
-		}
-		
-		System.err.printf("VM %i: Invalid desired temperature (%f).\n", id, temp);
-		System.exit(1);
+		this.temp_des = temp_des;
 	}
 	
 	/**
@@ -184,16 +151,16 @@ public class VendingMachine {
 	 * @param pos JSONObject containing the machine latitude and longitude
 	 */
 	public void setPosition(JSONObject pos) {
-		float lat = (float) pos.getDouble("lat");
+		float latitude = (float) pos.getDouble("lat");
 		if (lat >= Constants.MIN_LAT && lat <= Constants.MAX_LAT) {
-			this.lat = lat;
+			this.lat = latitude;
 		} else {
 			System.err.printf("VM %i: Invalid latitude value (%f).\n", id, lat);
 			System.exit(1);
 		}
-		float lng = (float) pos.getDouble("lng");
+		float longitude = (float) pos.getDouble("long");
 		if (lng >= Constants.MIN_LNG && lat <= Constants.MAX_LNG) {
-			this.lat = lng;
+			this.lng = longitude;
 		} else {
 			System.err.printf("VM %i: Invalid longitude value (%f).\n", id, lng);
 			System.exit(1);
@@ -201,28 +168,62 @@ public class VendingMachine {
 	}
 	
 	/**
-	 * Set the intrusion alarm status.
-	 * @param intr_alarm Intrusion alarm. True if active, False otherwise
+	 * Set the alarm status.
+	 * @param new_alarm New status alarm
 	 */
-	public void setIntrAlarm(Boolean intr_alarm) {
-		this.intr_alarm = intr_alarm;
+	public void setAlarm(String new_alarm) {
+		this.alarm = new_alarm;
 	}
 	
-	/**
-	 * Set the fault alarm status.
-	 * @param fault_alarm Fault alarm. True if active, False otherwise
-	 */
-	public void setFaultAlarm(Boolean fault_alarm) {
-		this.fault_alarm = fault_alarm;
-	}
-	
+
 	/**
 	 * Set the machine status.
 	 * @param statusOn Machine status. True if the machine is on, False otherwise 
 	 */
-	public void setStatusOn(Boolean statusOn) {
+	public void setStatusOn(int statusOn) {
 		this.statusOn = statusOn;
 	}
 	
+	/**
+	 *  Sets an id for the vm
+	 * @param new_id the new id to set
+	 */
+	public void setId(int new_id) {
+		this.id = new_id;
+	}
+	
+	/**
+	 *  Sets the type for the vending machine (Food or Coffee)
+	 * @param new_type VM type value to be set
+	 */
+	public void setType(String new_type) {
 
+		this.type = new_type;
+	}
+	
+	
+	public void print() {
+		
+		int indexA, indexB;
+		
+		indexA = getProductIndex("ProductA");
+		indexB = getProductIndex("ProductB");
+		
+		System.out.println("");
+		System.out.println("/**************************/");
+		System.out.println("Vending machine ID: " + id);
+		System.out.println("Type: " + type);
+		System.out.println("Status: " + statusOn);
+		System.out.println("Sensed temperature: " + temp);
+		System.out.println("Desired temperature: " + temp_des);
+		System.out.println("Latitude: " + lat);
+		System.out.println("Longitude: " + lng);
+		System.out.println("Alarm: " + alarm);
+		System.out.println("ProductA qty: " + products.get(indexA).getQty());
+		System.out.println("ProductA price: " + products.get(indexA).getPrice());
+		System.out.println("ProductB qty: " + products.get(indexB).getQty());
+		System.out.println("ProductB price: " + products.get(indexB).getPrice());
+		System.out.println("/**************************/");
+		System.out.println("");
+	}
 }
