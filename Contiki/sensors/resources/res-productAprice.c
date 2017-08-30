@@ -12,6 +12,7 @@
 #include <string.h>
 #include "rest-engine.h"
 #include "vending_machine.h"
+#include "float-handling.h"
 
 extern struct product productA;
 
@@ -54,7 +55,7 @@ static void productAprice_put_handler(void* request, void* response,
   len = REST.get_post_variable(request, "value", &val);
      
   if (len > 0) {
-     new_value = atoi(val);
+     new_value = stof(val);
      productA.price = new_value;
      REST.set_response_status(response, REST.status.CREATED);
   } else {

@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "rest-engine.h"
+#include "vending_machine.h"
 
 #define DEBUG 1
 #if DEBUG
@@ -24,13 +25,20 @@
 #endif
 #define TIME_SAMPLING 0.01*CLOCK_SECOND
 #define STARTING_TEMPERATURE 0
-
+#define DIM_BUFFER_TEMP 20
+/* Input variable */
 extern float u_k;
+/* Error at step k */
 float e_k = 0;
+/* Error at step k-1 */
 float e_k_1 = 0;
+/* Error at step k-2 */
 float e_k_2 = 0;
+/* Output at step k */
 float temp_k = 0; 
+/* Output at step k-1 */
 float temp_k_1 = 0; 
+/* Output at step k-2 */
 float temp_k_2 = 0; 
 
 static void sens_periodic_handler();
@@ -45,7 +53,7 @@ static void sens_get_handler(void* request, void* response,
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   /* Populat the buffer with the response payload */
-  char message[50];
+  char message[DIM_BUFFER];
   int length;
   float tmp;
 
@@ -77,24 +85,44 @@ static void sens_get_handler(void* request, void* response,
 
 static void sens_periodic_handler()
 {
+  char buffer_temp_k[DIM_BUFFER_TEMP];
+  char buffer_temp_k_1[DIM_BUFFER_TEMP];
+  float tmp;
+  memset(buffer_temp_k, '\0', 20);
+  memset(buffer_temp_k_1, '\0', 20);
   
-
+  /* Calculating error at step k */
   e_k = u_k - temp_k;
   
-  //temp_k = 1.9899*temp_k_1 - 0.9899*temp_k_2 + 0.000014941*e_k;
-  temp_k = 1.9*temp_k_1 - 0.9*temp_k_2 + 0.0011488*e_k; 
+  /* Output Function */
+  temp_k = 1.9899*temp_k_1 - 0.9899*temp_k_2 + 0.000014941*e_k;
+  //temp_k = 1.9*temp_k_1 - 0.9*temp_k_2 + 0.0011488*e_k; 
   
   /* To output
-  float tmp;
+  
   tmp = (float)((float)temp_k - (int)temp_k);
   tmp = tmp * 100;
-  
   if (temp_k != temp_k_1)
-    printf("Sensed temperature: %d.%d\n", (int)temp_k, (int)tmp);*/
+    printf("Sensed temperature: %d.%d\n", (int)temp_k, (int)tmp);
 
+  */
+
+  
+  tmp = (float)((float)temp_k - (int)temp_k);
+  tmp = tmp * 100;
+  sprintf(buffer_temp_k, "%d.%d", (int)temp_k, (int)tmp);
+
+  tmp = (float)((float)temp_k_1 - (int)temp_k);
+  tmp = tmp * 100;
+  sprintf(buffer_temp_k_1, "%d.%d", (int)temp_k_1, (int)tmp);
+
+  if (strcmp(buffer_temp_k, buffer_temp_k_1) != 0)
+     REST.notify_subscribers(&sens);
+
+  /* Updating  control variables */
   e_k_2 = e_k_1;
   e_k_1 = e_k;
   temp_k_2 = temp_k_1;
-  temp_k_1 = temp_k; 
+  temp_k_1 = temp_k;
 }
 

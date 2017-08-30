@@ -12,7 +12,7 @@
 #include <string.h>
 #include "rest-engine.h"
 #include "vending_machine.h"
-
+#include "float-handling.h"
 extern struct product productB;
 
 static void productBprice_get_handler(void* request, void* response, 
@@ -27,8 +27,8 @@ static void productBprice_get_handler(void* request, void* response,
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   /* Populat the buffer with the response payload */
-  char message[50];
-  int length = 50;
+  char message[DIM_BUFFER];
+  int length;
   float tmp;
 
   tmp = (float)((float)productB.price - (int)productB.price);
@@ -41,27 +41,6 @@ static void productBprice_get_handler(void* request, void* response,
   REST.set_header_content_type(response, REST.type.APPLICATION_JSON); 
   REST.set_header_etag(response, (uint8_t *) &length, 1);
   REST.set_response_payload(response, buffer, length);
-}
-
-float stof(const char* s){
-  float rez = 0, fact = 1;
-  int point_seen = 0;
-  if (*s == '-'){
-    s++;
-    fact = -1;
-  };
-  for (point_seen = 0; *s; s++){
-    if (*s == '.'){
-      point_seen = 1; 
-      continue;
-    };
-    int d = *s - '0';
-    if (d >= 0 && d <= 9){
-      if (point_seen) fact /= 10.00f;
-      rez = rez * 10.00f + (float)d;
-    };
-  };
-  return rez * fact;
 }
 
 static void productBprice_put_handler(void* request, void* response, 

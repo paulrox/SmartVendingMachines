@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "rest-engine.h"
+#include "vending_machine.h"
 
 #define DEBUG 1
 #if DEBUG
@@ -43,7 +44,7 @@ static void alarm_get_handler(void* request, void* response,
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   /* Populat the buffer with the response payload */
-  char message[50];
+  char message[DIM_BUFFER];
   int length;
 
   sprintf(message, "{'alarm':'%c'}", alarm_type);

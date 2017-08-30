@@ -11,7 +11,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "rest-engine.h"
-
+#include "float-handling.h"
+#include "vending_machine.h"
 #define DEBUG 1
 #if DEBUG
 #define PRINTF(...) printf(__VA_ARGS__)
@@ -37,14 +38,14 @@ RESOURCE(des, "title=\"id\";rt=\"Text\"", des_get_handler, NULL, des_put_handler
 static void des_put_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
-  int new_value, len;
+  int len;
+  float new_value;
   const char *val = NULL;
 
   len = REST.get_post_variable(request, "value", &val);
      
   if (len > 0) {
-     new_value = atoi(val);
-     PRINTF("new value %u\n", new_value);
+     new_value = stof(val);
      u_k = (float)new_value;
      REST.set_response_status(response, REST.status.CREATED);
   } else {
@@ -56,9 +57,8 @@ static void des_get_handler(void* request, void* response,
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   /* Populat the buffer with the response payload */
-  char message[50];
-  int length = 50;
-
+  char message[DIM_BUFFER];
+  int length;
 
   sprintf(message, "{'tempdes':'%d'}", (int)u_k);
   

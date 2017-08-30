@@ -38,7 +38,7 @@ static void loc_get_handler(void* request, void* response,
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   /* Populat the buffer with the response payload*/
-  char message[80];
+  char message[DIM_BUFFER];
   int length;
 
   sprintf(message, "{'lat':'%u.%u','long':'%u.%u'}", 

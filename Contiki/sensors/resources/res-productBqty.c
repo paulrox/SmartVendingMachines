@@ -28,7 +28,7 @@ static void productBqty_get_handler(void* request, void* response,
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
   /* Populat the buffer with the response payload */
-  char message[50];
+  char message[DIM_BUFFER];
   int length;
 
   sprintf(message, "{'qty':'%d'}", productB.remaining_qty);
