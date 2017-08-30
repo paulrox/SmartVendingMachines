@@ -3,24 +3,74 @@
  * 
  * Main Javascript file.
  * 
- * Authors: Paolo Sassi
- *          Matteo Rotundo
+ * @author Paolo Sassi
+ * @author Matteo Rotundo
  */
 
 
 
 /** Global variables */
+var socket;
 var socket_ok = false;
+var current_page;
 
-
-/* Functions to be executed when the document has been loaded */
-
+/*===========================================================================*/
+/*======================== WebSocket Functions ==============================*/
+/*===========================================================================*/
 
 /**
- * Starts the WebSocket (if possible).
+ * WebSocket onopen event handler.
  */
-function startWS() {
-    var socket, host;
+function onOpenHandler() {
+    socket_ok = true;
+    $(".ws_status").children().empty();
+    $(".ws_status").children().first().attr("id", "ws_online");
+    $(".ws_status").children().append("ONLINE");
+}
+
+/**
+ * WebSocket onerror event handler.
+ */
+function onErrorHandler() {
+    if (!socket_ok) {
+        $(".ws_status").children().empty();
+        $(".ws_status").find("span").attr("id", "ws_offline");
+        $(".ws_status").children().append("OFFLINE");
+    } else {
+        socket_ok = false;
+        /* If the user is visiting a page which depends on the WebSocket,
+        * bring it back to the index page. */
+        createIndexPage();
+    }
+}
+
+/**
+ * WebSocket onclose event handler.
+ */
+function onCloseHandler() {
+    socket_ok = false;
+    $(".ws_status").children().empty();
+    $(".ws_status").find("span").attr("id", "ws_offline");
+    $(".ws_status").children().append("OFFLINE");
+    
+    /* If the user is visiting a page which depends on the WebSocket,
+     * bring it back to the index page. */
+    createIndexPage();
+}
+
+/**
+ * WebSocket onmessage event handler.
+ * @param {STRING} msg Received message
+ */
+function onMessageHandler(msg) {
+    alert(msg.data);
+}
+
+/**
+ * Connect to the WebSocket Server (if possible).
+ */
+function connectWS() {
+    var host;
     if (!("WebSocket" in window)) {
         alert("Your browser doesn't support WebSockets, please " +
                           "use Google Chrome or Mozilla Firefox");
@@ -28,32 +78,33 @@ function startWS() {
     }
     
     try {
+        
         host = "ws://127.0.0.1:8000/";
         socket = new WebSocket(host);
         
-        $(".ws_status").children().empty();
+        socket.onopen = onOpenHandler;
         
-        socket.onopen = function() {
-            socket_ok = true;    
-        }
+        socket.onerror = onErrorHandler;
+        
+        socket.onclose = onCloseHandler;
+        
+        socket.onmessage = onMessageHandler;
+        
     } catch (exception) {
-        alert('<p>Error' + exception + '</p>');
-    }
-    
-    if (socket_ok) {
-        $(".ws_status").children().first().attr("id", "ws_online");
-        $(".ws_status").children().append("ONLINE");
-    } else {
-        $(".ws_status").find("span").attr("id", "ws_offline");
-        $(".ws_status").children().append("OFFLINE");
+        alert("Exception in WebSocket connection: " + exception);
     }
 }
 
+/*===========================================================================*/
+/*====================== Page Creation Functions ============================*/
+/*===========================================================================*/
 
 /**
  * Creates the index page contents.
  */
 function createIndexPage() {
+    current_page = "index";
+    
     /* Empty the old content */
     $("#main_cont").empty();
     $(".page-header").empty();
@@ -81,9 +132,11 @@ function createIndexPage() {
 
 
 /**
- * Creates the map page contents.
+ * Creates the City Map page contents.
  */
 function createMapPage() {
+    current_page = "map";
+    
     /* Empty the old content */
     $("#main_cont").empty();
     $(".page-header").empty();
@@ -96,10 +149,16 @@ function createMapPage() {
     $(".nav_link").eq(2).attr("class", "nav_link active");
     $("#main_cont").append("<div id=\"city_map\" class=\"map\"></div>");
     
+    /* Draw the map */
     cityMap();
 }
 
+/**
+ * Creates the Analytics page contents.
+ */
 function createAnalyticsPage() {
+    current_page = "analytics";
+    
     /* Empty the old content */
     $("#main_cont").empty();
     $(".page-header").empty();
@@ -111,7 +170,12 @@ function createAnalyticsPage() {
     $(".nav_link").eq(3).attr("class", "nav_link active");
 }
 
+/**
+ * Creates the Plan Route page contents.
+ */
 function createRoutePage() {
+    current_page = "route";
+    
     /* Empty the old content */
     $("#main_cont").empty();
     $(".page-header").empty();
@@ -123,7 +187,12 @@ function createRoutePage() {
     $(".nav_link").eq(4).attr("class", "nav_link active");
 }
 
+/**
+ * Creates the Help page contents.
+ */
 function createHelpPage() {
+    current_page = "help";
+    
     /* Empty the old content */
     $("#main_cont").empty();
     $(".page-header").empty();
@@ -134,16 +203,20 @@ function createHelpPage() {
     $(".page-header").append("Help");
 }
 
+/*===========================================================================*/
+/*=================== Startup and Cleaning Functions ========================*/
+/*===========================================================================*/
+
 /**
  * This code is executed when the document is loaded.
  */
-$(function(){
+$(document).ready(function(){
     
     createIndexPage();
     
     $(".nav_link").not(".navbar-brand").click(function() {
         if (!socket_ok && $(this).text() != "Help") {
-            alert("The WebSocket is not started yet!");
+            alert("The WebSocket is not connected!");
             return;
         }
         
@@ -161,9 +234,15 @@ $(function(){
                 createHelpPage();
             default:
                 break;
-        }
-        
+        }  
     })
-    
-    startWS();
+    connectWS();
+});
+
+/**
+ * Closes the WebSocket before closing the window.
+ */
+$(window).on('beforeunload', function(){
+    if (socket.readyState === WebSocket.OPEN)
+        socket.close();
 });
