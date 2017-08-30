@@ -67,9 +67,18 @@ function onCloseHandler() {
  * @param {STRING} msg Received message
  */
 function onMessageHandler(msg) {
+<<<<<<< HEAD
     alert(msg.data);
     var mydata = JSON.stringify(msg.data);
     var obj = JSON.parse(mydata);
+=======
+    showAlert(msg.data);
+    
+    try {
+        var obj = JSON.parse(msg.data);
+    } catch (e) {alert(e);}
+    //var obj = JSON.parse('{"type":"OK","content":[{"tempsens":17.989999771118164,"alarm":"N","id":"SVM_F2","tempdes":18,"lat":43.72100067138672,"long":10.389800071716309,"status":1,"products":[{"price":1.5,"qty":5,"id":"ProductA"},{"price":2.9000000953674316,"qty":5,"id":"ProductB"}]},{"tempsens":69.98999786376953,"alarm":"N","id":"SVM_C3","tempdes":70,"lat":43.722900390625,"long":10.396499633789062,"status":1,"products":[{"price":1.590000033378601,"qty":5,"id":"ProductA"},{"price":2.490000009536743,"qty":5,"id":"ProductB"}]}]}');
+>>>>>>> 8cd08ecd176bdf1bbe3d52ddb2068eebffdb5196
     var vm_index, prod_index;
     var tmp_vm;
     
@@ -77,16 +86,16 @@ function onMessageHandler(msg) {
     if (obj.type == "OK") {
         /* Get the VM resources */
         for (vm in obj.content) {
+            /* Search the VM */
+            vm_index = findVM(vm.id);
+            if (vm_index < 0) {
+                /* A new VM has been found */
+                svm.push(new VendingMachine(vm.id));
+                vm_index = svm.length - 1;
+            }
             /* Examine each VM resource */
             for (res in vm) {
-                if (res == "id") {
-                    vm_index = findVM(vm.id);
-                    if (vm_index < 0) {
-                    /* A new VM has been found */
-                    svm.push(new VendingMachine(vm.id));
-                    vm_index = svm.length - 1;
-                    }
-                } else if (res == "products") {
+                if (res == "products") {
                     /* Examine each product */
                     for (prod in vm[res]) {
                         /* Examine each resource in each product */
@@ -106,7 +115,7 @@ function onMessageHandler(msg) {
                             }
                         }
                     }
-                } else {
+                } else if( res != "id") {
                     svm[vm_index].res = vm[res];
                 }
             }
@@ -252,6 +261,17 @@ function createHelpPage() {
     $(".page-header").append("Help");
 }
 
+/**
+ * Shows and alert.
+ */
+function showAlert(msg) {
+    $(".main").children(0).append('<div class="alert alert-warning alert-dismissible" ' +
+                      'role="alert"><button type="button" class="close" ' +
+                      'data-dismiss="alert" aria-label="Close"><span ' +
+                      'aria-hidden="true">&times;</span></button>' +
+                      msg + '</div>');
+}
+
 /*===========================================================================*/
 /*=================== Startup and Cleaning Functions ========================*/
 /*===========================================================================*/
@@ -262,6 +282,10 @@ function createHelpPage() {
 $(document).ready(function(){
     
     createIndexPage();
+    
+    $(".close").onclick = function() {
+        $().alert('close');
+    }
     
     $(".nav_link").not(".navbar-brand").click(function() {
         if (!socket_ok && $(this).text() != "Help") {

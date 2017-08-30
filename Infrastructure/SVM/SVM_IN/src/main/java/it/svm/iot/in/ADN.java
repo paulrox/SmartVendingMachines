@@ -9,7 +9,6 @@ import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Option;
 import org.eclipse.californium.core.coap.Request;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.websocket.server.WebSocketHandler;
@@ -138,9 +137,9 @@ public class ADN {
 		}
 	}
 	/**
-	 *  It initializes the SVM_Monitor with the content instances in the MN
-	 *  It creates also a VM class for each vending machine
-	 * @param mn_cse URI MN Cse
+	 * It initializes the SVM_Monitor with the content instances in the MN
+	 * It creates also a VM class for each vending machine
+	 * @param mn_cse URI MN CSE
 	 */
 	private static void init_monitor_container(String mn_cse) {
 		String containers_mn_raw = null;
