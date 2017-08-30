@@ -96,10 +96,12 @@ public class CoAPMonitorIN extends CoapServer
 				/* Updating vm class */
 				for (i = 0; i < vms.size(); i++) {
 					if (vms.get(i).name.equals(name_vm)) {
+						vms.get(i).mutex.semWait();
 						vms.get(i).set_vm_res(reply, tmp[tmp.length - 1]);
+						vms.get(i).mutex.semSignal();
 					}
 				}
-				System.out.println("res: " + tmp[tmp.length - 1]);
+				
 			}
 			catch (Exception e) {
 				// Doing nothing. The first notification message is ignored.

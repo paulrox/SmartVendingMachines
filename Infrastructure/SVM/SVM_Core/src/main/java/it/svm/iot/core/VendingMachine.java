@@ -30,8 +30,6 @@ public class VendingMachine {
 	/* The var is set if there is at least a resource update */
 	public Boolean is_new;
 	
-	
-	
 	/**
 	 * Constructor for class VendingMachine
 	 *  
@@ -39,7 +37,7 @@ public class VendingMachine {
 	
 	public VendingMachine() {		
 		this.id = 0;
-		this.type = "";
+		this.type = null;
 		this.temp_sens = 0;
 		this.temp_des = 0;
 		this.lat = 0;
@@ -51,8 +49,8 @@ public class VendingMachine {
 		this.is_new_statusOn = false;
 		this.is_new = false;
 		this.products = new ArrayList<Product>();
-		this.products.add(new Product("ProductA", is_new));
-		this.products.add(new Product("ProductB", is_new));
+		this.products.add(new Product("ProductA", this));
+		this.products.add(new Product("ProductB", this));
 		mutex = new SimpleSem(true);
 	}
 	
@@ -222,21 +220,26 @@ public class VendingMachine {
 	}
 	
 	/**
-	 *  Sets an id for the vm
+	 *  Sets an id for the vm and if the type is already set 
+	 *  also the name
 	 * @param new_id the new id to set
 	 */
 	
 	public void setId(int new_id) {
 		this.id = new_id;
+		if (type != null)
+			name = "SVM_" + type + id;
 	}
 	
 	/**
 	 *  Sets the type for the vending machine (Food or Coffee)
+	 *  and if the id is already set also the name
 	 * @param new_type VM type value to be set
 	 */
 	public void setType(String new_type) {
-
 		this.type = new_type;
+		if (id > 0)
+			name = "SVM_" + type + id;
 	}
 	
 	/**

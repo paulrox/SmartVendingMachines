@@ -13,18 +13,18 @@ public class Product {
 	public float price;
 	public Boolean is_new_price;
 	public Boolean is_new_qty;
-	/* Reference to the is_new vm*/
-	public Boolean is_new;
+	/* Reference to the vm class*/
+	public VendingMachine vm;
 	
 	/**
 	 * Constructor for class Product.
 	 * @param n Name of the product
 	 */
-	public Product(String n, Boolean is_new_vm) {
+	public Product(String n, VendingMachine vm) {
 		name = n;
 		is_new_price = false;
 		is_new_qty = false;
-		this.is_new = is_new_vm;
+		this.vm = vm;
 	}
 	
 	/* Getter methods */
@@ -63,7 +63,7 @@ public class Product {
 		if (qty >= 0 && qty < Constants.MAX_PROD_QTY) {
 			this.qty = qty;
 			this.is_new_qty = true;
-			this.is_new = true;
+			this.vm.is_new = true;
 		}
 		else {
 			System.err.printf("Product %s: Invalid product quantity (%f).\n", name, qty);
@@ -79,7 +79,7 @@ public class Product {
 		if (price >= Constants.MIN_PRICE && price <= Constants.MAX_PRICE) {
 			this.price = price;
 			this.is_new_price = true;
-			this.is_new = true;
+			this.vm.is_new = true;
 		}
 		else {
 			System.err.printf("Product %s: Invalid price (%f).\n", name, price);

@@ -223,32 +223,8 @@ public class ADN {
 		discover(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
 		
 		init_monitor_container(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
-		
-		while(true) {
-			Thread.sleep(1000);
 			
-			/* Read request */
-        	JSONObject response = new JSONObject();
-    		JSONArray content = new JSONArray();
-    		/* True if there is something new in at least one vm */
-    		Boolean is_update = false;
-    		
-        	for (int i = 0; i < ADN.vms.size(); i++) { 
-        		if (ADN.vms.get(i).is_new) {
-        			/* Only if there is an update */
-        			content.put(ADN.vms.get(i).get_json_update_content());
-        			is_update = true;
-        		}
-        	}
-        	if (is_update)
-        		response.put("type", "OK");
-        	else
-        		response.put("type", "NO");
-        	
-        	response.put("content", content);
-        	System.out.println(response.toString());
-		}
-		/*
+
 		Server server = new Server(8000);
         WebSocketHandler wsHandler = new WebSocketHandler() {
             @Override
@@ -263,6 +239,6 @@ public class ADN {
 		while(true) {
 			
 		}
-		*/
+		
 	}
 }

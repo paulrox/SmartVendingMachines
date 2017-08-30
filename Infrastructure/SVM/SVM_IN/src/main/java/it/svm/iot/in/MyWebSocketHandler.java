@@ -67,18 +67,21 @@ public class MyWebSocketHandler {
     		Boolean is_update = false;
     		
         	for (int i = 0; i < ADN.vms.size(); i++) { 
+        		ADN.vms.get(i).mutex.semWait();
         		if (ADN.vms.get(i).is_new) {
         			/* Only if there is an update */
         			content.put(ADN.vms.get(i).get_json_update_content());
         			is_update = true;
         		}
-        	}
+        		ADN.vms.get(i).mutex.semSignal();;
+        	}	
         	if (is_update)
         		response.put("type", "OK");
         	else
         		response.put("type", "NO");
         	
         	response.put("content", content);
+        	System.out.println(response.toString());
         	
         	try {
         		System.out.println(response.toString());
