@@ -51,7 +51,7 @@ static void sens_get_handler(void* request, void* response,
 
   tmp = (float)((float)temp_k - (int)temp_k);
   tmp = tmp * 100;
-  sprintf(message, "{'temp':'%d.%d'}", (int)temp_k, (int)tmp);
+  sprintf(message, "{'tempsens':'%d.%d'}", (int)temp_k, (int)tmp);
   length = strlen(message);
   memcpy(buffer, message, length);
 

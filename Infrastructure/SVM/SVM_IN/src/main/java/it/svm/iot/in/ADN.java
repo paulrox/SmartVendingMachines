@@ -47,7 +47,7 @@ public class ADN {
 	/**
 	 * List containing the vending machines
 	 */
-	private static ArrayList<VendingMachine> vms =
+	public static ArrayList<VendingMachine> vms =
 			new ArrayList<VendingMachine>();
 	
 	/**
@@ -209,9 +209,9 @@ public class ADN {
 		} else if (res.equals("loc")) {
 			vm.setPosition(root);
 		} else if (res.equals("tempdes")) {
-			vm.setTempAct((float)root.getDouble("desired temperature"));
+			vm.setTempAct((float)root.getDouble("tempdes"));
 		} else if (res.equals("tempsens")) {
-			vm.setTemp((float)root.getDouble("temp"));
+			vm.setTemp((float)root.getDouble("tempsens"));
 		} else if (res.equals("ProductAqty")) {
 			index = vm.getProductIndex("ProductA");
 			if (index >= 0) {
@@ -266,10 +266,6 @@ public class ADN {
 		discover(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
 		
 		init_monitor_container(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
-		
-		for (int i = 0; i < vms.size(); i++) {
-			vms.get(i).print();
-		}
 		
 		Server server = new Server(8000);
         WebSocketHandler wsHandler = new WebSocketHandler() {

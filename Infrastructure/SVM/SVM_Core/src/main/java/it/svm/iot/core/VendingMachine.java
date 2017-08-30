@@ -20,6 +20,7 @@ public class VendingMachine {
 	public String alarm;
 	public int statusOn;	/* true if the machine is on */
 	public ArrayList<Product> products;
+	public SimpleSem mutex;
 	
 	/**
 	 * Constructor for class VendingMachine
@@ -37,6 +38,7 @@ public class VendingMachine {
 		this.products = new ArrayList<Product>();
 		this.products.add(new Product("ProductA"));
 		this.products.add(new Product("ProductB"));
+		mutex = new SimpleSem(true);
 	}
 	
 	/* Getter methods */
@@ -225,5 +227,25 @@ public class VendingMachine {
 		System.out.println("ProductB price: " + products.get(indexB).getPrice());
 		System.out.println("/**************************/");
 		System.out.println("");
+	}
+	public String get_vm_content() {
+		String content = new String("{'id':'SVM_" + type + id + "',");
+		int indexA, indexB;
+		
+		indexA = getProductIndex("ProductA");
+		indexB = getProductIndex("ProductB");
+		
+		content = content + "'status':'" + statusOn+"',";
+		content = content + "'tempsens':'" + temp +"',";
+		content = content + "'tempdes':'" + temp_des +"',";
+		content = content + "'lat':'" + lat +"',";
+		content = content + "'long':'" + lng +"',";
+		content = content + "'alarm':'" + alarm +"',";
+		content = content + "'products':[{'id':'ProductA','qty':'"+ products.get(indexA).getQty() + 
+				"','price':'" + products.get(indexA).getPrice() +"'},";
+		content = content + "{'id':'ProductB,'qty':'"+ products.get(indexB).getQty() + 
+			"','price':'" + products.get(indexB).getPrice() +"'}]";
+		
+		return content;
 	}
 }

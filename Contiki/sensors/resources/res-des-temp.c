@@ -60,7 +60,7 @@ static void des_get_handler(void* request, void* response,
   int length = 50;
 
 
-  sprintf(message, "{'desired temperature':'%d'}", (int)u_k);
+  sprintf(message, "{'tempdes':'%d'}", (int)u_k);
   
   length = strlen(message);
   memcpy(buffer, message, length);
