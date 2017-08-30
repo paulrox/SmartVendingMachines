@@ -12,8 +12,9 @@ import org.json.*;
 
 public class VendingMachine {
 	public int id;
+	public String name;
 	public String type;
-	public float temp;
+	public float temp_sens; 
 	public float temp_des;
 	public float lat;
 	public float lng;
@@ -21,23 +22,37 @@ public class VendingMachine {
 	public int statusOn;	/* true if the machine is on */
 	public ArrayList<Product> products;
 	public SimpleSem mutex;
+	/* Monitoring only the observable resources. 
+	 * These var suggest if there is an update from the last read. */
+	public Boolean is_new_temp_sens;
+	public Boolean is_new_alarm;
+	public Boolean is_new_statusOn;
+	/* The var is set if there is at least a resource update */
+	public Boolean is_new;
+	
+	
 	
 	/**
 	 * Constructor for class VendingMachine
 	 *  
 	 */
+	
 	public VendingMachine() {		
 		this.id = 0;
 		this.type = "";
-		this.temp = 0;
+		this.temp_sens = 0;
 		this.temp_des = 0;
 		this.lat = 0;
 		this.lng = 0;
 		this.alarm = "N";
 		this.statusOn = 0;
+		this.is_new_temp_sens = false;
+		this.is_new_alarm = false;
+		this.is_new_statusOn = false;
+		this.is_new = false;
 		this.products = new ArrayList<Product>();
-		this.products.add(new Product("ProductA"));
-		this.products.add(new Product("ProductB"));
+		this.products.add(new Product("ProductA", is_new));
+		this.products.add(new Product("ProductB", is_new));
 		mutex = new SimpleSem(true);
 	}
 	
@@ -47,6 +62,7 @@ public class VendingMachine {
 	 * Get the machine ID.
 	 * @return Machine identifier
 	 */
+	
 	public int getId() {
 		return id;
 	}
@@ -55,6 +71,7 @@ public class VendingMachine {
 	 * Get the machine type.
 	 * @return Machine type
 	 */
+	
 	public String getType() {
 		return type;
 	}
@@ -63,14 +80,16 @@ public class VendingMachine {
 	 * Get the actual machine temperature.
 	 * @return Temperature value in °C
 	 */
+	
 	public float getTemp() {
-		return temp;
+		return temp_sens;
 	}
 	
 	/**
 	 * Get the desired machine temperature.
 	 * @return Desired temperature in °C
 	 */
+	
 	public float getTempAct() {
 		return temp_des;
 	}
@@ -94,6 +113,7 @@ public class VendingMachine {
 	 *			alarm = 'I'; Intrusion
 	 * 			alarm = 'F'; Fault
 	 */
+	
 	public String getAlarm() {
 		return alarm;
 	}
@@ -103,6 +123,7 @@ public class VendingMachine {
 	 * Get the machine status.
 	 * @return Machine status. 1 if the machine is on, 0  otherwise 
 	 */
+	
 	public int isStatusOn() {
 		return statusOn;
 	}
@@ -111,14 +132,17 @@ public class VendingMachine {
 	 * Get the products registered in the machine.
 	 * @return Reference to the ArrayList object containing the products
 	 */
+	
 	public ArrayList<Product> getProducts() {
 		return products;
 	}
+	
 	/**
 	 * It looks for a product in the vm
 	 * @param name product name
 	 * @return the index or -1 if missing
 	 */
+	
 	public int getProductIndex(String name) {
 		
 		int cnt = 0, index = -1;
@@ -136,14 +160,18 @@ public class VendingMachine {
 	 * Set the actual machine temperature.
 	 * @param temp Temperature value in °C
 	 */
+	
 	public void setTemp(float temp) {
-		this.temp = temp;
+		this.temp_sens = temp;
+		this.is_new_temp_sens = true;
+		this.is_new = true;
 	}
 	
 	/**
 	 * Set the desired machine temperature.
 	 * @param temp_des Desired temperature in °C
 	 */
+	
 	public void setTempAct(float temp_des) {
 		this.temp_des = temp_des;
 	}
@@ -152,6 +180,7 @@ public class VendingMachine {
 	 * Set the machine geographical position.
 	 * @param pos JSONObject containing the machine latitude and longitude
 	 */
+	
 	public void setPosition(JSONObject pos) {
 		float latitude = (float) pos.getDouble("lat");
 		if (lat >= Constants.MIN_LAT && lat <= Constants.MAX_LAT) {
@@ -173,8 +202,11 @@ public class VendingMachine {
 	 * Set the alarm status.
 	 * @param new_alarm New status alarm
 	 */
+	
 	public void setAlarm(String new_alarm) {
 		this.alarm = new_alarm;
+		this.is_new_alarm = true;
+		this.is_new = true;
 	}
 	
 
@@ -182,14 +214,18 @@ public class VendingMachine {
 	 * Set the machine status.
 	 * @param statusOn Machine status. True if the machine is on, False otherwise 
 	 */
+	
 	public void setStatusOn(int statusOn) {
 		this.statusOn = statusOn;
+		this.is_new_statusOn = true;
+		this.is_new = true;
 	}
 	
 	/**
 	 *  Sets an id for the vm
 	 * @param new_id the new id to set
 	 */
+	
 	public void setId(int new_id) {
 		this.id = new_id;
 	}
@@ -203,51 +239,10 @@ public class VendingMachine {
 		this.type = new_type;
 	}
 	
-	
-	public void print() {
-		
-		int indexA, indexB;
-		
-		indexA = getProductIndex("ProductA");
-		indexB = getProductIndex("ProductB");
-		
-		System.out.println("");
-		System.out.println("/**************************/");
-		System.out.println("Vending machine ID: " + id);
-		System.out.println("Type: " + type);
-		System.out.println("Status: " + statusOn);
-		System.out.println("Sensed temperature: " + temp);
-		System.out.println("Desired temperature: " + temp_des);
-		System.out.println("Latitude: " + lat);
-		System.out.println("Longitude: " + lng);
-		System.out.println("Alarm: " + alarm);
-		System.out.println("ProductA qty: " + products.get(indexA).getQty());
-		System.out.println("ProductA price: " + products.get(indexA).getPrice());
-		System.out.println("ProductB qty: " + products.get(indexB).getQty());
-		System.out.println("ProductB price: " + products.get(indexB).getPrice());
-		System.out.println("/**************************/");
-		System.out.println("");
-	}
-	public String get_vm_content() {
-		String content = new String("{'id':'SVM_" + type + id + "',");
-		int indexA, indexB;
-		
-		indexA = getProductIndex("ProductA");
-		indexB = getProductIndex("ProductB");
-		
-		content = content + "'status':'" + statusOn+"',";
-		content = content + "'tempsens':'" + temp +"',";
-		content = content + "'tempdes':'" + temp_des +"',";
-		content = content + "'lat':'" + lat +"',";
-		content = content + "'long':'" + lng +"',";
-		content = content + "'alarm':'" + alarm +"',";
-		content = content + "'products':[{'id':'ProductA','qty':'"+ products.get(indexA).getQty() + 
-				"','price':'" + products.get(indexA).getPrice() +"'},";
-		content = content + "{'id':'ProductB,'qty':'"+ products.get(indexB).getQty() + 
-			"','price':'" + products.get(indexB).getPrice() +"'}]}";
-		
-		return content;
-	}
+	/**
+	 * 
+	 * @return JsonObjcet containing all the values of the vm
+	 */
 	
 	public JSONObject get_json_vm_content() {
 		int indexA, indexB;
@@ -258,10 +253,11 @@ public class VendingMachine {
 		
 		indexA = getProductIndex("ProductA");
 		indexB = getProductIndex("ProductB");
-	
-		obj.put("id", "SVM_" + type + id);
+		
+		name = "SVM_" + type + id;
+		obj.put("id", name);
 		obj.put("status", statusOn);
-		obj.put("tempsens", temp);
+		obj.put("tempsens", temp_sens);
 		obj.put("tempdes", temp_des);
 		obj.put("lat", lat);
 		obj.put("long", lng);
@@ -276,6 +272,122 @@ public class VendingMachine {
 		array.put(productB);
 		obj.put("products", array);
 		
+		is_new_alarm = false;
+		is_new_statusOn = false;
+		is_new_temp_sens = false;
+		products.get(indexA).is_new_qty = false;
+		products.get(indexA).is_new_price = false;
+		products.get(indexB).is_new_qty = false;
+		products.get(indexB).is_new_price = false;
+		
 		return obj;
+	}
+	
+	/**
+	 * 
+	 * @return The JSONobject of the updated values
+	 */
+
+	public JSONObject get_json_update_content() {
+		int indexA, indexB;
+		JSONObject obj = new JSONObject();
+		JSONObject productA = new JSONObject();
+		JSONObject productB = new JSONObject();
+		JSONArray array = new JSONArray();
+		
+		indexA = getProductIndex("ProductA");
+		indexB = getProductIndex("ProductB");
+	
+		obj.put("id", "SVM_" + type + id);
+		if (is_new_temp_sens) {
+			obj.put("tempsens", temp_sens);
+			is_new_temp_sens = false;
+		}
+		if (is_new_alarm) {	
+			obj.put("alarm", alarm);
+			is_new_alarm = false;
+		}
+		if (is_new_statusOn) {
+			obj.put("status", statusOn);
+			is_new_statusOn = false;
+			
+		}
+		if (products.get(indexA).is_new_qty || 
+				products.get(indexA).is_new_price ) {
+			productA.put("id", "ProductA");
+			if (products.get(indexA).is_new_qty) {
+				productA.put("qty",  products.get(indexA).getQty());
+				products.get(indexA).is_new_qty = false;
+			}
+			if (products.get(indexA).is_new_price) {
+				productA.put("price",  products.get(indexA).getPrice());
+				products.get(indexA).is_new_price = false;
+			}
+		}
+		if (products.get(indexB).is_new_qty || 
+				products.get(indexB).is_new_price ) {
+			productB.put("id", "ProductB");
+			if (products.get(indexB).is_new_qty) {
+				productB.put("qty",  products.get(indexB).getQty());
+				products.get(indexB).is_new_qty = false;
+			}
+			if (products.get(indexB).is_new_price) {
+				productB.put("price",  products.get(indexB).getPrice());
+				products.get(indexB).is_new_price = false;
+			}
+		}
+		is_new = false;
+		
+		array.put(productA);
+		array.put(productB);
+		
+		obj.put("products", array);
+		
+		return obj;
+	}
+	
+	/**
+	 * Updates the resource res of the vending machine vm with the value in content
+	 * @param content Content of the instance
+	 * @param res resource
+	 */
+	
+	public void set_vm_res(String content, String res) {
+
+		int index;
+		JSONObject root = new JSONObject(content);
+		
+		if (res.equals("alarm")) {
+			setAlarm(root.getString("alarm"));
+		} else if (res.equals("status")) {
+			setStatusOn(root.getInt("status"));
+			setType(root.getString("type"));
+		} else if (res.equals("loc")) {
+			setPosition(root);
+		} else if (res.equals("tempdes")) {
+			setTempAct((float)root.getDouble("tempdes"));
+		} else if (res.equals("tempsens")) {
+			setTemp((float)root.getDouble("tempsens"));
+		} else if (res.equals("ProductAqty")) {
+			index = getProductIndex("ProductA");
+			if (index >= 0) {
+				products.get(index).setQty((root.getInt("qty")));
+			}
+		} else if (res.equals("ProductBqty")) {
+			index = getProductIndex("ProductB");
+			if (index >= 0) {
+				products.get(index).setQty((root.getInt("qty")));
+			}
+		} else if (res.equals("ProductAprice")) {
+			index = getProductIndex("ProductA");
+			if (index >= 0) {
+				products.get(index).setPrice((float)(root.getDouble("price")));
+			}
+		} else if (res.equals("ProductBprice")) {
+			index = getProductIndex("ProductB");
+			if (index > 0) {
+				products.get(index).setPrice((float)(root.getDouble("price")));
+			}
+		}
 	}
 }

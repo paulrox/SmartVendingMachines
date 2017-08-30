@@ -8,16 +8,23 @@ package it.svm.iot.core;
  */
 
 public class Product {
-	private String name;
-	private int qty;
-	private float price;
+	public String name;
+	public int qty;
+	public float price;
+	public Boolean is_new_price;
+	public Boolean is_new_qty;
+	/* Reference to the is_new vm*/
+	public Boolean is_new;
 	
 	/**
 	 * Constructor for class Product.
 	 * @param n Name of the product
 	 */
-	public Product(String n) {
+	public Product(String n, Boolean is_new_vm) {
 		name = n;
+		is_new_price = false;
+		is_new_qty = false;
+		this.is_new = is_new_vm;
 	}
 	
 	/* Getter methods */
@@ -53,8 +60,11 @@ public class Product {
 	 * @param qty Product quantity
 	 */
 	public void setQty(int qty) {
-		if (qty >= 0 && qty < Constants.MAX_PROD_QTY)
+		if (qty >= 0 && qty < Constants.MAX_PROD_QTY) {
 			this.qty = qty;
+			this.is_new_qty = true;
+			this.is_new = true;
+		}
 		else {
 			System.err.printf("Product %s: Invalid product quantity (%f).\n", name, qty);
 			System.exit(1);
@@ -66,8 +76,11 @@ public class Product {
 	 * @param price Product price
 	 */
 	public void setPrice(float price) {
-		if (price >= Constants.MIN_PRICE && price <= Constants.MAX_PRICE)
+		if (price >= Constants.MIN_PRICE && price <= Constants.MAX_PRICE) {
 			this.price = price;
+			this.is_new_price = true;
+			this.is_new = true;
+		}
 		else {
 			System.err.printf("Product %s: Invalid price (%f).\n", name, price);
 			System.exit(1);

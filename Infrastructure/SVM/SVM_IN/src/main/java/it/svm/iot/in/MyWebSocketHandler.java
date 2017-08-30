@@ -59,9 +59,34 @@ public class MyWebSocketHandler {
         		e.printStackTrace();
         	}
 
-
         } else if (root.getString("type").equals("R") && !is_first_time) {
         	/* Read request */
+        	JSONObject response = new JSONObject();
+    		JSONArray content = new JSONArray();
+    		/* True if there is something new in at least one vm */
+    		Boolean is_update = false;
+    		
+        	for (int i = 0; i < ADN.vms.size(); i++) { 
+        		if (ADN.vms.get(i).is_new) {
+        			/* Only if there is an update */
+        			content.put(ADN.vms.get(i).get_json_update_content());
+        			is_update = true;
+        		}
+        	}
+        	if (is_update)
+        		response.put("type", "OK");
+        	else
+        		response.put("type", "NO");
+        	
+        	response.put("content", content);
+        	
+        	try {
+        		System.out.println(response.toString());
+        		current_session.getRemote().sendString(response.toString());
+        	} catch (IOException e) {
+        		e.printStackTrace();
+        	}
+        	
         } else if (root.getString("type").equals("W")) {
         	/* Write request */
         } else {

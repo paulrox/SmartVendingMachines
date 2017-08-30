@@ -9,6 +9,7 @@ import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Option;
 import org.eclipse.californium.core.coap.Request;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.websocket.server.WebSocketHandler;
@@ -184,56 +185,12 @@ public class ADN {
 						IN_AE_Monitor.getRn() + "/" + id;
 				IN_Mca.createContentInstance(parent_cont + "/" +
 						tmp[tmp.length - 1], response);
-				set_vm_res(vms.get(vms.size() - 1), response, tmp[tmp.length - 1]);	
+				vms.get(vms.size() - 1).set_vm_res(response, tmp[tmp.length - 1]);	
 			}
 		}
 	}
 	
-	/**
-	 * Updates the resource res of the vending machine vm with the value in content
-	 * @param vm Vending machine
-	 * @param content Content of the instance
-	 * @param res resource
-	 */
 	
-	private static void set_vm_res(VendingMachine vm, String content, String res) {
-
-		int index;
-		JSONObject root = new JSONObject(content);
-		
-		if (res.equals("alarm")) {
-			vm.setAlarm(root.getString("alarm"));
-		} else if (res.equals("status")) {
-			vm.setStatusOn(root.getInt("status"));
-			vm.setType(root.getString("type"));
-		} else if (res.equals("loc")) {
-			vm.setPosition(root);
-		} else if (res.equals("tempdes")) {
-			vm.setTempAct((float)root.getDouble("tempdes"));
-		} else if (res.equals("tempsens")) {
-			vm.setTemp((float)root.getDouble("tempsens"));
-		} else if (res.equals("ProductAqty")) {
-			index = vm.getProductIndex("ProductA");
-			if (index >= 0) {
-				vm.products.get(index).setQty((root.getInt("qty")));
-			}
-		} else if (res.equals("ProductBqty")) {
-			index = vm.getProductIndex("ProductB");
-			if (index >= 0) {
-				vm.products.get(index).setQty((root.getInt("qty")));
-			}
-		} else if (res.equals("ProductAprice")) {
-			index = vm.getProductIndex("ProductA");
-			if (index >= 0) {
-				vm.products.get(index).setPrice((float)(root.getDouble("price")));
-			}
-		} else if (res.equals("ProductBprice")) {
-			index = vm.getProductIndex("ProductB");
-			if (index > 0) {
-				vm.products.get(index).setPrice((float)(root.getDouble("price")));
-			}
-		}
-	}
 	/**
 	 * Private constructor for the ADN class.
 	 */
@@ -245,7 +202,7 @@ public class ADN {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		CoAPMonitorThread thread;
+		CoAPMonitorThreadIN thread;
 		
 		System.out.printf("********** Infrastructure Node ADN **********\n");
 		
@@ -258,8 +215,8 @@ public class ADN {
 		System.out.printf("AE SVM_Controller registered on IN-CSE\n");
 		
 		/* CoAP server for handling notifications from the subscriptions */
-		thread = new CoAPMonitorThread("monitor", IN_Mca, 5685,
-				Constants.IN_CSE_URI);
+		thread = new CoAPMonitorThreadIN("monitor", IN_Mca, 5685,
+				Constants.IN_CSE_URI, vms);
 		thread.start();
 		
 		/* Discovering MN containers */
@@ -267,6 +224,31 @@ public class ADN {
 		
 		init_monitor_container(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
 		
+		while(true) {
+			Thread.sleep(1000);
+			
+			/* Read request */
+        	JSONObject response = new JSONObject();
+    		JSONArray content = new JSONArray();
+    		/* True if there is something new in at least one vm */
+    		Boolean is_update = false;
+    		
+        	for (int i = 0; i < ADN.vms.size(); i++) { 
+        		if (ADN.vms.get(i).is_new) {
+        			/* Only if there is an update */
+        			content.put(ADN.vms.get(i).get_json_update_content());
+        			is_update = true;
+        		}
+        	}
+        	if (is_update)
+        		response.put("type", "OK");
+        	else
+        		response.put("type", "NO");
+        	
+        	response.put("content", content);
+        	System.out.println(response.toString());
+		}
+		/*
 		Server server = new Server(8000);
         WebSocketHandler wsHandler = new WebSocketHandler() {
             @Override
@@ -279,6 +261,8 @@ public class ADN {
         server.join();
     	
 		while(true) {
+			
 		}
+		*/
 	}
 }

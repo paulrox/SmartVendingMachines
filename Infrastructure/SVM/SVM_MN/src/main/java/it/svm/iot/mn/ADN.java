@@ -129,12 +129,14 @@ public class ADN {
 				containers.add(MN_Mca.createContainer(vm_cont, uri_c,
 						"Monitor_" + vm_id.get(vm_id.size() - 1)));
 
-				if (uri_s.toLowerCase().contains("alarm")) {
+				if (uri_s.toLowerCase().contains("alarm") || 
+						uri_s.toLowerCase().contains("tempsens")) {
 					/* Resources we want to observe */
 					monitors.add(new ResourceMonitor("coap://[" + vm_addr +
 							"]:5683/" + uri_s, vm_cont + "/" + uri_c));
 
-				} else if (!uri_s.toLowerCase().contains("price")){
+				} else if (!uri_s.toLowerCase().contains("price") ||
+						!uri_s.toLowerCase().contains("loc")){
 					/* Resources we want to poll */
 					polling_threads.add(new PollingThread(MN_Mca, uri_s, uri_c, 
 							vm_cont, vm_addr));
