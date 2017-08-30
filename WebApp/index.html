@@ -7,14 +7,13 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="Smart Vending Machines Managing Panel">
         <meta name="author" content="Paolo Sassi, Matteo Rotundo">
-        <link rel="icon" href="../../favicon.ico">
 
         <title>SVM Managing Panel</title>
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom styles for this template -->
+        <!-- Custom styles for this page -->
         <link href="css/svm.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -35,11 +34,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Smart Vending Machines</a>
+                    <a class="navbar-brand nav_link" onclick="createIndexPage()">Smart Vending Machines</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="help.html">Help</a></li>
+                        <li><p class="ws_status"> Server Status: <span></span> </p> </li>
+                        <li><a class="nav_link">Help</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,15 +49,17 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="map.html">City Map</a></li>
-                        <li class="active"><a href="#">Analytics</a></li>
+                        <li><a class="nav_link">City Map</a></li>
+                        <li><a class="nav_link">Analytics</a></li>
                     </ul>
                     <ul class="nav nav-sidebar">
-                        <li><a href="route.html">Plan Route</a></li>
+                        <li><a class="nav_link">Plan Route</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Analytics</h1>
+                    <h1 class="page-header"></h1>
+                    <div id="main_cont" class="container-fluid">
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +67,12 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="js/jquery-3.2.1.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <!-- Maps JavaScript -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5kr9-ygd-mizVzB62AtxM58u2n0SBgzw&callback=myMap"></script>
+        <script src="js/maps.js"></script>
+        <!-- Main JavaScript file -->
+        <script src="js/main.js"></script>
     </body>
 </html>

@@ -105,6 +105,12 @@ body {
 }
 
 /*
+ * Navigation Links
+ */
+.nav_link {
+    cursor: pointer;
+}
+/*
  * City map
  */
 .map {
@@ -118,4 +124,21 @@ body {
 #ov_img {
     width: 70%;
     align-content: center;
+}
+
+/*
+ * WebSocket status
+ */
+p.ws_status {
+    padding: 15px;
+    margin: 0 20px 0 0;
+    color: #ffffff
+}
+
+#ws_offline {
+    color: crimson;
+}
+
+#ws_online {
+    color: chartreuse;
 }
