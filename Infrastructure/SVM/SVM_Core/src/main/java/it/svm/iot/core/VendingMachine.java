@@ -248,4 +248,33 @@ public class VendingMachine {
 		
 		return content;
 	}
+	
+	public JSONObject get_json_vm_content() {
+		int indexA, indexB;
+		JSONObject obj = new JSONObject();
+		JSONObject productA = new JSONObject();
+		JSONObject productB = new JSONObject();
+		JSONArray array = new JSONArray();
+		
+		indexA = getProductIndex("ProductA");
+		indexB = getProductIndex("ProductB");
+	
+		obj.put("status", statusOn);
+		obj.put("tempsens", temp);
+		obj.put("tempdes", temp_des);
+		obj.put("lat", lat);
+		obj.put("long", lng);
+		obj.put("alarm", alarm);
+		productA.put("id", "ProductA");
+		productA.put("qty",  products.get(indexA).getQty());
+		productA.put("price",  products.get(indexA).getPrice());
+		productB.put("id", "ProductB");
+		productB.put("qty",  products.get(indexB).getQty());
+		productB.put("price",  products.get(indexB).getPrice());
+		array.put(productA);
+		array.put(productB);
+		obj.put("products", array);
+		
+		return obj;
+	}
 }

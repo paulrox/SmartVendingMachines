@@ -49,10 +49,11 @@ public class MyWebSocketHandler {
     		response.put("type", "OK");
     		
         	for (int i = 0; i < ADN.vms.size(); i++) 
-        		content.put(ADN.vms.get(i).get_vm_content());
+        		content.put(ADN.vms.get(i).get_json_vm_content());
         	response.put("content", content);
         	
         	try {
+        		System.out.println(response.toString());
         		current_session.getRemote().sendString(response.toString());
         	} catch (IOException e) {
         		e.printStackTrace();
