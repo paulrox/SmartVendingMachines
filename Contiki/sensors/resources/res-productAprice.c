@@ -47,7 +47,8 @@ static void productAprice_get_handler(void* request, void* response,
 static void productAprice_put_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
-  int new_value, len;
+  int len;
+  float new_value;
   const char *val = NULL;
   
   len = REST.get_post_variable(request, "value", &val);

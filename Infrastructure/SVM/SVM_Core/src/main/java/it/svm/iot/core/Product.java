@@ -10,7 +10,7 @@ package it.svm.iot.core;
 public class Product {
 	public String name;
 	public int qty;
-	public float price;
+	public double price;
 	public Boolean is_new_price;
 	public Boolean is_new_qty;
 	/* Reference to the vm class*/
@@ -49,7 +49,7 @@ public class Product {
 	 * Get the actual product price.
 	 * @return Product price
 	 */
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	
@@ -75,7 +75,7 @@ public class Product {
 	 * Set the actual product price.
 	 * @param price Product price
 	 */
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		if (price >= Constants.MIN_PRICE && price <= Constants.MAX_PRICE) {
 			this.price = price;
 			this.is_new_price = true;
