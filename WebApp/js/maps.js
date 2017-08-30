@@ -19,4 +19,3 @@ function cityMap() {
     var map = new google.maps.Map(document.getElementById("city_map"),
                                   mapProp);
 }
-

@@ -68,7 +68,8 @@ function onCloseHandler() {
  */
 function onMessageHandler(msg) {
     alert(msg.data);
-    var obj = JSON.parse(msg.data);
+    var mydata = JSON.stringify(msg.data);
+    var obj = JSON.parse(mydata);
     var vm_index, prod_index;
     var tmp_vm;
     
