@@ -7,6 +7,7 @@ import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketError;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 @WebSocket
@@ -39,21 +40,20 @@ public class MyWebSocketHandler {
     @OnWebSocketMessage
     public void onMessage(String message) {
         JSONObject root = new JSONObject(message);
-        String cont;
         
         if (root.getString("type").equals("R") && is_first_time) {
         	is_first_time = false;
         	/* Initial Read request */
-        	cont = "{'type':'OK', 'content' :[";
-        	for (int i = 0; i < ADN.vms.size(); i++) {
-        		cont = cont + ADN.vms.get(i).get_vm_content();
-        		if (i < (ADN.vms.size() - 1))
-        			cont = cont + ",";
-        	}
-        	cont = cont + "]}";
+    		JSONObject response = new JSONObject();
+    		JSONArray content = new JSONArray();
+    		response.put("type", "OK");
+    		
+        	for (int i = 0; i < ADN.vms.size(); i++) 
+        		content.put(ADN.vms.get(i).get_vm_content());
+        	response.put("content", content);
         	
         	try {
-        		current_session.getRemote().sendString(cont);
+        		current_session.getRemote().sendString(response.toString());
         	} catch (IOException e) {
         		e.printStackTrace();
         	}

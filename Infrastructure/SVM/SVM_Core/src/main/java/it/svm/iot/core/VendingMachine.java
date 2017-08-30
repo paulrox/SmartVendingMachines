@@ -244,7 +244,7 @@ public class VendingMachine {
 		content = content + "'products':[{'id':'ProductA','qty':'"+ products.get(indexA).getQty() + 
 				"','price':'" + products.get(indexA).getPrice() +"'},";
 		content = content + "{'id':'ProductB,'qty':'"+ products.get(indexB).getQty() + 
-			"','price':'" + products.get(indexB).getPrice() +"'}]";
+			"','price':'" + products.get(indexB).getPrice() +"'}]}";
 		
 		return content;
 	}
