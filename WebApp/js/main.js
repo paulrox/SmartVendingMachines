@@ -36,7 +36,9 @@ function startWS() {
         socket.onopen = function() {
             socket_ok = true;    
         }
-    } catch (exception) {}
+    } catch (exception) {
+        alert('<p>Error' + exception + '</p>');
+    }
     
     if (socket_ok) {
         $(".ws_status").children().first().attr("id", "ws_online");
@@ -141,7 +143,6 @@ $(function(){
     
     $(".nav_link").not(".navbar-brand").click(function() {
         if (!socket_ok && $(this).text() != "Help") {
-            //$(this).attr("href", "");
             alert("The WebSocket is not started yet!");
             return;
         }
