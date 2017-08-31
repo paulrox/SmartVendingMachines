@@ -259,6 +259,7 @@ public class VendingMachine {
 		indexA = getProductIndex("ProductA");
 		indexB = getProductIndex("ProductB");
 	
+		obj.put("id", "SVM_" + type + id);
 		obj.put("status", statusOn);
 		obj.put("tempsens", temp);
 		obj.put("tempdes", temp_des);

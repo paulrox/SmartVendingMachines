@@ -96,4 +96,5 @@ function printSVM() {
         ret = ret + " " + vm.id + " " + vm.status + " " + vm.pos + " " +
             vm.tempsens + " " + vm.tempdes + " " + vm.alarm + "<br>";
     }
+    return ret;
 }
