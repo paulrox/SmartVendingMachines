@@ -67,11 +67,11 @@ function onCloseHandler() {
  * @param {STRING} msg Received message
  */
 function onMessageHandler(msg) {
-    var obj = JSON.parse(msg);
+    alert(msg.data);
+    var obj = JSON.parse(msg.data);
     var vm_index, prod_index;
     var tmp_vm;
     
-    alert(msg);
     
     if (obj.type == "OK") {
         /* Get the VM resources */
