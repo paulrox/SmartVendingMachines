@@ -13,6 +13,7 @@
 var socket;
 var socket_ok = false;
 var current_page;
+var update_req = JSON.stringify({"type": "R"});
 
 /*===========================================================================*/
 /*======================== WebSocket Functions ==============================*/
@@ -26,6 +27,9 @@ function onOpenHandler() {
     $(".ws_status").children().empty();
     $(".ws_status").children().first().attr("id", "ws_online");
     $(".ws_status").children().append("ONLINE");
+    
+    /* Send the initial request to the server */
+    socket.send(update_req);
 }
 
 /**
@@ -63,7 +67,50 @@ function onCloseHandler() {
  * @param {STRING} msg Received message
  */
 function onMessageHandler(msg) {
-    alert(msg.data);
+    var obj = JSON.parse(msg);
+    var vm_index, prod_index;
+    var tmp_vm;
+    
+    alert(msg);
+    
+    if (obj.type == "OK") {
+        /* Get the VM resources */
+        for (vm in obj.content) {
+            /* Examine each VM resource */
+            for (res in vm) {
+                if (res == "id") {
+                    vm_index = findVM(vm.id);
+                    if (vm_index < 0) {
+                    /* A new VM has been found */
+                    svm.push(new VendingMachine(vm.id));
+                    vm_index = svm.length - 1;
+                    }
+                } else if (res == "products") {
+                    /* Examine each product */
+                    for (prod in vm[res]) {
+                        /* Examine each resource in each product */
+                        for (prod_res in prod) {
+                            if (prod_res == "id") {
+                                prod_index = findProduct(vm.id, prod.id);
+                                if (prod_index < 0) {
+                                    /* A new product has been found */
+                                    svm[vm_index].products.push(
+                                        new Product(prod.id));
+                                    prod_index = svm[vm_index].products.length
+                                        - 1;
+                                }
+                            } else {
+                                svm[vm_index].products[prod_index].prod_res = 
+                                    prod[prod_res];
+                            }
+                        }
+                    }
+                } else {
+                    svm[vm_index].res = vm[res];
+                }
+            }
+        }
+    }
 }
 
 /**
@@ -168,6 +215,7 @@ function createAnalyticsPage() {
     /* Add the new content */
     $(".page-header").append("Analytics");
     $(".nav_link").eq(3).attr("class", "nav_link active");
+    $("#main_cont").append("<p>" + printSVM() + "</p>");
 }
 
 /**
