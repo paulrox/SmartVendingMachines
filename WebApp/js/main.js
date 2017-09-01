@@ -15,6 +15,7 @@ var socket_ok = false;
 var current_page;
 var update_req = JSON.stringify({"type": "R"});
 var update_timer = null;
+var page_timer = null;
 
 /*===========================================================================*/
 /*======================== WebSocket Functions ==============================*/
@@ -133,6 +134,9 @@ function onMessageHandler(msg) {
                         case "lng":
                             svm[vm_index].pos[res] = vm_cnt[res].toFixed(4);
                             break;
+                        case "alarm":
+                        case "status":
+                            svm[vm_index][res] = vm_cnt[res];
                         default:
                             break;        
                     }
@@ -336,9 +340,12 @@ $(document).ready(function(){
         
         switch($(this).text()) {
             case "City Map":
+                clearInterval(page_interval);
                 createMapPage();
                 break;
             case "Analytics":
+                /* Start the page refresh timer */
+                page_interval = setInterval(createAnalyticsPage, 1000);
                 createAnalyticsPage();
                 break;
             case "Plan Route":
