@@ -8,7 +8,7 @@
  */
 
 /* Global Variables */
-var svm = Array(0);
+var svm;
 var PISA_LAT = 43;
 var PISA_LNG = 10;
 
@@ -21,7 +21,7 @@ function Product(id) {
     
     /* Initialize all the properties with default values */
     this.qty = 0;
-    this.price = 0;
+    this.price = 0.0;
 }
 /**
  * Prototype of the vending machine object.
@@ -73,15 +73,15 @@ function findVM(id) {
 
 /**
  * Check if a given product is already present in the VM.
- * @param {STRING} vm_id Id of the VM
+ * @param {STRING} vm_index Index of the VM in the svm array
  * @param {STRING} prod_id Id of the product we are looking for
  * @returns {INTEGER} The product index if it is present, -1 otherwise
  */
-function findProduct(vm_id, prod_id) {
+function findProduct(vm_index, prod_id) {
     var ret = -1;
     var i = 0;
     
-    for (prod in svm[vm_id].products) {
+    for (prod in svm[vm_index].products) {
         if (prod.id == prod_id)
             ret = i;
         i++;
@@ -93,8 +93,38 @@ function printSVM() {
     var ret = "";
     
     for (vm in svm) {
-        ret = ret + " " + vm.id + " " + vm.status + " " + vm.pos + " " +
-            vm.tempsens + " " + vm.tempdes + " " + vm.alarm + "<br>";
+        var vm_cnt = svm[vm]; 
+        ret = ret + "********* " + vm_cnt.id + " *********<br>" + "Status: " + 
+            vm_cnt.status +"<br>" + "Position: " + vm_cnt.pos + "<br>" +
+            "Sensed Temp: " + vm_cnt.tempsens + "<br>" + "Desidered Temp: " +
+            vm_cnt.tempdes + "<br>" + "Alarm: " + vm_cnt.alarm + "<br>" + 
+            "**************************<br>";
     }
+    return ret;
+}
+
+/**
+ * Get the HTML code to show the selected VM (and its products) in a panel.
+ * @param {STRING} index Index of the VM on the svm array
+ * @returns {STRING} The HTML code to display the panel
+ */
+function getSVMPanel(index) {
+    var ret = "";
+    var prods = svm[index].products;
+    var offset = (index % 2 == 0)? "col-md-offset-1" : "col-md-offset-2";
+    
+    ret = ret + '<div class="panel panel-primary svm-panel col-md-4 ' + offset +
+        '"><div class="panel-heading"><h3 class="panel-title">' + svm[index].id +
+        '</h3></div><div class="panel-body">' + "Status: " + svm[index].status +
+        "<br>Position: " + svm[index].pos + "<br>" + "Sensed Temp: " + 
+        svm[index].tempsens + "<br>" + "Desidered Temp: " + svm[index].tempdes +
+        "<br>" + "Alarm: " + svm[index].alarm + "<br><h4>Products:</h4>";
+    for (prod in prods) {
+        ret = ret + '<div class="panel panel-default"><div class="panel-' +
+            'heading">' + prods[prod].id + '</div><div class="panel-body">' +
+            "Quantity: " +prods[prod].qty + "<br>Price: " +
+            prods[prod].price + '</div></div>';
+    }
+    ret = ret + '</div></div>';
     return ret;
 }

@@ -142,3 +142,8 @@ p.ws_status {
 #ws_online {
     color: chartreuse;
 }
+
+.svm-panel {
+    padding-left: 0px;
+    padding-right: 0px;
+}

@@ -9,6 +9,7 @@ import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Option;
 import org.eclipse.californium.core.coap.Request;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.websocket.server.WebSocketHandler;
@@ -142,11 +143,11 @@ public class ADN {
 	 * @param mn_cse URI MN CSE
 	 */
 	private static void init_monitor_container(String mn_cse) {
-		String containers_mn_raw = null;
-		String parent_cont = "";
+		String containers_mn_raw = null, parent_cont = "", response;
 		String[] containers_mn, tmp;
 		URI uri = null;
 		CoapClient client;
+		
 		
 		for (String id : vm_id) {
 			vms.add(new VendingMachine());
@@ -157,6 +158,8 @@ public class ADN {
 			containers_mn = containers_mn_raw.split(" ");
 
 			for (String cont : containers_mn) {	
+				JSONObject root = null;
+				int retry = 0;
 				tmp = cont.split("/");
 				parent_cont = Constants.MN_CSE_URI + "/" + 
 						IN_AE_Monitor.getRn() + "/" + id;
@@ -168,16 +171,34 @@ public class ADN {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				client = new CoapClient(uri);
-				Request req = Request.newGet();
-				req.getOptions().addOption(new Option(267, 2));
-				req.getOptions().addOption(new Option(256, "admin:admin"));
-				req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
-				req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
-				/* GET request for the last content instance */
-				CoapResponse responseBody = client.advanced(req);
-				String response = new String(responseBody.getPayload());
-				JSONObject root = new JSONObject(response);
+				while (root == null) {
+					client = new CoapClient(uri);
+					Request req = Request.newGet();
+					req.getOptions().addOption(new Option(267, 2));
+					req.getOptions().addOption(new Option(256, "admin:admin"));
+					req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
+					req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
+					/* GET request for the last content instance */
+					CoapResponse responseBody = client.advanced(req);
+					response = new String(responseBody.getPayload());
+					try {
+						root = new JSONObject(response);
+					} catch (JSONException e) {
+						/* The container is still empty */
+						retry++;
+						if (retry == 3) {
+							/* There is a problem with the application, exit */
+							e.printStackTrace();
+							System.exit(-1);
+						}
+						/* Wait before retrying */
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}
 				JSONObject m2mcin = root.getJSONObject("m2m:cin");
 				response = m2mcin.getString("con");
 				parent_cont = Constants.IN_CSE_URI + "/" + 

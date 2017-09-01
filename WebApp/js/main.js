@@ -67,56 +67,44 @@ function onCloseHandler() {
  * @param {STRING} msg Received message
  */
 function onMessageHandler(msg) {
-<<<<<<< HEAD
-    alert(msg.data);
-    var mydata = JSON.stringify(msg.data);
-    var obj = JSON.parse(mydata);
-=======
-    showAlert(msg.data);
-    
-    try {
-        var obj = JSON.parse(msg.data);
-    } catch (e) {alert(e);}
-    //var obj = JSON.parse('{"type":"OK","content":[{"tempsens":17.989999771118164,"alarm":"N","id":"SVM_F2","tempdes":18,"lat":43.72100067138672,"long":10.389800071716309,"status":1,"products":[{"price":1.5,"qty":5,"id":"ProductA"},{"price":2.9000000953674316,"qty":5,"id":"ProductB"}]},{"tempsens":69.98999786376953,"alarm":"N","id":"SVM_C3","tempdes":70,"lat":43.722900390625,"long":10.396499633789062,"status":1,"products":[{"price":1.590000033378601,"qty":5,"id":"ProductA"},{"price":2.490000009536743,"qty":5,"id":"ProductB"}]}]}');
->>>>>>> 8cd08ecd176bdf1bbe3d52ddb2068eebffdb5196
+    var obj = JSON.parse(msg.data);
     var vm_index, prod_index;
     var tmp_vm;
-    
-    
+        
     if (obj.type == "OK") {
         /* Get the VM resources */
         for (vm in obj.content) {
+            var vm_cnt = obj.content[vm];
             /* Search the VM */
-            vm_index = findVM(vm.id);
+            vm_index = findVM(vm_cnt.id);
             if (vm_index < 0) {
                 /* A new VM has been found */
-                svm.push(new VendingMachine(vm.id));
+                svm.push(new VendingMachine(vm_cnt.id));
                 vm_index = svm.length - 1;
             }
             /* Examine each VM resource */
-            for (res in vm) {
+            for (res in vm_cnt) {
                 if (res == "products") {
                     /* Examine each product */
-                    for (prod in vm[res]) {
+                    for (prod in vm_cnt[res]) {
+                        var prod_cnt = vm_cnt[res][prod];
+                        prod_index = findProduct(vm_index, prod_cnt.id);
+                        if (prod_index < 0) {
+                            /* A new product has been found */
+                            svm[vm_index].products.push(
+                                new Product(prod_cnt.id));
+                            prod_index = svm[vm_index].products.length - 1;
+                        }
                         /* Examine each resource in each product */
-                        for (prod_res in prod) {
-                            if (prod_res == "id") {
-                                prod_index = findProduct(vm.id, prod.id);
-                                if (prod_index < 0) {
-                                    /* A new product has been found */
-                                    svm[vm_index].products.push(
-                                        new Product(prod.id));
-                                    prod_index = svm[vm_index].products.length
-                                        - 1;
-                                }
-                            } else {
-                                svm[vm_index].products[prod_index].prod_res = 
-                                    prod[prod_res];
+                        for (prod_res in prod_cnt) {
+                            if (prod_res != "id") {
+                                svm[vm_index].products[prod_index][prod_res] = 
+                                    prod_cnt[prod_res];
                             }
                         }
                     }
                 } else if( res != "id") {
-                    svm[vm_index].res = vm[res];
+                    svm[vm_index][res] = vm_cnt[res];
                 }
             }
         }
@@ -135,20 +123,15 @@ function connectWS() {
     }
     
     try {
-        
         host = "ws://127.0.0.1:8000/";
         socket = new WebSocket(host);
         
-        socket.onopen = onOpenHandler;
-        
+        socket.onopen = onOpenHandler;   
         socket.onerror = onErrorHandler;
-        
         socket.onclose = onCloseHandler;
-        
         socket.onmessage = onMessageHandler;
-        
     } catch (exception) {
-        alert("Exception in WebSocket connection: " + exception);
+        showAlert("Exception in WebSocket connection: " + exception, "danger");
     }
 }
 
@@ -169,6 +152,7 @@ function createIndexPage() {
     
     /* Add the new content */
     $(".page-header").append("Overview");
+    $("#main_cont").append('<div class="row"></div>');
     $("#main_cont").append("<img id=\"ov_img\" src=\"img/overview.jpg\"" +
                            "alt=\"overview image\" class=\"img-rounded " +
                            "center-block\">");
@@ -204,6 +188,7 @@ function createMapPage() {
     /* Add the new content */
     $(".page-header").append("City Map");
     $(".nav_link").eq(2).attr("class", "nav_link active");
+    $("#main_cont").append('<div class="row"></div>');
     $("#main_cont").append("<div id=\"city_map\" class=\"map\"></div>");
     
     /* Draw the map */
@@ -214,6 +199,7 @@ function createMapPage() {
  * Creates the Analytics page contents.
  */
 function createAnalyticsPage() {
+    var i = 1;
     current_page = "analytics";
     
     /* Empty the old content */
@@ -225,7 +211,15 @@ function createAnalyticsPage() {
     /* Add the new content */
     $(".page-header").append("Analytics");
     $(".nav_link").eq(3).attr("class", "nav_link active");
-    $("#main_cont").append("<p>" + printSVM() + "</p>");
+    $("#main_cont").append('<div class="row"></div>');
+    for (vm in svm) {
+        $("#main_cont").children(".row").last().append(getSVMPanel(vm));
+        if (i % 3 == 0) {
+            /* Add a row */
+            $("#main_cont").append('<div class="row"></div>');
+        }
+        i++;
+    }
 }
 
 /**
@@ -262,14 +256,20 @@ function createHelpPage() {
 }
 
 /**
- * Shows and alert.
+ * Shows non-invasive alert.
+ * @param {STRING} msg Message to be shown
+ * @param {STRING} type Type of the alert (optional). It can be one of:
+ *                 'success', 'info', 'warning' and 'danger'
  */
-function showAlert(msg) {
-    $(".main").children(0).append('<div class="alert alert-warning alert-dismissible" ' +
-                      'role="alert"><button type="button" class="close" ' +
-                      'data-dismiss="alert" aria-label="Close"><span ' +
-                      'aria-hidden="true">&times;</span></button>' +
-                      msg + '</div>');
+function showAlert(msg, type) {
+    /* If type is not specified, use 'info' */
+    type = type || "info";
+    
+    $(".main").prepend('<div class="alert alert-' + type + ' alert-' +
+                       'dismissible" role="alert"><button type="button"' +
+                       'class="close" data-dismiss="alert" aria-label=' +
+                       '"Close"><span aria-hidden="true">&times;</span>' +
+                       '</button>' + msg + '</div>');
 }
 
 /*===========================================================================*/
@@ -282,6 +282,9 @@ function showAlert(msg) {
 $(document).ready(function(){
     
     createIndexPage();
+    
+    /* Initialize the svm array */
+    svm = Array(0);
     
     $(".close").onclick = function() {
         $().alert('close');
