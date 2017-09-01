@@ -133,6 +133,9 @@ function onMessageHandler(msg) {
                         case "lat":
                         case "lng":
                             svm[vm_index].pos[res] = vm_cnt[res].toFixed(4);
+                            if (svm[vm_index].pos.lat != 0.0 &&
+                                svm[vm_index].pos.lng != 0.0)
+                                findAddress(svm[vm_index]);
                             break;
                         case "alarm":
                         case "status":
@@ -187,6 +190,10 @@ function requestUpdate() {
 function createIndexPage() {
     current_page = "index";
     
+    clearInterval(page_timer);
+    page_timer = null;
+    
+    
     /* Empty the old content */
     $("#main_cont").empty();
     $(".page-header").empty();
@@ -220,6 +227,10 @@ function createIndexPage() {
 function createMapPage() {
     current_page = "map";
     
+    clearInterval(page_timer);
+    page_timer = null;
+
+    
     /* Empty the old content */
     $("#main_cont").empty();
     $(".page-header").empty();
@@ -244,6 +255,10 @@ function createAnalyticsPage() {
     var i = 1;
     current_page = "analytics";
     
+    /* Start the page refresh timer */
+    if (page_timer == null)
+        page_timer = setInterval(createAnalyticsPage, 1000);
+        
     /* Empty the old content */
     $("#main_cont").empty();
     $(".page-header").empty();
@@ -270,6 +285,10 @@ function createAnalyticsPage() {
 function createRoutePage() {
     current_page = "route";
     
+    clearInterval(page_timer);
+    page_timer = null;
+
+    
     /* Empty the old content */
     $("#main_cont").empty();
     $(".page-header").empty();
@@ -286,6 +305,10 @@ function createRoutePage() {
  */
 function createHelpPage() {
     current_page = "help";
+    
+    clearInterval(page_timer);
+    page_timer = null;
+
     
     /* Empty the old content */
     $("#main_cont").empty();
@@ -340,12 +363,9 @@ $(document).ready(function(){
         
         switch($(this).text()) {
             case "City Map":
-                clearInterval(page_interval);
                 createMapPage();
                 break;
             case "Analytics":
-                /* Start the page refresh timer */
-                page_interval = setInterval(createAnalyticsPage, 1000);
                 createAnalyticsPage();
                 break;
             case "Plan Route":

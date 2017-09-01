@@ -39,7 +39,7 @@ function Product(id) {
  */
 function VendingMachine(id) {
     this.id = id;
-
+    this.type = id.substr(4, 5);
     /* Initialize all the properties with default values */
     this.pos = new Position(0.0, 0.0);
     this.products = Array(0);
@@ -113,15 +113,15 @@ function getSVMPanel(index) {
     
     ret = ret + '<div class="panel panel-primary svm-panel col-md-4 ' + offset +
         '"><div class="panel-heading"><h3 class="panel-title">' + svm[index].id +
-        '</h3></div><div class="panel-body">' + "Status: " + svm[index].status +
-        "<br>Position: " + svm[index].pos.lat + ", " + svm[index].pos.lng +
-        "<br>" + "Sensed Temp: " + svm[index].tempsens + "<br>" +
-        "Desidered Temp: " + svm[index].tempdes + "<br>" + "Alarm: " +
-        svm[index].alarm + "<br><h4>Products:</h4>";
+        '</h3></div><div class="panel-body"><h4>General Info</h4>' + "<strong>Status: </strong>" + svm[index].status +
+        "<br><strong>Position: </strong>" + svm[index].pos.lat + ", " + svm[index].pos.lng +
+        "<br>" + "<strong>Sensed Temp.: </strong>" + svm[index].tempsens + "<br>" +
+        "<strong>Desidered Temp.: </strong>" + svm[index].tempdes + "<br>" + "<strong>Alarm: </strong>" +
+        svm[index].alarm + "<br><h4>Products</h4>";
     for (prod in prods) {
         ret = ret + '<div class="panel panel-default"><div class="panel-' +
-            'heading">' + prods[prod].id + '</div><div class="panel-body">' +
-            "Quantity: " +prods[prod].qty + "<br>Price: " +
+            'heading"><strong>' + prods[prod].id + '</strong></div><div class="panel-body">' +
+            "<strong>Quantity: </strong>" +prods[prod].qty + "<br><strong>Price: </strong>" +
             prods[prod].price + '</div></div>';
     }
     ret = ret + '</div></div>';
