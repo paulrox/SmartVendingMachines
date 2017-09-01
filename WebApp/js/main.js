@@ -14,6 +14,7 @@ var socket;
 var socket_ok = false;
 var current_page;
 var update_req = JSON.stringify({"type": "R"});
+var update_timer = null;
 
 /*===========================================================================*/
 /*======================== WebSocket Functions ==============================*/
@@ -30,6 +31,12 @@ function onOpenHandler() {
     
     /* Send the initial request to the server */
     socket.send(update_req);
+    
+    /* Wait 5 seconds, then request resources updates every 500 msec */
+    setTimeout(function() {
+        update_timer = setInterval(requestUpdate, 500);
+    }, 5000);
+    
 }
 
 /**
@@ -42,6 +49,9 @@ function onErrorHandler() {
         $(".ws_status").children().append("OFFLINE");
     } else {
         socket_ok = false;
+        /* Disable the update timer */
+        if (update_timer != null)
+            clearTimeout(update_timer);
         /* If the user is visiting a page which depends on the WebSocket,
         * bring it back to the index page. */
         createIndexPage();
@@ -53,6 +63,9 @@ function onErrorHandler() {
  */
 function onCloseHandler() {
     socket_ok = false;
+    /* Disable the update timer */
+    if (update_timer != null)
+            clearTimeout(update_timer);
     $(".ws_status").children().empty();
     $(".ws_status").find("span").attr("id", "ws_offline");
     $(".ws_status").children().append("OFFLINE");
@@ -97,14 +110,32 @@ function onMessageHandler(msg) {
                         }
                         /* Examine each resource in each product */
                         for (prod_res in prod_cnt) {
-                            if (prod_res != "id") {
-                                svm[vm_index].products[prod_index][prod_res] = 
+                            switch (prod_res) {
+                                case "qty":
+                                    svm[vm_index].products[prod_index][prod_res] =
                                     prod_cnt[prod_res];
-                            }
+                                    break;
+                                case "price":
+                                    svm[vm_index].products[prod_index][prod_res] =
+                                    prod_cnt[prod_res].toFixed(2);
+                                default:
+                                    break;
+                            }                
                         }
                     }
-                } else if( res != "id") {
-                    svm[vm_index][res] = vm_cnt[res];
+                } else {
+                    switch (res) {
+                        case "tempsens":
+                        case "tempdes":
+                            svm[vm_index][res] = vm_cnt[res].toFixed(2);
+                            break;
+                        case "lat":
+                        case "lng":
+                            svm[vm_index].pos[res] = vm_cnt[res].toFixed(4);
+                            break;
+                        default:
+                            break;        
+                    }
                 }
             }
         }
@@ -133,6 +164,13 @@ function connectWS() {
     } catch (exception) {
         showAlert("Exception in WebSocket connection: " + exception, "danger");
     }
+}
+
+/**
+ * Request a periodic update from the IN
+ */
+function requestUpdate() {
+    socket.send(update_req);
 }
 
 /*===========================================================================*/
@@ -292,7 +330,7 @@ $(document).ready(function(){
     
     $(".nav_link").not(".navbar-brand").click(function() {
         if (!socket_ok && $(this).text() != "Help") {
-            alert("The WebSocket is not connected!");
+            showAlert("The WebSocket is not connected!", "warning");
             return;
         }
         

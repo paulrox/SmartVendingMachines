@@ -263,7 +263,7 @@ public class VendingMachine {
 		obj.put("tempsens", temp_sens);
 		obj.put("tempdes", temp_des);
 		obj.put("lat", lat);
-		obj.put("long", lng);
+		obj.put("lng", lng);
 		obj.put("alarm", alarm);
 		productA.put("id", "ProductA");
 		productA.put("qty",  products.get(indexA).getQty());
@@ -350,7 +350,7 @@ public class VendingMachine {
 	}
 	
 	/**
-	 * Updates the resource res of the vending machine vm with the value in content
+	 * Updates the resource res of the vending machine with the value in content
 	 * @param content Content of the instance
 	 * @param res resource
 	 */

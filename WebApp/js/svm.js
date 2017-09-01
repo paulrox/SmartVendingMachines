@@ -13,6 +13,16 @@ var PISA_LAT = 43;
 var PISA_LNG = 10;
 
 /**
+ * Prototype of the position object.
+ * @param {FLOAT} lat Latitude of the VM
+ * @param {FLOAT} lng Longitue of the VM
+ */
+function Position(lat, lng) {
+    this.lat = lat;
+    this.lng = lng;
+}
+
+/**
  * Prototype of the product object.
  * @param {STRING} id Id of the product
  */
@@ -29,21 +39,9 @@ function Product(id) {
  */
 function VendingMachine(id) {
     this.id = id;
-    
-    /**
-     * Set the geographical position of the VM.
-     * @param {STRING} lat Latitude of the VM
-     * @param {STRING} lng Longitude of the VM
-     * @returns {ARRAY} Array containing the latitude and longitude as
-     *                  floats.
-     */
-    this.setPosition = function(lat, lng) {
-        var lat_num = PISA_LAT + "." + lat;
-        var lng_num = PISA_LNG + "." + lng;
-        return [parseFloat(lat_num), parseFloat(lng_num)];
-    }
+
     /* Initialize all the properties with default values */
-    this.pos = this.setPosition("0", "0");
+    this.pos = new Position(0.0, 0.0);
     this.products = Array(0);
     this.status = 0;
     this.tempsens = 0.0;
@@ -116,9 +114,10 @@ function getSVMPanel(index) {
     ret = ret + '<div class="panel panel-primary svm-panel col-md-4 ' + offset +
         '"><div class="panel-heading"><h3 class="panel-title">' + svm[index].id +
         '</h3></div><div class="panel-body">' + "Status: " + svm[index].status +
-        "<br>Position: " + svm[index].pos + "<br>" + "Sensed Temp: " + 
-        svm[index].tempsens + "<br>" + "Desidered Temp: " + svm[index].tempdes +
-        "<br>" + "Alarm: " + svm[index].alarm + "<br><h4>Products:</h4>";
+        "<br>Position: " + svm[index].pos.lat + ", " + svm[index].pos.lng +
+        "<br>" + "Sensed Temp: " + svm[index].tempsens + "<br>" +
+        "Desidered Temp: " + svm[index].tempdes + "<br>" + "Alarm: " +
+        svm[index].alarm + "<br><h4>Products:</h4>";
     for (prod in prods) {
         ret = ret + '<div class="panel panel-default"><div class="panel-' +
             'heading">' + prods[prod].id + '</div><div class="panel-body">' +
