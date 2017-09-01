@@ -384,12 +384,12 @@ public class VendingMachine {
 		} else if (res.equals("ProductAprice")) {
 			index = getProductIndex("ProductA");
 			if (index >= 0) {
-				products.get(index).setPrice((float)(root.getDouble("price")));
+				products.get(index).setPrice((root.getDouble("price")));
 			}
 		} else if (res.equals("ProductBprice")) {
 			index = getProductIndex("ProductB");
 			if (index > 0) {
-				products.get(index).setPrice((float)(root.getDouble("price")));
+				products.get(index).setPrice((root.getDouble("price")));
 			}
 		}
 	}

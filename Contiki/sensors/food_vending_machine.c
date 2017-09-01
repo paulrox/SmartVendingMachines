@@ -71,7 +71,7 @@ void init_vending_machine()
   productA.price = 1.5;
 
   productB.remaining_qty = MAX_PRODUCT_AVAILABILITY;
-  productB.price = 2.1;
+  productB.price = 2.5;
 }
 
 static void ctimer_callback(void *ptr)
