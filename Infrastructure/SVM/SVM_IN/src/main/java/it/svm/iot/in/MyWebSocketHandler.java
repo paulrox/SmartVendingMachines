@@ -75,10 +75,10 @@ public class MyWebSocketHandler {
         		response.put("type", "NO");
         	
         	response.put("content", content);
-        	System.out.println(response.toString());
+        	if (is_update)
+        		System.out.println(response.toString());
         	
         	try {
-        		System.out.println(response.toString());
         		current_session.getRemote().sendString(response.toString());
         	} catch (IOException e) {
         		e.printStackTrace();
