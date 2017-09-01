@@ -29,12 +29,6 @@ public class MyWebSocketHandler {
     public void onConnect(Session session) {
         System.out.println("Connect: " + session.getRemoteAddress().getAddress());
         current_session = session;
-        try {
-            session.getRemote().sendString("Hello Webbrowser");
-        } catch (IOException e) {
-            e.printStackTrace();
-            
-        }
     }
 
     @OnWebSocketMessage
