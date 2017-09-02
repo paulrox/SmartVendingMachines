@@ -45,8 +45,9 @@ public class PollingThread extends Thread {
 		vm_cont = vm_container;
 		vm_addr = vm_address;
 		
+		System.out.println("coap://["+vm_addr+"]:5683" + res_uri);
 		try {
-			uri = new URI("coap://["+vm_addr+"]:5683/" + res_uri);
+			uri = new URI("coap://["+vm_addr+"]:5683" + res_uri);
 		} catch (URISyntaxException e) {
 			System.err.println("Invalid URI: " + e.getMessage());
 			System.exit(-1);
@@ -73,9 +74,9 @@ public class PollingThread extends Thread {
 					old_resp = new String(resp.getResponseText());
 				}
 			} else {
-				System.out.println("No response received"
+				System.out.println("No new content"
 						+ " from " + "coap://[" + vm_addr + "]"
-						+ ":5683/" + res_uri);
+						+ ":5683" + res_uri);
 			}
 			try {
 				sleep(1000);
