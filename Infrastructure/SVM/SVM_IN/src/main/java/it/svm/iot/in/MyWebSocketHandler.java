@@ -10,6 +10,8 @@ import org.eclipse.jetty.websocket.api.annotations.WebSocket;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import it.svm.iot.core.Constants;
+
 @WebSocket
 public class MyWebSocketHandler {
 	private Session current_session;
@@ -86,6 +88,21 @@ public class MyWebSocketHandler {
         	
         } else if (root.getString("type").equals("W")) {
         	/* Write request */
+        	int i;
+        	
+        	for (i = 0; i < ADN.vms.size(); i++) 
+        		if (ADN.vms.get(i).equals(root.getString("id")))
+        				break;
+        	if (i < ADN.vms.size()) {
+        		/* Vending machine found */
+        		ADN.vms.get(i).set_vm_res(root.getJSONObject("content").toString(), 
+        				root.getString("resource"));
+        		String parent_cont = Constants.IN_CSE_URI + "/" + 
+						ADN.IN_AE_Controller.getRn() + "/" + root.getString("id");
+				ADN.IN_Mca.createContentInstance(parent_cont + "/" +
+						root.getString("resource"), 
+						root.getJSONObject("content").toString());
+        	}
         } else {
         	System.out.println("Unknown request!");
         }

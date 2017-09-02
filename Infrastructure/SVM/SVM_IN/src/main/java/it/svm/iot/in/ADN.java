@@ -30,14 +30,14 @@ public class ADN {
 	 * Mca reference point for the IN.
 	 */
 	
-	private static Mca IN_Mca = Mca.getInstance();
+	public static Mca IN_Mca = Mca.getInstance();
 	
 	/**
 	 * Application Entities
 	 */
 	
 	private static AE IN_AE_Monitor;
-	private static AE IN_AE_Controller;
+	public static AE IN_AE_Controller;
 	
 	/**
 	 * List containing the registered containers.
@@ -243,7 +243,32 @@ public class ADN {
 		discover(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
 		
 		init_monitor_container(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
-			
+		
+	/*	Thread.sleep(5000);
+	      JSONObject root = new JSONObject();
+	        root.put("type", "W");
+	        root.put("id", "SVM_F2");
+	        root.put("resource", "tempdes");
+	        JSONObject content = new JSONObject();
+	        content.put("tempdes", "34");
+	        root.put("content", content);
+	       
+	    	int i;
+	    	
+	    	for (i = 0; i < ADN.vms.size(); i++) 
+	    		if (ADN.vms.get(i).name.equals(root.getString("id")))
+	    				break;
+	    	if (i < ADN.vms.size()) {
+	    	
+	    		ADN.vms.get(i).set_vm_res(root.getJSONObject("content").toString(), 
+	    				root.getString("resource"));
+	    		String parent_cont = Constants.IN_CSE_URI + "/" + 
+						ADN.IN_AE_Controller.getRn() + "/" + root.getString("id");
+				ADN.IN_Mca.createContentInstance(parent_cont + "/" +
+						root.getString("resource"), 
+						root.getJSONObject("content").toString());
+				System.out.println("Written");
+	    	} else System.out.println("VM not found");*/
 
 		Server server = new Server(8000);
         WebSocketHandler wsHandler = new WebSocketHandler() {

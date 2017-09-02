@@ -44,7 +44,7 @@ public class ADN {
 	/**
 	 * List of mote addresses.
 	 */
-	private static ArrayList<String> mote_addr = new ArrayList<String>();
+	public static ArrayList<String> mote_addr = new ArrayList<String>();
 
 	/**
 	 * List of resource monitors.
@@ -354,7 +354,7 @@ public class ADN {
 
 		/* CoAP server for handling notifications from the subscriptions */
 		thread = new CoAPMonitorThread("monitor", MN_Mca, 5686,
-				Constants.MN_CSE_URI);
+				Constants.MN_CSE_URI, mote_addr);
 		thread.start();
 
 		while(true) {
