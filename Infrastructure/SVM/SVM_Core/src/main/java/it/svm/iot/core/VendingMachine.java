@@ -22,6 +22,7 @@ public class VendingMachine {
 	public int statusOn;	/* true if the machine is on */
 	public ArrayList<Product> products;
 	public SimpleSem mutex;
+	public Boolean first_time;
 	/* Monitoring only the observable resources. 
 	 * These var suggest if there is an update from the last read. */
 	public Boolean is_new_temp_sens;
@@ -263,7 +264,7 @@ public class VendingMachine {
 		obj.put("tempsens", temp_sens);
 		obj.put("tempdes", temp_des);
 		obj.put("lat", lat);
-		obj.put("long", lng);
+		obj.put("lng", lng);
 		obj.put("alarm", alarm);
 		productA.put("id", "ProductA");
 		productA.put("qty",  products.get(indexA).getQty());
@@ -276,6 +277,7 @@ public class VendingMachine {
 		obj.put("products", array);
 		
 		is_new_alarm = false;
+		is_new = false;
 		is_new_statusOn = false;
 		is_new_temp_sens = false;
 		products.get(indexA).is_new_qty = false;
@@ -350,7 +352,7 @@ public class VendingMachine {
 	}
 	
 	/**
-	 * Updates the resource res of the vending machine vm with the value in content
+	 * Updates the resource res of the vending machine with the value in content
 	 * @param content Content of the instance
 	 * @param res resource
 	 */
