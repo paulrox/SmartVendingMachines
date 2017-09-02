@@ -8,9 +8,7 @@
  */
 
 /* Global Variables */
-var svm;
-var PISA_LAT = 43;
-var PISA_LNG = 10;
+var svm; /* Array containing all the VMs */
 
 /**
  * Prototype of the status object.
@@ -50,6 +48,7 @@ function Alarm(value) {
         }
     }
 }
+
 /**
  * Prototype of the position object.
  * @param {FLOAT} lat Latitude of the VM
@@ -70,7 +69,9 @@ function Product(id) {
     /* Initialize all the properties with default values */
     this.qty = 0;
     this.price = 0.0;
+    this.updated = {qty: false, price: false};
 }
+
 /**
  * Prototype of the vending machine object.
  * @param {STRING} id Id and type of the vending machine
@@ -85,10 +86,10 @@ function VendingMachine(id) {
     this.tempsens = 0.0;
     this.tempdes = 0.0;
     this.alarm = new Alarm("N");
-    this.updated = false;
+    this.updated = {pos: false, products: false, status: false,
+                    tempsens: false, tempdes: false, alarm: false};
     
 }
-
 
 /**
  * Check if a given VM is already present in the svm array.
@@ -107,7 +108,6 @@ function findVM(id) {
     return ret;
 }
 
-
 /**
  * Check if a given product is already present in the VM.
  * @param {STRING} vm_index Index of the VM in the svm array
@@ -117,53 +117,12 @@ function findVM(id) {
 function findProduct(vm_index, prod_id) {
     var ret = -1;
     var i = 0;
+    var prods = svm[vm_index].products;
     
-    for (prod in svm[vm_index].products) {
-        if (prod.id == prod_id)
+    for (prod in prods) {
+        if (prods[prod].id == prod_id)
             ret = i;
         i++;
     }
-    return ret;
-}
-
-function printSVM() {
-    var ret = "";
-    
-    for (vm in svm) {
-        var vm_cnt = svm[vm]; 
-        ret = ret + "********* " + vm_cnt.id + " *********<br>" + "Status: " + 
-            vm_cnt.status +"<br>" + "Position: " + vm_cnt.pos + "<br>" +
-            "Sensed Temp: " + vm_cnt.tempsens + "<br>" + "Desidered Temp: " +
-            vm_cnt.tempdes + "<br>" + "Alarm: " + vm_cnt.alarm + "<br>" + 
-            "**************************<br>";
-    }
-    return ret;
-}
-
-/**
- * Get the HTML code to show the selected VM (and its products) in a panel.
- * @param {STRING} index Index of the VM on the svm array
- * @returns {STRING} The HTML code to display the panel
- */
-function getSVMPanel(index) {
-    var ret = "";
-    var event = "onmouseover";
-    var prods = svm[index].products;
-    var offset = (index % 2 == 0)? "col-md-offset-1" : "col-md-offset-2";
-    
-    ret = ret + '<div class="panel panel-primary svm-panel col-md-4 ' + offset +
-        '"><div class="panel-heading"><h3 class="panel-title">' + svm[index].id +
-        '</h3></div><div class="panel-body"><h4>General Info</h4>' + "<strong>Status: </strong><span>" + svm[index].status.toStr() +
-        "</span><br><strong>Position: </strong>" + svm[index].pos.lat + ", " + svm[index].pos.lng +
-        "<br>" + "<strong>Sensed Temp.: </strong>" + svm[index].tempsens + "<br>" +
-        "<strong>Desidered Temp.: </strong>" + svm[index].tempdes + "<br>" + "<strong>Alarm: </strong>" +
-        svm[index].alarm.toStr() + "<br><h4>Products</h4>";
-    for (prod in prods) {
-        ret = ret + '<div class="panel panel-default"><div class="panel-' +
-            'heading"><strong>' + prods[prod].id + '</strong></div><div class="panel-body">' +
-            "<strong>Quantity: </strong>" +prods[prod].qty + "<br><strong>Price: </strong>" +
-            prods[prod].price + '</div></div>';
-    }
-    ret = ret + '</div></div>';
     return ret;
 }

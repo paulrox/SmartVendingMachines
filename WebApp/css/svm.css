@@ -135,15 +135,41 @@ p.ws_status {
     color: #ffffff
 }
 
+/*
+ * WebSocket offline text
+ */
 #ws_offline {
     color: crimson;
 }
 
+/*
+ * WebSocket online text
+ */
 #ws_online {
     color: chartreuse;
 }
 
+/*
+ * VM info panel
+ */
 .svm-panel {
     padding-left: 0px;
     padding-right: 0px;
+}
+
+/*
+ * Edit icon
+ */
+.edit {
+    margin-left: 5px;
+}
+.edit:hover {
+    cursor: pointer;
+}
+
+/*
+ * Short input field
+*/
+.short-input {
+    width: 60px;
 }
