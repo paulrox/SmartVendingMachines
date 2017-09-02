@@ -67,10 +67,10 @@ function createIwContent(index) {
     var prods = svm[index].products;
     
     ret = '<h4>General Info</h4>' + "<strong>Status: </strong>" +
-        svm[index].status + "<br><strong>Address: </strong>" +
+        svm[index].status.toStr() + "<br><strong>Address: </strong>" +
         svm[index].address + "<br><strong>Sensed Temp.: </strong>" +
         svm[index].tempsens + "<br>" + "<strong>Desidered Temp.: </strong>" +
         svm[index].tempdes + "<br>" + "<strong>Alarm: </strong>" +
-        svm[index].alarm;
+        svm[index].alarm.toStr();
     return ret;
 }

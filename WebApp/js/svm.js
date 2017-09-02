@@ -13,6 +13,44 @@ var PISA_LAT = 43;
 var PISA_LNG = 10;
 
 /**
+ * Prototype of the status object.
+ * @param {INTEGER} value Numeric value of the status
+ */
+function Status(value) {
+    this.value = value;
+    this.toStr = function() {
+        if (this.value == 0) {
+            return "OFF";
+        } else {
+            return "ON";
+        }
+    }
+}
+
+/**
+ * Prototype of the alarm object.
+ * @param {INTEGER} value Numeric value of the status
+ */
+function Alarm(value) {
+    this.value = value;
+    this.toStr = function() {
+        switch (this.value) {
+            case "N":
+                return "No alarm";
+                break;
+            case "I":
+                return "Intrusion detected";
+                break;
+            case "F":
+                return "Fault detected";
+                break;
+            default:
+                return "Unknown";
+                break;
+        }
+    }
+}
+/**
  * Prototype of the position object.
  * @param {FLOAT} lat Latitude of the VM
  * @param {FLOAT} lng Longitue of the VM
@@ -43,10 +81,10 @@ function VendingMachine(id) {
     /* Initialize all the properties with default values */
     this.pos = new Position(0.0, 0.0);
     this.products = Array(0);
-    this.status = 0;
+    this.status = new Status(0);
     this.tempsens = 0.0;
     this.tempdes = 0.0
-    this.alarm = "N";
+    this.alarm = new Alarm("N");
     
 }
 
@@ -108,16 +146,17 @@ function printSVM() {
  */
 function getSVMPanel(index) {
     var ret = "";
+    var event = "";
     var prods = svm[index].products;
     var offset = (index % 2 == 0)? "col-md-offset-1" : "col-md-offset-2";
     
     ret = ret + '<div class="panel panel-primary svm-panel col-md-4 ' + offset +
         '"><div class="panel-heading"><h3 class="panel-title">' + svm[index].id +
-        '</h3></div><div class="panel-body"><h4>General Info</h4>' + "<strong>Status: </strong>" + svm[index].status +
-        "<br><strong>Position: </strong>" + svm[index].pos.lat + ", " + svm[index].pos.lng +
+        '</h3></div><div class="panel-body"><h4>General Info</h4>' + "<strong>Status: </strong><span>" + svm[index].status.toStr() +
+        "</span><br><strong>Position: </strong>" + svm[index].pos.lat + ", " + svm[index].pos.lng +
         "<br>" + "<strong>Sensed Temp.: </strong>" + svm[index].tempsens + "<br>" +
         "<strong>Desidered Temp.: </strong>" + svm[index].tempdes + "<br>" + "<strong>Alarm: </strong>" +
-        svm[index].alarm + "<br><h4>Products</h4>";
+        svm[index].alarm.toStr() + "<br><h4>Products</h4>";
     for (prod in prods) {
         ret = ret + '<div class="panel panel-default"><div class="panel-' +
             'heading"><strong>' + prods[prod].id + '</strong></div><div class="panel-body">' +

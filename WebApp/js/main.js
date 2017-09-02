@@ -139,7 +139,7 @@ function onMessageHandler(msg) {
                             break;
                         case "alarm":
                         case "status":
-                            svm[vm_index][res] = vm_cnt[res];
+                            svm[vm_index][res].value = vm_cnt[res];
                         default:
                             break;        
                     }
@@ -256,8 +256,8 @@ function createAnalyticsPage() {
     current_page = "analytics";
     
     /* Start the page refresh timer */
-    if (page_timer == null)
-        page_timer = setInterval(createAnalyticsPage, 1000);
+    //if (page_timer == null)
+    //    page_timer = setInterval(createAnalyticsPage, 1000);
         
     /* Empty the old content */
     $("#main_cont").empty();
