@@ -83,8 +83,9 @@ function VendingMachine(id) {
     this.products = Array(0);
     this.status = new Status(0);
     this.tempsens = 0.0;
-    this.tempdes = 0.0
+    this.tempdes = 0.0;
     this.alarm = new Alarm("N");
+    this.updated = false;
     
 }
 
@@ -99,7 +100,7 @@ function findVM(id) {
     var i = 0;
     
     for (vm in svm) {
-        if (svm.id == id)
+        if (svm[vm].id == id)
             ret = i;
         i++;
     }  
@@ -146,7 +147,7 @@ function printSVM() {
  */
 function getSVMPanel(index) {
     var ret = "";
-    var event = "";
+    var event = "onmouseover";
     var prods = svm[index].products;
     var offset = (index % 2 == 0)? "col-md-offset-1" : "col-md-offset-2";
     
