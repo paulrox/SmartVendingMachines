@@ -15,8 +15,9 @@ struct product {
 };
 
 struct coordinate {
-	uint32_t latitude;
-	uint32_t longitude;
+	float latitude;
+	float longitude;
 };
+
 
 #endif

@@ -13,6 +13,7 @@
 #include "rest-engine.h"
 #include "node-id.h"
 #include "vending_machine.h"
+#include "float-handling.h"
 
 #define DEBUG 1
 #if DEBUG
@@ -25,14 +26,16 @@
 #define PRINTLLADDR(addr)
 #endif
 
-extern int node_lat;
-extern int node_long;
+extern float node_lat;
+extern float node_lng;
 
 static void loc_get_handler(void *request, void *response, uint8_t *buffer,
                            uint16_t preferred_size, int32_t *offset);
+static void loc_put_handler(void *request, void *response, uint8_t *buffer,
+                           uint16_t preferred_size, int32_t *offset);
 
-RESOURCE(loc, "title=\"loc\";rt=\"Text\"", loc_get_handler, NULL, NULL,
-         NULL);
+RESOURCE(loc, "title=\"loc\";rt=\"Text\"", loc_get_handler, 
+  NULL, loc_put_handler, NULL);
 
 static void loc_get_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
@@ -40,10 +43,17 @@ static void loc_get_handler(void* request, void* response,
   /* Populat the buffer with the response payload*/
   char message[DIM_BUFFER];
   int length;
+  float tmp_lat, tmp_lng;
+  unsigned int mb_lat, mb_lng;
 
-  sprintf(message, "{'lat':'%u.%u','long':'%u.%u'}", 
-    PISA_LATITUDE, node_lat, 
-    PISA_LONGITUDE, node_long);
+  tmp_lat = (float)((float)node_lat - (int)node_lat);
+  mb_lat = tmp_lat * 10000;
+  tmp_lng = (float)((float)node_lng - (int)node_lng);
+  mb_lng = tmp_lng * 10000;
+
+  sprintf(message, "{'lat':'%u.%u','lng':'%u.%u'}", 
+    (unsigned int)node_lat, (unsigned int)mb_lat, 
+    (unsigned int)node_lng, (unsigned int)mb_lng);
   length = strlen(message);
   memcpy(buffer, message, length);
 
@@ -52,4 +62,27 @@ static void loc_get_handler(void* request, void* response,
   REST.set_response_payload(response, buffer, length);
 }
 
-
+static void loc_put_handler(void* request, void* response, 
+  uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+  int len;
+  float new_value;
+  const char *val = NULL;
+  
+  len = REST.get_post_variable(request, "lat", &val);
+     
+  if (len > 0) {
+     new_value = stof(val);
+     node_lat = new_value;
+     REST.set_response_status(response, REST.status.CREATED);
+  } else {
+    len = REST.get_post_variable(request, "lng", &val);
+    if (len > 0) {
+     new_value = stof(val);
+     node_lng = new_value;
+     REST.set_response_status(response, REST.status.CREATED);
+    } else {
+      REST.set_response_status(response, REST.status.BAD_REQUEST);
+    }
+  }
+}

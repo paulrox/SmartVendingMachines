@@ -31,22 +31,23 @@
 
 static struct ctimer ct;
 
+
 static struct coordinate locations[] = { 
-  {7210, 3898},
-  {7229, 3965},
-  {7206, 3832},
-  {7205, 3831},
-  {7203, 3837}
+  {43.7210, 10.3898},
+  {43.7229, 10.3965},
+  {43.7206, 10.3832},
+  {43.7205, 10.3831},
+  {43.7203, 10.3837}
 };
 
 float u_k = 0;
 unsigned int qty_tick = 0, alarm_tick = 0, status_tick = 0;
 int machine_id, machine_status;
 int machine_type;
-int node_lat, node_long;
+char alarm_type;
+float node_lat, node_lng;
 struct product productA, productB;
 
-extern char alarm_type;
 extern resource_t id, productAqty, productBqty, 
   productAprice, productBprice, 
   status_m, loc, sens, des, alarm;
@@ -64,7 +65,7 @@ void init_vending_machine()
   
   u_k = 18; // Default temperature
   node_lat = locations[node_id - 2].latitude;
-  node_long = locations[node_id - 2].longitude;
+  node_lng = locations[node_id - 2].longitude;
 
   alarm_type = 'N';
   productA.remaining_qty = MAX_PRODUCT_AVAILABILITY;

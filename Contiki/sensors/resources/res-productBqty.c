@@ -19,7 +19,6 @@ static void productBqty_get_handler(void* request, void* response,
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
 static void productBqty_put_handler(void* request, void* response, 
   uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
-static void productBqty_event_handler();
 
 RESOURCE(productBqty, "title=\"ProductBqty\";rt=\"Text\"", 
   productBqty_get_handler, NULL, productBqty_put_handler, NULL);

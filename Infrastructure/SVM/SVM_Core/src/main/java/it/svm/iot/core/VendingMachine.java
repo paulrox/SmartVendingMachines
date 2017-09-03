@@ -261,7 +261,7 @@ public class VendingMachine {
 		name = "SVM_" + type + id;
 		obj.put("id", name);
 		obj.put("status", statusOn);
-		obj.put("tempsens", temp_sens);
+		obj.put("tempsens",temp_sens);
 		obj.put("tempdes", temp_des);
 		obj.put("lat", lat);
 		obj.put("lng", lng);

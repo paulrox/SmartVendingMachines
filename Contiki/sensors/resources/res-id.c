@@ -61,7 +61,6 @@ static void id_put_handler(void* request, void* response,
   int new_value, len;
   const char *val = NULL;
   
-  printf("Put\n");
   len = REST.get_post_variable(request, "value", &val);
      
   if (len > 0) {

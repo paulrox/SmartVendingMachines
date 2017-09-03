@@ -88,8 +88,8 @@ static void sens_periodic_handler()
   char buffer_temp_k[DIM_BUFFER_TEMP];
   char buffer_temp_k_1[DIM_BUFFER_TEMP];
   float tmp;
-  memset(buffer_temp_k, '\0', 20);
-  memset(buffer_temp_k_1, '\0', 20);
+  memset(buffer_temp_k, '\0', DIM_BUFFER_TEMP);
+  memset(buffer_temp_k_1, '\0', DIM_BUFFER_TEMP);
   
   /* Calculating error at step k */
   e_k = u_k - temp_k;

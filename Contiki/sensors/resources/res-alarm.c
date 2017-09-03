@@ -29,7 +29,7 @@
  * alarm = 'I'; Intrusion
  * alarm = 'F'; Fault
  */
-char alarm_type;
+extern char alarm_type;
 
 static void alarm_get_handler(void *request, void *response, uint8_t *buffer,
                            uint16_t preferred_size, int32_t *offset);
