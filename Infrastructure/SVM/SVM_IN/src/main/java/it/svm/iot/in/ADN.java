@@ -205,7 +205,8 @@ public class ADN {
 						IN_AE_Monitor.getRn() + "/" + id;
 				IN_Mca.createContentInstance(parent_cont + "/" +
 						tmp[tmp.length - 1], response);
-				vms.get(vms.size() - 1).set_vm_res(response, tmp[tmp.length - 1]);	
+				vms.get(vms.size() - 1).set_vm_res(response, 
+						tmp[tmp.length - 1], true);	
 			}
 		}
 	}
@@ -243,14 +244,15 @@ public class ADN {
 		discover(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
 		
 		init_monitor_container(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
-		
-	/*	Thread.sleep(5000);
+		/*
+		Thread.sleep(5000);
 	      JSONObject root = new JSONObject();
 	        root.put("type", "W");
 	        root.put("id", "SVM_F2");
-	        root.put("resource", "tempdes");
+	        root.put("resource", "loc");
 	        JSONObject content = new JSONObject();
-	        content.put("tempdes", "34");
+	        content.put("lat", "34.3222");
+	        content.put("lng", "11.4532");
 	        root.put("content", content);
 	       
 	    	int i;
@@ -261,14 +263,14 @@ public class ADN {
 	    	if (i < ADN.vms.size()) {
 	    	
 	    		ADN.vms.get(i).set_vm_res(root.getJSONObject("content").toString(), 
-	    				root.getString("resource"));
+	    				root.getString("resource"), false);
 	    		String parent_cont = Constants.IN_CSE_URI + "/" + 
 						ADN.IN_AE_Controller.getRn() + "/" + root.getString("id");
 				ADN.IN_Mca.createContentInstance(parent_cont + "/" +
 						root.getString("resource"), 
 						root.getJSONObject("content").toString());
 				System.out.println("Written");
-	    	} else System.out.println("VM not found");*/
+	    	} else System.out.println("VM not found"); */
 
 		Server server = new Server(8000);
         WebSocketHandler wsHandler = new WebSocketHandler() {

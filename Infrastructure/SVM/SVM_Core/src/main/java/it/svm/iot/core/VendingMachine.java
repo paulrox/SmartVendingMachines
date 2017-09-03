@@ -156,7 +156,7 @@ public class VendingMachine {
 	/* Setter methods */
 	
 	/**
-	 * Set the actual machine temperature.
+	 * Set the actual machine temperature. 
 	 * @param temp Temperature value in °C
 	 */
 	
@@ -188,7 +188,7 @@ public class VendingMachine {
 			System.err.printf("VM %i: Invalid latitude value (%f).\n", id, lat);
 			System.exit(1);
 		}
-		float longitude = (float) pos.getDouble("long");
+		float longitude = (float) pos.getDouble("lng");
 		if (lng >= Constants.MIN_LNG && lat <= Constants.MAX_LNG) {
 			this.lng = longitude;
 		} else {
@@ -198,26 +198,32 @@ public class VendingMachine {
 	}
 	
 	/**
-	 * Set the alarm status.
+	 * Set the alarm status. If update is true it was a set that
+	 * must notify the client web app.
 	 * @param new_alarm New status alarm
 	 */
 	
-	public void setAlarm(String new_alarm) {
+	public void setAlarm(String new_alarm, Boolean update) {
 		this.alarm = new_alarm;
-		this.is_new_alarm = true;
-		this.is_new = true;
+		if (update) {
+			this.is_new_alarm = true;
+			this.is_new = true;
+		}
 	}
 	
 
 	/**
-	 * Set the machine status.
+	 * Set the machine status. If update is true it was a set that
+	 * must notify the client web app.
 	 * @param statusOn Machine status. True if the machine is on, False otherwise 
 	 */
 	
-	public void setStatusOn(int statusOn) {
+	public void setStatusOn(int statusOn, Boolean update) {
 		this.statusOn = statusOn;
-		this.is_new_statusOn = true;
-		this.is_new = true;
+		if (update) {
+			this.is_new_statusOn = true;
+			this.is_new = true;
+		}
 	}
 	
 	/**
@@ -352,20 +358,21 @@ public class VendingMachine {
 	}
 	
 	/**
-	 * Updates the resource res of the vending machine with the value in content
+	 * Updates the resource res of the vending machine with the value in content.
+	 * If update is true it was a set that must notify the client web app.
 	 * @param content Content of the instance
 	 * @param res resource
 	 */
 	
-	public void set_vm_res(String content, String res) {
+	public void set_vm_res(String content, String res, Boolean update) {
 
 		int index;
 		JSONObject root = new JSONObject(content);
 		
 		if (res.equals("alarm")) {
-			setAlarm(root.getString("alarm"));
+			setAlarm(root.getString("alarm"), update);
 		} else if (res.equals("status")) {
-			setStatusOn(root.getInt("status"));
+			setStatusOn(root.getInt("status"), update);
 			setType(root.getString("type"));
 		} else if (res.equals("loc")) {
 			setPosition(root);
@@ -376,22 +383,26 @@ public class VendingMachine {
 		} else if (res.equals("ProductAqty")) {
 			index = getProductIndex("ProductA");
 			if (index >= 0) {
-				products.get(index).setQty((root.getInt("qty")));
+				products.get(index).setQty((root.getInt("qty")), 
+						update);
 			}
 		} else if (res.equals("ProductBqty")) {
 			index = getProductIndex("ProductB");
 			if (index >= 0) {
-				products.get(index).setQty((root.getInt("qty")));
+				products.get(index).setQty((root.getInt("qty")), 
+						update);
 			}
 		} else if (res.equals("ProductAprice")) {
 			index = getProductIndex("ProductA");
 			if (index >= 0) {
-				products.get(index).setPrice((root.getDouble("price")));
+				products.get(index).setPrice((root.getDouble("price")), 
+						update);
 			}
 		} else if (res.equals("ProductBprice")) {
 			index = getProductIndex("ProductB");
 			if (index > 0) {
-				products.get(index).setPrice((root.getDouble("price")));
+				products.get(index).setPrice((root.getDouble("price")),
+						update);
 			}
 		}
 	}

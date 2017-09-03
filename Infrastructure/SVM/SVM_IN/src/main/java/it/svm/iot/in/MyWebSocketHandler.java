@@ -96,7 +96,7 @@ public class MyWebSocketHandler {
         	if (i < ADN.vms.size()) {
         		/* Vending machine found */
         		ADN.vms.get(i).set_vm_res(root.getJSONObject("content").toString(), 
-        				root.getString("resource"));
+        				root.getString("resource"), false);
         		String parent_cont = Constants.IN_CSE_URI + "/" + 
 						ADN.IN_AE_Controller.getRn() + "/" + root.getString("id");
 				ADN.IN_Mca.createContentInstance(parent_cont + "/" +

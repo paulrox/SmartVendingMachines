@@ -56,14 +56,17 @@ public class Product {
 	/* Setter methods */
 	
 	/**
-	 * Set the remaining amount of product.
+	 * Set the remaining amount of product. If update is true it was a set that
+	 * must notify the client web app.
 	 * @param qty Product quantity
 	 */
-	public void setQty(int qty) {
+	public void setQty(int qty, Boolean update) {
 		if (qty >= 0 && qty < Constants.MAX_PROD_QTY) {
 			this.qty = qty;
-			this.is_new_qty = true;
-			this.vm.is_new = true;
+			if (update) {
+				this.is_new_qty = true;
+				this.vm.is_new = true;
+			}
 		}
 		else {
 			System.err.printf("Product %s: Invalid product quantity (%f).\n", name, qty);
@@ -72,14 +75,17 @@ public class Product {
 	}
 	
 	/**
-	 * Set the actual product price.
+	 * Set the actual product price. If update is true it was a set that
+	 * must notify the client web app.
 	 * @param price Product price
 	 */
-	public void setPrice(double price) {
+	public void setPrice(double price, Boolean update) {
 		if (price >= Constants.MIN_PRICE && price <= Constants.MAX_PRICE) {
-			this.price = price;
+			this.price = price; 
+			if (update) {
 			this.is_new_price = true;
 			this.vm.is_new = true;
+			}
 		}
 		else {
 			System.err.printf("Product %s: Invalid price (%f).\n", name, price);
