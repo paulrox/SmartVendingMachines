@@ -95,7 +95,7 @@ public class CoAPMonitor extends CoapServer
 			message = "value=";
 			
 			if (res.equals("alarm")) {
-				message = message + root.getString("alarm");
+				message = message + root.getInt("alarm");
 			} else if (res.equals("status")) {
 				message  = message + root.getInt("status");
 			} else if (res.equals("tempdes")) {
@@ -200,10 +200,10 @@ public class CoAPMonitor extends CoapServer
 				System.out.println("Created new content instance:\n"
 						+ "res: " + uri_res);
 				System.out.println("con: " + reply);
-				
+				System.out.println(tmp[tmp.length - 2]);
 				put_to_mote(id, uri_res, tmp[tmp.length - 2], reply);
-	
-		
+				System.out.println("Put to mote");
+
 			}
 			catch (Exception e) {
 				// Doing nothing. The first notification message is ignored.
