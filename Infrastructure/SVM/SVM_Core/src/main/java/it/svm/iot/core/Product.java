@@ -61,7 +61,7 @@ public class Product {
 	 * @param qty Product quantity
 	 */
 	public void setQty(int qty, Boolean update) {
-		if (qty >= 0 && qty < Constants.MAX_PROD_QTY) {
+		if (qty >= 0 && qty <= Constants.MAX_PROD_QTY) {
 			this.qty = qty;
 			if (update) {
 				this.is_new_qty = true;

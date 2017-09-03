@@ -33,7 +33,7 @@ public class Constants {
 	/**
 	 * Maximum quantity for a specific product.
 	 */
-	public static final int MAX_PROD_QTY = 10;
+	public static final int MAX_PROD_QTY = 40;
 	/**
 	 * Minimum product price.
 	 */
