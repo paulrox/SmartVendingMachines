@@ -90,6 +90,7 @@ public class MyWebSocketHandler {
         	/* Write request */
         	int i;
         	
+        	System.out.println(message);
         	for (i = 0; i < ADN.vms.size(); i++) 
         		if (ADN.vms.get(i).name.equals(root.getString("id")))
         				break;
