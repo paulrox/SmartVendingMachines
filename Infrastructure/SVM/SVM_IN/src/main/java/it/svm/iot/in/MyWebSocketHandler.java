@@ -36,7 +36,7 @@ public class MyWebSocketHandler {
     @OnWebSocketMessage
     public void onMessage(String message) {
         JSONObject root = new JSONObject(message);
-        
+
         if (root.getString("type").equals("R") && is_first_time) {
         	is_first_time = false;
         	/* Initial Read request */
@@ -91,17 +91,19 @@ public class MyWebSocketHandler {
         	int i;
         	
         	for (i = 0; i < ADN.vms.size(); i++) 
-        		if (ADN.vms.get(i).equals(root.getString("id")))
+        		if (ADN.vms.get(i).name.equals(root.getString("id")))
         				break;
         	if (i < ADN.vms.size()) {
         		/* Vending machine found */
+        		System.out.println("VM found");
         		ADN.vms.get(i).set_vm_res(root.getJSONObject("content").toString(), 
-        				root.getString("resource"), false);
+        				root.getString("resource"), false, false);
         		String parent_cont = Constants.IN_CSE_URI + "/" + 
 						ADN.IN_AE_Controller.getRn() + "/" + root.getString("id");
 				ADN.IN_Mca.createContentInstance(parent_cont + "/" +
 						root.getString("resource"), 
 						root.getJSONObject("content").toString());
+				System.out.println("Content Instance created");
         	}
         } else {
         	System.out.println("Unknown request!");
