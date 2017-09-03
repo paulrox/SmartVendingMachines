@@ -28,7 +28,7 @@ function findAddress(vm) {
     var geocoder = new google.maps.Geocoder;
     geocoder.geocode({'location': {lat: parseFloat(vm.pos.lat),
                                    lng: parseFloat(vm.pos.lng)}},
-                     function(results, status, ) {
+                     function(results, status) {
         if (status === 'OK') {    
             if (results[0]) {
                 vm.address = results[0].formatted_address;
