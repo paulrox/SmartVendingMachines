@@ -118,8 +118,8 @@ public class CoAPMonitor extends CoapServer
 		}
 		
 		/**
-		 * It puts to the mote
-		 * @param id mote id
+		 * It executes a PUT operation to the mote
+		 * @param name_vm Vending machine name
 		 * @param uri_res uri of the resource
 		 * @param res name of the resource 
 		 * @param reply String containing the JSON message from the controller
@@ -169,8 +169,7 @@ public class CoAPMonitor extends CoapServer
 		public void handlePOST(CoapExchange exchange)
 		{	
 			int i = 0;
-		//	int id;
-			
+
 			exchange.respond(ResponseCode.CREATED);
 			byte[] content = exchange.getRequestPayload();
 			String contentStr = new String(content);
@@ -185,7 +184,6 @@ public class CoAPMonitor extends CoapServer
 				String uri_res = m2msgn.getString("sur");
 				String []tmp = uri_res.split("/");
 				String name_vm = null;
-	//			String name_id; 
 				uri_res = "";
 				
 				/* Retrieving the URI path for the resource */
@@ -199,17 +197,12 @@ public class CoAPMonitor extends CoapServer
 							sub_string.contains("SVM_C"))
 						name_vm = sub_string;
 				}
-/*				name_id = new String(name_vm.substring((name_vm.length() - 1)));
-				id = Integer.parseInt(name_id);*/
-				
 				mca.createContentInstance(cse + uri_res,
 						reply);
 				System.out.println("Created new content instance:\n"
 						+ "res: " + uri_res);
 				System.out.println("con: " + reply);
-				System.out.println(tmp[tmp.length - 2]);
 				put_to_mote(name_vm, uri_res, tmp[tmp.length - 2], reply);
-				System.out.println("Put to mote");
 
 			}
 			catch (Exception e) {

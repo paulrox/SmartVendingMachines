@@ -182,14 +182,14 @@ public class VendingMachine {
 	
 	public void setPosition(JSONObject pos) {
 		float latitude = (float) pos.getDouble("lat");
-		if (lat >= Constants.MIN_LAT && lat <= Constants.MAX_LAT) {
+		if (latitude >= Constants.MIN_LAT && latitude <= Constants.MAX_LAT) {
 			this.lat = latitude;
 		} else {
 			System.err.printf("VM %i: Invalid latitude value (%f).\n", id, lat);
 			System.exit(1);
 		}
 		float longitude = (float) pos.getDouble("lng");
-		if (lng >= Constants.MIN_LNG && lat <= Constants.MAX_LNG) {
+		if (longitude >= Constants.MIN_LNG && longitude <= Constants.MAX_LNG) {
 			this.lng = longitude;
 		} else {
 			System.err.printf("VM %i: Invalid longitude value (%f).\n", id, lng);
