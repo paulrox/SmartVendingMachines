@@ -354,7 +354,7 @@ public class ADN {
 
 		/* CoAP server for handling notifications from the subscriptions */
 		thread = new CoAPMonitorThread("monitor", MN_Mca, 5686,
-				Constants.MN_CSE_URI, mote_addr);
+				Constants.MN_CSE_URI, mote_addr, vm_id);
 		thread.start();
 
 		while(true) {
