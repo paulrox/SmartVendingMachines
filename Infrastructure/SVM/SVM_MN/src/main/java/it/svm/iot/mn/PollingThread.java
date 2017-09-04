@@ -73,11 +73,11 @@ public class PollingThread extends Thread {
 							resp.getResponseText());
 					old_resp = new String(resp.getResponseText());
 				}
-			} else {
+			}/* else {
 				System.out.println("No new content"
 						+ " from " + "coap://[" + vm_addr + "]"
 						+ ":5683" + res_uri);
-			}
+			}*/
 			try {
 				sleep(1000);
 			} catch (InterruptedException e) {

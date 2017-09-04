@@ -27,6 +27,7 @@ public class CoAPMonitor extends CoapServer
 	private String cse;
 	public String rn;
 	public ArrayList<String> mote_addr;
+	public ArrayList<String> vm_id;
 
 	void addEndpoints()
 	{
@@ -39,12 +40,14 @@ public class CoAPMonitor extends CoapServer
 		}
 	}
 
-	public CoAPMonitor(String name, Mca mca, int port, String cse, ArrayList<String> mote_addr)
+	public CoAPMonitor(String name, Mca mca, int port, String cse, ArrayList<String> mote_addr, 
+			ArrayList<String> vm_id)
 			throws SocketException
 	{
 		rn = name;
 		this.mote_addr = mote_addr;
 		this.mca = mca;
+		this.vm_id = vm_id;
 		coap_port = port;
 		this.cse = cse;
 		add(new Resource[] { new Monitor() });
@@ -95,7 +98,8 @@ public class CoAPMonitor extends CoapServer
 			message = "value=";
 			
 			if (res.equals("alarm")) {
-				message = message + root.getString("alarm");
+				String name_alarm = root.getString("alarm");
+				message = message + (int)name_alarm.charAt(0);		
 			} else if (res.equals("status")) {
 				message  = message + root.getInt("status");
 			} else if (res.equals("tempdes")) {
@@ -121,23 +125,26 @@ public class CoAPMonitor extends CoapServer
 		 * @param reply String containing the JSON message from the controller
 		 */
 		
-		private void put_to_mote(int id, String uri_res, String res, String reply) {
+		private void put_to_mote(String name_vm, String uri_res, String res, String reply) {
 			URI uri = null;
 			CoapClient client;
-			
+			int i = 0;
 			uri_res = get_uri_res(res);
 			
+			for (i = 0; i < vm_id.size(); i++) 
+				if (name_vm.equals(vm_id.get(i)))
+					break;
 			try {
-				uri = new URI("coap://[" + mote_addr.get(id - 2)+"]:5683/" + uri_res);
+				uri = new URI("coap://[" + mote_addr.get(i)+"]:5683/" + uri_res);
 			} catch (URISyntaxException e) {
 				System.err.println("Invalid URI: " + e.getMessage());
 				System.exit(-1);
 			}
 			System.out.println("uri of the modified mote " + 
-					"coap://[" + mote_addr.get(id - 2)+"]:5683/" + uri_res);
+					"coap://[" + mote_addr.get(i)+"]:5683/" + uri_res);
 			
 			client = new CoapClient(uri);
-			
+			System.out.println("New CoapClient");
 			if (!res.equals("loc")) {
 				String message = get_message(reply, res);
 			
@@ -162,7 +169,7 @@ public class CoAPMonitor extends CoapServer
 		public void handlePOST(CoapExchange exchange)
 		{	
 			int i = 0;
-			int id;
+		//	int id;
 			
 			exchange.respond(ResponseCode.CREATED);
 			byte[] content = exchange.getRequestPayload();
@@ -178,7 +185,7 @@ public class CoAPMonitor extends CoapServer
 				String uri_res = m2msgn.getString("sur");
 				String []tmp = uri_res.split("/");
 				String name_vm = null;
-				String name_id; 
+	//			String name_id; 
 				uri_res = "";
 				
 				/* Retrieving the URI path for the resource */
@@ -192,18 +199,18 @@ public class CoAPMonitor extends CoapServer
 							sub_string.contains("SVM_C"))
 						name_vm = sub_string;
 				}
-				name_id = new String(name_vm.substring((name_vm.length() - 1)));
-				id = Integer.parseInt(name_id);
+/*				name_id = new String(name_vm.substring((name_vm.length() - 1)));
+				id = Integer.parseInt(name_id);*/
 				
 				mca.createContentInstance(cse + uri_res,
 						reply);
 				System.out.println("Created new content instance:\n"
 						+ "res: " + uri_res);
 				System.out.println("con: " + reply);
-				
-				put_to_mote(id, uri_res, tmp[tmp.length - 2], reply);
-	
-		
+				System.out.println(tmp[tmp.length - 2]);
+				put_to_mote(name_vm, uri_res, tmp[tmp.length - 2], reply);
+				System.out.println("Put to mote");
+
 			}
 			catch (Exception e) {
 				// Doing nothing. The first notification message is ignored.
