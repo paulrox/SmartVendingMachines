@@ -98,7 +98,7 @@ public class CoAPMonitorIN extends CoapServer
 					if (vms.get(i).name.equals(name_vm)) {
 						vms.get(i).mutex.semWait();
 						vms.get(i).set_vm_res(reply, 
-								tmp[tmp.length - 1], true);
+								tmp[tmp.length - 1], true, false);
 						vms.get(i).mutex.semSignal();
 					}
 				}

@@ -206,7 +206,7 @@ public class ADN {
 				IN_Mca.createContentInstance(parent_cont + "/" +
 						tmp[tmp.length - 1], response);
 				vms.get(vms.size() - 1).set_vm_res(response, 
-						tmp[tmp.length - 1], true);	
+						tmp[tmp.length - 1], true, true);	
 			}
 		}
 	}

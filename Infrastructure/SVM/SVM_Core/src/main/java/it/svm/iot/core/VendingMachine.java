@@ -364,7 +364,7 @@ public class VendingMachine {
 	 * @param res resource
 	 */
 	
-	public void set_vm_res(String content, String res, Boolean update) {
+	public void set_vm_res(String content, String res, Boolean update, Boolean first_time) {
 
 		int index;
 		JSONObject root = new JSONObject(content);
@@ -373,7 +373,8 @@ public class VendingMachine {
 			setAlarm(root.getString("alarm"), update);
 		} else if (res.equals("status")) {
 			setStatusOn(root.getInt("status"), update);
-			setType(root.getString("type"));
+			if (first_time)
+				setType(root.getString("type"));
 		} else if (res.equals("loc")) {
 			setPosition(root);
 		} else if (res.equals("tempdes")) {
