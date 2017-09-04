@@ -307,13 +307,11 @@ function createMapPage() {
     clearInterval(page_timer);
     page_timer = null;
 
-    
     /* Empty the old content */
     $("#main_cont").empty();
     $(".page-header").empty();
     $(".nav_link").attr("class", "nav_link");
     $(".nav_link").first().attr("class", "navbar-brand nav_link");
-    
     
     /* Add the new content */
     $(".page-header").append("City Map");
@@ -333,8 +331,7 @@ function createRoutePage() {
     
     clearInterval(page_timer);
     page_timer = null;
-
-    
+  
     /* Empty the old content */
     $("#main_cont").empty();
     $(".page-header").empty();
@@ -354,7 +351,6 @@ function createHelpPage() {
     
     clearInterval(page_timer);
     page_timer = null;
-
     
     /* Empty the old content */
     $("#main_cont").empty();
@@ -421,7 +417,7 @@ function checkUpdates() {
                     for (prod in svm[vm].products) {
                         for (prod_res in svm[vm].products[prod].updated) {
                             is_updated = svm[vm].products[prod].updated[prod_res];
-                            if (is_updated) {
+                            if (is_updated && prod_res != "id") {
                                 svm[vm].products[prod].updated[prod_res] = false;
                                 changeDispValue(svm[vm], prod_res,
                                                 svm[vm].products[prod][prod_res],
@@ -465,8 +461,6 @@ function changeDispValue(vm, res, value, prod) {
     
     $(id).empty();
     $(id).text(value);
-    //$(id).mouseenter(showEditIcon);
-    //$(id).mouseleave(hideEditIcon);
 }
 
 /**
@@ -630,17 +624,51 @@ function confirmEdit() {
     var type = id.split("-");
     var index = findVM(id.split("-")[0].toUpperCase());
     var value =  $("#" + id).children().first().val();
+    var disp_value;
     if (type.length > 2) {
         /* A product resource has been modified */
         var prod = findProduct(index, type[1]);
         type = type[2];
+        /* Update the inner structure */
+        svm[index].products[prod][type] = value;
+        svm[index].products[prod].updated[type] = true;
+        disp_value = value;
+        /* Send the update message */
         sendUpdate(svm[index], type, value, svm[index].products[prod]);
     } else {
         /* A VM resource has been modified */
         type = type[1];
-        sendUpdate(svm[index], type, value);
+        /* Update the inner structure */
+        switch (type) {
+            case "pos":
+                var lat = value.split(", ")[0];
+                var lng = value.split(", ")[1];
+                svm[index].pos = new Position(lat, lng);
+                findAddress(svm[index]);
+                disp_value = lat + ", " + lng;
+                break;
+            case "status":
+                svm[index][type] = new Status(value);
+                disp_value = svm[index][type].toStr();
+                break;
+            case "alarm":
+                svm[index][type] = new Alarm(value);
+                disp_value = svm[index][type].toStr();
+                break;
+            default:
+                svm[index][type] = value;
+                disp_value = value;
+                break;
+        }
+        svm[index].updated[type] = true;
+        /* Send the update message */
+        sendUpdate(svm[index], type, value);   
     }
-    
+    /* Update the displayed value */
+    $("#" + id).empty();
+    $("#" + id).text(disp_value);
+    $("#" + id).mouseenter(showEditIcon);
+    $("#" + id).mouseleave(hideEditIcon);
 }
 
 function cancelEdit() {
