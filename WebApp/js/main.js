@@ -210,9 +210,9 @@ function onMessageHandler(msg) {
                             break;
                         case "lat":
                         case "lng":
-                            svm[vm_index].pos[res] = vm_cnt[res].toFixed(4);
-                            if (svm[vm_index].pos.lat != 0.0 &&
-                                svm[vm_index].pos.lng != 0.0)
+                            svm[vm_index].loc[res] = vm_cnt[res].toFixed(4);
+                            if (svm[vm_index].loc.lat != 0.0 &&
+                                svm[vm_index].loc.lng != 0.0)
                                 findAddress(svm[vm_index]);
                             break;
                         case "alarm":
@@ -244,15 +244,21 @@ function sendUpdate(vm, res, value, prod) {
     prod = prod || "NO_PROD"; /* Default value */
     
     if (prod == "NO_PROD") {
-        /* Update a VM resource */
-        msg = {"type": "W", "id": vm.id, "resource": res,
+        if (res == "loc") {
+            msg = {"type": "W", "id": vm.id, "resource": res,
+               "content": value};
+        } else {
+            /* Update a VM resource */
+            msg = {"type": "W", "id": vm.id, "resource": res,
                "content": {}};
+            msg.content[res] = value;
+        }
     } else {
         /* Update a product resource */
         msg = {"type": "W", "id": vm.id, "resource":
                prod.id + res, "content": {}};
+        msg.content[res] = value;
     }
-    msg.content[res] = value;
     showAlert(JSON.stringify(msg));
     socket.send(JSON.stringify(msg));
 }
@@ -288,7 +294,7 @@ function createIndexPage() {
                            "to manage remotely the vending machines and " +
                            "to plan technical staff routes. In particular:" + 
                            "<ul> <li>The \"<strong>City Map</strong>\" page " +
-                           "shows machines position on the city center map;" +
+                           "shows machines locations on the city center map;" +
                            "</li> <li>The \"<strong>Analytics</strong>\" " +
                            "page is used to monitor the actual machines " +
                            "status and the daily income;</li> <li>The \"" +
@@ -432,7 +438,7 @@ function checkUpdates() {
                         case "alarm":
                             value = svm[vm][res].toStr();
                             break;
-                        case "pos":
+                        case "loc":
                             value = svm[vm][res].lat + ", " + svm[vm][res].lng;
                             break;
                         default:
@@ -477,7 +483,7 @@ function getSVMPanel(index) {
     ret = ret + '<div class="panel panel-primary svm-panel col-md-4 ' + offset +
         '"><div class="panel-heading"><h3 class="panel-title">' + svm[index].id +
         '</h3></div><div class="panel-body"><h4>General Info</h4>' +
-        addVMRes(svm[index], "status") + addVMRes(svm[index], "pos") +
+        addVMRes(svm[index], "status") + addVMRes(svm[index], "loc") +
         addVMRes(svm[index], "tempsens") + addVMRes(svm[index], "tempdes") +
         addVMRes(svm[index], "alarm") + "<br><h4>Products</h4>";
     for (prod in prods) {
@@ -505,9 +511,9 @@ function addVMRes(vm, res) {
             ret += '<strong>Status: </strong><span class="svm-edit-res" id="';
             value = vm.status.toStr();
             break;
-        case "pos":
-            ret += '<strong>Position: </strong><span class="svm-edit-res" id="';
-            value = vm.pos.lat + ", " + vm.pos.lng;
+        case "loc":
+            ret += '<strong>Location: </strong><span class="svm-edit-res" id="';
+            value = vm.loc.lat + ", " + vm.loc.lng;
             break;
         case "tempsens":
             ret += '<strong>Sensed Temp.: </strong><span id="';
@@ -595,7 +601,7 @@ function editRes() {
                                '<option value="I">Intrusion</option>' +
                                '<option value="F">Fault</option></select>');
             break;
-        case "pos":
+        case "loc":
              $("#" + id).append('<input type="text" value="' + value + '">' +
                                '</input>');
             break;
@@ -640,11 +646,12 @@ function confirmEdit() {
         type = type[1];
         /* Update the inner structure */
         switch (type) {
-            case "pos":
+            case "loc":
                 var lat = value.split(", ")[0];
                 var lng = value.split(", ")[1];
-                svm[index].pos = new Position(lat, lng);
+                svm[index].loc = new Position(lat, lng);
                 findAddress(svm[index]);
+                value = {lat: lat, lng: lng};
                 disp_value = lat + ", " + lng;
                 break;
             case "status":
@@ -691,7 +698,7 @@ function cancelEdit() {
         case "alarm":
             value = svm[index][type].toStr();
             break;
-        case "pos":
+        case "loc":
             value = svm[index][type].lat + ", " + svm[index][type].lng;
             break;
         case "qty":
