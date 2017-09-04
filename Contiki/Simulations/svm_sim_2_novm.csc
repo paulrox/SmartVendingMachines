@@ -114,7 +114,7 @@
   <plugin>
     org.contikios.cooja.plugins.SimControl
     <width>280</width>
-    <z>4</z>
+    <z>5</z>
     <height>160</height>
     <location_x>400</location_x>
     <location_y>0</location_y>
@@ -129,7 +129,7 @@
       <viewport>0.9875692965665273 0.0 0.0 0.9875692965665273 135.5230525336093 119.84973775683964</viewport>
     </plugin_config>
     <width>400</width>
-    <z>0</z>
+    <z>1</z>
     <height>400</height>
     <location_x>1</location_x>
     <location_y>1</location_y>
@@ -142,7 +142,7 @@
       <coloring />
     </plugin_config>
     <width>880</width>
-    <z>1</z>
+    <z>2</z>
     <height>240</height>
     <location_x>400</location_x>
     <location_y>160</location_y>
@@ -159,7 +159,7 @@
       <zoomfactor>500.0</zoomfactor>
     </plugin_config>
     <width>1280</width>
-    <z>3</z>
+    <z>4</z>
     <height>166</height>
     <location_x>0</location_x>
     <location_y>562</location_y>
@@ -171,10 +171,23 @@
       <decorations>true</decorations>
     </plugin_config>
     <width>600</width>
-    <z>2</z>
+    <z>3</z>
     <height>160</height>
     <location_x>680</location_x>
     <location_y>0</location_y>
+  </plugin>
+  <plugin>
+    org.contikios.cooja.serialsocket.SerialSocketServer
+    <mote_arg>0</mote_arg>
+    <plugin_config>
+      <port>60001</port>
+      <bound>false</bound>
+    </plugin_config>
+    <width>362</width>
+    <z>0</z>
+    <height>116</height>
+    <location_x>698</location_x>
+    <location_y>36</location_y>
   </plugin>
 </simconf>
 
