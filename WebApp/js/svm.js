@@ -80,13 +80,13 @@ function VendingMachine(id) {
     this.id = id;
     this.type = id.substr(4, 5);
     /* Initialize all the properties with default values */
-    this.pos = new Position(0.0, 0.0);
+    this.loc = new Position(0.0, 0.0);
     this.products = Array(0);
     this.status = new Status(0);
     this.tempsens = 0.0;
     this.tempdes = 0.0;
     this.alarm = new Alarm("N");
-    this.updated = {pos: false, products: false, status: false,
+    this.updated = {loc: false, products: false, status: false,
                     tempsens: false, tempdes: false, alarm: false};
     
 }

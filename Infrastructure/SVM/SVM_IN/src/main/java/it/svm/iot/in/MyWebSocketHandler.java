@@ -97,14 +97,15 @@ public class MyWebSocketHandler {
         	if (i < ADN.vms.size()) {
         		/* Vending machine found */
         		System.out.println("VM found");
+        		ADN.vms.get(i).mutex.semWait();
         		ADN.vms.get(i).set_vm_res(root.getJSONObject("content").toString(), 
         				root.getString("resource"), false, false);
+        		ADN.vms.get(i).mutex.semSignal();
         		String parent_cont = Constants.IN_CSE_URI + "/" + 
 						ADN.IN_AE_Controller.getRn() + "/" + root.getString("id");
 				ADN.IN_Mca.createContentInstance(parent_cont + "/" +
 						root.getString("resource"), 
 						root.getJSONObject("content").toString());
-				System.out.println("Content Instance created");
         	}
         } else {
         	System.out.println("Unknown request!");

@@ -26,8 +26,8 @@ function cityMap() {
 
 function findAddress(vm) {
     var geocoder = new google.maps.Geocoder;
-    geocoder.geocode({'location': {lat: parseFloat(vm.pos.lat),
-                                   lng: parseFloat(vm.pos.lng)}},
+    geocoder.geocode({'location': {lat: parseFloat(vm.loc.lat),
+                                   lng: parseFloat(vm.loc.lng)}},
                      function(results, status) {
         if (status === 'OK') {    
             if (results[0]) {
@@ -43,7 +43,7 @@ function findAddress(vm) {
 
 function addVmMarkers() {
     for (vm in svm) {
-        var latLng = new google.maps.LatLng(svm[vm].pos.lat, svm[vm].pos.lng);
+        var latLng = new google.maps.LatLng(svm[vm].loc.lat, svm[vm].loc.lng);
         var marker = new google.maps.Marker({
             position: latLng,
             label: svm[vm].id.substr(4, svm[vm].id.length-1),
