@@ -215,8 +215,15 @@ function onMessageHandler(msg) {
                         case "lng":
                             svm[vm_index].loc[res] = vm_cnt[res].toFixed(4);
                             if (svm[vm_index].loc.lat != 0.0 &&
-                                svm[vm_index].loc.lng != 0.0)
-                                findAddress(svm[vm_index]);
+                                svm[vm_index].loc.lng != 0.0) {
+                                /* Fire the findAddress function after
+                                 * a random time ([0, 2.5] seconds) in
+                                 * order to avoid Google Maps API
+                                 * limitation */
+                                var timeout = 500 + Math.random()*2500;
+                                setTimeout(findAddress(svm[vm_index]),
+                                           timeout);
+                            }
                             break;
                         case "alarm":
                         case "status":
