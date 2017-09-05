@@ -174,7 +174,7 @@ public class CoAPMonitor extends CoapServer
 			byte[] content = exchange.getRequestPayload();
 			String contentStr = new String(content);
 
-			try {			
+			try {
 				JSONObject root = new JSONObject(contentStr);
 				JSONObject m2msgn = root.getJSONObject("m2m:sgn");
 				JSONObject nev = m2msgn.getJSONObject("nev");
