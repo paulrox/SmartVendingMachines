@@ -140,15 +140,13 @@ public class CoAPMonitor extends CoapServer
 				System.err.println("Invalid URI: " + e.getMessage());
 				System.exit(-1);
 			}
-			System.out.println("uri of the modified mote " + 
-					"coap://[" + mote_addr.get(i)+"]:5683/" + uri_res);
 			
 			client = new CoapClient(uri);
 			System.out.println("New CoapClient");
 			if (!res.equals("loc")) {
 				String message = get_message(reply, res);
 			
-				System.out.println("message to be put in the mote: " + message);
+				System.out.println("New mote value: " + message);
 			
 				CoapResponse response = client.put(message, 
 					MediaTypeRegistry.TEXT_PLAIN);
@@ -158,11 +156,11 @@ public class CoAPMonitor extends CoapServer
 				String message_lat = "lat=" + root.getDouble("lat");
 				client.put(message_lat, 
 						MediaTypeRegistry.TEXT_PLAIN);
-				System.out.println("message to be put in the mote: " + message_lat);
+				System.out.println("New mote value: " + message_lat);
 				String message_lng = "lng=" + root.getDouble("lng");
 				client.put(message_lng, 
 						MediaTypeRegistry.TEXT_PLAIN);
-				System.out.println("message to be put in the mote: " + message_lng);
+				System.out.println("New mote value: " + message_lng);
 			}
 		}
 		
