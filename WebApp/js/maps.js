@@ -109,14 +109,14 @@ function showRoute() {
     /* Sort the VMs by descending priorities */
     sortVMByPrio(svm);
     
-    /* Using the exact positon
+    /* Using the exact positon */
     var start = new google.maps.LatLng(svm[0].loc.lat, svm[0].loc.lng);
-    var end = new google.maps.LatLng(svm[svm.length - 1].loc.lat, 
-        svm[svm.length - 1].loc.lng);
-    */
+    var end = new google.maps.LatLng(svm[num_visit - 1].loc.lat, 
+        svm[num_visit - 1].loc.lng);
+    
     /* Using the address */
-    var start = svm[0].address;
-    var end = svm[num_visit - 1].address;
+    //var start = svm[0].address;
+    //var end = svm[num_visit - 1].address;
     
     /* Add waypoints, if any */
     for (var i = 0; i < num_waypoints; i++) {
