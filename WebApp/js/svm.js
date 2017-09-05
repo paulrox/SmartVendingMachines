@@ -10,6 +10,7 @@
 /* Global Variables */
 var svm; /* Array containing all the VMs */
 var max_prods = 80; 
+var max_prod_qty = 40;
 
 /**
  * Prototype of the status object.
@@ -154,4 +155,14 @@ function findProduct(vm_index, prod_id) {
 
 function sortVMByPrio(vm_array) {
     vm_array.sort( function(a, b) {return b.getPriority() - a.getPriority(); });
+}
+
+function resetVM(vm) {
+    vm.alarm.value = "N";
+    sendUpdate(vm, "alarm", "N");
+    
+    for (prod in vm.products) {
+        vm.products[prod].qty = max_prod_qty;
+        sendUpdate(vm, "qty", max_prod_qty, vm.products[prod]);
+    }
 }

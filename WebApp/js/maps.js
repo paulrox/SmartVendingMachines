@@ -126,7 +126,11 @@ function showRoute() {
     
     directionsService.route(request, function(result, status) {
     if (status == 'OK') {
-      directionsDisplay.setDirections(result);
+        directionsDisplay.setDirections(result);
+        /* Reset the VMs */
+        for (var i = 0; i < num_visit; i++) {
+            resetVM(svm[i]);
+        }
     } else {
         showAlert("Directions request failed due to: " + status, "danger");
     }

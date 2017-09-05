@@ -345,7 +345,7 @@ function createManagePage() {
     
     /* Start the page refresh timer */
     if (page_timer == null)
-        page_timer = setInterval(checkUpdates, 1000);
+        page_timer = setInterval(checkUpdates, 500);
         
     /* Empty the old content */
     $("#main_cont").empty();
@@ -426,7 +426,6 @@ function changeDispValue(vm, res, value, prod) {
     
     if (prod != "NO_PROD") {
         id = "#" + vm.id.toLowerCase() + "-" + prod.id + "-" + res;
-        showAlert(id);
     } else {
         id = "#" + vm.id.toLowerCase() + "-" + res;
     }
