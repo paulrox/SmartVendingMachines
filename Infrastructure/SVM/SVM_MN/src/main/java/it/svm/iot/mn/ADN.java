@@ -31,11 +31,6 @@ public class ADN {
 	private static AE MN_AE_Monitor;
 
 	/**
-	 * Application Entity of the MN controller.
-	 */
-	private static AE MN_AE_Controller;
-
-	/**
 	 * List containing the registered containers.
 	 */
 	private static ArrayList<Container> containers = 
@@ -66,6 +61,13 @@ public class ADN {
 	 * of the VMs.
 	 */
 	private static ArrayList<Boolean> sub_status = new ArrayList<Boolean>();
+	
+	public static class SubRes {
+		public ArrayList<String> res = new ArrayList<String>();
+	};
+	
+	private static ArrayList<SubRes> sub_res = new ArrayList<SubRes>();
+
 	
 	/**
 	 * Private constructor for the ADN class.
@@ -211,6 +213,7 @@ public class ADN {
 										+ " VM: %s%d\n", type, id);
 								vm_id.add("SVM_" + type + id);
 								sub_status.add(false);
+								sub_res.add(new SubRes());
 								/* Add the container for the vending machine */
 								containers.add(MN_Mca.createContainer(
 										Constants.MN_CSE_URI + "/" + 
@@ -250,11 +253,10 @@ public class ADN {
 	 * @return List of the discovered resources
 	 */
 	private static void discover(String in_cse) {
-		String ae_in_raw, containers_in_raw, parent_cont = "";;
+		String ae_in_raw, containers_in_raw;
 		String[] containers_in = null;
-		String[] ae_in, tmp;
+		String[] ae_in;
 		Boolean ae_found = false;
-		Container cnt;
 		int i = 0, j = 0;
 
 		/* Search the "SVM_Controller" AE on the IN */
@@ -270,33 +272,21 @@ public class ADN {
 		/* Discover the containers on the SVM_Controller */
 		for (String id : vm_id) {
 			if (!sub_status.get(i)) {
-				/* Create the container for the controlled VM */
-				cnt = MN_Mca.createContainer(Constants.MN_CSE_URI + 
-						"/" + MN_AE_Controller.getRn(), id);
-				if (cnt != null)
-					/* The VM container has not been added yet */
-					containers.add(cnt);
 				containers_in_raw = MN_Mca.discoverResources(in_cse, 
 						"?fu=1&rty=3&lbl=Controller_" + id);
-				if (containers_in_raw == null)
+				if (containers_in_raw == null) {
 					/* The VM has no resources containers, try again later */
 					return;
-				containers_in = containers_in_raw.split(" ");
-				for (String cont : containers_in) {	
-					/* Create the container for the controlled resources */
-					tmp = cont.split("/");
-					parent_cont = Constants.MN_CSE_URI + "/" + 
-							MN_AE_Controller.getRn() + "/" + id;
-					cnt = MN_Mca.createContainer(parent_cont,
-							tmp[tmp.length - 1]);
-					if (cnt != null) {
-						/* The resource container has not been added yet */
-						containers.add(cnt);
-						/* Subscribe for the useful resources */
-						subscribe(cont, "coap://127.0.0.1:5686/monitor");
-					}
 				}
-				j++;
+				containers_in = containers_in_raw.split(" ");
+				for (String cont : containers_in) {
+					/* Check if the resource is already subscribed */
+					if (!sub_res.get(i).res.contains(cont)) {
+							subscribe(cont, "coap://127.0.0.1:5686/monitor");
+							sub_res.get(i).res.add(cont);
+					}
+					j++;
+				}
 				if (j == Constants.MN_SUB_RES)
 					/* The subscription has been performed on all the 
 					 * resources */
@@ -337,9 +327,6 @@ public class ADN {
 		MN_AE_Monitor = MN_Mca.createAE(Constants.MN_CSE_URI, "SVM_Monitor");
 		System.out.printf("AE SVM_Monitor registered on MN-CSE\n");
 
-		MN_AE_Controller = MN_Mca.createAE(Constants.MN_CSE_URI, "SVM_Controller");
-		System.out.printf("AE SVM_Controller registered on MN-CSE\n");
-
 		getMoteAddresses(Constants.BR_ADDR);
 		System.out.println("Registering the VM...");
 		registerVendingMachines();
@@ -356,7 +343,7 @@ public class ADN {
 		thread = new CoAPMonitorThread("monitor", 5686, mote_addr, vm_id);
 		thread.start();
 
-		while(true) {
+		while(sub_status.contains(false)) {
 			/* Perform discovery on IN */
 			discover(Constants.MN_CSE_COAP + "/" + Constants.IN_CSE_ID);
 			try {

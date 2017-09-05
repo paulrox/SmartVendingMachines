@@ -90,8 +90,6 @@ public class ADN {
 			
 			for (String cont : containers_mn) {	
 				tmp = cont.split("/");
-				containers.add(IN_Mca.createContainer(parent_cont,
-						tmp[tmp.length - 1]));
 				/* We don't need the sensed temperature in the controller
 				 * containers
 				 */
@@ -104,7 +102,6 @@ public class ADN {
 				}
 				/* Subscribe for the useful resources */
 				subscribe(cont, "coap://127.0.0.1:5685/monitor");
-				
 			}
 		}
 	}
