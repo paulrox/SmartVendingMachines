@@ -152,10 +152,18 @@ function findProduct(vm_index, prod_id) {
     return ret;
 }
 
+/**
+ * Sorts the VMs array by priority
+ * @param {VendingMachine Array} vm_array Array of VendingMachine
+ */
 function sortVMByPrio(vm_array) {
     vm_array.sort( function(a, b) {return b.getPriority() - a.getPriority(); });
 }
 
+/**
+ * Resets the VendingMachine after the route planning.
+ * @param {VendingMachine} vm The VM
+ */
 function resetVM(vm) {
     vm.alarm.value = "N";
     sendUpdate(vm, "alarm", "N");

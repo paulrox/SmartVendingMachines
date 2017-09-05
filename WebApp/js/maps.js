@@ -48,6 +48,9 @@ function findAddress(vm) {
     })
 }
 
+/**
+ * Adds a VM marker on the map
+ */
 function addVmMarkers() {
     for (vm in svm) {
         var latLng = new google.maps.LatLng(svm[vm].loc.lat, svm[vm].loc.lng);
@@ -72,6 +75,9 @@ function addVmMarkers() {
     }
 }
 
+/**
+ * Creates the content of the info window.
+ */
 function createIwContent(index) {
     var ret = "";
     var prods = svm[index].products;
@@ -88,6 +94,9 @@ function createIwContent(index) {
     return ret;
 }
 
+/**
+ * Shows the route for visiting the VMs
+ */
 function showRoute() {
     var num_visit = $(this).prev().val();
     if (num_visit <= 1 || num_visit > svm.length) {

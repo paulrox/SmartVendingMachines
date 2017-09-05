@@ -202,7 +202,7 @@ public final class Mca {
 		req.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
 		req.getOptions().setAccept(MediaTypeRegistry.APPLICATION_JSON);
 		JSONObject content = new JSONObject();
-		content.put("cnf","SenML data");
+		content.put("cnf","Data");
 		content.put("con",val);
 		JSONObject root = new JSONObject();
 		root.put("m2m:cin", content);

@@ -596,6 +596,9 @@ function editRes() {
     $("#" + id).unbind("mouseleave", hideEditIcon);
 }
 
+/**
+ * Confirms the edit of a value.
+ */
 function confirmEdit() {
     var id = $(this).parent().attr("id");
     var type = id.split("-");
@@ -649,6 +652,9 @@ function confirmEdit() {
     $("#" + id).mouseleave(hideEditIcon);
 }
 
+/**
+ * Cancels the edit of a value
+ */
 function cancelEdit() {
     var id = $(this).parent().attr("id");
     var type = id.split("-");

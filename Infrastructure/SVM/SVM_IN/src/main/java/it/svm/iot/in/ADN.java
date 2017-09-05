@@ -127,6 +127,7 @@ public class ADN {
 					container_mn);
 		}
 	}
+	
 	/**
 	 * 
 	 * It creates a VM class for each vending machine and
