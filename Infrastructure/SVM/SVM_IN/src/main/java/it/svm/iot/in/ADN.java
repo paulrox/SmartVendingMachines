@@ -33,10 +33,9 @@ public class ADN {
 	public static Mca IN_Mca = Mca.getInstance();
 	
 	/**
-	 * Application Entities
+	 * Application Entity
 	 */
 	
-	private static AE IN_AE_Monitor;
 	public static AE IN_AE_Controller;
 	
 	/**
@@ -74,11 +73,8 @@ public class ADN {
 		containers_mn = containers_mn_raw.split(" ");
 		
 		for (String cont : containers_mn) {	
-			/* Create the container for the monitored VM */
 			tmp = cont.split("/");
-			System.out.printf("Discovered: %s\n", tmp[tmp.length - 1]);
-			containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI + 
-					"/" + IN_AE_Monitor.getRn(), tmp[tmp.length - 1]));
+
 			vm_id.add(tmp[tmp.length - 1]);
 			/* Create the container for the controlled VM */
 			containers.add(IN_Mca.createContainer(Constants.IN_CSE_URI +
@@ -93,10 +89,7 @@ public class ADN {
 			containers_mn = containers_mn_raw.split(" ");
 			
 			for (String cont : containers_mn) {	
-				/* Create the container for the monitored resources */
 				tmp = cont.split("/");
-				parent_cont = Constants.IN_CSE_URI + "/" + 
-						IN_AE_Monitor.getRn() + "/" + id;
 				containers.add(IN_Mca.createContainer(parent_cont,
 						tmp[tmp.length - 1]));
 				/* We don't need the sensed temperature in the controller
@@ -138,11 +131,12 @@ public class ADN {
 		}
 	}
 	/**
-	 * It initializes the SVM_Monitor with the content instances in the MN
-	 * It creates also a VM class for each vending machine
+	 * 
+	 * It creates a VM class for each vending machine and
+	 * initializes them with the content instances in the MN
 	 * @param mn_cse URI MN CSE
 	 */
-	private static void init_monitor_container(String mn_cse) {
+	private static void init_vms(String mn_cse) {
 		String containers_mn_raw = null, parent_cont = "", response;
 		String[] containers_mn, tmp;
 		URI uri = null;
@@ -162,7 +156,7 @@ public class ADN {
 				int retry = 0;
 				tmp = cont.split("/");
 				parent_cont = Constants.MN_CSE_URI + "/" + 
-						IN_AE_Monitor.getRn() + "/" + id;
+						"SVM_Monitor" + "/" + id;
 			
 				try {
 					uri = new URI(parent_cont + "/" +
@@ -202,9 +196,7 @@ public class ADN {
 				JSONObject m2mcin = root.getJSONObject("m2m:cin");
 				response = m2mcin.getString("con");
 				parent_cont = Constants.IN_CSE_URI + "/" + 
-						IN_AE_Monitor.getRn() + "/" + id;
-				IN_Mca.createContentInstance(parent_cont + "/" +
-						tmp[tmp.length - 1], response);
+						"SVM_Monitor" + "/" + id;
 				vms.get(vms.size() - 1).set_vm_res(response, 
 						tmp[tmp.length - 1], true, true);	
 			}
@@ -227,10 +219,6 @@ public class ADN {
 		
 		System.out.printf("********** Infrastructure Node ADN **********\n");
 		
-		/* Creating Monitor AE */
-		IN_AE_Monitor = IN_Mca.createAE(Constants.IN_CSE_URI, "SVM_Monitor");
-		System.out.printf("AE SVM_Monitor registered on IN-CSE\n");
-		
 		/* Creating Controller AE */
 		IN_AE_Controller = IN_Mca.createAE(Constants.IN_CSE_URI, "SVM_Controller");
 		System.out.printf("AE SVM_Controller registered on IN-CSE\n");
@@ -243,7 +231,7 @@ public class ADN {
 		/* Discovering MN containers */
 		discover(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
 		
-		init_monitor_container(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
+		init_vms(Constants.IN_CSE_COAP + "/" + Constants.MN_CSE_ID);
 
 		Server server = new Server(8000);
         WebSocketHandler wsHandler = new WebSocketHandler() {

@@ -23,8 +23,6 @@ import org.json.JSONObject;
 public class CoAPMonitor extends CoapServer
 {
 	private int coap_port;
-	private Mca mca;
-	private String cse;
 	public String rn;
 	public ArrayList<String> mote_addr;
 	public ArrayList<String> vm_id;
@@ -40,16 +38,14 @@ public class CoAPMonitor extends CoapServer
 		}
 	}
 
-	public CoAPMonitor(String name, Mca mca, int port, String cse, ArrayList<String> mote_addr, 
+	public CoAPMonitor(String name, int port, ArrayList<String> mote_addr, 
 			ArrayList<String> vm_id)
 			throws SocketException
 	{
 		rn = name;
 		this.mote_addr = mote_addr;
-		this.mca = mca;
 		this.vm_id = vm_id;
 		coap_port = port;
-		this.cse = cse;
 		add(new Resource[] { new Monitor() });
 	}
 
@@ -142,12 +138,10 @@ public class CoAPMonitor extends CoapServer
 			}
 			
 			client = new CoapClient(uri);
-			System.out.println("New CoapClient");
+			
 			if (!res.equals("loc")) {
-				String message = get_message(reply, res);
-			
-				System.out.println("New mote value: " + message);
-			
+				String message = get_message(reply, res);		
+				System.out.println("New mote value: " + message);		
 				CoapResponse response = client.put(message, 
 					MediaTypeRegistry.TEXT_PLAIN);
 				System.out.println(response.getResponseText());
@@ -195,11 +189,8 @@ public class CoAPMonitor extends CoapServer
 							sub_string.contains("SVM_C"))
 						name_vm = sub_string;
 				}
-				mca.createContentInstance(cse + uri_res,
-						reply);
-				System.out.println("Created new content instance:\n"
-						+ "res: " + uri_res);
-				System.out.println("con: " + reply);
+
+				System.out.println("New content: " + reply);
 				put_to_mote(name_vm, uri_res, tmp[tmp.length - 2], reply);
 
 			}
