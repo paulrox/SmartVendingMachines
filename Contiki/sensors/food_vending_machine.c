@@ -31,17 +31,19 @@
 
 static struct ctimer ct;
 
-
 static struct coordinate locations[] = { 
   {43.7210, 10.3898},
+  {43.7178, 10.3827},
   {43.7229, 10.3965},
-  {43.7206, 10.3832},
-  {43.7205, 10.3831},
-  {43.7203, 10.3837}
+  {43.7093, 10.3985},
+  {43.7165, 10.4022},
+  {43.7111, 10.4105},
+  {43.7195, 10.3981},
+  {43.7192, 10.4240}
 };
 
 float u_k = 0;
-unsigned int qty_tick = 0, alarm_tick = 0, status_tick = 0;
+unsigned int qty_tick = 0, alarm_tick = 0;
 int machine_id, machine_status;
 int machine_type;
 char alarm_type;
@@ -60,7 +62,7 @@ extern resource_t id, productAqty, productBqty,
 void init_vending_machine()
 { 
   machine_id = node_id;
-  machine_status = 1;
+  machine_status = 0;
   machine_type = 0;
   
   u_k = 18; // Default temperature
@@ -77,26 +79,44 @@ void init_vending_machine()
 
 static void ctimer_callback(void *ptr)
 {
-  qty_tick++;
-  alarm_tick++;
-  status_tick++;
-/*
-  if (qty_tick == QTY_DELAY) {
-    qty_tick = 0;
-    if (productA.remaining_qty > 0)
-      productA.remaining_qty--;
-    if (productB.remaining_qty > 0)
-      productB.remaining_qty--;
-  }
 
-  if (alarm_tick == ALARM_DELAY) {
-    alarm_tick = 0;
-    alarm_type = 'I';
-  }
+  if (machine_status == 1) {
+    qty_tick++;
+    alarm_tick++;
+    unsigned short ret;
 
-  if (status_tick == STATUS_DELAY) 
-    machine_status = 0;
-*/
+    if (qty_tick == QTY_DELAY) {
+      qty_tick = 0;
+      ret = random_rand() % 4;
+      if ((productA.remaining_qty - (int)ret) >= 0) 
+        productA.remaining_qty -= ret;
+
+        ret = random_rand() % 4;
+      if ((productB.remaining_qty - (int)ret) >= 0)
+         productB.remaining_qty -= ret;
+    }
+
+    if (alarm_tick == ALARM_DELAY) {
+      ret = random_rand() % 3;
+      switch(ret) {
+      case 0:
+        if (alarm_type == 'N')
+          alarm_type = 'I';
+        break;
+      case 1:
+        if (alarm_type == 'N')
+          alarm_type = 'F';
+        break;
+      case 2:
+        alarm_type = 'N';
+        break;
+      default:
+        alarm_type = 'N';
+        break;
+    }
+      alarm_tick = 0;
+    }
+  }
   ctimer_restart(&ct);
 }
 
