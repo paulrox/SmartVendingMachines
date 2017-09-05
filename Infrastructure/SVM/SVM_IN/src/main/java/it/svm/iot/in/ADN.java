@@ -177,7 +177,7 @@ public class ADN {
 					} catch (JSONException e) {
 						/* The container is still empty */
 						retry++;
-						if (retry == 10) {
+						if (retry == 100) {
 							/* There is a problem with the application, exit */
 							e.printStackTrace();
 							System.exit(-1);
