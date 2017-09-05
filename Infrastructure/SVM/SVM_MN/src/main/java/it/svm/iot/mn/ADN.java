@@ -255,7 +255,7 @@ public class ADN {
 		String[] ae_in, tmp;
 		Boolean ae_found = false;
 		Container cnt;
-		int i = 0, j;
+		int i = 0, j = 0;
 
 		/* Search the "SVM_Controller" AE on the IN */
 		ae_in_raw = MN_Mca.discoverResources(in_cse, "?fu=1&rty=2");
@@ -282,7 +282,6 @@ public class ADN {
 					/* The VM has no resources containers, try again later */
 					return;
 				containers_in = containers_in_raw.split(" ");
-				j = 0;
 				for (String cont : containers_in) {	
 					/* Create the container for the controlled resources */
 					tmp = cont.split("/");
@@ -296,8 +295,8 @@ public class ADN {
 						/* Subscribe for the useful resources */
 						subscribe(cont, "coap://127.0.0.1:5686/monitor");
 					}
-					j++;
 				}
+				j++;
 				if (j == Constants.MN_SUB_RES)
 					/* The subscription has been performed on all the 
 					 * resources */
@@ -354,11 +353,10 @@ public class ADN {
 		}
 
 		/* CoAP server for handling notifications from the subscriptions */
-		thread = new CoAPMonitorThread("monitor", MN_Mca, 5686,
-				Constants.MN_CSE_URI, mote_addr, vm_id);
+		thread = new CoAPMonitorThread("monitor", 5686, mote_addr, vm_id);
 		thread.start();
 
-		while(sub_status.contains(false)) {
+		while(true) {
 			/* Perform discovery on IN */
 			discover(Constants.MN_CSE_COAP + "/" + Constants.IN_CSE_ID);
 			try {
