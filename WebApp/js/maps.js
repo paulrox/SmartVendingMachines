@@ -10,6 +10,8 @@
 var map = null;
 var route_planned = false;
 var last_content;
+var directionsDisplay = new google.maps.DirectionsRenderer();
+var directionsService = new google.maps.DirectionsService();
 
 /**
  * Draws the city map.
@@ -17,8 +19,8 @@ var last_content;
 function cityMap() {
     var mapProp = {
         center: new google.maps.LatLng(43.720448, 10.392116),
-        zoom: 16,
-        disableDefaultUI: true,
+        zoom: 14,
+        disableDefaultUI: true
     };
     map = new google.maps.Map(document.getElementById("city_map"),
                                   mapProp);
@@ -98,29 +100,31 @@ function createIwContent(index) {
  * Shows the route for visiting the VMs
  */
 function showRoute() {
-    var num_visit = $(this).prev().val();
+    var num_visit = $(this).prev().prev().val();
     if (num_visit <= 1 || num_visit > svm.length) {
         showAlert("Invalid number of visits!", "danger");
         return;
     }
     var num_waypoints = num_visit - 2;
     var waypts = [];
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-    var directionsService = new google.maps.DirectionsService();
     var dirRendOpt = {
         //suppressMarkers: true
     };
     
+    /* Clear the text div */
+    $("#route-text").empty();
+    
     /* Update the information window content */
     for (vm in svm) {
-        last_content[vm] = createIwContent(vm);
+        last_content[vm] = createIwContent(vm); 
     }
-    directionsDisplay.setMap(map);
-    directionsDisplay.setOptions(dirRendOpt);
-    directionsDisplay.setPanel(document.getElementById("route-text"));
     
     /* Sort the VMs by descending priorities */
     sortVMByPrio(svm);
+    
+    directionsDisplay.setMap(map);
+    directionsDisplay.setOptions(dirRendOpt);
+    directionsDisplay.setPanel(document.getElementById("route-text"));
     
     /* Using the exact positon */
     var start = new google.maps.LatLng(svm[0].loc.lat, svm[0].loc.lng);
@@ -139,9 +143,13 @@ function showRoute() {
         });
     }
     
+    /* Get the checkbox value */
+    var opt = $('#opt-route').is(':checked')? true : false;
+    
     var request = {
         origin: start,
         destination: end,
+        optimizeWaypoints: opt,
         waypoints: waypts,
         travelMode: 'DRIVING'
     };

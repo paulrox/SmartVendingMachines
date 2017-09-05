@@ -305,7 +305,8 @@ function createIndexPage() {
                            "shows machines locations on the city center map;" +
                            "</li> <li>The \"<strong>Manage</strong>\" " +
                            "page is used to monitor the actual machines " +
-                           "status and the daily income;</li></ul></p></div>");
+                           "status and to edit the resource values;</li>" +
+                           "</ul></p></div>");
 }
 
 
@@ -330,9 +331,12 @@ function createMapPage() {
     $("#main_cont").append('<div class="row"><div id="city_map" class="map">' +
                            '</div></div><div id="plan-row" class="row"><div>' +
                            '<span>Number of VMs to visit: </span>' +
-                           '<input type="text"></input><button type="button" class="' +
-                           'btn btn-primary">Plan Route</button></div></div>' +
-                           '<div class="row"><div id="route-text"</div></div>');
+                           '<input type="text"></input><label><input' +
+                           'id="opt-route" type="checkbox">Optimize' +
+                           '</label><button type="button" class="'+
+                           'btn btn-primary">Plan Route</button>' +
+                           '</div></div><div class="row"><div id="route-text"' +
+                           '</div></div>');
     $("#main_cont").find(".btn").first().click(showRoute);
     
     /* Draw the map */
