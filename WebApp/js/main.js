@@ -45,8 +45,8 @@ $(document).ready(function(){
             case "City Map":
                 createMapPage();
                 break;
-            case "Analytics":
-                createAnalyticsPage();
+            case "Manage":
+                createManagePage();
                 break;
             case "Plan Route":
                 createRoutePage();
@@ -177,29 +177,32 @@ function onMessageHandler(msg) {
                     /* Examine each product */
                     for (prod in vm_cnt[res]) {
                         var prod_cnt = vm_cnt[res][prod];
-                        prod_index = findProduct(vm_index, prod_cnt.id);
-                        if (prod_index < 0) {
-                            /* A new product has been found */
-                            svm[vm_index].products.push(
-                                new Product(prod_cnt.id));
-                            prod_index = svm[vm_index].products.length - 1;
-                        }
-                        /* Examine each resource in each product */
-                        for (prod_res in prod_cnt) {
-                            switch (prod_res) {
-                                case "qty":
-                                    svm[vm_index].products[prod_index][prod_res] =
-                                        prod_cnt[prod_res];
-                                    break;
-                                case "price":
-                                    svm[vm_index].products[prod_index][prod_res] =
-                                    prod_cnt[prod_res].toFixed(2);
-                                default:
-                                    break;
+                        if (prod_cnt.id != undefined) {
+                            prod_index = findProduct(vm_index, prod_cnt.id);
+                            if (prod_index < 0) {
+                                /* A new product has been found */
+                                svm[vm_index].products.push(
+                                    new Product(prod_cnt.id));
+                                prod_index = svm[vm_index].products.length - 1;
                             }
-                            svm[vm_index].updated.products = true;
-                            svm[vm_index].products[prod_index].
-                                updated[prod_res] = true;
+                            /* Examine each resource in each product */
+                            for (prod_res in prod_cnt) {
+                                switch (prod_res) {
+                                    case "qty":
+                                        svm[vm_index].products[prod_index]
+                                            [prod_res] = prod_cnt[prod_res];
+                                        break;
+                                    case "price":
+                                        svm[vm_index].products[prod_index]
+                                            [prod_res] = 
+                                            prod_cnt[prod_res].toFixed(2);
+                                    default:
+                                        break;
+                                }
+                                svm[vm_index].updated.products = true;
+                                svm[vm_index].products[prod_index].
+                                    updated[prod_res] = true;
+                            }
                         }
                     }
                 } else {
@@ -259,7 +262,6 @@ function sendUpdate(vm, res, value, prod) {
                prod.id + res, "content": {}};
         msg.content[res] = value;
     }
-    showAlert(JSON.stringify(msg));
     socket.send(JSON.stringify(msg));
 }
 
@@ -284,23 +286,19 @@ function createIndexPage() {
     
     /* Add the new content */
     $(".page-header").append("Overview");
-    $("#main_cont").append('<div class="row"></div>');
-    $("#main_cont").append("<img id=\"ov_img\" src=\"img/overview.jpg\"" +
+    $("#main_cont").append("<div class=\"row\"><img id=\"ov_img\" src=\"img/overview.jpg\"" +
                            "alt=\"overview image\" class=\"img-rounded " +
-                           "center-block\">");
-    $("#main_cont").append("<p> This page is the user frontend of the Web " +
-                           " app for the Internet of Things project.</p>");
-    $("#main_cont").append("<p> The system administrator can use this page " +
+                           "center-block\"></div>" +
+                           '<div id="index-text" class="row"><p> This page is the user frontend of the Web' +
+                           " app for the Internet of Things project." +
+                           "The system administrator can use this page " +
                            "to manage remotely the vending machines and " +
                            "to plan technical staff routes. In particular:" + 
                            "<ul> <li>The \"<strong>City Map</strong>\" page " +
                            "shows machines locations on the city center map;" +
-                           "</li> <li>The \"<strong>Analytics</strong>\" " +
+                           "</li> <li>The \"<strong>Manage</strong>\" " +
                            "page is used to monitor the actual machines " +
-                           "status and the daily income;</li> <li>The \"" +
-                           "<strong>Plan Route</strong>\" page is used to " +
-                           "generate the supplies and technical interventions" +
-                           " routes;</li></ul></p>");
+                           "status and the daily income;</li></ul></p></div>");
 }
 
 
@@ -322,31 +320,16 @@ function createMapPage() {
     /* Add the new content */
     $(".page-header").append("City Map");
     $(".nav_link").eq(2).attr("class", "nav_link active");
-    $("#main_cont").append('<div class="row"></div>');
-    $("#main_cont").append("<div id=\"city_map\" class=\"map\"></div>");
+    $("#main_cont").append('<div class="row"><div id="city_map" class="map">' +
+                           '</div></div><div id="plan-row" class="row"><div>' +
+                           '<span>Number of VMs to visit: </span>' +
+                           '<input type="text"></input><button type="button" class="' +
+                           'btn btn-primary">Plan Route</button></div></div>' +
+                           '<div class="row"><div id="route-text"</div></div>');
+    $("#main_cont").find(".btn").first().click(showRoute);
     
     /* Draw the map */
     cityMap();
-}
-
-/**
- * Creates the Plan Route page contents.
- */
-function createRoutePage() {
-    current_page = "route";
-    
-    clearInterval(page_timer);
-    page_timer = null;
-  
-    /* Empty the old content */
-    $("#main_cont").empty();
-    $(".page-header").empty();
-    $(".nav_link").attr("class", "nav_link");
-    $(".nav_link").first().attr("class", "navbar-brand nav_link");
-    
-    /* Add the new content */
-    $(".page-header").append("Plan Route");
-    $(".nav_link").eq(4).attr("class", "nav_link active");
 }
 
 /**
@@ -369,15 +352,15 @@ function createHelpPage() {
 }
 
 /*===========================================================================*/
-/*========================== Analytics Functions ============================*/
+/*========================== Management Functions ===========================*/
 /*===========================================================================*/
 
 /**
- * Creates the Analytics page contents.
+ * Creates the Manage page contents.
  */
-function createAnalyticsPage() {
+function createManagePage() {
     var i = 1;
-    current_page = "analytics";
+    current_page = "Manage";
     
     /* Start the page refresh timer */
     if (page_timer == null)
@@ -390,12 +373,12 @@ function createAnalyticsPage() {
     $(".nav_link").first().attr("class", "navbar-brand nav_link");
     
     /* Add the new content */
-    $(".page-header").append("Analytics");
+    $(".page-header").append("Manage");
     $(".nav_link").eq(3).attr("class", "nav_link active");
     $("#main_cont").append('<div class="row"></div>');
     for (vm in svm) {
         $("#main_cont").children(".row").last().append(getSVMPanel(vm));
-        if (i % 3 == 0) {
+        if (i % 2 == 0) {
             /* Add a row */
             $("#main_cont").append('<div class="row"></div>');
         }
@@ -457,14 +440,14 @@ function checkUpdates() {
 
 function changeDispValue(vm, res, value, prod) {
     var id;
+    
     prod = prod || "NO_PROD"; /* default value */
     
     if (prod != "NO_PROD") {
-        id = "#" + vm.id + "-" + prod.id + "-" + res;
+        id = "#" + vm.id.toLowerCase() + "-" + prod.id + "-" + res;
     } else {
-        id = "#" + vm.id + "-" + res;
+        id = "#" + vm.id.toLowerCase() + "-" + res;
     }
-    
     $(id).empty();
     $(id).text(value);
 }

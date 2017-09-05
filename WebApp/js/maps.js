@@ -66,11 +66,68 @@ function createIwContent(index) {
     var ret = "";
     var prods = svm[index].products;
     
-    ret = '<h4>General Info</h4>' + "<strong>Status: </strong>" +
+    ret = '<h4>' + svm[index].id + '<h5>General Info</h5></h4>' +
+        "<strong>Status: </strong>" +
         svm[index].status.toStr() + "<br><strong>Address: </strong>" +
         svm[index].address + "<br><strong>Sensed Temp.: </strong>" +
         svm[index].tempsens + "<br>" + "<strong>Desidered Temp.: </strong>" +
         svm[index].tempdes + "<br>" + "<strong>Alarm: </strong>" +
-        svm[index].alarm.toStr();
+        svm[index].alarm.toStr() + '<br><strong>Products Left: </strong>' +
+        svm[index].getProdsLeft() + '<br><strong>Priority: </strong>' +
+        svm[index].getPriority();
     return ret;
+}
+
+function showRoute() {
+    var num_visit = $(this).prev().val();
+    if (num_visit < 1 || num_visit > svm.length) {
+        showAlert("Invalid number of visits!", "danger");
+    }
+    var num_waypoints = num_visit - 2;
+    var waypts = [];
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var directionsService = new google.maps.DirectionsService();
+    var dirRendOpt = {
+        //suppressMarkers: true
+    };
+    
+    directionsDisplay.setMap(map);
+    directionsDisplay.setOptions(dirRendOpt);
+    directionsDisplay.setPanel(document.getElementById("route-text"));
+    
+    /* Sort the VMs by descending priorities */
+    sortVMByPrio(svm);
+    
+    /* Using the exact positon
+    var start = new google.maps.LatLng(svm[0].loc.lat, svm[0].loc.lng);
+    var end = new google.maps.LatLng(svm[svm.length - 1].loc.lat, 
+        svm[svm.length - 1].loc.lng);
+    */
+    /* Using the address */
+    var start = svm[0].address;
+    var end = svm[num_visit - 1].address;
+    
+    /* Add waypoints, if any */
+    for (var i = 0; i < num_waypoints; i++) {
+        waypts.push({
+            location: svm[i + 1].address,
+            stopover: true
+        });
+    }
+    
+    var request = {
+        origin: start,
+        destination: end,
+        waypoints: waypts,
+        travelMode: 'DRIVING'
+    };
+    /* Compute the path */
+    
+    directionsService.route(request, function(result, status) {
+    if (status == 'OK') {
+      directionsDisplay.setDirections(result);
+    } else {
+        showAlert("Directions request failed due to: " + status, "danger");
+    }
+  });
 }

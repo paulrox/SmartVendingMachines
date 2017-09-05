@@ -9,6 +9,7 @@
 
 /* Global Variables */
 var svm; /* Array containing all the VMs */
+var max_prods = 40; 
 
 /**
  * Prototype of the status object.
@@ -89,6 +90,30 @@ function VendingMachine(id) {
     this.updated = {loc: false, products: false, status: false,
                     tempsens: false, tempdes: false, alarm: false};
     
+    this.getPriority = function() {
+        var prio = 0;
+        
+        /* VMs with less products have higher priority */
+        prio -= this.getProdsLeft();
+        
+        /* Alarms give more priority to VMs */
+        if (this.alarm.value == "F") {
+            prio += 20;
+        }
+        if (this.alarm.value == "I") {
+            prio += 30;
+        }
+        return prio;
+    }
+    
+    this.getProdsLeft = function() {
+        var prods_left = 0;
+        for (prod in this.products) {
+            prods_left += this.products[prod].qty;
+        }
+        prods_left = max_prods - prods_left;
+        return prods_left;
+    } 
 }
 
 /**
@@ -125,4 +150,8 @@ function findProduct(vm_index, prod_id) {
         i++;
     }
     return ret;
+}
+
+function sortVMByPrio(vm_array) {
+    vm_array.sort( function(a, b) {return b.getPriority() - a.getPriority(); });
 }

@@ -75,13 +75,17 @@ body {
   padding: 20px;
 }
 @media (min-width: 768px) {
-  .main {
+    .main {
     padding-right: 40px;
     padding-left: 40px;
   }
 }
 .main .page-header {
   margin-top: 0;
+}
+
+#index-text{
+    margin-top: 10px;
 }
 
 
@@ -163,6 +167,7 @@ p.ws_status {
 .edit {
     margin-left: 5px;
 }
+
 .edit:hover {
     cursor: pointer;
 }
@@ -172,4 +177,24 @@ p.ws_status {
 */
 .short-input {
     width: 60px;
+}
+
+/*
+ * Map page button row
+ */
+
+#plan-row {
+    margin-top: 20px;
+}
+
+#plan-row > div {
+    float: right;
+}
+
+#plan-row > div >input {
+    margin-left: 10px;
+}
+
+#plan-row > div > button {
+    margin-left: 10px;
 }
