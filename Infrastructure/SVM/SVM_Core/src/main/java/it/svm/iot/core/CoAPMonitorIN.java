@@ -70,9 +70,14 @@ public class CoAPMonitorIN extends CoapServer
 				String uri_res = m2msgn.getString("sur");
 				String []tmp = uri_res.split("/");
 				String name_vm = null;
-				
+				uri_res = "";
 				/* Retrieving the URI path for the resource */
 				for (String sub_string: tmp) {
+					if (i != (tmp.length - 1) && i > 2) {
+						uri_res += "/";
+						uri_res += sub_string;
+					}
+					i++;
 					if (sub_string.contains("SVM_F") || 
 							sub_string.contains("SVM_C"))
 						name_vm = sub_string;
@@ -80,6 +85,7 @@ public class CoAPMonitorIN extends CoapServer
 
 				System.out.println("New content: " + reply);
 				/* Updating vm class */
+				tmp = uri_res.split("/");
 				for (i = 0; i < vms.size(); i++) {
 					if (vms.get(i).name.equals(name_vm)) {
 						vms.get(i).mutex.semWait();
