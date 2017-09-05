@@ -221,8 +221,8 @@ function onMessageHandler(msg) {
                                  * order to avoid Google Maps API
                                  * limitation */
                                 var timeout = 500 + Math.random()*2500;
-                                setTimeout(findAddress(svm[vm_index]),
-                                           timeout);
+                                setTimeout(findAddress,
+                                           timeout, svm[vm_index]);
                             }
                             break;
                         case "alarm":

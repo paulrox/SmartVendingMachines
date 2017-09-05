@@ -27,6 +27,10 @@ function cityMap() {
     addVmMarkers();
 }
 
+/**
+ * Finds the Address of the VM.
+ * @param {VengingMachine} vm The Vending Machine
+ */
 function findAddress(vm) {
     var geocoder = new google.maps.Geocoder;
     geocoder.geocode({'location': {lat: parseFloat(vm.loc.lat),
