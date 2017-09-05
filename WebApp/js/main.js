@@ -332,25 +332,6 @@ function createMapPage() {
     cityMap();
 }
 
-/**
- * Creates the Help page contents.
- */
-function createHelpPage() {
-    current_page = "help";
-    
-    clearInterval(page_timer);
-    page_timer = null;
-    
-    /* Empty the old content */
-    $("#main_cont").empty();
-    $(".page-header").empty();
-    $(".nav_link").attr("class", "nav_link");
-    $(".nav_link").first().attr("class", "navbar-brand nav_link");
-    
-    /* Add the new content */
-    $(".page-header").append("Help");
-}
-
 /*===========================================================================*/
 /*========================== Management Functions ===========================*/
 /*===========================================================================*/
@@ -410,7 +391,7 @@ function checkUpdates() {
                                 svm[vm].products[prod].updated[prod_res] = false;
                                 changeDispValue(svm[vm], prod_res,
                                                 svm[vm].products[prod][prod_res],
-                                                prod);
+                                                svm[vm].products[prod]);
                             }
                         }
                     }
@@ -445,6 +426,7 @@ function changeDispValue(vm, res, value, prod) {
     
     if (prod != "NO_PROD") {
         id = "#" + vm.id.toLowerCase() + "-" + prod.id + "-" + res;
+        showAlert(id);
     } else {
         id = "#" + vm.id.toLowerCase() + "-" + res;
     }

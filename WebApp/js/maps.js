@@ -80,8 +80,9 @@ function createIwContent(index) {
 
 function showRoute() {
     var num_visit = $(this).prev().val();
-    if (num_visit < 1 || num_visit > svm.length) {
+    if (num_visit <= 1 || num_visit > svm.length) {
         showAlert("Invalid number of visits!", "danger");
+        return;
     }
     var num_waypoints = num_visit - 2;
     var waypts = [];

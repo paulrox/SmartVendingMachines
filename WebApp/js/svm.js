@@ -9,7 +9,7 @@
 
 /* Global Variables */
 var svm; /* Array containing all the VMs */
-var max_prods = 40; 
+var max_prods = 80; 
 
 /**
  * Prototype of the status object.
