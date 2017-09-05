@@ -8,6 +8,8 @@
  */
 
 var map = null;
+var route_planned = false;
+var last_content;
 
 /**
  * Draws the city map.
@@ -20,7 +22,8 @@ function cityMap() {
     };
     map = new google.maps.Map(document.getElementById("city_map"),
                                   mapProp);
-    
+    route_planned = false;
+    last_content = Array(svm.length)
     addVmMarkers();
 }
 
@@ -55,7 +58,10 @@ function addVmMarkers() {
         /* Prepare the InfoWindow box */
         var infowindow = new google.maps.InfoWindow();
         google.maps.event.addListener(marker, 'click', function() {
-            content = createIwContent(this.vm);
+            if (!route_planned)
+                content = createIwContent(this.vm);
+            else
+                content = last_content[this.vm];
             infowindow.setContent(content);
             infowindow.open(map, this);
         });
@@ -92,6 +98,10 @@ function showRoute() {
         //suppressMarkers: true
     };
     
+    /* Update the information window content */
+    for (vm in svm) {
+        last_content[vm] = createIwContent(vm);
+    }
     directionsDisplay.setMap(map);
     directionsDisplay.setOptions(dirRendOpt);
     directionsDisplay.setPanel(document.getElementById("route-text"));
@@ -126,6 +136,7 @@ function showRoute() {
     
     directionsService.route(request, function(result, status) {
     if (status == 'OK') {
+        route_planned = true;
         directionsDisplay.setDirections(result);
         /* Reset the VMs */
         for (var i = 0; i < num_visit; i++) {

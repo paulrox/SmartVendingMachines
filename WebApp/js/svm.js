@@ -112,7 +112,6 @@ function VendingMachine(id) {
         for (prod in this.products) {
             prods_left += this.products[prod].qty;
         }
-        prods_left = max_prods - prods_left;
         return prods_left;
     } 
 }
